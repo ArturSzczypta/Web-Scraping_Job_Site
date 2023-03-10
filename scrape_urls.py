@@ -100,6 +100,9 @@ def scrape_uls(webpage):
     browser.quit()
     return http_links,unique_dates
 
+
+
+
 def main(webpage):
     '''
     This is the main function of the script.
