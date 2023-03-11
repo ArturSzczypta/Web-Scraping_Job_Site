@@ -41,42 +41,7 @@ def scrape_single_listing(url):
     except:
         print(url)
 
-def scrape_json_data():
-    ''' Scrapes json data about job listings, save to text file'''
-    unique_links = set()
-    finished_links = set()
-    finished_count = 0
-
-    # Open the file for reading
-    with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
-            # Read the lines into a set, removing any leading or trailing whitespace
-            unique_links = set(line.strip() for line in file)
-
-    # Open the file for reading
-    with open('finished_listings.txt', 'r', encoding='UTF-8') as file:
-            # Read the lines into a set, removing any leading or trailing whitespace
-            finished_links = set(line.strip() for line in file)
-
-    #Remaining links to do
-    remaining_listings = unique_links - finished_links
-    total = len(remaining_listings)
-    one_percent = int(total / 100)
-
-    for link in remaining_listings:
-        sleep(random.uniform(2, 5))
-        
-        # Append file containing all job listing
-        with open('listings_json_data.txt', 'a',encoding='UTF-8') as file:
-                    file.write(scrape_single_listing(link) + '\n')
-        with open('finished_listings.txt', 'a',encoding='UTF-8') as file:
-                    file.write(link + '\n')
-        
-        #Print if a round percent is finished
-        finished_count += 1
-        if finished_count % one_percent == 0:
-            print(finished_count / one_percent)
-
-def scrape_json_data():
+def scrape_all_listings_data():
     ''' Scrapes json data about job listings, save to text file'''
     unique_links = set()
     finished_links = set()
@@ -113,7 +78,7 @@ def scrape_json_data():
 
 def extract_usefull_listings(skills_list):
     ''' Extract listings that have my skills '''
-    # Patetrns for skills_slist = ['Python', 'SQL', 'R']
+    # Patterns for skills_slist = ['Python', 'SQL', 'R']
     # Designed to find SQL
     pattern_1 = r'%s'
     # Designed to find R language
@@ -140,9 +105,7 @@ def extract_usefull_listings(skills_list):
             print(f"Pattern {pattern}: {len(new_matches)} unique matches")
         # Write the matching lines to the output file
         for match in matches:
-            output_file.write(match + '\n')
-
-
+            output_file.write(match)
 
 def main():
         ''' Performs basic logging set up, if script is runned directly'''
