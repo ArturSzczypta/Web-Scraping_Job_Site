@@ -32,7 +32,12 @@ logger = logging.getLogger('main')
 skills_list = ['Python', 'SQL', 'R']
 my_dict = {}
 
+usefull = 0
+total = 0
 with open('listings_matching_skills.txt', 'r',encoding='UTF-8') as file:
+    lines = file.readlines()
+    total = len(lines)
+    file.seek(0)
     for line in file:
         #first_line = file.readline()
         my_str = line.strip().replace('•', '')
@@ -44,12 +49,15 @@ with open('listings_matching_skills.txt', 'r',encoding='UTF-8') as file:
         pattern_more_quotes = r': \"([^"]*(?:"[^"]*)*)\"'
         #my_str = re.sub(pattern_more_quotes, r': "\1"', my_str)
 
+        '''
         # find all matches of pattern in my_str
         matches = re.findall(pattern_more_quotes, my_str)
+        
         if matches:
             print(str(matches)+ '\n'+ '\n'+ '\n')
-
+        '''
         #print(json.dumps(my_dict, ensure_ascii=False, indent=4))
+        
         try:
             #Basic listing data
             #url
@@ -82,17 +90,36 @@ with open('listings_matching_skills.txt', 'r',encoding='UTF-8') as file:
             dev_practices = None
             if 'items' in my_dict['offerReducer']['offer']['sections'][4]['model']:
                 dev_practices = {practices['code'] for practices in my_dict['offerReducer']['offer']['sections'][4]['model']['items']}
-        
+
+            #Creating a new, simplified dictionary for saving
+            new_dict = {}
+            #Basic listing data
+            new_dict['url'] = url
+            new_dict['job_title'] = job_title
+            new_dict['country'] = country
+            new_dict['region'] = region
+            new_dict['location'] = location
+            new_dict['salary'] = salary
+            # Assuming both dates always comply to ISO 8601 format, UTC time zone
+            new_dict['publication_date'] = publication_date
+            new_dict['expiration_date'] = expiration_date
+            # technologies
+            new_dict['tech_expected'] = tech_expected
+            new_dict['tech_optional'] = tech_optional
+            # responsibilities
+            new_dict['resp_expected'] = resp_expected
+            # requirements
+            new_dict['req_expected'] = req_expected
+            new_dict['req_optional'] = req_optional
+            # development-practices
+            new_dict['dev_practices'] = dev_practices
+
+            with open('listings_scraped_5.txt', 'a',encoding='utf-8') as file:
+                file.write(new_dict + '\n')
+            usefull += 1
         except:
-            print(my_str[5400:5500]+ '\n')
-            print(my_str+ '\n')
-            #print(my_dict['offerReducer']['offer']['sections'][4]['model'])
-            l.log_exception('')
-            print(json.dumps(my_dict, ensure_ascii=False, indent=4))
-            #for i in my_dict['offerReducer']['offer']['sections']:
-            #    print(i)
-            print('-----------------')
-            break
+            pass
+print(f'usefull {usefull}, total {total}, percent {int(usefull/total*100)}%')
 
 '''
 my_dict = {
@@ -130,10 +157,6 @@ my_str = re.sub(pattern_more_quotes, r'"\1"', my_str)
 
 my_dict = json.loads(my_str)
 #print(json.dumps(my_dict, ensure_ascii=False, indent=4))
-
-
-'''
-'''
 '''
 '''
 # Detect the encoding of the string
@@ -154,6 +177,7 @@ my_str_encoded = my_str.encode('iso-8859-1', errors='replace')
 my_dict = json.loads(my_str_encoded.decode('utf-8'))
 print(json.dumps(my_dict, ensure_ascii=False, indent=4))
 '''
+
 '''
 encodings = ['UTF-8', 'ISO-8859-1', 'UTF-16', 'UTF-32']
 
@@ -163,12 +187,10 @@ for encoding in encodings:
         print(my_dict)
     except Exception as e:
         print(f"Error with {encoding}: {e}")
-
 '''
 
 
 '''
-
 #Basic listing data
 #url
 url = my_dict['url']
@@ -195,8 +217,6 @@ req_optional = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]
 
 # development-practices
 dev_practices = {practices['code'] for practices in my_dict['offerReducer']['offer']['sections'][4]['model']['items']}
-
-
 '''
 
 
