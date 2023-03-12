@@ -18,7 +18,18 @@ def replace_empty(data_string):
     patterns = [r':\s*""', r':\s*\[\]', r':\s*{}', r':\s*,', r':\s*]', r':\s*\}', r':\s*\{\}']
     for pattern in patterns:
         data_string = re.sub(pattern, ':null', data_string)
-    print(data_string)
+    return data_string
+
+def insert_commas(data_string):
+    """
+    Insert commas after null values that are not followed by a closing brace or bracket
+    """
+    pattern = r'null\s*([}\]])'
+    data_string = re.sub(pattern, r'null,\1', data_string)
+    
+    pattern = r'null\s*("[{\[])'
+    data_string = re.sub(pattern, r'null,\1', data_string)
+    
     return data_string
 
 def clean_dict(my_dict):
@@ -78,6 +89,7 @@ def scrape_single_listing(url):
         #print(substring +'\n')
         # Replace empty dictionaries, lists and strings with None
         substring = replace_empty(substring)
+        #substring = insert_commas(substring)
         print(substring)
 
         # Convert the string to a dictionary using the json module
