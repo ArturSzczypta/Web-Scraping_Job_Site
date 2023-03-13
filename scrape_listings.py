@@ -26,52 +26,6 @@ def add_missing_commas(data_string):
     pattern = r'null\s*([^,\]}])'
     return re.sub(pattern, r'null,\g<1>', data_string)
 
-def clean_dict(my_dict):
-    '''
-    Removes all unnecesarry characters and symbols
-    Replace " " inside strings with ( )
-    These dictionaries are very complex, therefore recursion is used
-    '''
-    for key, val in my_dict.items():
-        if isinstance(val, str):
-            # Replace "some text" with (some text)
-            val = re.sub(r'"(.*?)"', r'(\1)', val)
-            # Replace any non-alphanumeric or non-allowed characters with space
-            val = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', ' ', val)
-            # Remove leading or trailing whitespaces, change empty strings to None
-            my_dict[key] = val.strip() if val.strip() != '' else None
-        elif isinstance(val, list):
-            if not val:
-                my_dict[key] = None
-            else:
-                # Process each item in the list recursively
-                for i in range(len(val)):
-                    val[i] = clean_dict(val[i])
-                my_dict[key] = val
-                # If now empty, change to None
-                if not val:
-                    my_dict[key] = None
-        elif isinstance(val, dict):
-            try:
-                # Process the nested dictionary recursively
-                cleaned_val = clean_dict(val)
-                # Check if all values in cleaned_val are None
-                all_none = True
-                for v in cleaned_val.values():
-                    if v is not None:
-                        all_none = False
-                        break
-                # If all values are None, change to None
-                my_dict[key] = cleaned_val if not all_none else None
-            except Exception as e:
-                traceback.print_exc()
-                '''
-                except AttributeError:
-                print(f"Error with key: {key}, value: {val}")
-                print('---------------------'+'\n')
-                '''
-    return my_dict
-
 def scrape_single_listing(url):
     ''' Scrapes job listing details from the url, return a dictionary'''
     #try:
@@ -115,7 +69,7 @@ def scrape_single_listing(url):
 
     # Convert the string to a dictionary using the json module
     my_dict = json.loads(substring)
-    print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
     #except:
     print(f'failed to get JSON from url {url}')
@@ -169,7 +123,6 @@ def extract_data(my_dict, url):
         if len(my_dict['offerReducer']['offer']['sections'][3]['subSections']) > 1:
             req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][1]['model']['bullets']]
 
-
     # development-practices
     dev_practices = None
     if 'items' in my_dict['offerReducer']['offer']['sections'][4]['model']:
@@ -216,16 +169,25 @@ def main(url, file_name):
     '''Runs if script called directly'''
     my_dict = scrape_single_listing(url)
     #print(my_dict)
-    #my_dict = clean_dict(my_dict)
-    #print(my_dict)
     new_dict = extract_data(my_dict, url)
-    print(new_dict)
+    #print(new_dict)
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    url = 'https://www.pracuj.pl/praca/analityk-analityczka-danych-katowice,oferta,1002445803'
-    file_name = 'extracted_dict_examples.txt'
-    main(url, file_name)
+    #url = 'https://www.pracuj.pl/praca/analityk-analityczka-danych-katowice,oferta,1002445803'
+    file_with_extracted = 'succesfull extractions.txt'
+    file_with_failed = 'failed extractions.txt'
+    # Open the file for reading
+    with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
+        # Try to extract each listing. If failed, record in serepate file
+        for url in file:
+            url = url.strip()
+            try:
+                main(url, file_with_extracted)
+            except:
+                with open(file_with_failed, 'a', encoding='UTF-8') as file:
+                    file.write(url + '\n')
+  
 
 
 
