@@ -7,6 +7,8 @@ import json
 from time import sleep
 from numpy import random
 import unicodedata
+import traceback
+import datetime
 
 import logging
 from logging import config
@@ -61,9 +63,13 @@ def clean_dict(my_dict):
                         break
                 # If all values are None, change to None
                 my_dict[key] = cleaned_val if not all_none else None
-            except AttributeError:
+            except Exception as e:
+                traceback.print_exc()
+                '''
+                except AttributeError:
                 print(f"Error with key: {key}, value: {val}")
                 print('---------------------'+'\n')
+                '''
     return my_dict
 
 def scrape_single_listing(url):
@@ -82,12 +88,11 @@ def scrape_single_listing(url):
     substring = response.text[start_index:end_index]
     # Replace invalid valiable names with null, so i can create dictionary
     substring = re.sub(r'\bundefined\b', '', substring)
-    #print(substring +'\n')
-    # Replace empty dictionaries, lists and strings with None
+    #print(substring)
     
     # Remove all unicode escape sequences
-    substring = unicodedata.normalize('NFKD', substring)
-    substring = re.sub(r'\\[uU][0-9a-fA-F]{4}', '', substring)
+    #substring = unicodedata.normalize('NFKD', substring)
+    #substring = re.sub(r'\\[uU][0-9a-fA-F]{4}', '', substring)
     # Remove sequences
     substring = re.sub(r'\\n|\\t|\\r', ' ', substring)
     substring = substring.strip() # remove any trailing or leading white spaces
@@ -95,10 +100,22 @@ def scrape_single_listing(url):
     #substring = substring.replace('\\', '\\\\') # escape any backslashes in the string
     substring = replace_empty(substring)
     substring = add_missing_commas(substring)
-    print(substring)
+    # Remove all quotes inside future dictionary kays and list objects
+    #substring = re.sub(r':\s*"([^"]*)"(?=\s*,)', r': "\1"', substring)
+    #substring = re.sub(r'\[\s*"([^"]*)"(?=\s*,)', r'[\1', substring)
+    #substring = re.sub(r',\s*"([^"]*)"(?=\s*,|\s*\])', r', "\1"', substring)
+    #substring = re.sub(r',\s*"([^"]*)"(?=\s*\])', r', \1]', substring)
+
+    # Replace any non-alphanumeric or non-allowed characters with space
+    substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '', substring)
+    # Remove excess spaces
+    substring = re.sub(r' {2,}', ' ', substring)
+    #print(substring)
 
     # Convert the string to a dictionary using the json module
+    print(substring[1700:1800])
     my_dict = json.loads(substring)
+    print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
     #except:
     print(f'failed to get JSON from url {url}')
@@ -124,7 +141,13 @@ def extract_data(my_dict, url):
         tech_optional = {tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][1]['model']['customItems']}
 
     # responsibilities
-    resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']}
+    print(my_dict['offerReducer']['offer']['sections'][1]['model'])
+    if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'responsibilities':
+        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']}
+    elif my_dict['offerReducer']['offer']['sections'][2]['sectionType'] == 'responsibilities':
+        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]['model']['bullets']}
+    else:
+        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][3]['model']['bullets']}
 
     # requirements
     req_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]['subSections'][0]['model']['bullets']}
@@ -171,8 +194,8 @@ def main(url, file_name):
     '''Runs if script called directly'''
     my_dict = scrape_single_listing(url)
     #print(my_dict)
-    my_dict = clean_dict(my_dict)
-    print(my_dict)
+    #my_dict = clean_dict(my_dict)
+    #print(my_dict)
     new_dict = extract_data(my_dict, url)
     print(new_dict)
     save_dict(new_dict,file_name)
