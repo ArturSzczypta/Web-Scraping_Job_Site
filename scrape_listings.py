@@ -108,12 +108,12 @@ def scrape_single_listing(url):
 
     # Replace any non-alphanumeric or non-allowed characters with space
     substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '', substring)
+    substring = substring.replace("u002F", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     #print(substring)
 
     # Convert the string to a dictionary using the json module
-    print(substring[1700:1800])
     my_dict = json.loads(substring)
     print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
@@ -128,35 +128,52 @@ def extract_data(my_dict, url):
     country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
     location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
-    salary = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']
+    contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
+    salary_from = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['from']
+    salary_to = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['to']
+    salary_currency = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['currency']['code']
+    salary_long_form = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
 
     # Assuming both dates always comply to ISO 8601 format, UTC time zone
     publication_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['dateOfInitialPublication']).date()
     expiration_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['expirationDate']).date()
 
     # technologies
-    tech_expected = {tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][0]['model']['customItems']}
+    tech_expected = [tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][0]['model']['customItems']]
     tech_optional = None
     if len(my_dict['offerReducer']['offer']['sections'][0]['subSections']) > 1:
-        tech_optional = {tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][1]['model']['customItems']}
+        tech_optional = [tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][1]['model']['customItems']]
 
     # responsibilities
-    print(my_dict['offerReducer']['offer']['sections'][1]['model'])
     if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'responsibilities':
-        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']}
+        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']]
     elif my_dict['offerReducer']['offer']['sections'][2]['sectionType'] == 'responsibilities':
-        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]['model']['bullets']}
+        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][2]['model']['bullets']]
     else:
-        resp_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][3]['model']['bullets']}
+        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][3]['model']['bullets']]
 
     # requirements
-    req_expected = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]['subSections'][0]['model']['bullets']}
-    req_optional = {resp for resp in my_dict['offerReducer']['offer']['sections'][2]['subSections'][1]['model']['bullets']}
+    if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'requirements-expected':
+        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][1]['subSections'][0]['model']['bullets']]
+        req_optional = None
+        if len(my_dict['offerReducer']['offer']['sections'][1]['subSections']) > 1:
+            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][1]['subSections'][1]['model']['bullets']]
+    elif my_dict['offerReducer']['offer']['sections'][2]['sectionType'] == 'requirements-expected':
+        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][2]['subSections'][0]['model']['bullets']]
+        req_optional = None
+        if len(my_dict['offerReducer']['offer']['sections'][2]['subSections']) > 1:
+            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][2]['subSections'][1]['model']['bullets']]
+    else:
+        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][0]['model']['bullets']]
+        req_optional = None
+        if len(my_dict['offerReducer']['offer']['sections'][3]['subSections']) > 1:
+            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][1]['model']['bullets']]
+
 
     # development-practices
     dev_practices = None
     if 'items' in my_dict['offerReducer']['offer']['sections'][4]['model']:
-        dev_practices = {practices['code'] for practices in my_dict['offerReducer']['offer']['sections'][4]['model']['items']}
+        dev_practices = [practices['code'] for practices in my_dict['offerReducer']['offer']['sections'][4]['model']['items']]
 
     #Creating a new, simplified dictionary for saving
     new_dict = {}
@@ -166,10 +183,14 @@ def extract_data(my_dict, url):
     new_dict['country'] = country
     new_dict['region'] = region
     new_dict['location'] = location
-    new_dict['salary'] = salary
+    new_dict['contract_type'] = contract_type
+    new_dict['salary_from'] = salary_from
+    new_dict['salary_to'] = salary_to
+    new_dict['salary_currency'] = salary_currency
+    new_dict['salary_long_form'] = salary_long_form
     # Assuming both dates always comply to ISO 8601 format, UTC time zone
-    new_dict['publication_date'] = publication_date
-    new_dict['expiration_date'] = expiration_date
+    new_dict['publication_date'] = str(publication_date)
+    new_dict['expiration_date'] = str(expiration_date)
     # technologies
     new_dict['tech_expected'] = tech_expected
     new_dict['tech_optional'] = tech_optional
@@ -180,7 +201,8 @@ def extract_data(my_dict, url):
     new_dict['req_optional'] = req_optional
     # development-practices
     new_dict['dev_practices'] = dev_practices
-    #print(new_dict)
+    
+    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def save_dict(new_dict,file_name):
