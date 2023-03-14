@@ -28,6 +28,7 @@ def add_missing_commas(data_string):
 
 def scrape_single_listing(url):
     ''' Scrapes job listing details from the url, return a dictionary'''
+    #sleep(random.uniform(7, 23))
     #try:
     # Make a request to the URL and get the HTML response
     response = requests.get(url)
@@ -65,11 +66,12 @@ def scrape_single_listing(url):
     substring = substring.replace("u002F", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
-    #print(substring)
+    print(substring)
 
     # Convert the string to a dictionary using the json module
     my_dict = json.loads(substring)
-    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    print('\n\n')
     return my_dict
     #except:
     print(f'failed to get JSON from url {url}')
@@ -83,10 +85,16 @@ def extract_data(my_dict, url):
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
     location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
     contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
-    salary_from = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['from']
-    salary_to = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['to']
-    salary_currency = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['currency']['code']
-    salary_long_form = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
+    is_salary = None
+    if my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary'] is None:
+        is_salary = False
+        salary_from, salary_to, salary_currency, salary_long_form = (None, None, None, None)
+    else:
+        is_salary = True
+        salary_from = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['from']
+        salary_to = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['to']
+        salary_currency = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['currency']['code']
+        salary_long_form = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
 
     # Assuming both dates always comply to ISO 8601 format, UTC time zone
     publication_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['dateOfInitialPublication']).date()
@@ -97,7 +105,7 @@ def extract_data(my_dict, url):
     tech_optional = None
     if len(my_dict['offerReducer']['offer']['sections'][0]['subSections']) > 1:
         tech_optional = [tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][1]['model']['customItems']]
-
+    '''
     # responsibilities
     if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'responsibilities':
         resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']]
@@ -122,11 +130,42 @@ def extract_data(my_dict, url):
         req_optional = None
         if len(my_dict['offerReducer']['offer']['sections'][3]['subSections']) > 1:
             req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][1]['model']['bullets']]
-
-    # development-practices
+    '''
+    tech_expected = None
+    tech_optional = None
+    req_expected = None
+    req_optional = None
     dev_practices = None
-    if 'items' in my_dict['offerReducer']['offer']['sections'][4]['model']:
-        dev_practices = [practices['code'] for practices in my_dict['offerReducer']['offer']['sections'][4]['model']['items']]
+    responsibilities = None
+
+    for section in my_dict['offerReducer']['offer']['sections']:
+        if section['sectionType'] == 'technologies':
+            for item in section['subSections']:
+                if item['sectionType'] == 'technologies-expected':
+                    tech_expected = [tech['name'] for tech in item['model']['customItems']]
+                    #print(tech_expected)
+                elif item['sectionType'] == 'technologies-optional':
+                    tech_optional = [tech['name'] for tech in item['model']['customItems']]
+                    #print(tech_optional)
+                else:
+                    print('check section[sectionType] == technologies')
+        
+        elif section['sectionType'] == 'requirements':
+            #print(section)
+            for item in section['subSections']:
+                if item['sectionType'] == 'requirements-expected':
+                    #print(item['model']['bullets'])
+                    req_expected = [req for req in item['model']['bullets']]
+                elif item['sectionType'] == 'requirements-optional':
+                    req_optional = [req for req in item['model']['bullets']]
+                else:
+                    print('check section[sectionType] == requirements')
+        
+        elif section['sectionType'] == 'development-practices':
+            dev_practices = [resp for resp in section['model']['items']]
+
+        elif section['sectionType'] == 'responsibilities':
+            responsibilities = [resp for resp in section['model']['paragraphs']]
 
     #Creating a new, simplified dictionary for saving
     new_dict = {}
@@ -137,6 +176,8 @@ def extract_data(my_dict, url):
     new_dict['region'] = region
     new_dict['location'] = location
     new_dict['contract_type'] = contract_type
+
+    new_dict['is_salary'] = is_salary
     new_dict['salary_from'] = salary_from
     new_dict['salary_to'] = salary_to
     new_dict['salary_currency'] = salary_currency
@@ -147,15 +188,15 @@ def extract_data(my_dict, url):
     # technologies
     new_dict['tech_expected'] = tech_expected
     new_dict['tech_optional'] = tech_optional
-    # responsibilities
-    new_dict['resp_expected'] = resp_expected
     # requirements
     new_dict['req_expected'] = req_expected
     new_dict['req_optional'] = req_optional
     # development-practices
     new_dict['dev_practices'] = dev_practices
+    # responsibilities
+    new_dict['responsibilities'] = responsibilities
     
-    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
+    print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def save_dict(new_dict,file_name):
@@ -174,7 +215,10 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    #url = 'https://www.pracuj.pl/praca/analityk-analityczka-danych-katowice,oferta,1002445803'
+    url = 'https://www.pracuj.pl/praca/bi-developer-wroclaw,oferta,1002411353'
+    file_name = 'succesfull extractions.txt'
+    main(url, file_name)
+    '''
     file_with_extracted = 'succesfull extractions.txt'
     file_with_failed = 'failed extractions.txt'
     # Open the file for reading
@@ -187,7 +231,7 @@ if __name__ == '__main__':
             except:
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
-  
+    '''
 
 
 
