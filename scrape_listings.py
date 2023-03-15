@@ -66,12 +66,12 @@ def scrape_single_listing(url):
     substring = substring.replace("u002F", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
-    print(substring)
+    #print(substring)
 
     # Convert the string to a dictionary using the json module
     my_dict = json.loads(substring)
     print(json.dumps(my_dict, ensure_ascii=False, indent=2))
-    print('\n\n')
+    #print('\n\n')
     return my_dict
     #except:
     print(f'failed to get JSON from url {url}')
@@ -100,43 +100,13 @@ def extract_data(my_dict, url):
     publication_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['dateOfInitialPublication']).date()
     expiration_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['expirationDate']).date()
 
-    # technologies
-    tech_expected = [tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][0]['model']['customItems']]
-    tech_optional = None
-    if len(my_dict['offerReducer']['offer']['sections'][0]['subSections']) > 1:
-        tech_optional = [tech['name'] for tech in my_dict['offerReducer']['offer']['sections'][0]['subSections'][1]['model']['customItems']]
-    '''
-    # responsibilities
-    if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'responsibilities':
-        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][1]['model']['bullets']]
-    elif my_dict['offerReducer']['offer']['sections'][2]['sectionType'] == 'responsibilities':
-        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][2]['model']['bullets']]
-    else:
-        resp_expected = [resp for resp in my_dict['offerReducer']['offer']['sections'][3]['model']['bullets']]
-
-    # requirements
-    if my_dict['offerReducer']['offer']['sections'][1]['sectionType'] == 'requirements-expected':
-        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][1]['subSections'][0]['model']['bullets']]
-        req_optional = None
-        if len(my_dict['offerReducer']['offer']['sections'][1]['subSections']) > 1:
-            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][1]['subSections'][1]['model']['bullets']]
-    elif my_dict['offerReducer']['offer']['sections'][2]['sectionType'] == 'requirements-expected':
-        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][2]['subSections'][0]['model']['bullets']]
-        req_optional = None
-        if len(my_dict['offerReducer']['offer']['sections'][2]['subSections']) > 1:
-            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][2]['subSections'][1]['model']['bullets']]
-    else:
-        req_expected = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][0]['model']['bullets']]
-        req_optional = None
-        if len(my_dict['offerReducer']['offer']['sections'][3]['subSections']) > 1:
-            req_optional = [req for req in my_dict['offerReducer']['offer']['sections'][3]['subSections'][1]['model']['bullets']]
-    '''
     tech_expected = None
     tech_optional = None
     req_expected = None
     req_optional = None
     dev_practices = None
-    responsibilities = None
+    resp_paragraph = None
+    resp_bullets = None
 
     for section in my_dict['offerReducer']['offer']['sections']:
         if section['sectionType'] == 'technologies':
@@ -148,7 +118,8 @@ def extract_data(my_dict, url):
                     tech_optional = [tech['name'] for tech in item['model']['customItems']]
                     #print(tech_optional)
                 else:
-                    print('check section[sectionType] == technologies')
+                    continue
+                    #print('check section[sectionType] == technologies')
         
         elif section['sectionType'] == 'requirements':
             #print(section)
@@ -159,13 +130,20 @@ def extract_data(my_dict, url):
                 elif item['sectionType'] == 'requirements-optional':
                     req_optional = [req for req in item['model']['bullets']]
                 else:
-                    print('check section[sectionType] == requirements')
+                    continue
+                    #print('check section[sectionType] == requirements')
         
         elif section['sectionType'] == 'development-practices':
             dev_practices = [resp for resp in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
-            responsibilities = [resp for resp in section['model']['paragraphs']]
+            print('\n\n'+str(section)+'\n\n')
+            if 'paragraphs' in section['model']:
+                resp_paragraphs = [resp for resp in section['model']['paragraphs']]
+                print('\n\n'+resp_paragraphs+'\n\n')
+            if 'bullets' in section['model']:
+                responsibilities_bullets = [resp for resp in section['model']['bullets']]
+
 
     #Creating a new, simplified dictionary for saving
     new_dict = {}
@@ -194,9 +172,11 @@ def extract_data(my_dict, url):
     # development-practices
     new_dict['dev_practices'] = dev_practices
     # responsibilities
-    new_dict['responsibilities'] = responsibilities
+    new_dict['resp_paragraphs'] = resp_paragraphs
+    new_dict['resp_bullets'] = resp_bullets
     
-    print(json.dumps(new_dict, ensure_ascii=False, indent=2))
+
+    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def save_dict(new_dict,file_name):
@@ -215,20 +195,28 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    url = 'https://www.pracuj.pl/praca/bi-developer-wroclaw,oferta,1002411353'
+    
+    url = 'https://www.pracuj.pl/praca/junior-analyst-in-mobility-team-warszawa-aleje-jerozolimskie-98,oferta,1002436988'
     file_name = 'succesfull extractions.txt'
     main(url, file_name)
     '''
     file_with_extracted = 'succesfull extractions.txt'
     file_with_failed = 'failed extractions.txt'
+    count_succes = 0
+    count_failure = 0
     # Open the file for reading
     with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing. If failed, record in serepate file
         for url in file:
             url = url.strip()
+            sleep(random.uniform(7, 23))
             try:
                 main(url, file_with_extracted)
+                count_succes += 1
+                print(f'Success: {count_succes}')
             except:
+                count_failure += 1
+                print(f'Failures: {count_failure}')
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
     '''
