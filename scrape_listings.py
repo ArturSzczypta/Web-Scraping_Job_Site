@@ -83,7 +83,11 @@ def extract_data(my_dict, url):
     job_title = my_dict['offerReducer']['offer']['jobTitle']
     country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
-    location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
+    location = None
+    if my_dict['offerReducer']['offer']['workplaces'][0].get('inlandLocation') and \
+    my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation'].get('location') and \
+    my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location'].get('name'):
+        location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
     contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
     is_salary = None
     if my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary'] is None:
@@ -105,7 +109,7 @@ def extract_data(my_dict, url):
     req_expected = None
     req_optional = None
     dev_practices = None
-    resp_paragraph = None
+    resp_paragraphs = None
     resp_bullets = None
 
     for section in my_dict['offerReducer']['offer']['sections']:
@@ -137,12 +141,12 @@ def extract_data(my_dict, url):
             dev_practices = [resp for resp in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
-            print('\n\n'+str(section)+'\n\n')
+            #print('\n\n'+str(section)+'\n\n')
             if 'paragraphs' in section['model']:
                 resp_paragraphs = [resp for resp in section['model']['paragraphs']]
-                print('\n\n'+resp_paragraphs+'\n\n')
+                #print('\n\n'+str(resp_paragraphs)+'\n\n')
             if 'bullets' in section['model']:
-                responsibilities_bullets = [resp for resp in section['model']['bullets']]
+                resp_bullets = [resp for resp in section['model']['bullets']]
 
 
     #Creating a new, simplified dictionary for saving
@@ -196,7 +200,7 @@ def main(url, file_name):
 
 if __name__ == '__main__':
     
-    url = 'https://www.pracuj.pl/praca/junior-analyst-in-mobility-team-warszawa-aleje-jerozolimskie-98,oferta,1002436988'
+    url = 'https://www.pracuj.pl/praca/specjalistka-specjalista-ds-robotyzacji-i-automatyzacji-procesow-warszawa-marcina-kasprzaka-2,oferta,1002440248'
     file_name = 'succesfull extractions.txt'
     main(url, file_name)
     '''
