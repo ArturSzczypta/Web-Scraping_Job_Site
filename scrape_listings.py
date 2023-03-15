@@ -49,7 +49,7 @@ def scrape_single_listing(url):
     #substring = unicodedata.normalize('NFKD', substring)
     #substring = re.sub(r'\\[uU][0-9a-fA-F]{4}', '', substring)
     # Remove sequences
-    substring = re.sub(r'\\n|\\t|\\r', ' ', substring)
+    substring = re.sub(r'\\n|\\t|\\r|\\"', ' ', substring)
     substring = substring.strip() # remove any trailing or leading white spaces
     substring = re.sub(r'\s+', ' ', substring) # replace consecutive white spaces with a single white space
     #substring = substring.replace('\\', '\\\\') # escape any backslashes in the string
@@ -70,7 +70,7 @@ def scrape_single_listing(url):
 
     # Convert the string to a dictionary using the json module
     my_dict = json.loads(substring)
-    print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     #print('\n\n')
     return my_dict
     #except:
@@ -199,8 +199,8 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    
-    url = 'https://www.pracuj.pl/praca/specjalistka-specjalista-ds-robotyzacji-i-automatyzacji-procesow-warszawa-marcina-kasprzaka-2,oferta,1002440248'
+    '''
+    url = 'https://www.pracuj.pl/praca/specjalista-ds-utrzymania-aplikacji-wroclaw-strzegomska-142a,oferta,1002417030'
     file_name = 'succesfull extractions.txt'
     main(url, file_name)
     '''
@@ -223,7 +223,7 @@ if __name__ == '__main__':
                 print(f'Failures: {count_failure}')
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
-    '''
+    
 
 
 

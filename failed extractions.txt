@@ -1,10 +1,2 @@
-https://www.pracuj.pl/praca/bi-developer-wroclaw,oferta,1002411353
-https://www.pracuj.pl/praca/specjalista-ds-utrzymania-aplikacji-wroclaw-strzegomska-142a,oferta,1002417030
-https://www.pracuj.pl/praca/specjalista-ds-wsparcia-technicznego-gdansk-budowlanych-66,oferta,1002450299
-https://www.pracuj.pl/praca/junior-analyst-in-mobility-team-warszawa-aleje-jerozolimskie-98,oferta,1002436988
-https://www.pracuj.pl/praca/lider-zespolu-e-commerce-lodz-wersalska-75,oferta,1002416058
-https://www.pracuj.pl/praca/aws-cloud-engineer-katowice-mikolowska-51,oferta,1002424287
-https://www.pracuj.pl/praca/software-developer-c%23-bydgoszcz,oferta,1002444061
-https://www.pracuj.pl/praca/specjalista-ds-raportow-i-baz-danych-kety-tadeusza-kosciuszki-111,oferta,1002424371
-https://www.pracuj.pl/praca/specjalistka-specjalista-ds-robotyzacji-i-automatyzacji-procesow-warszawa-marcina-kasprzaka-2,oferta,1002440248
-https://www.pracuj.pl/praca/data-scientist-portugal,oferta,9785485
+https://www.pracuj.pl/praca/informatyk-wsparcia-technicznego-rybnik,oferta,1002406921
+https://www.pracuj.pl/praca/mlodszy-specjalista-mlodsza-specjalistka-ds-helpdesk-warszawa,oferta,1002430993
