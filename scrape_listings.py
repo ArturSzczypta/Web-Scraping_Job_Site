@@ -206,11 +206,17 @@ if __name__ == '__main__':
     '''
     file_with_extracted = 'succesfull extractions.txt'
     file_with_failed = 'failed extractions.txt'
+    restarting_extraction = 'https://www.pracuj.pl/praca/konsultant-ds-wdrozen-oprogramowania-mazowieckie,oferta,9756334'
     count_succes = 0
     count_failure = 0
     # Open the file for reading
     with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing. If failed, record in serepate file
+        for line in file:
+            if restarting_extraction in line:
+                # Found the specific content, start iterating from this line
+                break
+
         for url in file:
             url = url.strip()
             sleep(random.uniform(7, 23))
