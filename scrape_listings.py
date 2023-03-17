@@ -213,6 +213,7 @@ if __name__ == '__main__':
     with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing. If failed, record in serepate file
         for line in file:
+            line = line.strip()
             if restarting_extraction in line:
                 # Found the specific content, start iterating from this line
                 break
