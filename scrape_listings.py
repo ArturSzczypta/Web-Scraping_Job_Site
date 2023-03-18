@@ -119,18 +119,18 @@ def extract_data(my_dict, url):
                     tech_expected += [tech['name'] for tech in item['model']['customItems']]
                 elif item['sectionType'] == 'technologies-optional':
                     tech_optional += [tech['name'] for tech in item['model']['customItems']]
-        print(section['sectionType'] == 'requirements')
         if section['sectionType'] == 'requirements':
             for item in section['subSections']:
                 if item['sectionType'] == 'requirements-expected':
-                    if 'paragraphs' in section['model']:
+                    if 'paragraphs' in item['model']:
                         req_expected += [req for req in item['model']['paragraphs']]
-                    elif 'bullets' in section['model']:
+                    elif 'bullets' in item['model']:
+                        
                         req_expected += [req for req in item['model']['bullets']]
                 elif item['sectionType'] == 'requirements-optional':
-                    if 'paragraphs' in section['model']:
+                    if 'paragraphs' in item['model']:
                         req_optional += [req for req in item['model']['paragraphs']]
-                    elif 'bullets' in section['model']:
+                    elif 'bullets' in item['model']:
                         req_optional += [req for req in item['model']['bullets']]
         
         elif section['sectionType'] == 'development-practices':
@@ -179,7 +179,7 @@ def extract_data(my_dict, url):
     new_dict['responsibilities'] = responsibilities
     
 
-    print(json.dumps(new_dict, ensure_ascii=False, indent=2))
+    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def save_dict(new_dict,file_name):
@@ -198,27 +198,27 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    
-    #url = 'https://www.pracuj.pl/praca/informatyk-wsparcia-technicznego-rybnik,oferta,1002406921'
-    url = 'https://www.pracuj.pl/praca/bi-developer-wroclaw,oferta,1002411353'
+    '''
+    url = 'https://www.pracuj.pl/praca/mlodszy-specjalista-mlodsza-specjalistka-ds-helpdesk-warszawa,oferta,1002430993'
     
     file_name = 'succesfull extractions_2.txt'
     main(url, file_name)
     '''
-    file_with_extracted = 'succesfull extractions.txt'
-    file_with_failed = 'failed extractions.txt'
-    restarting_extraction = 'https://www.pracuj.pl/praca/konsultant-ds-wdrozen-oprogramowania-mazowieckie,oferta,9756334'
+    file_with_extracted = 'succesfull extractions_2.txt'
+    file_with_failed = 'failed extractions_2.txt'
+    #restarting_extraction = 'https://www.pracuj.pl/praca/konsultant-ds-wdrozen-oprogramowania-mazowieckie,oferta,9756334'
     count_succes = 0
     count_failure = 0
     # Open the file for reading
-    with open('links_to_listings.txt', 'r', encoding='UTF-8') as file:
+    with open('failed extractions.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing. If failed, record in serepate file
+        '''
         for line in file:
             line = line.strip()
             if restarting_extraction in line:
                 # Found the specific content, start iterating from this line
                 break
-
+        '''
         for url in file:
             url = url.strip()
             sleep(random.uniform(7, 23))
@@ -231,7 +231,7 @@ if __name__ == '__main__':
                 print(f'Failures: {count_failure}')
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
-    '''
+    
 
 
 
