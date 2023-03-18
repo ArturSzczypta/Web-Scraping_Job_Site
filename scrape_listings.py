@@ -104,50 +104,50 @@ def extract_data(my_dict, url):
     publication_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['dateOfInitialPublication']).date()
     expiration_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['expirationDate']).date()
 
-    tech_expected = None
-    tech_optional = None
-    req_expected = None
-    req_optional = None
+    tech_expected = []
+    tech_optional = []
+    req_expected = []
+    req_optional = []
+
     dev_practices = None
-    resp_paragraphs = None
-    resp_bullets = None
+    responsibilities = []
 
     for section in my_dict['offerReducer']['offer']['sections']:
         if section['sectionType'] == 'technologies':
             for item in section['subSections']:
                 if item['sectionType'] == 'technologies-expected':
-                    tech_expected = [tech['name'] for tech in item['model']['customItems']]
-                    #print(tech_expected)
+                    tech_expected += [tech['name'] for tech in item['model']['customItems']]
                 elif item['sectionType'] == 'technologies-optional':
-                    tech_optional = [tech['name'] for tech in item['model']['customItems']]
-                    #print(tech_optional)
-                else:
-                    continue
-                    #print('check section[sectionType] == technologies')
-        
-        elif section['sectionType'] == 'requirements':
-            #print(section)
+                    tech_optional += [tech['name'] for tech in item['model']['customItems']]
+        print(section['sectionType'] == 'requirements')
+        if section['sectionType'] == 'requirements':
             for item in section['subSections']:
                 if item['sectionType'] == 'requirements-expected':
-                    #print(item['model']['bullets'])
-                    req_expected = [req for req in item['model']['bullets']]
+                    if 'paragraphs' in section['model']:
+                        req_expected += [req for req in item['model']['paragraphs']]
+                    elif 'bullets' in section['model']:
+                        req_expected += [req for req in item['model']['bullets']]
                 elif item['sectionType'] == 'requirements-optional':
-                    req_optional = [req for req in item['model']['bullets']]
-                else:
-                    continue
-                    #print('check section[sectionType] == requirements')
+                    if 'paragraphs' in section['model']:
+                        req_optional += [req for req in item['model']['paragraphs']]
+                    elif 'bullets' in section['model']:
+                        req_optional += [req for req in item['model']['bullets']]
         
         elif section['sectionType'] == 'development-practices':
             dev_practices = [resp for resp in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
-            #print('\n\n'+str(section)+'\n\n')
-            if 'paragraphs' in section['model']:
-                resp_paragraphs = [resp for resp in section['model']['paragraphs']]
-                #print('\n\n'+str(resp_paragraphs)+'\n\n')
             if 'bullets' in section['model']:
-                resp_bullets = [resp for resp in section['model']['bullets']]
+                responsibilities += [resp for resp in section['model']['bullets']]
+            elif 'paragraphs' in section['model']:
+                responsibilities += [resp for resp in section['model']['paragraphs']]
+            
 
+    tech_expected = tech_expected if len(tech_expected) > 0 else None
+    tech_optional = tech_optional if len(tech_optional) > 0 else None
+    req_expected = req_expected if len(req_expected) > 0 else None
+    req_optional = req_optional if len(req_optional) > 0 else None
+    responsibilities = responsibilities if len(responsibilities) > 0 else None
 
     #Creating a new, simplified dictionary for saving
     new_dict = {}
@@ -176,11 +176,10 @@ def extract_data(my_dict, url):
     # development-practices
     new_dict['dev_practices'] = dev_practices
     # responsibilities
-    new_dict['resp_paragraphs'] = resp_paragraphs
-    new_dict['resp_bullets'] = resp_bullets
+    new_dict['responsibilities'] = responsibilities
     
 
-    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
+    print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def save_dict(new_dict,file_name):
@@ -199,9 +198,11 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
-    '''
-    url = 'https://www.pracuj.pl/praca/specjalista-ds-utrzymania-aplikacji-wroclaw-strzegomska-142a,oferta,1002417030'
-    file_name = 'succesfull extractions.txt'
+    
+    #url = 'https://www.pracuj.pl/praca/informatyk-wsparcia-technicznego-rybnik,oferta,1002406921'
+    url = 'https://www.pracuj.pl/praca/bi-developer-wroclaw,oferta,1002411353'
+    
+    file_name = 'succesfull extractions_2.txt'
     main(url, file_name)
     '''
     file_with_extracted = 'succesfull extractions.txt'
@@ -230,7 +231,7 @@ if __name__ == '__main__':
                 print(f'Failures: {count_failure}')
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
-    
+    '''
 
 
 
