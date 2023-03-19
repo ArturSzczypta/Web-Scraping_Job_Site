@@ -23,13 +23,11 @@ def replace_empty(data_string):
 
 def add_missing_commas(data_string):
     """ Add missing comas between keys """
-    pattern = r'null\s*([^,\]}])'
+    pattern = r'null\s*([^,\]\}])'
     return re.sub(pattern, r'null,\g<1>', data_string)
 
 def scrape_single_listing(url):
     ''' Scrapes job listing details from the url, return a dictionary'''
-    #sleep(random.uniform(7, 23))
-    #try:
     # Make a request to the URL and get the HTML response
     response = requests.get(url)
     response.encoding = 'utf-8' # To recognise polish letters
@@ -43,23 +41,13 @@ def scrape_single_listing(url):
     substring = response.text[start_index:end_index]
     # Replace invalid valiable names with null, so i can create dictionary
     substring = re.sub(r'\bundefined\b', '', substring)
-    #print(substring)
     
-    # Remove all unicode escape sequences
-    #substring = unicodedata.normalize('NFKD', substring)
-    #substring = re.sub(r'\\[uU][0-9a-fA-F]{4}', '', substring)
     # Remove sequences
     substring = re.sub(r'\\n|\\t|\\r|\\"', ' ', substring)
     substring = substring.strip() # remove any trailing or leading white spaces
     substring = re.sub(r'\s+', ' ', substring) # replace consecutive white spaces with a single white space
-    #substring = substring.replace('\\', '\\\\') # escape any backslashes in the string
     substring = replace_empty(substring)
     substring = add_missing_commas(substring)
-    # Remove all quotes inside future dictionary kays and list objects
-    #substring = re.sub(r':\s*"([^"]*)"(?=\s*,)', r': "\1"', substring)
-    #substring = re.sub(r'\[\s*"([^"]*)"(?=\s*,)', r'[\1', substring)
-    #substring = re.sub(r',\s*"([^"]*)"(?=\s*,|\s*\])', r', "\1"', substring)
-    #substring = re.sub(r',\s*"([^"]*)"(?=\s*\])', r', \1]', substring)
 
     # Replace any non-alphanumeric or non-allowed characters with space
     substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '', substring)
@@ -71,25 +59,80 @@ def scrape_single_listing(url):
     # Convert the string to a dictionary using the json module
     my_dict = json.loads(substring)
     #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
-    #print('\n\n')
     return my_dict
-    #except:
-    print(f'failed to get JSON from url {url}')
-    print('\n\n')
+
+def save_dict(new_dict, file_name):
+    ''' Saves dictionary to file'''
+    json_str = json.dumps(new_dict, ensure_ascii=False)
+
+    with open(file_name, 'a', encoding='utf-8') as file:
+        file.write(json_str + '\n')
+
+
+def scrape_listing_from_json(url):
+    ''' Scrapes job listing details from JSON to substring'''
+    # Make a request to the URL and get the HTML response
+    response = requests.get(url)
+    response.encoding = 'utf-8' # To recognise polish letters
+    html = response.text
+
+    # Extract the JSON from 'window' as string
+    start_string = "window['kansas-offerview'] = "
+    end_string = "<"
+    start_index = response.text.find(start_string) + len(start_string)
+    end_index = response.text.find(end_string, start_index)
+    substring = response.text[start_index:end_index]
+    return substring
+
+def clean_listing_string(substring)
+    ''' Cleans substring from problematic symbols, patterns, sequences'''
+    substring = substring.strip()
+
+    patterns = [
+    r'\bundefined\b', # incorrect null value
+    r'\\n|\\t|\\r|\\b|\\f|"', # sequences
+    r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+' # not allowed characters
+    ]
+    for pattern in patterns:
+        substring = re.sub(pattern,' ',substring)
+
+    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})'
+    substring = re.sub(missing_nulls, ':null', substring)
+
+    missing_commas = r'null\s*([^,\]\}])'
+    substring =  re.sub(missing_commas, r'null,\g<1>', substring)   
+
+    # Replace unicode for '/' with space
+    substring = substring.replace('\\u002F', ' ')
+    # Remove excess spaces
+    substring = re.sub(r' {2,}', ' ', substring)
+    return substring
+
+def change_str_to_dict(substring)
+    '''  Convert the string to a dictionary using the json module'''
+    #print(substring)
+    my_dict = json.loads(substring)
+    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    return my_dict
 
 def extract_data(my_dict, url):
     ''' Extracts usefull data from the dictionary, creates new dictionary'''
+    
     #Basic listing data
     job_title = my_dict['offerReducer']['offer']['jobTitle']
     country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
+    
     location = None
     if my_dict['offerReducer']['offer']['workplaces'][0].get('inlandLocation') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation'].get('location') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location'].get('name'):
         location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
+    
     contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
-    is_salary = None
+
+    # Salary specific
+    is_salary = True
     if my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary'] is None:
         is_salary = False
         salary_from, salary_to, salary_currency, salary_long_form = (None, None, None, None)
@@ -108,7 +151,6 @@ def extract_data(my_dict, url):
     tech_optional = []
     req_expected = []
     req_optional = []
-
     dev_practices = None
     responsibilities = []
 
@@ -142,14 +184,14 @@ def extract_data(my_dict, url):
             elif 'paragraphs' in section['model']:
                 responsibilities += [resp for resp in section['model']['paragraphs']]
             
-
+    # Remplace empty list with None
     tech_expected = tech_expected if len(tech_expected) > 0 else None
     tech_optional = tech_optional if len(tech_optional) > 0 else None
     req_expected = req_expected if len(req_expected) > 0 else None
     req_optional = req_optional if len(req_optional) > 0 else None
     responsibilities = responsibilities if len(responsibilities) > 0 else None
 
-    #Creating a new, simplified dictionary for saving
+    #Loading data to simplified dictionary
     new_dict = {}
     #Basic listing data
     new_dict['url'] = url
@@ -158,13 +200,13 @@ def extract_data(my_dict, url):
     new_dict['region'] = region
     new_dict['location'] = location
     new_dict['contract_type'] = contract_type
-
+    # Salary specific
     new_dict['is_salary'] = is_salary
     new_dict['salary_from'] = salary_from
     new_dict['salary_to'] = salary_to
     new_dict['salary_currency'] = salary_currency
     new_dict['salary_long_form'] = salary_long_form
-    # Assuming both dates always comply to ISO 8601 format, UTC time zone
+    # Dates
     new_dict['publication_date'] = str(publication_date)
     new_dict['expiration_date'] = str(expiration_date)
     # technologies
@@ -178,16 +220,26 @@ def extract_data(my_dict, url):
     # responsibilities
     new_dict['responsibilities'] = responsibilities
     
-
     #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
-def save_dict(new_dict,file_name):
+def save_to_file(new_dict, file_name):
     ''' Saves dictionary to file'''
-    json_str = json.dumps(new_dict, ensure_ascii=False)
-
     with open(file_name, 'a', encoding='utf-8') as file:
-        file.write(json_str + '\n')
+        file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
+
+def listing_pipeline(url,file_name):
+    ''' Pipeline saves listing details to file'''
+    pipeline = (scrape_listing_from_json(url)
+        | clean_listing_string
+        | change_str_to_dict
+        | extract_data(url)
+        | save_to_file(file_name))
+    return pipeline
+
+
+
+
 
 def main(url, file_name):
     '''Runs if script called directly'''
@@ -198,12 +250,40 @@ def main(url, file_name):
     save_dict(new_dict,file_name)
 
 if __name__ == '__main__':
+    
+    
+    url = 'https://www.pracuj.pl/praca/mlodszy-specjalista-mlodsza-specjalistka-ds-helpdesk-warszawa,oferta,1002430993'
+    listings_data = 'listings_data.txt'
+    failed_urls = 'failed_urls.txt'
+    count_succes = 0
+    count_failure = 0
+
+    with open(listings_data, 'r', encoding='UTF-8') as file:
+    
+
+    with open('failed extractions.txt', 'r', encoding='UTF-8') as file:
+        # Try to extract each listing using pipeline. If failed, record in serepate file  
+        for url in file:
+            url = url.strip()
+            sleep(random.uniform(7, 23))
+            try:
+                result = listing_pipeline(url, file_name)()
+                count_succes += 1
+                print(f'Success: {count_succes}')
+            except:
+                count_failure += 1
+                print(f'Failures: {count_failure}')
+                with open(failed_urls, 'a', encoding='UTF-8') as file_2:
+                    file_2.write(url + '\n')
+
+
     '''
     url = 'https://www.pracuj.pl/praca/mlodszy-specjalista-mlodsza-specjalistka-ds-helpdesk-warszawa,oferta,1002430993'
-    
     file_name = 'succesfull extractions_2.txt'
     main(url, file_name)
     '''
+    '''
+
     file_with_extracted = 'succesfull extractions_2.txt'
     file_with_failed = 'failed extractions_2.txt'
     #restarting_extraction = 'https://www.pracuj.pl/praca/konsultant-ds-wdrozen-oprogramowania-mazowieckie,oferta,9756334'
@@ -212,13 +292,13 @@ if __name__ == '__main__':
     # Open the file for reading
     with open('failed extractions.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing. If failed, record in serepate file
-        '''
+        
         for line in file:
             line = line.strip()
             if restarting_extraction in line:
                 # Found the specific content, start iterating from this line
                 break
-        '''
+        
         for url in file:
             url = url.strip()
             sleep(random.uniform(7, 23))
@@ -231,11 +311,7 @@ if __name__ == '__main__':
                 print(f'Failures: {count_failure}')
                 with open(file_with_failed, 'a', encoding='UTF-8') as file:
                     file.write(url + '\n')
-    
-
-
-
-
+    '''
 
 
 '''
