@@ -1,0 +1,10813 @@
+None
+None
+['PHP', 'Java', 'HTML', 'JavaScript']
+None
+None
+None
+None
+None
+None
+['IFS Report Designer', 'Webservices', 'Power BI']
+None
+['Java', 'Scala']
+['GitLab', 'Jenkins', 'RedMine', 'SoapUI', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['Spring Boot', 'Apache Kafka']
+None
+['C', 'Java', '.NET', 'Python']
+None
+['Microsoft SQL Server', 'RabbitMQ']
+None
+None
+None
+None
+None
+['Angular', 'React.js']
+None
+None
+None
+None
+['VBA', 'PowerBI']
+['Hadoop', 'Atlas', 'Ranger']
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+['SQL']
+['JavaScript', 'HTML']
+None
+None
+None
+None
+None
+None
+None
+None
+['Jira', 'Python']
+None
+None
+None
+None
+None
+None
+None
+['Jira', 'Elasticsearch', 'RabbitMQ', 'Redis']
+None
+None
+['SQL']
+['Python', 'R', 'Scala', 'JavaScript']
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+None
+['GitLab', 'Jira', 'JavaScript', 'jQuery', 'CSS', 'HTML']
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['HTML5']
+None
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+['Python', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+None
+None
+['Kafka', 'React']
+None
+None
+None
+None
+['Git', 'SVN']
+None
+['Cisco', 'Cisco Meraki']
+['Kubernetes', 'Docker', 'Apache Spark', 'MLFlow', 'NoSQL']
+None
+['Splunk', 'Python']
+['Adobe Experience Manager', 'Gulp Webpack', 'WordPress', 'SQL']
+None
+['MySQL']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['ABAP']
+None
+None
+None
+None
+['Entity Framework']
+None
+None
+None
+['Enterprise Architect', 'Jira']
+['Jenkins', 'Python']
+None
+['Enterprise Architect']
+None
+None
+None
+['Cypress']
+None
+None
+['iOS XCode']
+None
+['Ansible', 'Red Hat']
+['ROS', 'ROS2', 'Unity 3D']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+None
+['Docker', 'Flask', 'RabbitMQ', 'FastAPI', 'PHP']
+None
+['AWS', 'Bash', 'Python']
+['S 4 HANA']
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+['MS Power BI']
+['.NET', 'C', 'REST API', 'SQL']
+None
+None
+['Microsoft Azure']
+['BPMN']
+['Linux', 'Bash', 'Python', 'JavaScript', 'Ruby']
+['AWS', 'Spring']
+None
+None
+None
+['Kotlin', 'Scala']
+None
+None
+['Docker', 'Python', 'Rust']
+None
+['HTML5']
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Enterprise Architect']
+['Amazon Web Services', 'Microsoft SQL Server']
+['AWS', 'Google Cloud Platform']
+None
+['Angular', 'Angular.js', 'Docker', 'JIRA', 'unit testing']
+None
+['Enterprise Architect', 'Jira']
+None
+None
+['Distil Networks', 'Imperva', 'Cloudflare', 'ShapeSecurity', 'Websockets', 'Docker', 'Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PHP']
+['Python']
+['Entity Framework Core']
+None
+None
+None
+None
+None
+None
+['JavaScript', 'HTML', 'Git', 'GitLab', 'Jira', 'C']
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps']
+None
+None
+['SAMER']
+['SQL']
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes', 'SQL', 'Git', 'SVN']
+None
+None
+None
+None
+None
+['Java', 'Maven', 'Keycloak']
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Git', 'Python']
+['Kafka', 'SAP']
+None
+['Apex']
+None
+None
+None
+['FIORI']
+None
+['Kotlin', 'Scala']
+None
+None
+None
+None
+None
+None
+None
+['VBA', 'PowerBI']
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+['VMware']
+None
+['TDD', 'Jira', 'Confluence', 'Git', 'Jenkins', 'IntelliJ']
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['SQL', 'Kafka', 'MongoDB']
+['Python']
+None
+None
+None
+None
+None
+['React.js']
+None
+['SAML', 'Git', 'Microsoft SQL Server', 'Azure DevOps', 'XML']
+None
+['Redgate', 'DBPlus']
+None
+['Swift-UI, Objective-C']
+None
+None
+None
+None
+None
+None
+['Python']
+None
+None
+['Git']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+None
+None
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+['Google Analytics', 'PIWIK', 'PIWIK Tag Manager', 'Google Tag Manager']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['Google BigQuery', 'Power BI']
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+['CMMS', 'APS', 'ERP', 'WMS']
+['Python']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Python', 'Cisco']
+None
+None
+None
+['VBA']
+None
+None
+None
+None
+None
+None
+None
+None
+['.NET', 'React.js']
+None
+['Cypress', 'Docker', 'Node.js']
+None
+None
+['Scrumban']
+None
+None
+['Git', 'SVN']
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python']
+['Essbase Smartview', 'Power BI', 'SQL', 'HFM', 'SAP']
+None
+None
+None
+['Angular', 'vawr']
+None
+['UIPath']
+['UI UX']
+['Azure DevOps', 'Confluence']
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+['GraphQL', 'Docker', 'Elixir', 'ReScript', 'Google Cloud Platform', 'AWS']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+['Java', 'Ruby', 'Golang']
+['Google Cloud Platform']
+None
+['Looker', 'Tableau']
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+None
+None
+None
+None
+None
+['MS Power BI']
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['Kafka', 'SAP']
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Perl', 'Git', 'Python']
+None
+None
+None
+None
+['Python', 'Power BI']
+['Azure DevOps', 'Confluence']
+['C', 'Java']
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+['Enterprise Architekt']
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+['FIORI']
+None
+None
+None
+None
+None
+None
+['PHP']
+None
+None
+['SAP HANA']
+None
+None
+None
+None
+None
+['ABAP', 'Agile']
+None
+['Nagios', 'Grafana', 'MongoDB']
+['Apex']
+None
+None
+None
+None
+None
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+['Zabbix']
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['SQL']
+['Java', 'Docker']
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+['SQL', 'Java']
+None
+None
+['MvvmCross']
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+['SQL', 'Azure DevOps']
+['Jira', 'Confluence']
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+None
+None
+None
+['Linux', 'Apache', 'LiteSpeed', 'nginx', 'MySQL', 'MariaDB', 'rsync', 'nfs', 'WordPress', 'Joomla', 'PrestaShop']
+None
+['iOS', 'Switch']
+None
+None
+None
+['Python', 'Git']
+None
+['ABAP']
+None
+None
+None
+None
+None
+['Angular', 'Vue.js']
+None
+None
+['Qt', 'SQL']
+['R', 'Python', 'VBA']
+None
+['JBoss Application Ser']
+None
+None
+None
+None
+['GCP', 'BigQuery', 'SQL', 'Python', 'Java']
+None
+None
+['NGINX', 'HAProxy', 'Docker', 'Kubernetes', 'Terraform', 'AWS', 'Google Cloud Platform', 'Git', 'MySQL', 'PostgreSQL', 'MongoDB', 'Elasticsearch']
+None
+None
+None
+['Angular', 'Vue.js', 'Oracle']
+None
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['Java', 'Scala']
+None
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+None
+None
+None
+['Databricks Structured Streaming', 'Kafka']
+None
+None
+None
+['Java']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+None
+None
+['AI', 'Kubernetes', 'Docker', 'OpenTelemetry', 'Agile', 'Scrum', 'SAFe']
+None
+None
+['XEN', 'Citrix', 'Samba', 'NFS', 'OpenLDAP', 'Ansible']
+None
+None
+None
+None
+None
+None
+None
+None
+['JavaScript', 'Groovy', 'Jenkins', 'Jira', 'Confluence', 'JBoss Application Ser']
+['Jenkins']
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'SQL', 'Perl']
+['SAS']
+['Enterprise Architekt']
+None
+None
+None
+None
+None
+['Salesforce']
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+['SQL']
+['Java', 'Spring Boot']
+None
+['Docker', 'Kubernetes', 'Git', 'SQL']
+['Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+['Oracle DB, SQL']
+None
+None
+['Magento', 'PWA', 'Laravel', 'Shopify', 'Node.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['ERP', 'VBA', 'NET']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+['MS SQL', 'MS SQL Server']
+['HTML5', 'JavaScript', 'jQuery']
+['ServiceNow']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GitLab', 'Jenkins', 'RedMine', 'SoapUI', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['Python', 'R', 'SAS']
+None
+['FME', 'PostgreSQL', 'Smallworld', 'AutoCAD']
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+None
+None
+['SQL', 'spring']
+None
+None
+None
+None
+None
+['Scrum', 'Jira', 'Confluence']
+None
+None
+['Python']
+None
+None
+None
+None
+None
+['Ansible', 'RabbitMQ', 'WSO2', 'ELK', 'MongoDB']
+None
+['SQL']
+None
+None
+['SQL']
+None
+['Python', 'Jinja']
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure', 'Google Cloud Platform']
+['Ansible', 'Red Hat']
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'Git', 'Python', 'Linux']
+None
+['Python', 'R']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+None
+None
+None
+['Django', 'Django Rest Framework', 'Docker', 'Pytest', 'React.js', 'SQL']
+['Python', 'Azure Data Factory', 'PowerBI']
+['Microsoft Azure']
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+None
+None
+None
+None
+['LeanIX', 'Sparx Enterprise Architect']
+['Varnish', 'Nginx', 'VMware']
+None
+None
+None
+None
+None
+['PHP', 'Java', 'Spring MVC', 'Sprint Boot', 'Thymeleaf', 'jQuery', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['VBA']
+['Redmine', 'Power Automate', 'Power Apps', 'MS Project Online', 'MS Project Server', 'SharePoint']
+None
+None
+['Cypress', 'React.js', 'SQL', 'Jenkins']
+None
+None
+['Terraform', 'Kafka']
+None
+None
+['Docker', 'Jira', 'Confluence', 'Azure', 'AWS', 'Solr', 'Containerization']
+['Ansible', 'Jenkins', 'Terraform', 'CI CD']
+None
+['AWS', 'Google Cloud Platform', 'Puppet', 'Git', 'Docker']
+['Linux']
+None
+None
+None
+None
+None
+None
+['PHP', 'Java', 'Spring MVC', 'Sprint Boot', 'Thymeleaf', 'jQuery', 'Docker']
+None
+None
+None
+None
+['SQL']
+None
+['Zabbix']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+['SQL', 'spring']
+None
+['Android', 'iOS', 'C', 'C', 'Python']
+None
+None
+['Angular', 'SQL', 'PostgreSQL', 'Silverlight', 'WPF']
+None
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+['GitLab', 'Jira']
+None
+None
+None
+None
+None
+None
+['SQL', 'JavaScript', 'BPMN', 'UML', 'REST']
+None
+None
+None
+None
+None
+None
+None
+None
+['ITIL', 'Powet Automate', 'Power Apps']
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+['Java']
+None
+None
+None
+['Enterprise Architect']
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+None
+None
+None
+['ABAP']
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+None
+None
+None
+None
+None
+['Tableau', 'Qlickview', 'Oracle', 'SAP']
+None
+['Redis', 'Elasticsearch', 'Grafana']
+['Kibana', 'Postman', 'SoapUI']
+['Docker', 'AWS', 'DevOps', 'Cloud solutions', 'JavaScript', 'React Native', 'Angular', 'Kafka', 'Kubernetes', 'React.js']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Ansible', 'Red Hat']
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Entity Framework', 'React.js', 'Kubernetes', 'Microsoft Azure', 'Azure DevOps']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+['iOS XCode']
+None
+None
+['Jenkins', 'Python']
+None
+['Azure DevOps', 'Docker', 'Jira', 'Confluence', 'Jenkins', 'TeamCity']
+None
+None
+None
+None
+None
+None
+None
+['MongoDB', 'Azure DevOps', 'Jira', 'GitLab', 'Jenkins']
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+['Microsoft Azure']
+None
+['Jenkins', 'Python']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+['Azure DevOps', 'MongoDB', 'DevOps', 'Jira']
+['Azure SQL', 'Git', 'API', 'Devops', 'Data architecture', 'ERP', 'Visual Studio']
+None
+None
+None
+None
+['Hadoop']
+['Angular', 'React']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+['Terraform', 'Kafka']
+['AWS', 'Docker']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+['C', 'Java']
+['Web API', '.NET', 'SVN', 'Git']
+None
+None
+['Kafka']
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+['Enterprise Architect']
+None
+['Podstawowa znajomość MSSQL']
+['MongoDB', 'Azure DevOps', 'Jira', 'GitLab', 'Jenkins']
+None
+None
+['SAP', 'Linux']
+None
+None
+None
+None
+None
+['SQL']
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['C', 'Java']
+['Ansible', 'Red Hat']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+['IoT']
+None
+None
+None
+['Enterprise Architect']
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+['Redux', 'NgRx', 'NgXS', 'GraphQL']
+None
+None
+None
+None
+['Kafka']
+None
+None
+['Ansible', 'Chef', 'Puppet']
+None
+None
+None
+None
+None
+None
+None
+['VMware', 'Docker', 'Kubernetes', 'GitLab']
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+None
+None
+None
+None
+None
+['InteliiJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+['C', 'Java']
+None
+None
+None
+['VBA', 'PowerBI']
+None
+None
+['Azure DevOps']
+None
+None
+['Kafka']
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+['Panaya', 'Kanban methodology']
+None
+['Oracle', 'Apache', 'Nginx']
+None
+None
+None
+None
+None
+['Spring Framework', 'JUnit', 'AssertJ', 'Mockito', 'DbUnit', 'GitLab', 'Jenkins']
+None
+None
+None
+None
+None
+None
+None
+['Google Cloud Platform']
+['SQL']
+None
+None
+None
+None
+None
+['iOS']
+None
+None
+None
+['AWS']
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+['GraphQL', 'DynamoDB', 'Serverless']
+None
+None
+None
+None
+None
+['Git', 'MySQL', 'PostgreSQL', 'SCRUM', 'Oracle BI', 'Oracle GG', 'APEX']
+['Tableau', 'Microsoft Power BI', 'Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+['Elasticsearch', 'Grafana', 'Telegraf', 'InfluxDB', 'Bash', 'Python', 'RabbitMQ', 'Kafka', 'NATS']
+None
+['Apex']
+None
+['MATLAB', 'Simulink']
+None
+None
+['Azure DevOps', 'Git', 'ASP.NET']
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+['MS Power BI']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'C']
+['Power BI']
+None
+None
+None
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+['AWS', 'Azure DevOps', 'Google Cloud Platform', 'Node.js', 'C']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PL SQL']
+['Redgate', 'DBPlus']
+['SAS', 'PostgreSQL', 'Oracle', 'Hadoop']
+['Docker', 'Kubernetes']
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+['Jira', 'SQL', 'GitHub', 'Splunk', 'MuleSoft']
+None
+['Magento 2']
+None
+['ABAP', 'Agile']
+None
+None
+['AWS', 'Magento']
+None
+['Redgate', 'DBPlus']
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+['Angular', 'React Native', 'Vue']
+None
+None
+None
+None
+['Jenkins', 'Docker', 'Kubernetes', 'Git', 'SVN']
+['Docker', 'Kubernetes']
+['Groovy']
+['Python']
+['GraphQL', 'DynamoDB', 'Serverless']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['Jenkins', 'OpenShift', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['XML', 'JIRA', 'Confluence']
+None
+['Git', 'GitLab', 'OpenAPI', 'ESLint', 'Sentry', 'Prettier', 'Figma', 'Jest', 'Storybook', 'postman']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+None
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+None
+None
+['Deep Learning Frameworks: TensorFlow, PyTorch', 'Digital Signal Processing: Tensilica HiFi DSP, Analog Devices SigmaDSP', 'Sickit-Learn']
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+None
+None
+['Microsoft Azure', 'Oracle', 'MSSQL', 'MySQL', 'Microsoft Dynamics']
+['Microsoft Azure']
+['Docker', 'Kubernetes', 'Terraform']
+None
+None
+None
+['.NET', 'Java']
+['Spring Boot', 'Apache Kafka']
+None
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['VBA', 'ADO', '.NET', 'IIS']
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+['Ansible', 'DWDM', 'Cloudflare', 'AWS', 'Kubernetes', 'Zabbix', 'Proxmox']
+['Microsoft Azure']
+['SQL', 'PySpark']
+None
+None
+['Hyland']
+None
+None
+None
+None
+['Python']
+['TypeScript', 'GraphQL']
+None
+['Scrum', 'Agile']
+['Groovy', 'Python', 'Bash', 'Java', 'Kubernetes']
+None
+None
+['JavaScript', 'Groovy', 'Jenkins', 'Jira', 'Confluence', 'JBoss Application Ser']
+None
+None
+None
+None
+['Scrum', 'Jira', 'Confluence', 'Enterprise Architect', 'UML']
+None
+None
+None
+None
+None
+None
+['SQL', 'Java']
+None
+None
+None
+None
+['RxJS', 'HTML CSS']
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+['Microsoft Power BI', 'Tableau', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'Python', 'Azure SQL']
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+['HTML5']
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+['SQL', 'REST API', 'Postman']
+None
+['Python', 'Cisco']
+None
+None
+None
+['Kubernetes']
+None
+None
+None
+['JavaScript', 'HTML', 'Git', 'GitLab', 'Jira', 'C']
+None
+None
+None
+['Jira', 'Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+['Zabbix', 'Docker', 'VMware']
+['Salesforce', 'SharePoint']
+None
+['Node.js', 'Express', 'PM2', 'TypeOrm', 'Prisma']
+['Java', 'Bounce.js', 'AnimeJS', 'GSAP']
+['Enterprise Architect', 'Jira']
+['MS SQL']
+None
+['Docker', 'Kubernetes']
+None
+['Git', 'SVN']
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Tag Manager', 'SQL', 'Python']
+['Kotlin', 'Scala']
+None
+['Cypress']
+None
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+['Amazon Web Services', 'Microsoft SQL Server']
+['Java', 'Scala']
+None
+None
+None
+None
+None
+None
+['C', 'Node.js']
+None
+None
+['Postman', 'Swagger', 'SQL']
+None
+['HTML5']
+None
+None
+None
+None
+['LeSS']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['.NET', 'React.js']
+None
+['SQL']
+['HTML5', 'JavaScript', 'jQuery']
+['Call Center', 'Contact Center', 'WebRTC']
+['Kafka', 'SAP']
+['Kafka', 'SAP']
+None
+None
+None
+None
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+['C', '.NET', 'React', 'PL SQL', 'Cloud']
+None
+['C', 'SQL']
+None
+None
+None
+None
+['Terraform', 'Kafka']
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+['Azure DevOps', 'PowerShell', '.NET', 'Microsoft SQL Server']
+None
+['EndPoint Manager', 'System Center Configuration Manager', 'ServiceNow', 'SharePoint']
+None
+None
+['Kafka']
+None
+['Docker', 'Jira', 'Node.js', 'Scrum methodology']
+None
+None
+None
+['Vue.js', 'Docker', 'Kubernetes']
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+['Python', 'Git']
+['Python', 'Bash', 'Ruby']
+None
+None
+None
+None
+None
+None
+['MS Power BI']
+['Buildroot', 'Yocto', 'Python', 'Bash', 'Perl']
+['Ansible', 'Satellite', 'Kubernetes', 'OpenShift', 'Docker', 'Jenkins', 'Prometheus', 'Grafana', 'Zabbix', 'Nagios', 'Terraform', 'Puppet']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+None
+None
+['Jira', 'Enterprise Architect']
+['Cisco', 'Cisco Meraki']
+None
+['SSO']
+None
+['Python', 'Git']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['UI', 'Microsoft .NET', 'REST API']
+None
+None
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+None
+['.NET', 'React.js']
+None
+['UML', 'BPMN', 'Postman']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Terraform', 'Kafka']
+None
+None
+None
+None
+None
+None
+['C', 'Java']
+None
+['Eclipse', 'Visual Studio', 'IntelliJ', 'Git', 'GitHub', 'SVN', 'C', 'ASM']
+['Jira']
+None
+None
+None
+None
+['MS Power BI']
+None
+None
+None
+['Python', 'Ruby', 'R', 'JavaScript']
+None
+None
+None
+None
+None
+['Python']
+None
+None
+None
+None
+None
+['API Viya']
+None
+['Docker', 'Kubernetes', 'Terraform']
+None
+None
+['Kubernetes']
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+['Zendesk']
+['SQL']
+None
+None
+['SQL', 'ITIL']
+['Linux', 'VMware', 'Hyper-V', 'System Center Operations Manager', 'Nagios', 'Netflow', 'PowerShell', 'Python', 'CCNA', 'Comptia']
+['C', '.NET', 'WPF', 'C']
+None
+None
+None
+None
+None
+['Zabbix']
+None
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+None
+None
+['Kafka', 'React']
+['GEB', 'Karate']
+None
+['Enterprise Architect']
+None
+None
+['Python', 'Git']
+None
+['PHP', 'Docker']
+None
+['Kubernetes']
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+['GEB', 'Karate']
+None
+['C']
+None
+None
+None
+None
+None
+['AutomateNOW']
+['other Research Tools']
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+['Jenkins', 'Python']
+None
+None
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+None
+['Perl', 'Git', 'Python']
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+['Panaya', 'Kanban methodology']
+['Selenium', 'Java', 'Cypress', 'JavaScript']
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Kedro', 'Airflow', 'Spark', 'pyspark', 'MLlib', 'MLOps']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+['SAP ABAP']
+None
+None
+['Xray', 'Allure', 'Jenkins']
+None
+['Angular', 'React.js']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Elasticsearch', 'Grafana', 'Telegraf', 'InfluxDB', 'Bash', 'Python', 'RabbitMQ', 'Kafka', 'NATS']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+['SQL']
+['Docker', 'Jira', 'Spring Framework']
+None
+['PHP8', 'DDD', 'Elasticsearch', 'RabbitMQ', 'Docker', 'CQRS', 'Symfony 6']
+None
+None
+['Pimcore DXP', 'AWS', 'Cloudflare', 'Akamai']
+['Kafka']
+None
+None
+None
+['JavaScript']
+None
+None
+None
+None
+None
+None
+None
+None
+['React.js', 'Svelte']
+None
+['Kubernetes', 'Terraform', 'Helm', 'Java', 'Python']
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Python', 'PHP', 'Ansible', 'OpenStack', 'Kubernetes', 'Docker']
+['Enterprise Architekt']
+['Jenkins', 'OpenShift', 'Docker']
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+['Python', 'Cisco']
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+['Python', 'Jinja']
+['Databricks Structured Streaming', 'Kafka']
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+['Google Api', 'JavaScript', 'React Native']
+None
+None
+None
+['Google Cloud Platform']
+['Qt', 'SQL']
+None
+None
+None
+['RabbitMQ']
+None
+['Docker', 'Jenkins', 'Kafka']
+['Docker', 'Jenkins', 'CI CD']
+None
+None
+None
+None
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+['MS Visio', 'Microsoft Power BI']
+None
+None
+['C', 'Java']
+None
+None
+None
+['ABAP', 'Agile']
+None
+['Manhattan', 'SAP', 'Jira', 'VBA']
+None
+['Microsoft Azure']
+None
+None
+None
+['Objective-C']
+['JavaScript', 'CSS', 'HTML5']
+None
+['Viya', 'SAS9', 'LUA', 'Kafka']
+['Python']
+None
+['Elasticsearch', 'Oracle', 'Redis', 'PostgreSQL', 'Git', 'FastAPI', 'PyTest', 'RestAPI', 'Flask', 'Celery', 'RabbitMQ', 'Linux', 'CI CD', 'Jenkins', 'Docker', 'Agile', 'Scrum']
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Java 8', 'Spring Framework', 'Spring Boot']
+['BPMN']
+None
+['Docker', 'HTML', 'Jira', 'Confluence', 'TeamCity']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SAFe', 'LeSS', 'Nexus']
+['Python', 'Bash']
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kotlin', 'Scala']
+None
+None
+None
+['ABAP', 'Agile']
+None
+None
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+None
+['Oracle', 'Docker']
+None
+['Jenkins', 'Python']
+None
+None
+None
+None
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+['C', 'Java']
+None
+['SQL Server Reporting Services', 'Azure Databricks', 'Lakehouse', 'Power BI']
+None
+['SQL', 'Java']
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+['HA', 'FT', 'DRS', 'SDRS', 'SRM', 'MS Azure', 'AWS', 'Google Cloud', 'narzędzia do automatyzacji np. Ansible']
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+['SharePoint', 'Jira', 'Confluence']
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+['Git', 'SVN']
+None
+None
+None
+['Kubernetes', 'MongoDB', 'PyCharm']
+None
+None
+None
+['Kafka']
+None
+None
+None
+['Ansible', 'Red Hat']
+None
+None
+None
+None
+None
+['Vue.js', 'Angular.js', 'React']
+None
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+['Java', 'Spring Framework', 'SQL']
+None
+['Basic Python skills', 'Basic Android development skills']
+None
+None
+['Jira', 'Confluence', 'VMware']
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+['iOS', 'Swift', 'XCUITest', 'Xcode', 'Azure DevOps']
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['GCP', 'VMware', 'API Management']
+None
+['Magento 2']
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+['Oracle, SQL']
+None
+['C', 'Java']
+None
+None
+None
+None
+None
+None
+None
+None
+['Python']
+None
+None
+['C', 'DDD', 'TDD']
+['AWS', 'Microsoft Azure', 'Google Cloud Platform']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+['C', 'Java']
+None
+None
+['SQL', 'PostgreSQL', 'Windows Server', 'Linux Server']
+['SAP', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Salesforce']
+None
+None
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+['Microsoft 365', 'Google Workspace', 'Ubiquiti', 'ESET', 'Jira']
+None
+None
+None
+['Spring Boot', 'Apache Kafka']
+['Git']
+None
+None
+None
+None
+['Tailwind', 'Storybook', 'Twig', 'PrestaShop', 'Jira', 'Slack', 'Figma', 'GrahQL', 'PHP', 'Docker', 'React.js', 'Next.js']
+None
+None
+['Microsoft Azure', 'Docker', 'Kubernetes', 'Azure DevOps']
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['Magento 2']
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+None
+['IETF', 'ONF']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+['Angular', 'JavaScript TypeScript', 'RabbitMQ']
+None
+None
+None
+None
+None
+['PowerShell', 'UnixShell', 'Active Directory', 'Desktop Central', 'Python', 'Wireshark', 'umiejętność zarządzania sieciami i protokołami TCP IP']
+None
+['Cypress']
+['Gosu']
+['React.js', 'Redux']
+None
+None
+None
+['Git', 'SVN']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+None
+['Salesforce']
+['Google Cloud Platform']
+None
+None
+None
+None
+['Agile', 'Scrum', 'Jira', 'Linux']
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['Angular', 'React', 'Node.js', 'Vue']
+['Airflow', 'PostgreSQL', 'Git', 'Google Data Studio', 'SuperSet']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+['GitLab', 'BI Tools', 'Postman', 'REST API', 'Redmine']
+None
+None
+None
+['OLAP', 'Microsoft SQL Server', 'PostgreSQL', 'Oracle WebLogic', 'Oracle SOA Suite', 'JBOSS']
+None
+None
+None
+['Mysql', 'React', 'Symfony']
+None
+None
+None
+None
+None
+None
+['ABAP']
+None
+['SQL', 'SOAP', 'REST']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['C', 'DDD', 'TDD']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['SQL', 'SOAP', 'REST']
+['CSS', 'HTML']
+None
+['Zabbix']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+['AWS', 'Spring']
+None
+None
+['SQL']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+['Panaya', 'Kanban methodology']
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Snowflake Data Cloud', 'Python', 'Node.js', 'JavaScript']
+None
+None
+None
+None
+None
+None
+['AWS', 'Azure', 'Google']
+['ABAP', 'Agile']
+['Microsoft Azure']
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+None
+['ABAP', 'Agile']
+None
+None
+None
+['Enterprise Architect']
+None
+None
+['Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+['SQL', 'Kubernetes']
+['TypeScript', 'GraphQL']
+['Enterprise Architekt']
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+None
+['C', 'C', 'C']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+['PHP']
+None
+['Atlassian Jira']
+None
+None
+None
+None
+['Python', 'Git', 'R']
+['HTML', 'CSS']
+None
+None
+None
+None
+None
+['Modelsim', 'Questa', 'Simvision']
+None
+None
+None
+None
+['MS Power BI']
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+['TypeScript', 'GraphQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['MS Power BI']
+None
+None
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Cloud Platform']
+['Java']
+None
+None
+None
+['Docker', 'Bash']
+['MySQL', 'SAP HANA', 'Power BI']
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+['Gitflow', 'Workflow', 'Python', 'Bash', 'Ansible', 'Jenkins', 'Sumologic', 'Datadog']
+None
+None
+None
+None
+['React Native']
+['Microsoft Azure']
+None
+None
+None
+None
+None
+None
+None
+None
+['React.js', 'Azure DevOps']
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+['C', 'Java']
+['Linux', 'Windows Server']
+['Java', 'Scala']
+None
+['ServiceNow', 'XML', 'Python', 'JavaScript', 'API', 'Oracle Apex', 'UiPath']
+['Python', 'Tableau']
+None
+None
+None
+None
+None
+None
+['GraphQL']
+None
+None
+None
+None
+None
+None
+['SQL', 'certyfikat ISTQB Foundation Level']
+None
+['Zabbix', 'Postfix']
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure']
+None
+None
+None
+['Python', 'Bash']
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+['TypeScript', 'GraphQL']
+['GEB', 'Karate']
+None
+None
+['Azure DevOps', 'AWS', 'Google Cloud Platform']
+None
+None
+['Web Services', 'Docker', 'Jira', 'Confluence', 'Scrum', 'UX', 'UI']
+['Salesforce']
+None
+None
+['Jira']
+None
+None
+['Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+['Gitlab Runners', 'Jenkins']
+None
+None
+None
+None
+None
+None
+['Node.js', 'SQL']
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+['Gradle', 'Java', 'Python', 'Amazon AWS', 'Microsoft Azure']
+None
+['Apex']
+['CISSP', 'CCSP', 'CISM']
+None
+None
+None
+['Kubernetes', 'Jenkins', 'TensorFlow', 'Apache Kafka']
+None
+['C']
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+['iOS', 'Switch']
+['Azure DevOps']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Git', 'SVN']
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+['.NET', 'React.js']
+None
+None
+None
+None
+None
+['Google Cloud Platform', 'Microsoft Azure', 'AWS', 'Jira', 'Confluence']
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+['UML']
+None
+None
+['Selenium', 'Cucumber.js', 'SoapUI']
+None
+None
+['Linux', 'Apache', 'LiteSpeed', 'nginx', 'MariaDB', 'rsync', 'nfs', 'WordPress', 'Joomla', 'PrestaShop']
+['PHP', 'Symfony']
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+['Python']
+None
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+None
+None
+None
+['Azure DevOps']
+None
+None
+None
+None
+['ASP.NET Core SignalR']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Grafana', 'Prometheus']
+None
+['Postman', 'Swagger']
+None
+None
+None
+['Spring Boot', 'Apache Kafka']
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['BPMN']
+['SQL', 'Java']
+None
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+None
+['HTML', 'CSS', 'JavaScript']
+['AWS', 'Magento']
+None
+None
+None
+['HTML', 'JavaScript', 'Vue.js']
+None
+None
+None
+None
+None
+['Java', 'Spring Framework']
+None
+None
+None
+None
+None
+None
+None
+['excel']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'Cisco']
+None
+['Microsoft SQL Server']
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+None
+None
+None
+['TEAL', 'PyTEAL', 'Algorand', 'Polkadot', 'Ethereum', 'Docker', 'Jira', 'Scrum']
+None
+None
+['XML', 'EDI', 'T-SQL', 'DevExpress']
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+['React.js', 'Node.js']
+['BPMN']
+None
+None
+None
+None
+None
+None
+['Terraform', 'Kafka']
+None
+None
+['Salesforce']
+None
+None
+None
+None
+['DevOps']
+None
+None
+['Java']
+['.NET', 'React.js']
+['Python', 'SQL']
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+['Kafka']
+None
+None
+['Selenium WebDriver', 'Java']
+None
+['Jenkins', 'Kubernetes']
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['JavaScript', 'Java', 'C', 'Python']
+None
+None
+['Jira']
+None
+None
+None
+None
+None
+None
+None
+['DynamoDB', 'Kubernetes', 'Terraform']
+None
+None
+None
+['C', 'C']
+None
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Windows Server', 'Jira', 'Confluence']
+None
+None
+None
+None
+['Redis', 'Django', 'Pandas', 'Numpy', 'Flask', 'Docker']
+None
+None
+['Vuetify', 'Node.js', 'AWS']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Linux', 'Kubernetes', 'Azure DevOps', 'Zabbix']
+None
+['TypeScript', 'GraphQL']
+None
+None
+['C', 'Java', '.NET', 'Python']
+['Checkpoint', 'VMware']
+None
+None
+None
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['Microsoft Dynamics Certification', 'Jira', 'SQL Server', 'MSSQL', 'SharePoint', 'MS Dynamics 365 CRM']
+None
+None
+None
+None
+None
+None
+['Kafka']
+['SAP ABAP']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Jira', 'Confluence', 'Azure', 'AWS', 'Solr', 'Containerization']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['Oracle', 'AWS', 'Celigo']
+['Jira', 'Confluence']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Scrum', 'Jira', 'Condluence', 'Oracle']
+None
+None
+None
+['Ansible', 'Helm', 'Kubernetes', 'Apache', 'Nginx', 'Tomcat (tcserver)']
+['Salesforce', 'Tableau']
+None
+None
+None
+['Selenium', 'Java', 'Cypress', 'JavaScript']
+['NestJS', 'Elasticsearch', 'RabbitMQ', 'Redis', 'AWS', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+['Kotlin', 'Go', 'MongoDB']
+['Linux', 'Ubuntu', 'Red Hat', 'CentOS', 'Prometheus', 'Kibana', 'Elasticsearch', 'Vault']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+['Windows Server', 'Linux', 'Python', 'Java']
+None
+None
+None
+None
+None
+['TypeScript', 'webpack', 'Redux', 'React Native']
+None
+None
+['Java', 'Spring Framework']
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+None
+['Agile', 'ITIL', 'Interlan SPEED', 'SugarCRM']
+None
+None
+None
+['GitFlow', 'Swagger']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+['JavaScript', 'CSS', 'HTML5']
+None
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+['Shiny']
+['C']
+['Azure DevOps']
+None
+None
+['Looker', 'Tableau']
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['Visual Studio', 'Git', 'Docker', 'Jira', 'Azure DevOps', 'ERP']
+None
+None
+None
+['Zabbix']
+None
+['Azure SQL', 'Git', 'API', 'Devops', 'Data architecture', 'ERP', 'Visual Studio']
+None
+None
+None
+None
+None
+['PHP']
+None
+None
+['Linux', 'Apache', 'LiteSpeed', 'nginx', 'MariaDB', 'rsync', 'nfs', 'WordPress', 'Joomla', 'PrestaShop']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Distil Networks', 'Imperva', 'Cloudflare', 'ShapeSecurity', 'Websockets', 'Docker', 'Kubernetes']
+['Snowflake', 'GCP']
+None
+None
+['Docker', 'Kubernetes', 'Kafka', 'RabbitMQ', 'Oracle', 'Weblogic', 'Splunk', 'AppDynamics', 'Grafana', 'Temenos T24']
+None
+['Python']
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+['C', 'Java']
+['UML', 'Python', 'Bash']
+None
+None
+None
+None
+None
+['Kubernetes', 'Terraform']
+None
+None
+None
+None
+None
+None
+None
+None
+['Redis', 'RabbitMQ', 'Elasticsearch', 'Chef', 'Terraform', 'GitLab', 'Zabbix', 'Kibana']
+['Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+None
+['Enterprise Architekt']
+None
+None
+None
+None
+['SQL', 'Google Analytics', 'BigQuery']
+None
+None
+None
+None
+['SAS', 'Oracle', 'Microsoft SQL']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Kafka', 'AWS']
+None
+['Python', 'Cisco']
+None
+None
+['Jamf', 'FSLogix']
+None
+['Jenkins', 'Kotlin', 'Kubernetes']
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['AWS', 'Kubernetes', 'Docker']
+['SQL', 'Kafka', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Bash', 'OpenStack', 'Ansible']
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+['Kafka', 'SAP']
+['Python', 'Bash', 'AWS', 'Microsoft Azure', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['BPMN']
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architect']
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+None
+['Jira', 'Confluence', 'SPLUNK', 'SoapUI']
+None
+None
+None
+None
+None
+None
+['IFS Applications']
+None
+['Zabbix']
+None
+['TypeScript', 'GraphQL']
+None
+['SQL', 'C', 'T-SQL', 'Oracle', 'BPMN', 'IREB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Buildroot', 'Yocto', 'Python', 'Bash', 'Perl']
+None
+['Java', 'Scala']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Azure']
+None
+None
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+None
+['Jira', 'Confluence']
+['AWS', 'Magento']
+None
+['BPMN']
+None
+None
+None
+None
+None
+None
+['Kafka']
+['SQL']
+None
+None
+None
+None
+['Python']
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Suite', 'Linux']
+None
+['XEN', 'RHEL', 'CentOS']
+None
+['Python', 'PowerShell', 'Git', 'Azure SQL']
+None
+['Enterprise Architekt']
+None
+None
+['Buildroot', 'Yocto', 'Python', 'Bash', 'Perl']
+['Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+None
+None
+['AWS', 'Azure SQL', 'Docker', 'HTML', 'Jira', 'Confluence', 'TeamCity']
+None
+None
+None
+None
+['Salesforce']
+['Google Cloud Platform']
+None
+['GitLab', 'Jira']
+None
+['.NET', 'React.js']
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+None
+['Elasticsearch', 'Kibana', 'Jenkins', 'PostgreSQL']
+None
+None
+None
+['C', 'Java']
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+['BPMN']
+None
+None
+['Kotlin', 'Scala']
+None
+None
+None
+['ABAP', 'Agile']
+['Informatica PowerCenter', 'Qlik Sense', 'SAP Business Objects', 'Teradata']
+None
+None
+None
+None
+None
+None
+['PowerShell', 'Bash', 'Prometheus', 'Grafana', 'Zabbix']
+None
+['C', 'Java']
+None
+None
+['MS Power BI']
+None
+None
+None
+['GitLab', 'Jira']
+['Apex']
+None
+['Zabbix']
+None
+None
+None
+None
+None
+['Northern Storage Suite', 'System Center Operations Manager']
+['HTML', 'CSS', 'Kubernetes', 'RabbitMQ', 'Elasticsearch', 'Azure Cloud', 'Microservices']
+None
+['PIXI.js', 'Easel.js', 'TweenMax', 'Canvas', 'WebGL', 'HTML', 'CSS']
+['SQL']
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+['Salesforce']
+['Python', 'Git']
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+['Salesforce']
+None
+None
+['CMake', 'Assembler', 'Raspberry Pi', 'BeagleBone', 'Arduino', 'German language', 'Qt', 'Protocol Buffers']
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+['Azure DevOps']
+None
+['SAP HANA']
+None
+['excel']
+None
+None
+None
+None
+['Terraform', 'Kubernetes', 'Docker', 'Kinesis', 'Event Hub', 'Kafka', 'Microsoft SQL Server', 'Oracle', 'DynamoDB', 'CosmosDB', 'Redshift', 'MongoDB', 'Apache Airflow', 'Apache Spark', 'Pandas']
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Jenkins', 'Bamboo']
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+['excel']
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+None
+None
+['Ansible', 'Bash']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+None
+None
+None
+None
+['Windows Server']
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+['Microsoft Dynamics', 'Power BI', 'Power Apps']
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+['OLAP', 'DevOps', 'AWS']
+None
+['SQL']
+['Remedy', 'SoapUI ']
+['Ruby', 'Docker', 'Kibana', 'Jira', 'Xray', 'PostgreSQL', 'MongoDB']
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+['Windows Mobile', 'Android']
+['Python', 'bash', 'Docker', 'AUTOSAR Framework']
+None
+None
+None
+None
+['Angular']
+['LoRa', 'GSM', 'Bare-metal', 'Contiki', 'CAN', 'USB', 'Modbus', 'Ceedling', 'Zephyr Project', 'Robot Framework', 'pytest', 'FreeRTOS']
+None
+None
+None
+None
+None
+None
+None
+['Qlickview']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['RWD', 'Blazor', 'Karma', 'Jasmine', 'Kubernetes']
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+['Java', 'Spring Framework']
+None
+['SAP']
+None
+None
+None
+None
+['Kafka']
+['PL SQL']
+['Docker', 'Jira', 'Confluence', 'AWS', 'Azure', 'Containerization', 'Solr']
+None
+['Microsoft Power BI', 'Python', 'Pandas', 'scikit-learn', 'PowerShell', 'Java']
+None
+None
+['Zabbix', 'Ansible']
+['Swagger', 'Postman', 'Kubernetes', 'Docker']
+['Docker', 'AWS', 'DevOps', 'Cloud solutions', 'JavaScript', 'React Native', 'Angular', 'Kafka', 'Kubernetes', 'React.js']
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+['Enterprise Architekt']
+['SQL']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+['Microsoft SQL Server', 'Microsoft Azure']
+['SoapUI', 'GitLab', 'Jira']
+None
+['Azure DevOps']
+None
+None
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+['SAS', 'Oracle']
+['ServiceNow']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+['ABAP']
+None
+['JavaScript', 'HTML', 'CSS', 'PHP']
+['C', 'DDD', 'TDD']
+None
+None
+['Docker', 'Linux', 'Ubuntu', 'Asana']
+['Jenkins', 'Jira', 'Zabbix', 'SQL', 'PostgreSQL', 'Agile', 'Kanban']
+None
+None
+None
+['SQL', 'Java']
+['Magento 2']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Ansible', 'Red Hat']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['Spring Boot', 'Apache Kafka']
+['SQL', 'SOAP', 'REST']
+['Docker', 'Kubernetes', 'Terraform']
+None
+None
+None
+['Bazy danych czasu rzeczywistego']
+['Jira', 'Git', 'JavaScript']
+['Git', 'SVN']
+['Redgate', 'DBPlus']
+None
+None
+None
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure']
+['Zabbix', 'Grafana']
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Agility', 'SCRUM', 'Kanban', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Selenium', 'Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+None
+['ABAP', 'Agile']
+['Spring Cloud (Microservices)', 'Angular', 'CI CD', 'Docker', 'SIP', 'VoIP', 'PBX']
+None
+None
+['Adobe XD', 'Figma', 'Sketch']
+None
+None
+['React Native', 'Node.js', 'GraphQL', 'Docker', 'AWS']
+None
+['Oracle', 'AWS', 'Celigo']
+['Terraform', 'SQL', 'Google Cloud Platform']
+['Kafka', 'SAP']
+['AWS', 'Linux', 'Docker', 'Ubuntu']
+None
+None
+None
+None
+None
+['Jira', 'Chef', 'Puppet', 'Jenkins', 'Unix', 'AWS', 'GCP', 'Azure']
+None
+None
+['Panaya', 'Kanban methodology']
+None
+['Enterprise Architekt']
+None
+['GitLab', 'CI CD', 'JavaCard']
+['Confluence', 'Jira']
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['Linux', 'RabbitMQ']
+None
+None
+['Cisco', 'Cisco Meraki']
+['Redis', 'RabbitMQ', 'Elastic Serach', 'Chef', 'Terraform', 'GitLab', 'Jenkins']
+None
+None
+None
+None
+None
+None
+['Zabbix']
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+['SAP']
+['Python']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['Cypress']
+['Coder', 'Embedded Coder', 'Compiler SDK']
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+['BPMN']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PL SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+['Terraform', 'Kafka']
+['SQL', 'Salesforce', 'CRM']
+None
+None
+None
+None
+None
+['Python', 'Tableau']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['Azure DevOps', 'Confluence']
+None
+None
+['AWS', 'Bash', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+['Jenkins', 'Python']
+None
+None
+['C', 'Java']
+None
+None
+['SQL', 'Java']
+['SQL', 'Python', 'Bash', 'Perl', 'GitLab', 'Jenkins']
+None
+None
+None
+None
+None
+None
+None
+['Redgate', 'DBPlus']
+['Microsoft Azure', 'Office 365']
+['Groovy', 'JavaScript', 'testy', 'angielski']
+None
+['Python', 'Git']
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+['Modelsim', 'Questa', 'Simvision']
+None
+None
+None
+['Ruby', 'Python', 'Bash', 'Groovy', 'PowerShell', 'Grafana', 'Prometheus', 'Java', 'JavaScript', 'Go', 'Git']
+None
+None
+None
+None
+['BPMN']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Grafana', 'Ansible', 'Prometheus']
+None
+None
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+['Zabbix', 'VMware', 'unix', 'PCI DSS', 'Windows Server']
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+['ERP']
+['Salesforce']
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+['Python', 'NiFi', 'Spark']
+None
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Linux', 'MacOS']
+None
+None
+None
+None
+None
+['SAPUI5']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+['AWS']
+None
+None
+None
+None
+['SQL']
+['XEN', 'RHEL', 'CentOS']
+['Azure', 'Google Cloud Platform']
+['Vue.js']
+None
+None
+['CSF', 'Agile', 'Prince2', 'Clarity Design System', 'Jira']
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+None
+None
+['BPMN', 'UML', 'Groovy']
+None
+None
+None
+None
+['SAP-CRM', 'SAP ECC', 'S4 Hana']
+None
+None
+None
+None
+None
+['Leaflet', 'OpenLayers', 'Mapbox', 'WMS', 'WFS', 'ES6', 'TypeScript']
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['Camunda', 'Java', 'Git', 'Spring Boot', 'Spring Framework', 'REST API', 'XML', 'JSON']
+None
+['Python', 'SAS', 'Microsoft Power BI']
+None
+None
+['Bash', 'PowerShell', 'Microsoft Azure']
+['Microsoft Azure', 'iOS']
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+None
+None
+None
+None
+['Kubernetes', 'TensorFlow']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Tableau', 'PowerBI', 'HTML', 'React.js', 'JavaScript']
+['Kubernetes', 'MongoDB', 'PyCharm']
+['SQL', 'Enterprise Architect']
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['React.js', 'Angular', 'Vue.js']
+None
+None
+['DICOM', 'DPViewer', 'digital pathology']
+None
+['UIKit', 'CoreData', 'XCTest', 'Xcode', 'Fastlane', 'Swift Package Manager']
+None
+['Bash', 'Python', 'Perl', 'Go']
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+None
+None
+['Python', 'Git']
+None
+None
+None
+None
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+['PowerShell', 'MSSQL Server', 'VBA C Java JS PHP PYTHON']
+['Jenkins', 'Python']
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Java', 'Spring Framework']
+None
+['Google Cloud Platform']
+['Spring Boot', 'Apache Kafka']
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Oracle', 'AWS', 'Celigo']
+['Jenkins', 'Git']
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['BigQuery', 'JavaScript', 'Python']
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+None
+None
+None
+None
+['Języki programowania']
+['SQL', 'Jira']
+['AWS', 'Magento']
+None
+['BPMN']
+None
+['Python']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+['SQL']
+None
+['SAP']
+None
+None
+['MS Power BI']
+None
+None
+None
+['BPMN']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+['Narzędzia do prezentacji (MS Power Point)', 'Techniki moderacyjne i frameworki do pracy koncepcyjnej (Domain Driven Design, Google Design Sprints, etc.)']
+None
+['Microsoft Excel', 'Tableau', 'Python', 'Knime']
+None
+['Redgate', 'DBPlus']
+['Python', 'Git', 'Tableau']
+['BPMN']
+None
+None
+None
+None
+['Selenium']
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['iOS XCode']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+['Kafka']
+['PowerShell', 'SharePoint']
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+['Python']
+None
+None
+None
+None
+None
+None
+['Jenkins', 'Python']
+None
+['Java']
+None
+None
+['SQL', 'Enterprise Architect', 'SoapUI', 'Postman']
+None
+None
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+['C', 'Python', 'Linux', 'Angular', 'Networking']
+['Soap', 'Curl', 'Rest']
+None
+None
+None
+['Windows Server', 'Jira', 'Confluence']
+['Nagios', 'Grafana', 'MongoDB']
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+['Java', 'Spring Framework']
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SAP']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architekt']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+None
+['Python', 'JavaScript', 'Java']
+None
+None
+['HTML', 'WordPress', 'CSS']
+None
+['Python', 'Bash']
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+None
+None
+None
+None
+['Java', 'Spring Boot', 'Jenkins', 'Docker', 'Kuberneter', 'Jira', 'Grafana', 'Kibana', 'Elasticsearch']
+None
+None
+['Active Directory', 'Windows Server']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['DAX']
+None
+None
+['Jira']
+None
+['Java', 'Jenkins Pipelines']
+None
+None
+None
+['React.js', 'Angular', 'Vue.js']
+None
+['Docker', 'Kubernetes']
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+None
+['C', 'Python', 'MATLAB', 'VHDL']
+['Python', 'Java', 'Lua', 'ARM Cortex based uC', 'Espressif ESP', 'Nordic', 'BLE', 'LoRa', 'GPS']
+None
+['Java', 'Python', 'Angular']
+None
+None
+None
+None
+None
+None
+None
+['GOSU']
+None
+None
+None
+None
+None
+['Angular', 'React Native', 'Vue']
+['Microsoft Excel', 'SQL', 'PowerBI', 'power query', 'DAX']
+['SASS', 'Spring', 'MySQL', 'Java 16']
+['SoapUI', 'Enterprise Architect']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GEB', 'Karate']
+None
+None
+None
+['Next Generation Firewall', 'IDS', 'IPS', 'Windows Serwer', 'Zabbix', 'Kibana', 'Active Directory']
+None
+['Kubernetes']
+None
+None
+None
+None
+['SQL']
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['Redgate', 'DBPlus']
+None
+None
+None
+None
+None
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+['Panaya', 'Kanban methodology']
+None
+None
+['Python', 'Docker', 'Kubernetes', 'CD']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+['BPMN']
+['TypeScript', 'GraphQL']
+None
+None
+None
+None
+None
+None
+None
+['Node.js', 'Jira', 'React.js', 'Vue.js', 'AWS']
+None
+None
+None
+None
+['Python', 'Cisco']
+['Ansible', 'Red Hat']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['Microsoft Windows Server', 'Microsoft Active Directory', 'Microsoft 365']
+None
+None
+None
+None
+['Jira', 'Tableau']
+None
+['GraphQL']
+None
+None
+None
+['Java', 'HTML', 'VBA scripting', 'SAP']
+None
+None
+None
+None
+['Elasticsearch']
+None
+None
+['Agile']
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+None
+None
+['Jira', 'Confluence']
+['Kafka', 'Lua']
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+['Java 8', 'Spring Framework', 'Spring Boot']
+['C', 'Node.js']
+['Docker', 'Kubernetes', 'Helm', 'Python']
+None
+None
+['Android Studio', 'Xcode', 'Swift', 'Kotlin', 'WireMock']
+['Cypress']
+None
+None
+['Google Cloud Platform']
+None
+None
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+['Azure SQL', 'Git', 'API', 'Devops', 'Data architecture', 'ERP', 'Visual Studio']
+None
+None
+None
+None
+['GIT', 'Docker']
+None
+None
+['Grafana', 'Prometheus', 'Kibana', 'Jenkins', 'Dynatrace']
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+['AV', 'EDR', 'firewall']
+['SQL']
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+['Python', 'PowerShell', 'Bash']
+None
+['C', 'Angular']
+None
+['Cisco', 'Cisco Meraki']
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+['Jira', 'Confluence']
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['Jenkins']
+['Enterprise Architect', 'Jira']
+None
+['Google Analytics', 'Firebase', 'Matomo', 'Piwik Pro']
+None
+None
+None
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+None
+None
+None
+['AWS']
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+None
+['AWS', 'Azure DevOps', 'C', 'JavaScript']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+['ABAP']
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['Angular', 'Kotlin']
+None
+None
+None
+['MS Power BI']
+None
+None
+None
+None
+['.NET', 'React.js']
+['Enterprise Architect', 'Jira']
+None
+None
+['Python', 'Cisco']
+None
+None
+None
+None
+None
+None
+None
+['Python']
+None
+None
+None
+None
+None
+None
+None
+None
+['Java']
+['ASP.NET', 'ASP.NET MVC', 'ERP', 'Java', 'WCF', 'WPF', 'Entity Framework', '.NET Core', 'Docker', 'Angular', 'JavaScript']
+None
+['SAS', 'Jira', 'Confluence']
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+['C', 'Java']
+None
+None
+None
+None
+None
+['Java', 'Python', 'Bazy Danych', 'Infrastruktura IT', 'Sieci Teleinformatyczne', 'Cybersecurity', 'BCM']
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'Enterprise Architect']
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+['Azure DevOps']
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+['Azure DevOps']
+['Git', 'jMeter', 'Selenium']
+['ABAP', 'Agile']
+None
+['SQL']
+None
+['Databricks Structured Streaming', 'Kafka']
+['Terraform', 'Kafka']
+None
+['Linux', 'Bash', 'Python', 'JavaScript', 'Ruby']
+None
+None
+None
+None
+['Visual Studio Code', 'Jira', 'Confluence', 'Git']
+None
+None
+None
+None
+['Angular', 'Vue.js']
+None
+None
+None
+None
+None
+None
+['JBoss', 'WildFly', 'IBM Integration Bus', 'IBM WebSphere', 'MQ', 'Business Integration', 'Message Broker']
+None
+None
+None
+None
+None
+['Bash']
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+['InteliiJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+['Service Desk']
+['Redis', 'Linux', 'BrowserStack']
+None
+['Docker', 'Jira', 'Confluence', 'AWS', 'Azure', 'Containerization', 'Solr']
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+None
+None
+['SQL']
+['C']
+None
+['RxJS', 'HTML CSS']
+None
+None
+None
+None
+['ABAP', 'Agile']
+['React.js', 'Angular', 'Vue.js']
+None
+None
+None
+None
+['Chef', 'Ansible', 'AWS', 'Jira']
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['AWS', 'Docker', 'Kubernetes', 'Next.js']
+None
+None
+None
+None
+None
+['Chef', 'Ansible', 'AWS', 'Jira']
+None
+['Qt', 'SQL']
+None
+None
+None
+['Git', 'SVN']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+['Azure DevOps', 'JavaScript', 'Angular']
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+['Java', 'Spring Boot', 'Jenkins', 'Kubernetes']
+None
+None
+['Python', 'Git']
+None
+None
+['NSA SA', 'IMS']
+None
+None
+['Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+['Python', 'PowerShell', 'Bash']
+None
+None
+['Ansible', 'Red Hat']
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+None
+['GKE', 'Cloud BigTable', 'Pub Sub']
+None
+['VHDL', 'Git', 'SVN']
+['Elasticsearch', 'Angular', 'React.js', 'AWS', 'Docker', 'Kubernetes', 'Selenium', 'Cucumber.js']
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+['XEN', 'RHEL', 'CentOS']
+['JavaScript', 'Angular.js', 'React.js', 'Ember']
+None
+None
+None
+['JavaScript', 'Angular.js', 'Ember', 'React.js']
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['Python', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['AV', 'EDR', 'firewall']
+None
+['webpack', 'Node.js']
+None
+['Python', 'Unitest', 'pytest']
+None
+None
+['PowerShell', 'Python', 'Bash']
+None
+None
+None
+None
+['BPMN']
+['PHP', 'JavaScript', 'VoIP', 'Ansible', 'Jenkins']
+['OWASP Top 10']
+None
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+['Cisco', 'Cisco Meraki']
+None
+['Microsoft Azure', 'OAuth2.0']
+None
+['OKTA', 'Dayforce', 'Enablon']
+None
+['Java', 'JavaScript', 'Python', 'DevOps', 'DataScience']
+['Spring Boot', 'JavaScript']
+['Azure']
+None
+None
+None
+None
+None
+None
+['ABAP']
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes', 'Jira', 'Bamboo', 'Bitbucket']
+None
+None
+None
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+['AWS']
+None
+None
+None
+None
+None
+None
+None
+['Heroku', 'REST API']
+['PL SQL']
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['Python', 'Ansible', 'Yaml', 'Shell Scipt', 'Groovy', 'Lua', 'i.mx6 platform', 'Raspberry Pi', 'RevPi', 'Blender', 'LTE-M', 'NB-IoT']
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+['Git', 'SVN']
+None
+None
+None
+None
+None
+None
+None
+['Scrum']
+None
+None
+['GCP', 'VMware', 'API Management']
+['SQL', 'Salesforce']
+None
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+['Python']
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+['Python', 'Git']
+None
+['ABAP']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+['C', 'Java']
+None
+None
+None
+['Confluence', 'Git']
+None
+['SQL']
+None
+None
+None
+None
+['DB2 LUW on RedHat Linux systems', 'REXX', 'Broadcom CA', 'Puppet', 'Ansible', 'Jira', 'Agile']
+None
+None
+None
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+['Linux', 'VMware']
+None
+['SQL', 'Kubernetes']
+None
+None
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+['Git', 'SVN']
+['Enterprise Architekt']
+['SoapUI', 'GitLab', 'Jira']
+None
+['GEB', 'Karate']
+None
+None
+['Spring Boot', 'Apache Kafka']
+['Git', 'GitLab', 'OpenAPI', 'ESLint', 'Sentry', 'Prettier', 'Figma', 'Jest', 'Storybook', 'postman']
+None
+None
+['apache kafka']
+None
+None
+None
+None
+['React.js', 'Angular', 'Vue.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Scrum', 'Jira', 'Saas']
+None
+None
+None
+['Git', 'SVN']
+None
+['.NET']
+None
+None
+None
+None
+None
+None
+None
+['Hadoop', 'Atlas', 'Ranger']
+['Heroku', 'REST API']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+['Python', 'JavaScript', 'Bash']
+None
+None
+None
+['Kafka', 'React']
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+None
+None
+None
+['Docker', 'Jira', 'Confluence', 'AWS', 'Azure', 'Containerization', 'Solr']
+None
+None
+None
+None
+['AWS']
+['TypeScript', 'GraphQL']
+None
+None
+['SAS', '4GL SAS', 'SAS Visual Analytics', 'SQL', 'SAS Management Console', 'Linux']
+['TypeScript', 'GraphQL']
+None
+None
+['Docker', 'Jenkins', 'CI CD']
+None
+None
+None
+['Java', 'C']
+None
+None
+['MongoDB', 'BigQuery', 'Docker', 'Python', 'Kubernetes', 'GCP']
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Scrum', 'Linux OS', 'Azure Blueprints', 'Security tools for Kubernetes']
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+['iOS', 'Switch']
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['Enterprise Architekt']
+None
+None
+None
+None
+None
+None
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+None
+['Jenkins', 'Python']
+None
+None
+['UNIX LINUX', 'MongoDB', 'Docker', 'Ansible', 'REST']
+None
+['Qt', 'SQL']
+None
+['Ansible', 'Terraform', 'Kibana', 'Grafana']
+None
+None
+['Azure DevOps', 'AWS', 'Google Cloud Platform']
+None
+None
+None
+['SQL', 'VBA JAVA']
+['C', 'Java']
+['Ruby', 'Python', 'Bash', 'Groovy', 'PowerShell', 'Grafana', 'Prometheus', 'Java', 'JavaScript', 'Go', 'Git']
+None
+None
+None
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+['Cisco', 'Cisco Meraki']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'Angular']
+None
+None
+None
+None
+['SQL', 'Java']
+None
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+['CCTC', 'SKD']
+None
+None
+None
+None
+None
+None
+['C']
+None
+None
+['SQL', 'Apache', 'PHP']
+None
+['Terraform', 'Kafka']
+None
+None
+None
+None
+None
+['UIKit', 'CoreData', 'XCTest', 'Xcode', 'Fastlane', 'Swift Package Manager']
+None
+['Java', 'QT']
+['CSS', 'HTML']
+None
+None
+['Enterprise Architekt']
+None
+['Linux', 'Unix']
+['Apache', 'HAProxy', 'Zabbix']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+['MS Visio', 'Microsoft Power BI']
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Azure Data Factory', 'Azure Databricks']
+['SQL']
+None
+['SQL']
+None
+None
+None
+None
+None
+['ABAP']
+None
+['AWS', 'Magento']
+['MS Power BI']
+['JavaScript', 'CSS', 'HTML5']
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+None
+None
+None
+None
+None
+None
+['Magento 2']
+None
+['SQL']
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+['Oracle DB, SQL']
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['Google Analytics']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['PowerShell', 'VBS', 'SAN', 'Windows Server Failover Clustering']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'C', 'C']
+['C', 'Java']
+['Panaya', 'Kanban methodology']
+None
+['Apache ServiceMix', 'MS Service Broker']
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+['Kafka']
+None
+None
+None
+None
+None
+None
+['Java SpringBoot', 'Maven', 'Java or C']
+None
+['Blazor', 'JavaScript']
+None
+None
+None
+None
+None
+['ABAP']
+None
+None
+None
+['Zabbix']
+None
+None
+None
+['Docker', 'CI CD', 'socket.io']
+None
+None
+None
+['C', 'SQL']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+None
+['Bamboo', 'Jenkins']
+None
+None
+None
+['Kafka']
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Cloud Platform', 'Python', 'Jira', 'Confluence']
+None
+None
+['AWS', 'Kafka', 'Python', 'Node.js', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'DynamoDB', 'JavaScript', 'React.js']
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['AWS', 'Azure', 'Google']
+None
+['JIRA']
+None
+None
+None
+['Java', 'Python', 'Bazy Danych', 'Infrastruktura IT', 'Sieci Teleinformatyczne', 'Cybersecurity', 'BCM']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['excel']
+None
+['systemy ERP', 'CRM', 'rozwiązania typu SENT, EMCS, PIDX']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+['Angular']
+None
+None
+None
+['MS SQL', 'MS SQL Server']
+None
+None
+None
+['SVN', 'Git', 'UML']
+['Qt', 'SQL']
+None
+None
+None
+None
+['Git', 'SVN']
+None
+['Spring Boot', 'Apache Kafka']
+None
+['Gosu']
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Linux', 'AWS', 'Elasticsearch']
+None
+None
+['Terraform', 'Kafka']
+None
+['Apache Airflow', 'Azure DevOps']
+['Docker', 'KeyCloak', 'IdenityServer', 'JIRA', 'Bamboo', 'Bitbucket', 'Domain Driven Design']
+None
+None
+None
+['Redgate', 'DBPlus']
+None
+None
+['AEM aa Cloud Service', 'Contentful', 'Magnolia']
+None
+['Hadoop', 'Atlas', 'Ranger']
+None
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+None
+['Python', 'Cisco']
+['ABAP']
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+['Azure', 'Google Cloud Platform']
+None
+['GraphQL', 'Apache Airflow', 'Google Cloud Platform', 'Pyspark']
+['Java', 'Spring Framework']
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+['Git', 'SVN', 'Bash', 'TCP IP', 'VoIP']
+['SQL', 'Java']
+None
+None
+None
+None
+None
+['Angular', 'React', 'Docker', 'TypeScript']
+None
+None
+None
+None
+['Figma']
+None
+None
+['MS SQL', 'MS SQL Server']
+None
+None
+None
+['Tableau', 'Python', 'R', 'Microsoft Power BI']
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+['XML', 'SQL']
+['Python', 'Jira', 'Jenkins', 'Git', 'Docker']
+None
+None
+['Kafka', 'SAP']
+None
+['Scala', 'Oracle']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+['ABAP', 'Agile']
+None
+None
+['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes']
+None
+None
+None
+None
+['Vue.js', 'Angular.js', 'React']
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+['SQL', 'Apache', 'PHP']
+None
+None
+None
+None
+None
+['JavaScript', 'Groovy', 'Jenkins', 'Jira', 'Confluence', 'JBoss Application Ser']
+['Java', 'Spring Framework']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['iOS', 'Android']
+None
+None
+['Jira', 'WorkSpace ONE', 'Active Directory']
+None
+['C', 'Java']
+None
+None
+None
+['MongoDB', 'PowerShell', 'Docker', 'Kubernetes']
+None
+None
+None
+['Grafana', 'Prometheus', 'ELK Stack', 'JavaScript']
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+['SQL']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+['C', 'Java']
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+None
+['SQL', 'T-SQL', 'Linux', 'Entity Framework', 'Prism Framework']
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+['SQL']
+None
+None
+None
+None
+None
+['scikit-learn', 'Tensorflow', 'PyTorch', 'Keras', 'Pandas', 'Caffe', 'NumPy']
+None
+None
+None
+None
+None
+None
+None
+None
+['Elasticsearch', 'Grafana', 'Terraform', 'Ansible', 'PostgreSQL', 'MySQL', 'AWS']
+None
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+['Cypress']
+None
+['Kafka', 'React']
+['Kotlin']
+None
+None
+None
+None
+None
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes', 'Azure DevOps', 'AWS', 'Google Cloud Platform', 'OpenStack']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Redgate', 'DBPlus']
+None
+None
+None
+None
+['ASP.NET Core SignalR']
+None
+None
+None
+None
+['SQL', 'Splunk', 'Jira']
+None
+None
+['ITIL', 'CCNA', 'CCIP', 'CISSP', 'SOC']
+['AWS', 'Magento']
+['Python', 'Perl', 'SQL']
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['Unix']
+None
+None
+None
+None
+['Python', 'Bash']
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+['Azure', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Databricks Structured Streaming', 'Kafka']
+['Bash', 'Gherkin']
+None
+['SQL']
+['Oracle DB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GraphQL', 'gRPC']
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['GraphQL', 'gRPC']
+None
+None
+None
+['SQL', 'REST API', 'Postman']
+['Microsoft O365']
+['Enterprise Architect']
+None
+None
+['BPMN']
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'MongoDB', 'PyCharm']
+['C', 'Java']
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+['TypeScript', 'HTML', 'CSS', 'RabbitMQ', 'Elasticsearch']
+['znajomość XSLT, XML', 'znajomość systemu PrefSuite lub innego systemu do zarządzania produkcją stolarki otworowej']
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+['Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+None
+['HTML5']
+None
+None
+['Java', 'Spring Framework']
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+['Java', 'Spring Framework']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PHP', 'Laravel', 'Kafka', 'Kubernetes']
+['SQL', 'Java']
+['Active Directory', 'PowerShell', 'Jira', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['Python']
+None
+None
+['.NET', 'React.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'Tableau']
+None
+None
+None
+None
+['BigQuery', 'JavaScript', 'Python']
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['Gosu']
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+['PowerShell', 'Bash', 'Prometheus', 'Grafana', 'Zabbix']
+None
+None
+None
+None
+None
+['Microsoft Azure', 'Microsoft Dynamics']
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+None
+None
+['XML', 'JIRA', 'Confluence']
+None
+None
+None
+None
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+['SQL']
+None
+None
+None
+None
+None
+None
+['Ansible', 'Red Hat']
+None
+None
+['Java', 'Python', 'DataFlow']
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+['AWS', 'Magento']
+['Kafka', 'React']
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+['C', 'Java', '.NET', 'Python']
+None
+None
+None
+None
+None
+None
+None
+['Python']
+None
+None
+['Jira', 'Azure', 'DevOps', 'Postman', 'SoapUI', 'Docker', 'Java11', 'Spring', 'Maven']
+None
+None
+['Cisco', 'Cisco Meraki']
+['C', 'Java']
+None
+['Jira', 'Microsoft Power BI']
+None
+['HANA']
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+['Python', 'Apache Kafka', 'Apache Nifi', 'SAS']
+None
+None
+['Python', 'PowerShell', 'Influx', 'Grafana']
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+None
+None
+None
+None
+['HTML5']
+None
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+None
+['SQL', 'PowerShell', 'Apache']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+['Veeva', 'Trackwise']
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'Git']
+None
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GitLab', 'CI CD', 'JavaCard']
+None
+['Enterprise Architect', 'Jira']
+None
+['PostgreSQL', 'Oracle', 'RabbitMQ', 'Docker']
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'Java']
+['Azure Synapse', 'Azure Data Factory', 'Azure DevOps']
+None
+None
+None
+['Scrum', 'Agile']
+['AWS', 'Bash', 'Python']
+None
+None
+['Ansible', 'Satellite', 'Kubernetes', 'OpenShift', 'Docker', 'Jenkins', 'Prometheus', 'Grafana', 'Zabbix', 'Nagios', 'Terraform', 'Puppet']
+None
+['SQL', 'SOAP', 'REST']
+None
+None
+None
+None
+['VBA', 'MS SQL', 'T-SQL']
+None
+None
+['Python', 'Cisco']
+None
+None
+None
+['AWS', 'Magento']
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+['Docker', 'Vue.js']
+None
+None
+['SQL', 'Visual Studio']
+None
+['Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'Git']
+None
+None
+None
+None
+None
+['.NET', 'React.js']
+['Enterprise Architekt']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['C', 'Java']
+None
+None
+['Zabbix']
+None
+['Enterprise Architekt']
+None
+None
+None
+['AWS', 'Magento']
+None
+['Shader Graph Unity']
+None
+['Maven', 'JavaScript', 'Linux']
+['Docker', 'Kubernetes', 'Zabbix', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+None
+None
+None
+['AWS', 'CI CD', 'Realm']
+['Chef', 'Zabbix', 'Kibana', 'Terraform', 'GitLab', 'GitHub', 'SQL']
+None
+['Kafka']
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+['Kotlin', 'Scala']
+None
+None
+None
+['VBA', 'Python', 'PowerQuery', 'Power BI']
+None
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+None
+None
+['Spring Framework', 'MongoDB', 'Java']
+None
+None
+['OpenJDK', 'Git', 'GitHub', 'SVN', 'AWS', 'Java 8', 'Java SE']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['Kotlin', 'Groovy', 'Docker', 'Kubernetes', 'Jenkins', 'Android']
+None
+None
+None
+None
+None
+None
+None
+None
+['Redmine', 'Power Automate', 'Power Apps', 'MS Project Online', 'MS Project Server', 'SharePoint']
+None
+None
+None
+['Symfony', 'RabbitMQ', 'Docker', 'Redis', 'Elasticsearch', 'MongoDB']
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Power BI', 'Microsoft Azure']
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+None
+None
+None
+None
+['Terraform', 'Kafka']
+['SQL']
+['C', 'Lua', 'Python']
+None
+None
+['C', 'C', 'Java']
+None
+['webMethods']
+None
+None
+None
+['Linux', 'Docker']
+None
+None
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['C', 'Python']
+None
+None
+None
+None
+['Python']
+['Ansible', 'Red Hat']
+['HTML', 'CSS', 'JavaScript', 'Java']
+None
+['SAP']
+None
+None
+['Visual Studio', 'Git', 'Docker', 'Jira', 'Azure DevOps', 'ERP']
+['C', 'Java']
+None
+['AWS', 'Google Cloud Platform']
+None
+['Autodesk', 'SideFX', 'Foundry']
+['Zabbix', 'Oracle', 'Python']
+None
+None
+None
+None
+None
+None
+None
+['ABAP']
+['jQuery', 'REST APIs', 'Bootstrap']
+None
+None
+['Linux']
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+None
+['Kafka', 'SAP']
+None
+None
+['Spring Boot', 'Apache Kafka']
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['AWS', 'Magento']
+None
+None
+None
+['AWS', 'Python', 'REST']
+None
+['Microsoft Azure', 'Google Cloud Platform', 'Kubernetes', 'Oracle', '.NET', 'PostgreSQL', 'MongoDB', 'RabbitMQ', 'Ansible', 'Terraform']
+None
+None
+['Java']
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+['Kotlin']
+['Enterprise Architekt']
+None
+['TypeScript', 'Angular', 'Laravel']
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+None
+None
+['Java', 'C']
+None
+None
+None
+None
+None
+['Python', 'R']
+None
+None
+None
+None
+None
+None
+['Python', 'Git']
+None
+['Spring Framework', 'Angular', 'MongoDB', 'Java']
+None
+['Kubernetes']
+None
+['Python', 'Bash']
+['Cypress']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+None
+None
+None
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+['GEB', 'Karate']
+None
+None
+None
+None
+['SoapUI']
+['Vue']
+None
+None
+['Azure DevOps', 'Confluence']
+['Perl', 'Git', 'Python']
+None
+None
+['Jira', 'Confluence', 'postman', 'jMeter']
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PowerShell', 'VBS', 'SAN', 'Windows Server Failover Clustering']
+None
+['Kafka']
+['Python']
+None
+None
+['Apex']
+None
+None
+None
+None
+None
+None
+None
+None
+['Panaya', 'Kanban methodology']
+None
+['SQL']
+['SQL', 'Enterprise Architect', 'BPMN', 'UML']
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+['AWS', 'SQL', 'NoSQL', 'Docker', 'Kubernetes']
+None
+['apache kafka']
+None
+['Terraform', 'Kafka']
+['PowerShell']
+['Cloud - AWS Azure GCP', 'Python', 'Agile']
+None
+['Magento 2']
+None
+None
+None
+['Zabbix', 'Nagios', 'Docker', 'Kubernetes', 'OpenShift']
+['Vuetify', 'Node.js', 'AWS']
+None
+None
+None
+['Jenkins']
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['Tableau']
+None
+None
+None
+None
+None
+None
+None
+['Kotlin', 'Scala']
+['ABAP', 'Fiori']
+None
+None
+None
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+['Cypress']
+None
+None
+None
+None
+None
+None
+['Builder.io', 'Microsoft Azure']
+None
+['React']
+['Bash', 'SQL', 'PL SQL']
+None
+None
+['Python']
+['Java', 'Spring Framework']
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+['Bash']
+None
+None
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+None
+None
+['Python', 'BPMN']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['Linux', 'Active Directory', 'Docker', 'Kubernetes', 'AWS', 'UML']
+None
+None
+None
+['MVC', 'MVVM', 'MVP', 'JavaScript']
+None
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Jira', 'Slack', 'Trello']
+None
+['C', 'Java']
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+['PostgreSQL', 'MongoDB', 'Docker', 'Ruby']
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+['HPE', 'Aruba', 'Cisco', 'Sentinel One', 'McAfee', 'Linux', 'DELL', 'Lenovo']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['GEB', 'Karate']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PL SQL']
+None
+None
+None
+['Power BI', 'Tableau', '.NET', 'Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Magento 2']
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+['C', 'C']
+None
+['Kafka']
+['Java', 'Python', '4GL']
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+['SQL']
+None
+None
+['Kafka', 'PostgreSQL', 'MongoDB', 'Docker', 'Kubernetes', 'DDD', 'Confluent Schema Registry', 'ElasticSearch', 'Hexagonal Architecture']
+None
+None
+None
+None
+None
+None
+None
+['Qt', 'SQL']
+None
+None
+None
+['Spring Boot', 'Apache Kafka']
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+['Kubernetes']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['GEB', 'Karate']
+['JavaScript', 'CSS', 'HTML5']
+None
+['Kafka']
+None
+None
+None
+None
+None
+['SalesForce Campaign Manager', 'Synerise', 'Google Analytics']
+None
+None
+['R', 'SAP', 'Oracle']
+['Python', 'Tableau']
+None
+['BPMN']
+None
+None
+None
+['Kubernetes', 'MongoDB', 'PyCharm']
+None
+['Enterprise Architect']
+None
+['Kafka', 'RabbitMQ', 'C', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+None
+None
+None
+['Spring Framework', 'Spring Boot', 'Hibernate', 'JMS', 'Apache Kafka', 'Swing']
+None
+None
+['Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+None
+['Java', 'Spring Framework']
+None
+None
+['PowerShell']
+None
+None
+['Python', 'Git']
+None
+None
+None
+['Ansible', 'Red Hat']
+None
+['VBA', 'PowerBI']
+None
+['AWS', 'Azure', 'GCP']
+None
+None
+['REST API', 'SCRUM', 'UML', 'BPMN', 'CI CD', 'Microservices']
+None
+None
+None
+None
+None
+None
+['Języki programowania']
+None
+None
+None
+['Airflow']
+None
+None
+None
+None
+['Unix shell', 'PowerShell', 'Microsoft Acitve Directory', 'DesktopCentral', 'Python', 'Wireshark', 'Umiejętność zarządzania sieciami i protokołami TCP IP']
+None
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+None
+None
+['Airflow', 'Kedro', 'Seldon Core', 'Groovy', 'Terraform', 'Spark']
+None
+None
+None
+['Salesforce']
+['C', 'Java']
+None
+None
+None
+None
+['Elasticsearch', 'Oracle', 'Redis', 'PostgreSQL', 'Git', 'FastAPI', 'PyTest', 'RestAPI', 'Flask', 'Celery', 'RabbitMQ', 'Linux', 'CI CD', 'Jenkins', 'Docker', 'Agile', 'Scrum']
+None
+['C', 'Node.js']
+None
+None
+['SQL', 'SOAP', 'REST']
+['BPMN']
+None
+['Docker', 'Kubernetes']
+None
+None
+['Python', 'Cisco']
+None
+None
+['MS Power BI']
+None
+None
+None
+None
+None
+['React.js', 'Angular', 'Node.js', 'webpack', 'Gradle']
+['Google Cloud Platform']
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+['C', 'C', 'JavaScript', 'Java']
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+['Vaadin', 'Hibernate', 'Docker', 'Kubernetes', 'OpenShift', 'Kafka', 'XML', 'JSON', 'Yaml', 'Jenkins', 'JIRA', 'Confluence', 'Groovy', 'bash', 'Windows Powershell', 'Oracle DB', 'PL SQL']
+None
+None
+None
+None
+['GraphQL']
+None
+None
+None
+['Certyfikaty: np. CompTIA Security, CEH lub równoważne', 'Doświadczenie w użytkowaniu rozwiązań klasy SIEM, SecOps']
+None
+None
+['C', 'Java']
+['PHP', 'C', 'Java']
+['Cypress']
+None
+None
+['Windows Server']
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+['Kafka']
+None
+None
+None
+None
+None
+['Kafka', 'Microsoft SQL Server', 'PostgreSQL', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['HTML5']
+None
+None
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+['C']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+['CI', 'CD']
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+None
+['ABAP', 'X']
+None
+None
+['cybersecurity', 'networking']
+None
+None
+None
+None
+['mornitoring tools']
+['Gosu']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+['GitLab', 'CI CD', 'JavaCard']
+None
+None
+None
+None
+None
+None
+['Angular.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['OKTA', 'Dayforce', 'Enablon']
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+['RD']
+None
+None
+None
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+None
+['Redgate', 'DBPlus']
+['Python', 'Tableau']
+None
+None
+None
+None
+['BPMN']
+None
+None
+None
+None
+None
+['JavaScript', 'C', 'XML', 'Java']
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+['SQL', 'Kubernetes']
+None
+None
+['SQL']
+['BPMN']
+None
+None
+None
+['HANA']
+None
+None
+None
+['Cypress']
+None
+None
+['C']
+None
+['HTML5']
+['IoT']
+None
+None
+None
+None
+None
+['BPMN']
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['SAP HANA', 'SAP BW']
+None
+None
+['Salesforce', 'Veeva']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+['SQL']
+['Azure DevOps', 'Objective-C', 'Swift', 'Java']
+None
+['C', 'DDD', 'TDD']
+None
+['SQL']
+None
+['Java', 'HTML', 'VBA scripting', 'SAP']
+None
+None
+['S4 HANA']
+None
+None
+None
+['Power BI', 'DAX', 'Power Apps', 'Microsoft 365', 'SQL', 'Azure SQL']
+None
+None
+None
+None
+['SAP', 'Data Management tools']
+None
+['Majiq Elixir', 'Oracle', 'SQL', 'OMP']
+None
+None
+None
+['VBA', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['.NET', 'React.js']
+None
+None
+None
+None
+None
+None
+['PowerShell', 'Bash', 'Python', 'Ruby', 'Go', 'Groovy']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['AWS', 'Azure', 'Google']
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kafka']
+['Java', 'Python', 'C']
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+None
+None
+None
+['ITIL']
+['Apache', 'MySQL', 'Linux']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'Kafka', 'MongoDB']
+['Python', 'Groovy']
+None
+None
+['C', 'Java']
+['Azure DevOps', 'Confluence']
+None
+None
+None
+['SAPUI5']
+None
+['AWS', 'Jira', 'Git', 'PostgreSQL', 'Dynatrace', 'Kubernetes']
+None
+None
+['BPMN']
+None
+None
+['Kafka', 'SAP']
+['C', 'DDD', 'TDD']
+None
+['Visual Studio', 'Git', 'Docker', 'Jira', 'Azure DevOps', 'ERP']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Magento', 'Shopware']
+None
+None
+None
+None
+None
+None
+None
+['Ngrx Store Redux', 'Rxjs', 'Adobe Animate', 'Node.js', 'REST Api']
+None
+None
+['MongoDB', 'Fuseki', 'SQL', 'SPARQL', 'Kubernetes', 'Docker', 'Kafka', 'RabbitMQ', 'Redis']
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+None
+['Python']
+['ABAP', 'Agile']
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Cloud Platform', 'Docker', 'OpenShift', 'Kubernetes', 'GKE', 'Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'Bash', 'Ruby']
+None
+None
+None
+['Adobe XD', 'Adobe Lightroom', 'Adobe InDesign']
+['Azure DevOps', 'InstallShield', 'PowerShell', 'VB', 'COM', 'DCOM']
+['Oracle']
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+['Java', 'Spring Framework']
+None
+None
+None
+None
+['Entity Framework', 'React.js', 'Kubernetes', 'Microsoft Azure', 'Azure DevOps']
+None
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+None
+['TypeScript', 'GraphQL']
+['Apache ServiceMix', 'MS Service Broker']
+['Ansible', 'Red Hat']
+None
+None
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+['Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Panaya', 'Kanban methodology']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['Kubernetes']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['CISSP', 'OSCP', 'CEH']
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['C', 'Java']
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+['Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes']
+['Python', 'Cisco']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+None
+None
+['BPMN', 'Linux', 'Git', 'Vue.js', 'PHPStorm', 'HTML', 'CSS', 'JavaScript', 'Laravel']
+None
+None
+None
+None
+['XML', 'JIRA', 'Confluence']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'PowerShell', 'Bash']
+None
+None
+None
+None
+['Kubernetes']
+None
+None
+None
+None
+None
+['Perl', 'Git', 'Python']
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['Hibernate', 'Terraform', 'Azure DevOps']
+['AWS', 'Kubernetes', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'GitOPS', 'GitLab', 'Kafka']
+['SAP ABAP']
+None
+['Ansible', 'Terraform', 'CI CD']
+None
+None
+['AWS', 'Docker', 'Oracle SQL']
+['Kubernetes']
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Elasticsearch', 'Data Dog', 'Grafana', 'Gradle', 'Prometheus']
+['SQL']
+None
+None
+None
+None
+None
+['Python', 'R']
+['SQL']
+None
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+['Zabbix']
+None
+['Terraform', 'Ansible', 'Kafka', 'Elasticsearch']
+None
+None
+None
+None
+None
+None
+None
+None
+['Kotlin']
+None
+None
+None
+['Git', 'SVN']
+['Azure', 'Google Cloud Platform']
+None
+None
+['AWS', 'Magento']
+None
+None
+None
+['Qt', 'SQL']
+None
+None
+None
+None
+None
+['Jenkins', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+None
+['Python', 'Git']
+None
+None
+['Oracle', 'AWS', 'Celigo']
+None
+['Hadoop', 'SQL']
+None
+None
+['Hadoop', 'SQL']
+['HTML', 'JavaScript', 'SQL', 'MVC', 'WCF', 'C', 'CSS', 'Microsoft Power BI', 'Microsoft Power Automate', 'Azure DevOps', 'SharePoint']
+None
+None
+None
+None
+['Jenkins', 'TeamCity', 'Azure Resource Manager', 'Chef', 'Puppet']
+None
+['SQL', 'Java']
+['Qt', 'SQL']
+['Python', 'Ruby', 'Groovy', 'Azure']
+None
+None
+None
+None
+None
+None
+None
+['GraphQL']
+['Jenkins']
+None
+['Google Cloud Platform']
+None
+None
+['SQL', 'Enterprise Architect', 'SoapUI', 'Postman']
+None
+None
+['Jira', 'rollup.js', 'YAML', 'Azure DevOps', 'OWASP', 'CIS', 'SAST', 'DAST', 'GitLab', 'Git', 'GitHub']
+None
+['Google Cloud Platform']
+None
+None
+['ServiceNow', 'CA SDM']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['BPMN']
+['Docker', 'Ansible', 'Linux']
+None
+None
+None
+None
+None
+None
+['SQL', 'MVC', 'WCF', 'Microsoft Dynamics', 'HTML', '.NET', 'C', 'Microsoft Power BI', 'Power Automate', 'Azure DevOps', 'JavaScript', 'CSS', 'SharePoint']
+['Microsoft Azure', 'Google Cloud Platform', 'Jenkins', 'GitLab', 'Java', 'Grafana', 'Prometheus', 'Gradle', 'Maven', 'Elasticsearch']
+['Bash', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+['Bazy danych czasu rzeczywistego']
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+None
+['Hadoop', 'Atlas', 'Ranger']
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+None
+['Google Analytics']
+None
+None
+['Docker', 'Kubernetes']
+None
+['Apache Airflow']
+None
+None
+None
+None
+None
+None
+['ABAP']
+['Entity Framework', 'ASP.NET MVC', 'Elasticsearch', 'RabbitMQ', 'Docker', 'Redis']
+None
+['Java']
+['SAPUI5']
+None
+None
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+['SQL']
+None
+['Python']
+None
+['Docker', 'AWS', 'DevOps', 'Cloud solutions', 'JavaScript', 'React Native', 'Angular', 'Kafka', 'Kubernetes', 'React.js']
+None
+['PHP', 'Java']
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Apex']
+['Google Cloud Platform']
+['Autodesk', 'SideFX', 'Foundry']
+['Scala']
+['Docker', 'Jenkins', 'CI CD']
+None
+None
+None
+None
+None
+['Xilinx Vivado', 'Xilinx HLS', 'Verilog', 'C']
+['Kubernetes', 'MongoDB', 'PyCharm']
+None
+None
+['SoapUI']
+None
+None
+None
+None
+None
+['SQL']
+['C', 'Embedded', 'Qt', 'Boost', 'CMake', 'Python']
+None
+None
+None
+None
+['PostgreSQL', 'Elasticsearch']
+['NLP', 'Computer Vision']
+None
+None
+['Git', 'Docker', 'Docker-compose']
+['Python', 'C', '.NET']
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+['Active Directory']
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+['Java']
+['Hadoop', 'SQL']
+None
+None
+None
+['Jira']
+None
+None
+None
+['PowerBI', 'APEX', 'Bitbucket', 'SonarQube', 'TeamCity', 'AutomateNOW']
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+['Java', 'Ruby', 'Golang']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['CI CD']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'R', 'Java']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['Jenkins', 'Python']
+None
+['Java', 'Python', 'C']
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+['Angular', 'Kubernetes']
+['Git', 'SVN']
+['Narzędzia do prezentacji (MS Power Point)', 'Techniki moderacyjne i frameworki do pracy koncepcyjnej (Domain Driven Design, Google Design Sprints, etc.)']
+None
+None
+None
+None
+None
+None
+None
+None
+['Google Analytics', 'Adobe Analytics', 'Figma']
+None
+['FIORI']
+None
+None
+['HTML5']
+['Jira', 'Confluence', 'Google Analytics']
+None
+None
+None
+['MongoDB', 'RabbitMQ', 'Kafka', 'Kubernetes', 'Docker', 'Swagger', 'Jackson', 'HTML', 'CSS', 'JavaScript', 'Node.js', 'React.js', 'Angular', 'TypeScript']
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Microsoft Azure']
+None
+['SQL', 'Linux']
+None
+['C']
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['LeSS']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Bootstrap', 'Vuetify', 'Docker']
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+None
+None
+['AWS']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+['Python', 'Cisco']
+None
+None
+['AWS', 'Kubernetes', 'Selenium']
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Salesforce']
+None
+None
+None
+None
+None
+None
+['PL SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Git', 'Python']
+None
+None
+None
+None
+['Python']
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+['Redgate', 'DBPlus']
+None
+['Eloquent', 'PHPUnit', 'JavaScript', 'Python', 'Java']
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+['Redgate', 'DBPlus']
+None
+['Pandas', 'NumPy', 'AI ML', 'AWS', 'Airflow', 'BigQuery', 'FastAPI']
+['Fortigate', 'Cisco', 'Extreme Networks', 'Mikrotik', 'Jira', 'Confluence']
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['HTML5', 'JavaScript', 'jQuery']
+None
+['SQL']
+None
+['Kotlin', 'Scala']
+['SQL']
+None
+['ABAP']
+['Apex']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Python', 'Java']
+None
+['Windows Server']
+None
+None
+None
+None
+None
+['SQL', 'JavaScript', 'jQuery', 'Git', 'SVN']
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+None
+['HTML', 'CSS', 'JavaScript']
+None
+None
+['Angular', 'React.js']
+None
+None
+None
+None
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+None
+['Jenkins', 'Python']
+None
+['Kafka', 'SAP']
+None
+['Google Cloud Platform']
+None
+None
+None
+None
+['Oracle DB, SQL']
+None
+None
+None
+None
+['Visual Studio', 'Postman', 'SoapUI', 'JavaScript', 'Bootstrap', 'C']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python', 'TypeScript', 'UML']
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Jira', 'Enterprise Architect']
+None
+None
+['Salesforce']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['Modelsim', 'Questa', 'Simvision']
+None
+None
+None
+None
+['Git', 'VS', '.NET', 'C']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['GraphQL']
+['C', '.NET', 'React', 'PL SQL', 'Cloud']
+None
+None
+None
+['Oracle', 'SQL', 'MS Azure']
+['Kafka']
+['Angular', 'React']
+['TypeScript', 'GraphQL']
+None
+None
+['Jira', 'Confluence']
+None
+['SQL', 'Python', 'Bash', 'Perl', 'GitLab', 'Jenkins']
+None
+None
+None
+['Google Cloud Platform']
+['WMS']
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+None
+None
+None
+['Kafka']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+['ABAP']
+['C', 'Java']
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+['Selenium', 'Appium', 'Gherkin']
+['C', 'Java']
+None
+None
+None
+['Service Desk']
+None
+['Jira', 'React Native', 'RabbitMQ']
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+['Docker', 'Kubernetes']
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+['Git', 'SoapUI', 'Jmeter']
+None
+None
+['Tealium Tag Manager', 'Adobe Target', 'Adobe Analytics', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+None
+None
+['Java SpringBoot', 'Maven', 'Java or C']
+['Hadoop', 'SQL']
+['Microsoft Dynamics', 'Jira', 'Visual Studio Code']
+None
+['PowerShell', 'Python', 'Grafana']
+None
+['Cisco', 'Extreme', 'Fortinet']
+['Linux', 'AWS', 'Elasticsearch']
+None
+['VMware']
+None
+['C', 'Java']
+None
+None
+None
+None
+None
+['Python', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+['Kali Linux', 'Nessus', 'OpenVAS', 'Wireshark']
+None
+None
+['Python']
+None
+['SQL DB2', 'MS SQL', 'Microsoft Azure', 'DataBricks', 'PowerBI']
+None
+None
+None
+None
+None
+['Python', 'Qt', 'wxWidgets']
+['Jira', 'Umbraco', 'REST API', 'DataDog', 'Git']
+['SQL', 'PowerBI', 'VBA', 'SAP']
+None
+None
+None
+None
+None
+None
+None
+None
+['AWS', 'Docker']
+None
+None
+None
+None
+['PostgreSQL', 'Elasticsearch']
+None
+None
+None
+None
+None
+None
+None
+None
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Eclipse', 'Visual Studio', 'IntelliJ', 'Git', 'GitHub', 'SVN']
+None
+None
+None
+None
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+None
+None
+['OpenShift']
+None
+['Remis', 'MongoDB']
+['Azure', 'SQL']
+None
+['C', '.NET', 'Oracle Forms']
+None
+['SQL']
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+None
+['VB.NET', 'CI', 'CD', 'Azure DevOps', 'PowerShell', 'Com', 'DCOM']
+None
+None
+['Ansible', 'Red Hat']
+['SQL']
+['PHP', 'Java', 'Spring MVC', 'Sprint Boot', 'Thymeleaf', 'jQuery', 'Docker']
+['Salesforce']
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+['Kotlin', 'Android']
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+['Apex']
+['Microsoft Azure']
+None
+['Ab initio', 'Apache Airflow', 'Apache Spark', 'Git', 'Jira', 'Confluence']
+['GEB', 'Karate']
+None
+None
+None
+None
+None
+['C']
+None
+None
+None
+None
+None
+['DevOps']
+['SQL', 'UML', 'Visual Paradigm', 'Atlassian', 'BPMN']
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+['Bug hunting', 'HTML CSS', 'Wiedza z akresu ISTQB', 'Git', 'Browser developer tools', 'Cypress', 'Certyfikat ISTQB', 'BrowserStack', 'REST API GraphQL']
+None
+['.NET', 'React.js']
+None
+['SQL', 'T-SQL', 'SAP Business One']
+None
+None
+['Python', 'Ruby', 'R', 'JavaScript']
+None
+['Docker', 'Kubernetes']
+None
+None
+['ABAP']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+['SQL', 'Python']
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+None
+['CEH', 'Comptia Security', 'CCNA', 'AWS Security', 'CyberSecurity']
+None
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['Solr', 'Zookeeper', 'Jenkins']
+None
+None
+None
+None
+['AWS', 'Jira', 'Git', 'PostgreSQL', 'Dynatrace', 'Kubernetes']
+None
+None
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+['Git', 'SVN', 'perforce', 'Google Cloud Platform', 'Jira', 'Confluence']
+['Python', 'Bash']
+['SQL', 'spring']
+None
+None
+None
+None
+None
+None
+['NLP', 'Computer Vision']
+None
+None
+None
+None
+['C', 'Java']
+['AWS', 'CI CD', 'Realm']
+None
+None
+None
+None
+['PL SQL']
+['Docker', 'Kubernetes']
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+['Java', 'HTML', 'VBA scripting', 'SAP']
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+['Android', 'Systemy klasy MDM - Mobile Device Management', 'Technologie sieciowe LAN WAN', 'Office 365', 'Nagios', 'Radmin', 'Systemy ticketowe, np. ServiceNow, Redmine, LotusNotes']
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+['OKTA', 'Dayforce', 'Enablon']
+['Zabbix']
+['Java', 'Spring Framework', 'PostgreSQL']
+['Panaya', 'Kanban methodology']
+None
+['Python', 'Bash']
+None
+['Cypress']
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['PL SQL']
+['Panaya', 'Kanban methodology']
+None
+['SQL', 'Azure SQL', 'Kubernetes']
+None
+None
+None
+['Python']
+None
+['React.js']
+['Magento 2']
+None
+None
+None
+None
+['Python', 'bash', 'Docker', 'AUTOSAR Framework']
+None
+None
+['Kubernetes']
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+['Azure']
+None
+None
+['SAP ABAP']
+None
+None
+['Kubernetes', 'Docker', 'Java']
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+['SQL', 'NoSQL', 'Oracle', 'MariaDB', 'MongoDB', 'RabbitMQ']
+None
+None
+None
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+None
+['Mobile devices testing', 'REST architecture']
+['Hadoop', 'SQL']
+None
+None
+None
+None
+None
+['Telerik Forms']
+None
+None
+None
+None
+['PL SQL']
+['T-SQL']
+None
+['SoapUI', 'Enterprise Architect']
+None
+['Postman', 'jMeter', 'Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+['Python', 'AWS', 'Terraform']
+['Python', 'Cisco']
+None
+None
+['GEB', 'Karate']
+None
+None
+['SQL Server Reporting Services', 'Azure Databricks', 'Lakehouse', 'Microsoft Power BI']
+None
+None
+None
+None
+None
+None
+['Docker', 'SQL']
+None
+None
+['HP QC', 'JIRA', 'Confluence']
+None
+['HTML', 'CSS', 'Angular.js', 'Python']
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+['Jira']
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Grafana', 'Prometheus', 'Kibana', 'Jenkins', 'Dynatrace']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Python Bash PowerShell', 'Oracle', 'Postgres', 'MSSQL']
+['JSP Servlets', 'HTML', 'CSS', 'JavaScript', 'REST', 'XML', 'Spring MVC']
+None
+None
+['Bootstrap', 'Angular Material', 'Storybook']
+None
+None
+None
+None
+None
+['SQL', 'SAP', 'PowerShell']
+['Azure']
+None
+['NHibernate', 'PostgreSQL']
+None
+None
+None
+None
+None
+['PostgreSQL', 'Microsoft Power BI']
+None
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+None
+None
+None
+None
+['C', 'FreeRTOS', 'RTOS']
+['Android', 'iOS', 'Azure DevOps']
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['GEB', 'Karate']
+None
+None
+None
+['Jira', 'Confluence']
+None
+None
+None
+None
+None
+['Kondor', 'Murex', 'Calypso', 'FlexCube', 'Jira', 'HP QC', 'EPM']
+['C', 'Java']
+None
+None
+None
+None
+None
+None
+None
+None
+['TypeScript', 'GraphQL']
+['Odata', 'SAPUI5']
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+['Vue.js', 'VBScript']
+['IoT']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+['Linux', 'Ansible', 'Docker', 'Kubernetes', 'Oracle', 'Azure', 'AWS']
+['Magento 2']
+['Kafka', 'Microsoft SQL Server', 'PostgreSQL', 'MongoDB']
+['Kafka', 'React']
+None
+None
+['Docker', 'Jira', 'Confluence', 'Azure AD', 'VMware']
+None
+['Salesforce']
+['Apache ServiceMix', 'MS Service Broker']
+None
+None
+None
+['Microsoft Power BI']
+['Kubernetes', 'MongoDB', 'Devops', 'GitLab', 'Docker', 'Monit', 'Zabbix']
+['k8s', 'Docker', 'Elasticsearch', 'Grafana', 'Telegraf', 'InfluxDB', 'Puppet', 'Terraform', 'RabbitMQ', 'Kafka', 'NATS', 'Python']
+['Python']
+['Python', 'SQL']
+['Linux', 'Bash', 'Python', 'JavaScript', 'Ruby']
+None
+None
+['OpenGL', 'FLTK', 'Qt', 'wxWidgets', 'Python', 'Java']
+['Kubernetes']
+None
+None
+['MS SQL', 'MS SQL Server']
+None
+['Kafka', 'TIBCO', 'IBM MQ', 'WebLogic', 'CI CD']
+['VMware', 'Linux']
+None
+['Kafka']
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Builder.io', 'Microsoft Azure']
+['Modelsim', 'Questa', 'Simvision']
+None
+None
+None
+['.NET', 'React.js']
+None
+['DELL-EMC', 'HPE', 'VMware', 'AWS']
+None
+['GitLab', 'Jenkins', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+['SCRUM', 'XML', 'SQL']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['Spring Boot', 'Docker', 'Kubernetes', 'Alfresco', 'Camunda']
+None
+None
+None
+['Python']
+None
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Enterprise Architect']
+None
+None
+None
+['Linux', 'Docker']
+None
+None
+None
+None
+['cloud', 'Docker']
+None
+None
+None
+['Jira', 'Confluence']
+None
+None
+None
+None
+None
+None
+['Snowflake Data Cloud']
+None
+None
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+['TSQL', 'PL SQL', 'Java', '.NET Core', 'XML', 'JSON']
+None
+None
+['Microsoft Excel', 'Tableau', 'Python', 'Knime']
+['Azure DevOps', 'Confluence']
+None
+None
+['CCNA CCNP', 'CCNP CCIP CCDP', 'Juniper']
+None
+None
+['HTML5']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+None
+None
+['Jira']
+['GKE', 'Cloud BigTable', 'Pub Sub']
+None
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'Bash', 'Jenkins']
+None
+None
+None
+None
+['Java', 'Spring Framework']
+['Git']
+['Microsoft Windows Server', 'Microsoft Active Directory', 'Microsoft 365']
+None
+None
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+None
+None
+['SQL', 'Java']
+None
+None
+None
+['GIT', 'Github', 'Jenkins']
+None
+['OLAP', 'Angular']
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+['Nagios', 'Grafana', 'MongoDB']
+['.NET', 'React.js']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+['Redgate', 'DBPlus']
+None
+['XML', 'EDI', 'T-SQL', 'DevExpress']
+['Azure', 'Kubernetes', 'IBM MQ', 'Elastic Search', 'Dynatrace']
+None
+['Python', 'NiFi', 'Azure']
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+['Jenkins', 'Jira', 'Zabbix', 'SQL', 'PostgreSQL', 'Agile', 'Kanban']
+['Salesforce', 'SharePoint']
+None
+['Systemy klasy ERP', 'Serwisy typu Elektroniczne Biuro Obsługi Klienta eBOK', 'Android']
+['CKAD', 'CI CD', 'Azure DevOps', 'Github Actions', 'Kafka', 'Elastic Stack', 'Grafana', 'Prometheus', 'Jira', 'Confluence']
+['Jira']
+['ABAP']
+None
+['AWS', 'Docker']
+['GEB', 'Karate']
+None
+['Jenkins', 'Python']
+None
+None
+['VBA', 'Python', 'PowerQuery', 'Power BI']
+None
+None
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+None
+None
+['Angular', 'vawr']
+['SQL', 'REST API', 'Postman']
+None
+['Azure DevOps', 'Confluence']
+None
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+None
+['SQL']
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+['C', 'Asp.Net Core']
+['GEB', 'Karate']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['SQL', 'REST API', 'Postman']
+None
+['Hadoop', 'Atlas', 'Ranger']
+None
+None
+['Python', 'JavaScript', 'Bash']
+None
+None
+None
+['Java', 'Spring Framework']
+None
+None
+None
+None
+None
+None
+None
+['Apache Kafka', 'ElasticSearch', 'CI CD tools']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+None
+['Gosu']
+['Snowflake Data Cloud', 'Python', 'CDC']
+None
+['Jira']
+None
+['ISTQB', 'Python', 'Jenkins', 'Docker', 'C', 'C']
+['Python', 'Cisco']
+None
+None
+['React.js', 'Vue.js']
+None
+None
+None
+None
+None
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+None
+None
+None
+None
+None
+None
+None
+['Python']
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+['Vulkan, OpenGL ES, OpenCL', 'Android System Software Development', 'Debugging']
+None
+None
+['AWS', 'Google Cloud Platform']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['AWS', 'CI CD', 'Realm']
+None
+None
+None
+['SAP HANA']
+['Snowflake', 'GCP']
+['Flutter Web']
+['Kubernetes']
+['Perl', 'Git', 'Python']
+None
+None
+None
+None
+['Linux', 'Docker']
+None
+None
+None
+None
+None
+['Microsoft Azure']
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+['SAP', 'Windchill', 'CAD']
+None
+None
+None
+None
+['C', 'Java']
+['Kubernetes', 'Docker', 'Apache Spark', 'MLFlow', 'NoSQL']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+None
+None
+None
+['Java', 'HTML', 'SQL']
+None
+None
+None
+None
+['Python', 'Bash']
+None
+None
+None
+['Google Cloud Platform']
+None
+['SQL']
+['SQL', 'PowerShell', 'Linux']
+None
+['Svelte', 'webpack']
+None
+['Enterprise Architect']
+None
+['Salesforce']
+None
+['Google Cloud Platform']
+None
+None
+None
+['Azure']
+None
+None
+None
+None
+None
+None
+None
+['MS SQL', 'MS SQL Server']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+['Magento 2']
+None
+None
+None
+None
+['Kotlin']
+['SQL', 'Java']
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Java', 'Confluence', 'Git', 'SQL', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SoapUI', 'GitLab', 'Jira']
+None
+['Drupal', 'Magento', 'Vue.js', 'React.js', 'Elasticsearch', 'Redis', 'Jenkins', 'Laravel', 'Git', 'Docker']
+None
+None
+['Jenkins', 'Kubernetes', 'Drools', 'Activity']
+None
+None
+None
+['Python', 'Jinja']
+None
+None
+None
+['SQL', 'Java']
+None
+None
+None
+None
+None
+None
+['Node.js', 'Vue.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Bash', 'Python']
+['Salesforce']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+None
+None
+None
+None
+['Microsoft Excel']
+None
+None
+None
+None
+None
+['ABAP', 'Agile']
+None
+None
+None
+None
+None
+None
+None
+['k8s', 'Docker', 'Elasticsearch', 'Grafana', 'Telegraf', 'InfluxDB', 'Puppet', 'Terraform', 'RabbitMQ', 'Kafka', 'NATS', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Hyper-V', 'SQL Server', 'TFS', 'SharePoint', 'Exchange Server', 'Ubuntu', 'Office365', 'Azure AWS GCP']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+['Docker', 'Oracle']
+None
+None
+None
+None
+['ABAP', 'Agile']
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['Azure DevOps', 'Confluence']
+['AWS', 'Microsoft Azure', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+['BPMN', 'Matomo', 'Amplitude', 'Piwik Pro', 'Mixpanel', 'Tealeaf']
+['Docker', 'Solr']
+['MacOS']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['ABAP', 'Agile']
+None
+None
+None
+None
+['Java', 'Swift', 'Objective-C', 'Android SDK', 'iOS']
+None
+None
+None
+['REST', 'MongoDB']
+None
+None
+None
+None
+None
+['Ansible', 'Red Hat']
+['ServiceNow', 'XML', 'Python', 'JavaScript', 'API', 'Oracle Apex', 'UiPath']
+None
+['C', 'Python']
+None
+None
+None
+['vSphere', 'Hyper-V', 'KVM', 'UTM', 'Dell', 'Cisco', 'Fortinet']
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+['T-SQL', 'Apache Spark', 'Apache Airflow', 'Kubernetes', 'Docker', 'Kinesis', 'Event Hub', 'Kafka']
+None
+None
+None
+['React.js', 'Redux', 'JavaScript', 'HTML', 'Hibernate', 'Kafka']
+['.NET Core', 'Angular', 'React.js']
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['Kubernetes', 'Docker', 'Apache Spark', 'MLFlow', 'NoSQL']
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+['MS Dynamics 365', 'MorphX']
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+None
+None
+['Snowflake', 'GCP']
+None
+['Google Cloud Platform']
+['FX Domain']
+None
+None
+None
+None
+None
+None
+['Python', 'C']
+None
+None
+None
+None
+None
+['Tealium Tag Manager', 'Adobe Target', 'Adobe Analytics', 'Python']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+['React Native']
+None
+None
+['Kafka', 'SAP']
+None
+None
+None
+['Kubernetes']
+['Git']
+['React.js', 'Vue.js', 'Java SE', 'Jira', 'CI CD']
+None
+None
+None
+None
+None
+['Python', 'Tableau']
+None
+None
+None
+['Jira', 'Active Directory']
+None
+None
+['ExtJS', 'Angular']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+['Kafka']
+None
+None
+None
+None
+None
+None
+None
+['Java', 'Spring Framework']
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+None
+None
+None
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+['Microsoft Azure', 'Azure DevOps']
+None
+['C', 'Java']
+None
+None
+None
+None
+None
+['Python', 'Git']
+['Spring Boot', 'Gradle', 'Git', 'Docker']
+None
+None
+['SQL', 'REST API', 'Postman']
+['Python']
+['Jira']
+None
+None
+None
+None
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+None
+['Active Directory', 'AWS']
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+['Jira', 'Confluence']
+None
+['Terraform', 'Kafka']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Jira', 'Confluence']
+['GKE', 'Cloud BigTable', 'Pub Sub']
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+['Perl', 'Git', 'Python']
+['HTML5']
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+['Panaya', 'Kanban methodology']
+None
+None
+['Kubernetes', 'Python', 'Linux', 'Docker']
+None
+['Java', 'Spring Framework']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+['Apache Kafka', 'ElasticSearch', 'CI CD tools']
+['Angular', 'React']
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+None
+['Docker', 'Kubernetes', 'SQL', 'Git', 'SVN']
+['Kafka']
+['Azure Data Factory', 'Azure Data Pipelines', 'Azure Cognitive Services', 'PySpark', 'Docker', 'Kubernetes', 'Java 11', 'Spring Boot', 'Kafka', 'Maven']
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['TypeScript', 'GraphQL', 'Next.js', 'Apollo', 'Storybook']
+None
+None
+None
+None
+None
+None
+None
+['Tableau', 'Data Studio']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['AWS', 'Google Cloud Platform', 'Microsoft Azure']
+None
+None
+None
+None
+['Node.js']
+None
+None
+None
+['Vue.js', 'Angular.js']
+None
+['Python']
+None
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+['Python', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['React.js', 'Angular', 'Jenkins', 'Kubernetes']
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+['HTML5']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'JFrog', 'Nexus', 'GitLab', 'Ansible', 'Puppet', 'HashiCorp', 'Jenkins', 'Jira', 'Confluence', 'Bitbucket', 'Vault', 'Packer', 'Nomad', 'Consul']
+None
+['Python', 'Bash']
+['Snowflake', 'GCP']
+None
+['Google Tag Manager', 'Google Analytics', 'SQL', 'C', 'PHP', 'Python']
+None
+None
+None
+['AutomateNOW']
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+['Azure DevOps', 'Confluence']
+['Azure DevOps', 'CI CD']
+['Docker', 'Kubernetes']
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+None
+None
+['SQL', 'SOAP', 'REST']
+['TypeScript', 'Next.js', 'REST API', 'CSS-in-JS', 'react query', 'axios', 'antd', 'maplibre-gl', 'ESLint', 'zod', 'Postman', 'GitLab']
+None
+['Perl', 'Git', 'Python']
+None
+['React.js', 'Vue.js']
+None
+None
+['Apache Kafka', 'ElasticSearch', 'CI CD tools']
+['Ansible', 'Spring-Webflow', 'ADF', 'PLSQL']
+None
+None
+['C', 'Java']
+None
+None
+['Apache Tomcat', 'OpenShift', 'Kubernetes', 'Docker', 'PostgreSQL', 'Oracle', 'SAS', 'MongoDB', 'Jenkins']
+None
+None
+None
+['REST API', 'MVVM', 'SSMS', 'XAML']
+['SAP']
+None
+['RabbitMQ', 'Elasticsearch', 'TeamCity']
+None
+None
+['SQL']
+None
+None
+None
+None
+['Jira', 'Confluence']
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architect', 'Jira', 'Confluence']
+None
+None
+None
+['Java', 'Spring Boot', 'Microservices', 'Kubernetes', 'Docker', 'wirtualizacja']
+None
+None
+None
+['AWS', 'Magento']
+None
+None
+None
+None
+['Enterprise Architect', 'Jira']
+None
+None
+None
+None
+None
+None
+['Kubernetes', 'Docker', 'Apache Spark', 'MLFlow', 'NoSQL']
+None
+None
+['BPMN']
+None
+None
+['Azure', 'Google Cloud Platform']
+['PL SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['VMware']
+['Kubernetes']
+None
+['cloud', 'Docker']
+None
+None
+None
+None
+None
+None
+None
+['Kubernetes']
+None
+['Jenkins', 'Proxmox', 'L2TP', 'IPSec', 'OpenVPN', 'Kubernetes', 'Docker']
+['SoapUI', 'Enterprise Architect']
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+['InteliiJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+None
+['HTML5']
+None
+['SQL', 'SOAP', 'REST']
+None
+['Fiori', 'ABAP']
+None
+None
+None
+None
+None
+None
+None
+None
+['Confluence', 'Jira']
+None
+None
+None
+None
+None
+['HTML5']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps', 'Docker', 'Jira', 'Confluence', 'Jenkins', 'TeamCity']
+None
+None
+None
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['MS SQL', 'Oracle', 'C']
+None
+None
+None
+['Python']
+None
+None
+None
+['Scrum']
+None
+['AWS', 'Magento']
+['Terraform', 'Kafka']
+None
+None
+None
+['AWS', 'Magento']
+['SQL', 'Python', 'Bash', 'Perl', 'GitLab', 'Jenkins']
+None
+['OpenStack', 'oVirt']
+['Kafka']
+None
+['Jenkins', 'Python']
+None
+None
+None
+['Jira', 'Drupal', 'Git', 'WordPress']
+None
+None
+None
+None
+['Tealium Tag Manager', 'Adobe Target', 'Adobe Analytics', 'Python']
+None
+['SAP ABAP']
+['Nagios', 'Grafana', 'MongoDB']
+None
+None
+['Python', 'Java', 'Kotlin', 'TypeScript', 'Docker', 'Ansible']
+['JavaScript', 'CSS', 'HTML5']
+None
+None
+['Salesforce']
+None
+None
+None
+['C']
+None
+None
+None
+None
+['Visual Studio', 'Git', 'Docker', 'Jira', 'Azure DevOps', 'ERP']
+None
+['Hadoop', 'SQL']
+None
+None
+None
+None
+None
+['Docker', 'AWS']
+['ABAP']
+['ABAP']
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+['Salesforce']
+None
+None
+['Python', 'Bash']
+None
+None
+None
+None
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+['Tableau', 'R', 'Machine learning', 'Python', 'Amazon Web Services']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL DB2', 'MS SQL', 'Microsoft Azure', 'DataBricks', 'PowerBI']
+None
+None
+None
+None
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+None
+None
+None
+['Python', 'Java']
+None
+['Panaya', 'Kanban methodology']
+['SQL']
+None
+None
+['AWS', 'Magento']
+None
+None
+['SAP', 'DDs', 'CPro', 'Microsoft Power BI']
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+['ABAP']
+None
+None
+['TypeScript', 'GraphQL']
+None
+None
+None
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+None
+['GraphQL']
+None
+['MacOS']
+['Linux', 'RabbitMQ']
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+['Docker', 'Kubernetes']
+['Angular', 'JavaScript TypeScript', 'RabbitMQ']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['JavaScript', 'Java', 'C', 'Python']
+['Python']
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+['.NET', 'React.js']
+None
+['ServiceNow', 'XML', 'Python', 'JavaScript', 'API', 'Oracle Apex', 'UiPath']
+None
+['Heroku', 'REST API']
+None
+None
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+['Jenkins', 'Python']
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Git', 'Jira', 'TensorFlow', 'OpenCV']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Java', 'Docker']
+['TCP IP', 'HTTP2.0', 'DIAMETER', 'OpenStack', 'Docker', 'Python', 'Bash']
+None
+None
+None
+None
+None
+None
+['SQL', 'spring']
+None
+None
+None
+None
+None
+None
+None
+None
+['Jira', 'Confluence', 'Enterprise Architect', 'Git', 'SQL']
+None
+None
+None
+None
+None
+['Microsoft Azure']
+['AWS', 'Azure', 'Spark', 'Kafka', 'Data mesh']
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+['Microsoft Azure', 'Azure DevOps']
+['Kamailio', 'FreeSwitch', 'Asterisk', 'RabbitMQ', 'Kafka', 'Active Directory']
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['Foreman', 'Bash', 'Ansible']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['ABAP', 'Agile']
+None
+None
+None
+['Python', 'SAS']
+['Ansible', 'Red Hat']
+None
+None
+None
+None
+None
+['Python', 'Jinja']
+None
+None
+None
+['Microsoft Azure', 'Docker', 'Kubernetes']
+['PL SQL']
+None
+None
+None
+None
+['Agile', 'SRE principles']
+None
+None
+None
+['Azure', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'Java']
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+['Python', 'Bash']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['C', 'DDD', 'TDD']
+None
+['C', 'Java', 'MS SQL']
+None
+None
+None
+['Azure SQL', 'JavaScript', 'Angular', 'Docker', 'Kubernetes']
+None
+['Enterprise Architect', 'Jira']
+['Qt', 'SQL']
+None
+None
+['DaVinci Developer', 'DaVinci Configurator', 'CANoe']
+None
+None
+None
+None
+['Six Sigma']
+None
+['Python']
+['OpenShift', 'Prometheus', 'Grafana', 'Elastic Stack', 'Terraform']
+None
+['HTML5']
+['Angular', 'React Native', 'Vue']
+None
+None
+['SAP GUI']
+['Zabbix']
+['Python', 'Cisco']
+None
+None
+None
+['Tableau', 'T-SQL', 'PL SQL', 'Microsoft Excel', 'Knime', 'Python', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'Git', 'REST', 'API', '.NET', 'C', 'Azure SQL', 'Microsoft Azure']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+['SQL', 'VBA JAVA']
+None
+['SBC Audiocodes', 'Kamalio', 'GitLab', 'Jenkins', 'Docker', 'Kubernetes', 'artifactory', 'Puppet', 'Elasticsearch', 'Vault', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['.NET', 'C', 'EntityFramework']
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+['Docker']
+['C', 'Python']
+None
+['Salesforce']
+None
+None
+None
+['Java', 'Python', 'Bazy Danych', 'Infrastruktura IT', 'Sieci Teleinformatyczne', 'Cybersecurity', 'BCM']
+None
+None
+None
+['OpenShift']
+None
+None
+None
+None
+None
+None
+None
+['JavaScript', 'TypeScript', 'C', 'SQL']
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['PlayFab', 'Docker', 'Table storage', 'Cosmos DB']
+None
+None
+None
+None
+None
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+['MS Power BI']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+['Cisco', 'Cisco Meraki']
+None
+['DWH', 'Python', 'SAS']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+['Ansible', 'Chef', 'Puppet']
+None
+None
+None
+None
+None
+None
+['Jira', 'Confluence', 'JavaScript']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+None
+['Jenkins', 'Jira', 'Zabbix', 'SQL', 'PostgreSQL', 'Agile', 'Kanban']
+None
+None
+None
+None
+None
+None
+None
+['Angular', 'AWS', 'Umbraco']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Gosu']
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+['iOS']
+None
+None
+['SQL']
+None
+None
+['Python']
+['Fortinet', 'Cisco', 'Ivanti', 'Microsoft 365', 'Zabbix']
+None
+None
+None
+['Python', 'Tableau']
+None
+None
+None
+None
+None
+['Redgate', 'DBPlus']
+None
+None
+None
+None
+['Kafka']
+['ASP.NET Core SignalR']
+['Docker', 'Kubernetes']
+None
+['Jenkins', 'GitLab']
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['React.js']
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Active Directory', 'DNS', 'DHCP', 'GPO', 'VMware']
+['SQL', 'UI UX']
+None
+None
+None
+None
+None
+['Linux', 'C', 'C', 'Python', 'Java', 'COBOL']
+None
+None
+['PHP', 'Symfony', 'Docker', 'RabbitMQ', 'PostgreSQL', 'MongoDB', 'Redis']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+None
+None
+None
+['SQL', 'JavaScript', 'Jenkins', 'Docker', 'Spring Framework']
+None
+None
+['Java', 'Spring Framework']
+None
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['DevOps']
+None
+None
+['Kotlin', 'Scala']
+None
+None
+None
+['SAP']
+None
+['Docker', 'SQL']
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+['REST API GraphQL', 'Linux', 'React.js', 'MySQL']
+None
+['SQL', 'PySpark']
+None
+None
+['SQL Server Integration Services', 'Java', 'Springboot', 'RabbitMQ']
+['ETL', 'Azure AWS GCP', 'Qlik NPrinting', 'SAP Crystal Reports']
+['.NET', 'React.js']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Camunda']
+None
+['GEB', 'Karate']
+None
+None
+['Git', 'SVN']
+None
+None
+['Python', 'Tableau']
+['Python', 'Ruby', 'Bash']
+None
+['Essbase Smartview', 'Power BI', 'SQL', 'HFM', 'SAP']
+None
+None
+['Python']
+None
+['Kotlin']
+['Jira', 'Archimate']
+None
+['Jira']
+['Kafka', 'React']
+None
+['SoapUI']
+None
+None
+None
+None
+None
+['iOS']
+None
+None
+['GCP', 'VMware', 'API Management']
+None
+None
+['Git', 'AWS', 'Microsoft Azure']
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['NumPy', 'Pandas', 'scikit-learn', 'ArgoWorkflows', 'Apache Airflow', 'Kubeflow']
+None
+None
+None
+None
+None
+None
+None
+['Python', 'SQL']
+None
+None
+['Docker', 'Jenkins', 'CI CD']
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+['Swift-UI, Objective-C']
+None
+['Gosu']
+['Gatling', 'JMeter', 'NeoLoad', 'REST Assured']
+None
+['Linux', 'Apache', 'LiteSpeed', 'nginx', 'MySQL', 'MariaDB', 'rsync', 'nfs', 'WordPress', 'Joomla', 'PrestaShop']
+['Python', 'Bash', 'Java']
+None
+None
+None
+None
+None
+None
+['SAP']
+None
+None
+['Jira', 'Confluence', 'Docker', 'Websocket', 'MongoDB', 'RabbitMQ', 'Redis', 'Nginx', 'PostgreSQL', 'GraphQL']
+None
+None
+None
+None
+['Kubernetes', 'MongoDB', 'PyCharm']
+None
+None
+['PHP', 'Symfony']
+['Java', 'Spring Framework']
+None
+['Jira', 'Confluence']
+None
+None
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+['OpenSystems', 'Mendix', 'Appian', 'BPMN', 'JavaScript', 'HTML', 'CSS']
+None
+['Enterprise Architect']
+None
+None
+None
+None
+None
+['PHP', 'C', 'Java']
+None
+None
+['Laravel', 'AWS', 'Vue.js']
+['Azure SQL', 'Git', 'API', 'Devops', 'Data architecture', 'ERP', 'Visual Studio']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Scala']
+None
+None
+None
+['SQL', 'Java']
+None
+None
+['Enterprise Architect']
+None
+None
+['Ansible', 'Red Hat']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+None
+['NLP', 'Computer Vision']
+None
+['Narzędzia do prezentacji (MS Power Point)', 'Techniki moderacyjne i frameworki do pracy koncepcyjnej (Domain Driven Design, Google Design Sprints, etc.)']
+None
+['SQL', 'Java']
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+['Linux', 'Kubernetes', 'Azure DevOps', 'Zabbix']
+None
+['Jira']
+None
+None
+None
+None
+None
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['Zabbix']
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+None
+None
+None
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+['SAP', 'Linux']
+['Python']
+None
+None
+None
+None
+None
+None
+['Salesforce', 'Veeva']
+None
+None
+None
+None
+['Scrum']
+None
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+['SQL', 'SOAP', 'REST']
+None
+None
+None
+None
+['Jira', 'Selenium', 'BitBucket', 'Python', 'PHP']
+None
+None
+None
+None
+None
+['GraphQL']
+['Ansible', '.NET', 'TypeScript', 'Java']
+None
+None
+None
+None
+['React Native', 'AWS']
+None
+None
+['PowerShell', 'Bash', 'Prometheus', 'Grafana', 'Zabbix']
+['Git', 'SVN', 'GitHub', 'Jenkins']
+None
+['AWS']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+['GEB', 'Karate']
+['GitLab', 'Jenkins', 'Terraform', 'Prometheus']
+['Cisco security', 'Checkpoint', 'F5', 'Imperva WAF', 'Cloud networking', 'network automation']
+None
+None
+['Data Governance', 'Metadata Management', 'Data Architecture', 'Data Quality Standards', 'GDPR', 'AWS']
+None
+None
+None
+None
+None
+['Microsoft Azure', 'Azure DevOps']
+['WPF']
+None
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+None
+None
+None
+None
+['SAP GUI']
+['Angular (4)', 'REST API (JSON)', 'JavaScript', 'jQuery', 'CSS', 'DevExpress', 'Docker', 'Git', 'CQRS', 'HTML5', 'Entity Framework', '.NET Core']
+None
+['Python', 'R']
+['C', 'BPMN']
+None
+None
+None
+['Spark', 'Kafka', 'NoSQL']
+['XEN', 'RHEL', 'CentOS']
+None
+None
+None
+None
+None
+None
+['Enterprise Architekt']
+['JavaScript']
+None
+None
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+None
+None
+None
+None
+['Cypress']
+None
+None
+None
+None
+['Zabbix']
+None
+['Angular', 'JavaScript TypeScript', 'RabbitMQ']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+['SQL', 'C']
+None
+['SQL']
+None
+None
+None
+None
+None
+['ABAP']
+None
+None
+['MS Power BI']
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['O365', 'OpenStack', 'LAN WAN (FortiGate)', 'Web Application Firewall']
+None
+['GitLab', 'Jenkins', 'Jira', 'Confluence']
+['Jira']
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+None
+None
+['Docker', 'Jira', 'Confluence', 'Azure AD', 'VMware']
+['SAS']
+['C', 'DDD', 'TDD']
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+['Terraform', 'Kafka']
+['Scala']
+None
+None
+None
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['MySQL', 'Oracle']
+['C', 'Java']
+['C', '.NET', 'WPF', 'C']
+['BPMN']
+None
+None
+None
+None
+None
+None
+None
+None
+['Redmine', 'Power Automate', 'Power Apps', 'MS Project Online', 'MS Project Server', 'SharePoint']
+None
+None
+None
+['GitLab', 'CI CD', 'JavaCard']
+None
+None
+None
+['Perl', 'Git', 'Python']
+['Active Directory', 'VMware']
+None
+['VMware', 'PowerShell']
+['Microsoft Excel', 'SQL', 'Microsoft Power BI']
+None
+None
+['AWS', 'Spring']
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+['Gosu']
+['T-SQL', 'C', 'JavaScript', 'ASP.NET']
+['GraphQL', 'Docker', 'Elixir', 'ReScript', 'Google Cloud Platform', 'AWS']
+['XEN', 'RHEL', 'CentOS']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+None
+None
+None
+None
+['ISO 27001', 'ISAE 3402', 'wytyczne KNF']
+None
+None
+['PostgreSQL', 'SQL']
+None
+None
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+['Angular', 'Microservices patterns', 'BDD', 'TDD', 'RabbitMQ']
+None
+['JavaScript', 'HTML', 'Git', 'GitLab', 'Jira', 'C']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SoapUI', 'Enterprise Architect']
+None
+['SQL', 'PySpark']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['Google Cloud Platform']
+None
+['Python', 'Bash', 'GitLab', 'Docker', 'Symfony', 'Node.js', 'Linux', 'Kubernetes']
+None
+['Cypress']
+['Google Cloud Platform', 'NoSQL (Redis, Mongo)']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SAFe']
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+None
+['PHP']
+None
+None
+None
+None
+None
+None
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+None
+None
+None
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+['GraphQL', 'DynamoDB', 'Serverless']
+None
+['Google Cloud Platform']
+None
+None
+['SQL', 'Enterprise Architect', 'BPMN', 'UML']
+None
+None
+['JavaScript', 'Git']
+['Bash', 'Google Cloud Platform']
+None
+None
+None
+None
+None
+['SAP']
+None
+None
+None
+['Nagios', 'Grafana', 'MongoDB']
+['Telerik Forms']
+None
+None
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+['AWS', 'Znajomość rynków finansowych']
+None
+['C', 'Lua', 'Python']
+None
+['BPMN']
+None
+None
+None
+None
+None
+['VBA', 'XML', 'XSL', 'Agile']
+['Swift-UI, Objective-C']
+None
+None
+None
+['Python', 'Git']
+['Jira']
+None
+None
+None
+None
+None
+None
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+None
+None
+None
+None
+None
+['UML', 'Swagger', 'API', 'Confluence', 'Enterprise Architect', 'xml', 'Oracle', 'Elasticsearch']
+None
+['Git', 'SVN']
+['Salesforce']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['C', 'Kotlin', 'Java', 'Swift', 'SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['Azure DevOps']
+None
+['C', 'Java']
+None
+None
+['Cypress']
+None
+None
+['Zabbix']
+['Oracle']
+['ServiceNow', 'XML', 'Python', 'JavaScript', 'API', 'Oracle Apex', 'UiPath']
+None
+None
+['C', 'Java']
+None
+None
+None
+None
+['Jira', 'Confluence']
+None
+['SQL', 'Java']
+None
+None
+None
+None
+['Hadoop', 'SQL']
+['PostgreSQL', 'Jenkins', 'Grafana', 'Linux', 'Jira']
+None
+['Google Tag Manager', 'SQL', 'Python']
+['SQL', 'spring']
+None
+['Kotlin', 'Scala']
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['ABAP']
+None
+None
+None
+None
+None
+['SQL', 'Kafka', 'MongoDB']
+None
+None
+None
+None
+['Jenkins', 'Sonar']
+None
+None
+None
+['Java', 'Spring Framework', 'Jenkins']
+None
+None
+None
+None
+None
+['Microsoft Azure']
+None
+None
+['Microsoft SQL Server', 'Firebird']
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+['Jira', 'Drupal', 'Git', 'WordPress']
+None
+None
+['Docker', 'Kubernetes']
+None
+['SQL', 'Apache', 'PHP']
+None
+['React.js']
+['Python']
+['iOS', 'Switch']
+None
+['SAFe', 'LeSS', 'Nexus']
+None
+None
+None
+None
+['Cloud Protection Manager', 'Citrix', 'SCCM', 'RSA', 'Radius CA', 'AWS cloud (EC2, S3, Cloud Protection Manager, Glacier, VPC)']
+None
+None
+['SQL', 'Jira', 'Confluence', 'Enterprise Architect', 'Agile']
+None
+['Docker', 'Jenkins']
+None
+None
+None
+['Odata', 'SAPUI5']
+None
+None
+None
+['GIT', 'Composer', 'AWS', 'Angular']
+['ELK', 'Docker', 'Kubernetes', 'Confluent', 'Prometheus', 'Grafana']
+['Nagios', 'Grafana', 'MongoDB']
+['SQL', 'Azure SQL', 'Kubernetes']
+None
+None
+None
+None
+None
+None
+['AWS']
+None
+['Elasticsearch', 'Angular', 'React.js', 'AWS', 'Docker', 'Kubernetes', 'Selenium', 'Cucumber.js']
+None
+None
+['IntelliJ', 'Gradle', 'Jenkins', 'Tomcat', 'RedMine', 'React.js', 'Angular']
+None
+['Terraform', 'Kafka']
+None
+None
+['Splunk', 'TENABLE', 'PAM', 'IPS']
+None
+['Panaya', 'Kanban methodology']
+None
+None
+None
+None
+None
+['SQL', 'Azure SQL', 'Kubernetes']
+None
+None
+None
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+None
+None
+None
+['AWS', 'Google Cloud Platform']
+None
+['HTML5']
+None
+None
+['PL SQL']
+None
+None
+None
+None
+None
+['Oracle']
+None
+None
+['Docker', 'React.js', 'React Native']
+None
+None
+None
+None
+None
+['AWS', 'Mule ESB', 'Salesforce', 'Oracle', 'Linux']
+['JavaScript', 'CSS', 'HTML5']
+None
+None
+None
+['SQL']
+None
+None
+None
+['Jenkins', 'OpenShift', 'Docker']
+None
+None
+None
+['Docker', 'Kubernetes']
+None
+None
+None
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+None
+None
+None
+None
+None
+['Kotlin']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Cypress']
+None
+['Elasticsearch', 'Angular', 'React.js', 'AWS', 'Docker', 'Kubernetes', 'Selenium', 'Cucumber.js']
+None
+None
+None
+['CAN', 'Ethernet', 'RTOS', 'FreeRTOS', 'BLE']
+None
+['Google Analytics', 'Screaming Frog', 'Adobe Analytics', 'Google Search Console', 'Keyword Planner Tool', 'Deepcrawl']
+['C', 'Java', 'MS SQL']
+None
+None
+None
+None
+['Python', 'R']
+None
+None
+['SAP']
+None
+None
+['Enterprise Architect']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['SQL']
+None
+['Docker', 'GitLab', 'Azure', 'OpenAPI']
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+None
+None
+None
+None
+None
+['Panaya', 'Kanban methodology']
+None
+['Java 8', 'Spring Framework', 'Spring Boot']
+None
+['Enterprise Architect', 'Jira']
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Hadoop', 'SQL']
+None
+['Ansible', 'Google Cloud Platform', 'AWS', 'Grafana', 'Prometheus']
+None
+['SQL', 'REST API', 'Postman']
+None
+None
+['Spring Boot', 'Apache Kafka']
+None
+None
+['Databricks', 'PostgreSQL', 'SQL Server', 'Microsoft Azure', 'MongoDB']
+None
+None
+None
+['Terraform', 'Kafka']
+None
+None
+['Docker', 'Jenkins', 'Kafka']
+['Groovy']
+None
+['Java', 'OpenShift', 'Spring Framework', 'Kafka']
+None
+None
+None
+None
+None
+['Python']
+None
+None
+['SAP']
+None
+['Oracle', 'AWS', 'Celigo']
+['SQL']
+['Python', 'JavaScript', 'Bash']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Qt', 'SQL']
+['Python', 'Power Query']
+None
+None
+None
+['Python', 'Bash']
+None
+None
+None
+['Git', 'SVN', 'perforce', 'Google Cloud Platform', 'Jira', 'Confluence']
+['Salesforce']
+None
+['SAP']
+None
+None
+['Cypress']
+None
+None
+['SCCM', 'MDT WDS']
+None
+['Python', 'Cisco']
+None
+None
+None
+None
+None
+['Hibernate', 'Terraform', 'Azure DevOps']
+None
+['SharePoint', 'Zabbix', 'Splunk']
+['Angular.js', 'Git']
+None
+['Oracle', 'AWS', 'Celigo']
+None
+None
+None
+None
+None
+None
+['Kubernetes']
+None
+None
+None
+None
+None
+None
+['Enterprise Architect']
+['Oracle SQL', 'PostgreSQL', 'PHPUnit', 'Docker', 'REST API', 'Vue.js']
+['C', 'C', 'Java']
+['MS Power BI']
+None
+None
+None
+['Kafka', 'Lua']
+['Perl', 'Git', 'Python']
+None
+['AD', 'DHCP', 'SCCM', 'Jira']
+None
+None
+None
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+['Kafka']
+['Hadoop', 'Atlas', 'Ranger']
+['Docker', 'Jira', 'Confluence', 'Azure', 'AWS', 'Solr', 'Containerization']
+None
+['SQL']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Java']
+None
+None
+['PostgreSQL', 'Oracle']
+['GraphQL']
+['Redgate', 'DBPlus']
+None
+None
+None
+['Azure', 'Google Cloud Platform']
+None
+['Jenkins', 'Docker', 'Kubernetes', 'Git', 'SVN']
+None
+None
+None
+None
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['Angular 8', 'TypeScript', 'Docker', 'PL SQL']
+None
+['SASS', 'Spring', 'MySQL', 'Java 16']
+['Python', 'SAS', 'Microsoft Power BI']
+None
+None
+['JavaScript', 'Kotlin', 'MongoDB', 'RabbitMQ']
+['Azure', '.NET', 'React.js']
+None
+None
+None
+['Kafka', 'SAP']
+None
+['Python', 'BDD', 'DDD']
+['C', 'Python', 'Android Studio', 'Unity 3D', 'Visual Studio', 'Minecraft', 'Scratch', 'Kali Linux']
+['PostgreSQL', 'Cassandra', 'PowerShell', 'SSRS', 'SSIS']
+None
+None
+None
+['Azure DevOps', 'Confluence']
+None
+None
+None
+['Enterprise Architect', 'Postman', 'SoapUI']
+None
+None
+['Python', 'Tableau']
+['AWS', 'Magento']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['Java']
+None
+None
+None
+None
+['Firebase', 'GraphQL']
+None
+None
+['JavaScript', 'CSS', 'HTML5']
+None
+['Oracle', 'AWS', 'Celigo']
+['Python']
+None
+['SoapUI', 'Enterprise Architect']
+None
+None
+['Angular', 'WAS', 'JavaScript', 'JMS']
+None
+None
+None
+None
+None
+None
+None
+None
+['Jenkins', 'Python']
+None
+None
+None
+None
+None
+['Gosu']
+None
+None
+['GEB', 'Karate']
+['Amazon Web Services', 'Microsoft SQL Server']
+None
+None
+None
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+['Angular', 'React.js']
+None
+None
+None
+None
+None
+['.NET', 'React.js']
+None
+['Kotlin']
+None
+None
+None
+None
+None
+None
+None
+['Tableau', 'Microsoft Power BI']
+None
+None
+['Python', 'BPMN']
+None
+['Terraform', 'Ansible', 'PowerShell']
+None
+None
+None
+['Angular', 'React.js']
+None
+None
+None
+None
+['SAP', 'Linux']
+None
+['Kubernetes', 'GitLab', 'Jenkins', 'JIRA', 'RedMine', 'SOAP', 'MongoDB', 'Kotlin', 'React.js', 'TypeScript', 'Docker']
+None
+None
+None
+None
+['C', 'C', 'C']
+None
+None
+['Perl', 'Python', 'Java', 'Spring Boot', 'Hibernate']
+None
+None
+None
+['Linux', 'Docker', 'Kubernetes']
+['Essbase Smartview', 'Power BI', 'SQL', 'HFM', 'SAP']
+['Angular', 'Vue.js']
+['Azure DevOps', 'Azure IoT Edge', 'Docker', 'Kubernetes']
+None
+None
+None
+['CSS', 'HTML']
+None
+None
+None
+None
+None
+None
+None
+None
+None
+None
+['HTML', 'CSS', 'Github', 'Jira']
+None
+None
+None
+['C', 'DDD', 'TDD']
+None
+None
+None
+None
+['Python']
+None
+None
+['MS Power BI']
+None

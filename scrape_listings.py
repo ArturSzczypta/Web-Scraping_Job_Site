@@ -167,8 +167,8 @@ def extract_data(my_dict, url):
                     if 'paragraphs' in item['model']:
                         req_expected += [req for req in item['model']['paragraphs']]
                     elif 'bullets' in item['model']:
-                        
                         req_expected += [req for req in item['model']['bullets']]
+                        
                 elif item['sectionType'] == 'requirements-optional':
                     if 'paragraphs' in item['model']:
                         req_optional += [req for req in item['model']['paragraphs']]
@@ -259,9 +259,6 @@ if __name__ == '__main__':
     count_failure = 0
 
     with open(listings_data, 'r', encoding='UTF-8') as file:
-    
-
-    with open('failed extractions.txt', 'r', encoding='UTF-8') as file:
         # Try to extract each listing using pipeline. If failed, record in serepate file  
         for url in file:
             url = url.strip()
