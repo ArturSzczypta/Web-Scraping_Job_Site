@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
 def scrape_one_page(webpage):
-    ''' Scrapes urls from single page'''
+    ''' Scrapes urls and dates from single page'''
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -81,43 +81,43 @@ def scrape_one_page(webpage):
         href=re.compile('^https://www.pracuj.pl/praca/'))
 
     http_links = [x.get('href') for x in http_elements]
+    http_links = set(http_links)
 
     #Find all unique dates
     date_elements = soup.find_all('div',
         {'class': 'JobOfferstyles__FooterText-sc-1rq6ue2-22'})
 
-    def extract_date_from_element(element):
-        ''' Extracts date from FooterText class '''
-        date_text = element.text.strip().split(': ')[-1]
-        return date_text
-
     unique_dates = set()
     for element in date_elements:
-        date_str = extract_date_from_element(element)
+        date_str = element.text.strip().split(': ')[-1]
         date_obj = datetime.datetime.strptime(date_str, '%d %B %Y').date()
         unique_dates.add(date_obj)
 
     browser.quit()
     return http_links,unique_dates
 
-def scrape_today_and_yesterday():
-    ''' Scrapes urls from sigle page'''
-    date_today = datetime.date.today()
-    date_yesterday = date_today - datetime.timedelta(days=1)
+def scrape_since_last():
+    ''' Scrapes urls all pages since last time'''
+    last_date = None
+    with open('last_date.log', 'r',encoding='UTF-8') as date_file:
+        line = date_file.readline()
+        last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
+
+    # 'last_date - one_day' gives overlam in the search
+    last_date = last_date - datetime.timedelta(days=1)
 
     webpage = 'https://it.pracuj.pl/'
-    new_http_links,unique_dates = scrape_uls(webpage)
-    http_links = set(new_http_links)
+    http_links, unique_dates = scrape_uls(webpage)
 
     # check if all listings are recent, if so start looking to other pages
-    if all(date == date_today or date == date_yesterday for date in unique_dates):
+    if any(date == last_date for date in unique_dates):
         page_number = 2
         while True:
             webpage = f'https://it.pracuj.pl/?pn={page_number}'
-            new_http_links,unique_dates = scrape_uls(webpage)
+            new_http_links, unique_dates = scrape_uls(webpage)
             http_links = http_links.union(new_http_links)
 
-            if all(date == date_today or date == date_yesterday for date in unique_dates):
+            if all(date == date_today or date == last_date for date in unique_dates):
                 page_number += 1
             else:
                 print(f'Dates: {unique_dates}')
@@ -134,15 +134,10 @@ def scrape_today_and_yesterday():
             file.write(link + '\n')
 
 
-def main(webpage):
-    '''
-    This is the main function of the script.
-            
-    It scrapes job offer links and dates on site 
 
-    Note: This function is only executed when the script is run directly,
-    not when it is imported as a module.
-    '''
+def main(webpage):
+    ''' Main method of scrape_urls.py
+    Scrapes job offer links since last scraping'''
     new_http_links,unique_dates = scrape_uls(webpage)
 
     print(f'Links: {len(new_http_links)}\n')
