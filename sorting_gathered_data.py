@@ -25,11 +25,11 @@ def extracting_to_files():
                 tech_expected_file.write(str(obj.get('tech_expected', '')) + '\n')
                 tech_optional_file.write(str(obj.get('tech_optional', '')) + '\n')
 
-def extract_tech_without_repetition():
+def extract_tech_without_repetition(file_with_lists,file_with_tech):
     tech_set = set()
     sorted_tech = []
     # Open the file with the list of technologies/languages
-    with open('tech_expected.txt', 'r', encoding='utf-8') as file:
+    with open(file_with_lists, 'r', encoding='utf-8') as file:
         
         for line in file:
             line.strip()
@@ -42,9 +42,28 @@ def extract_tech_without_repetition():
     sorted_tech = sorted(tech_set)
 
     # Open a file to write the unique technologies/languages to
-    with open('unique_tech.txt', 'a', encoding='utf-8') as output_file:
+    with open(file_with_tech, 'a', encoding='utf-8') as output_file:
 
         for item in sorted_tech:
             output_file.write(item + '\n')
 
-extract_tech_without_repetition()
+def sort_tech(file_with_lists,tech_for_regex):
+    tech_set = set()
+    # Open the file with the list of technologies/languages
+    with open(file_with_lists, 'r', encoding='utf-8') as file:
+        
+        for line in file:
+            line.strip()
+            tech_set.add(line)
+        
+    sorted_tech = sorted(tech_set)
+
+    # Open a file to write the unique technologies/languages to
+    with open(tech_for_regex, 'a', encoding='utf-8') as output_file:
+
+        for item in sorted_tech:
+            output_file.write(item)
+
+
+#extract_tech_without_repetition():
+#sort_tech('unique_tech.txt','tech_for_regex.txt')

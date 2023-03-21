@@ -24,22 +24,37 @@ logger = logging.getLogger('main')
 skill_set = {'Python', 'SQL', 'R'}
 
 def skill_patterns(skill_set):
-    ''' Create regex patterns for given skill set
+    ''' Create regex pattern for given skill set
     I assume names of languages and technologies names shorter than 3 have to be search as \b%s\b (R, C)
     Longer names can be part of longer string (PostgreSQL, MySQL for sql)
     Each pattern dinds all instances of upper/lower case and capitalised'''
     
-    # Names shorter than 3
-    pattern_1 = r'\b%s\b'
-    # Names longer or equal 3
-    pattern_2 = r'%s'
     
-    pattern_list = []
+    skills_schort = []
+    skills_long = []
     for skill in skill_set:
         if len(skill) <3:
-            pattern_list.append(pattern_1 % skill)
+            skills_schort.append(re.escape(skill))
         else:
-            pattern_list.append(pattern_2 % skill)
-    return pattern_list
+            skills_long.append(re.escape(skill))
+    
+    pattern_1 = None
+    pattern_2 = None
+    if len(skills_schort) > 0:
+        pattern_1 = '|'.join(skills_schort)
+    if len(skills_long) > 0:
+        pattern_2 = '|'.join(skills_long)
+    
+    if pattern_1 and pattern_2:
+        pattern = re.compile(r'\b(%s)\b|(%s)' % (pattern_1, pattern_2), re.IGNORECASE)
+    elif pattern_1:
+        pattern = re.compile(pattern_1, re.IGNORECASE)
+    elif pattern_2:
+        pattern = re.compile(pattern_2, re.IGNORECASE)
+    else:
+        pattern = ''
+
+    return pattern
+print(skill_patterns(skill_set))
 
 
