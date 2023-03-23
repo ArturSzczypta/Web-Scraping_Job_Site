@@ -278,7 +278,7 @@ def listing_pipeline(url,file_name):
         | save_to_file(file_name))
     return pipeline
 
-def main(scraped_urls, succesfull, failed):
+def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     count_succes = 0
@@ -288,7 +288,7 @@ def main(scraped_urls, succesfull, failed):
         # Try to extract each listing using pipeline. If failed, record in serepate file  
         for url in file:
             url = url.strip()
-            sleep(random.uniform(7, 23))
+            sleep(random.uniform(sleep_min, sleep_max))
             try:
                 result = listing_pipeline(url, file_succesfull)()
                 count_succes += 1
