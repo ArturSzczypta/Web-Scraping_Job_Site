@@ -106,32 +106,33 @@ def get_cutoff_date(date_file)
     
     return last_date - datetime.timedelta(days=1)
 
-def create_pages(skill, base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
-    ''' Create page adresses fot given skill'''
+def create_pages(base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
+    ''' Creates page templates, where skills can be added with .format()'''
     base_url = base_url_front + '{}' + base_url_end
     if sec_url_front and sec_url_end:
-        secondary_url = sec_url_front + '{}' + sec_url_end
+        sec_url = sec_url_front + '{}' + sec_url_end
     else:
-        secondary_url = base_url  
-    return base_url.format(skill), secondary_url.format(skill)
+        sec_url = base_url  
 
-def scrape_single_skill(cutoff_date, base_url, secondary_url=None, sleep_min=7, sleep_max=23):
+    return base_url, sec_url
+
+def scrape_single_skill(cutoff_date, base_url, sec_url=None, sleep_min=7, sleep_max=23):
     ''' Scrapes urls from given skills since last time.
-    Assumes skill name is already build into base_url and secondary_url'''
+    Assumes skill name is already build into base_url and sec_url'''
 
-    # Use base_url if secondary_url was not provided
-    secondary_url = secondary_url or base_url
+    # Use base_url if sec_url was not provided
+    sec_url = sec_url or base_url
     
     # Extract urls from base_url
     http_links, unique_dates = scrape_one_page(base_url)
     # Wait to avoid banning
     sleep(random.uniform(sleep_min, sleep_max))
 
-    # Check if all listings are recent, if so start looping using secondary_url
+    # Check if all listings are recent, if so start looping using sec_url
     if all(date > cutoff_date for date in unique_dates):
         page_number = 2
         while True:
-            current_page = secondary_url + str(page_number)
+            current_page = sec_url + str(page_number)
             new_http_links, unique_dates = scrape_one_page(current_page)
 
             if new_http_links:
@@ -147,17 +148,17 @@ def scrape_single_skill(cutoff_date, base_url, secondary_url=None, sleep_min=7, 
     
     return http_links
 
-def scrape_all_skills(cutoff_date, base_url, secondary_url=None, skill_set)
-    ''' Scrapes urlsfor given skills since last time.
-    Assumes base_url and secondary_url can take in skill name with .format()'''
+def scrape_all_skills(cutoff_date, base_url, sec_url=None, skill_set)
+    ''' Scrapes urls all skills since last time.
+    Assumes base_url and sec_url can take in skill name with .format()'''
 
-    # Use base_url if secondary_url was not provided
-    secondary_url = secondary_url or base_url
+    # Use base_url if sec_url was not provided
+    sec_url = sec_url or base_url
 
     http_links = {}
     for skill in skill_set:
-        base_url, secondary_url = create_pages(skill, base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
-        http_links.union(scrape_single_skill(cutoff_date, base_url, secondary_url=None, sleep_min=7, sleep_max=23))
+        base_url, sec_url = create_pages(skill, base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
+        http_links.union(scrape_single_skill(cutoff_date, base_url, sec_url=None, sleep_min=7, sleep_max=23))
 
 
 
@@ -179,8 +180,8 @@ def update_file(new_set, file_name)
         file.seek(0)
         file.truncate()
         # Write new urls
-        for link in new_records:
-            file.write(link + '\n')
+        for url in new_records:
+            file.write(url + '\n')
 
 
 
