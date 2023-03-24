@@ -14,6 +14,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
+import logging
+from logging import config
+import logging_functions as l
+
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
     # Get the directory path of the current script
@@ -177,10 +181,14 @@ def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     update_date_log(date_file)
 
 if __name__ == '__main__':
-    _skill_set = {'Python', 'SQL', 'R'}
+    ''' Performs basic logging set up'''
+    l.main()
+    
+    '''Actual Script'''
+    _skill_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
     # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
-    _base_url = 'https://it.pracuj.pl/?tt={}&jobBoardVersion=2&pn=1'
-    _iterable_url = 'https://it.pracuj.pl/?tt={}&jobBoardVersion=2&pn='
+    _base_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
+    _iterable_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 
     _date_file = 'last_date.log'
     _urls_file = 'urls_file.txt'

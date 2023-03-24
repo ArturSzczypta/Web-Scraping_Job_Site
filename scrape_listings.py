@@ -28,7 +28,7 @@ def add_missing_commas(data_string):
 def scrape_single_listing(url, timeout=5):
     ''' Scrapes job listing details from the url, return a dictionary'''
     # Make a request to the URL and get the HTML response
-    response = requests.get(url, timeout)
+    response = requests.get(url, timeout=timeout)
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the substring {...} between "window['kansas-offerview'] = "and "<"
@@ -66,11 +66,10 @@ def save_dict(new_dict, file_name):
     with open(file_name, 'a', encoding='utf-8') as file:
         file.write(json_str + '\n')
 
-
 def scrape_listing_from_json(url, timeout=5):
     ''' Scrapes job listing details from JSON to substring'''
     # Make a request to the URL and get the HTML response
-    response = requests.get(url, timeout)
+    response = requests.get(url, timeout=timeout)
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the JSON from 'window' as string
@@ -121,10 +120,12 @@ def check_for_skill_set(substring, skill_set):
 def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
     substring = substring.strip()
+    #print(substring)
+    print('\n\n\n')
 
     patterns = [
     r'\bundefined\b', # incorrect null value
-    r'\\n|\\t|\\r|\\b|\\f|"', # sequences
+    r'\\n|\\t|\\r|\\b|\\f|\\"', # sequences
     r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+' # not allowed characters
     ]
     for pattern in patterns:
@@ -138,6 +139,7 @@ def clean_listing_string(substring):
 
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
+    substring = substring.replace('u002F', ' ')
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     return substring
@@ -270,51 +272,40 @@ def save_to_file(new_dict, file_name):
 
 def listing_pipeline(url,file_name):
     ''' Pipeline saves listing details to file'''
-    pipeline = (scrape_listing_from_json(url)
-        | clean_listing_string
-        | change_str_to_dict
-        | extract_data(url)
-        | save_to_file(file_name))
-    return pipeline
+    substring = scrape_listing_from_json(url)
+    substring = clean_listing_string(substring)
+    my_dict = change_str_to_dict(substring)
+    new_dict = extract_data(my_dict, url)
+    save_to_file(new_dict, file_name)
+    
 
-def main(file_urls,scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
+def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
-    count_succes = 0
-    count_failure = 0
+    count_succeses = 0
+    count_failures = 0
 
-    with open(file_urls, 'r', encoding='UTF-8') as file:
+    with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Try to extract each listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
-            sleep(random.uniform(sleep_min, sleep_max))
             try:
-                result = listing_pipeline(url, file_succesfull)()
-                count_succes += 1
-                print(f'Success: {count_succes}')
+                listing_pipeline(url, succesfull)
+                count_succeses += 1
             except:
-                count_failure += 1
-                print(f'Failures: {count_failure}')
-                with open(file_failed, 'a', encoding='UTF-8') as file_2:
+                count_failures += 1
+                with open(failed, 'a', encoding='UTF-8') as file_2:
                     file_2.write(url + '\n')
+            finally:
+                print(f'Success: {count_succeses}  Failures: {count_failures}')
+                sleep(random.uniform(sleep_min, sleep_max))
 
 if __name__ == '__main__':
-    ''' Performs basic logging set up, if script is runned directly'''
-    #Get this script name
-    log_file_name = __file__.split('\\')
-    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
-
-    get_log_file_name(log_file_name)
-
-    #Configure logging file
-    configure_logging()
-    logger = logging.getLogger('main')
-
-    #Check internet connection, terminate script if no internet
-    check_internet()
+    ''' Performs basic logging set up'''
+    l.main()
 
     ''' Actual Script'''
-    scraped_urls = 'scraped_urls.txt'
-    succesfull = 'file_succesfull.txt'
-    failed = 'file_failed.txt'
-    main(scraped_urls, file_succesfull,file_failed)
+    _scraped_urls = 'scraped_urls_1.txt'
+    _succesfull = 'file_succesfull.txt'
+    _failed = 'file_failed.txt'
+    main(_scraped_urls, _succesfull, _failed)
