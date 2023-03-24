@@ -23,12 +23,9 @@ def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
     chromedriver_path = os.path.join(dir_path,
         'chromedriver_win32', 'chromedriver')
 
-    # Create a Service object for the ChromeDriver
-    service = Service(chromedriver_path)
-
-    # Initialize the Chrome browser using the Service object
-    browser = webdriver.Chrome(service=service)
-    browser.get(current_url)
+    # Initialize the Chrome browser using ChromeDriver as Service object
+    browser = webdriver.Chrome(service=Service(chromedriver_path))
+    browser.get(current_page)
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
@@ -40,7 +37,7 @@ def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
                 '//button[@data-test="button-accept-all-in-general"]')))
         accept_button.click()
     except:
-        print(f'{current_url} - Could not find or click accept button')
+        print(f'{current_page} - Could not find or click accept button')
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
@@ -49,7 +46,7 @@ def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
     location_buttons = browser.find_elements(By.CSS_SELECTOR,
         'div[data-test="offer-locations-button"]')
     if not location_buttons:
-        print(f'{current_url} - No location buttons found')
+        print(f'{current_page} - No location buttons found')
 
     # Click on each viewBox object
     for loc_button in location_buttons:
@@ -71,22 +68,18 @@ def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
             # Wait for the job offer details to load
             sleep(random.uniform(sleep_min, sleep_max))
         except:
-            print(f'{current_url} - Could not click on button')
+            print(f'{current_page} - Could not click on button')
 
-    html = browser.page_source
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(browser.page_source, 'html.parser')
 
     # Find all the links starting with 'http'
     http_elements = soup.find_all('a',
         href=re.compile('^https://www.pracuj.pl/praca/'))
-
-    http_links = [x.get('href') for x in http_elements]
-    http_links = set(http_links)
+    http_links = {x.get('href') for x in http_elements}
 
     #Find all unique dates
     date_elements = soup.find_all('div',
         {'class': 'JobOfferstyles__FooterText-sc-1rq6ue2-22'})
-
     unique_dates = set()
     for element in date_elements:
         date_str = element.text.strip().split(': ')[-1]
@@ -94,45 +87,35 @@ def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
         unique_dates.add(date_obj)
 
     browser.quit()
-    return http_links,unique_dates
+    return http_links, unique_dates
 
-def get_cutoff_date(date_file)
+def get_cutoff_date(date_file):
     '''Get last logging date'''
     last_date = None
     with open(date_file, 'r',encoding='UTF-8') as file:
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
     # 'last_date - one_day' gives overlam in the search
-    
+
     return last_date - datetime.timedelta(days=1)
 
-def create_pages(base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
-    ''' Creates page templates, where skills can be added with .format()'''
-    base_url = base_url_front + '{}' + base_url_end
-    if sec_url_front and sec_url_end:
-        sec_url = sec_url_front + '{}' + sec_url_end
-    else:
-        sec_url = base_url  
-
-    return base_url, sec_url
-
-def scrape_single_skill(cutoff_date, base_url, sec_url=None, sleep_min=7, sleep_max=23):
+def scrape_single_skill(cutoff_date, base_url, iterable_url=None, sleep_min=7, sleep_max=23):
     ''' Scrapes urls from given skills since last time.
-    Assumes skill name is already build into base_url and sec_url'''
+    Assumes skill name is already build into base_url and iterable_url'''
 
-    # Use base_url if sec_url was not provided
-    sec_url = sec_url or base_url
-    
+    # Use base_url if iterable_url was not provided
+    iterable_url = iterable_url or base_url
+
     # Extract urls from base_url
     http_links, unique_dates = scrape_one_page(base_url)
     # Wait to avoid banning
     sleep(random.uniform(sleep_min, sleep_max))
 
-    # Check if all listings are recent, if so start looping using sec_url
+    # Check if all listings are recent, if so start looping using iterable_url
     if all(date > cutoff_date for date in unique_dates):
         page_number = 2
         while True:
-            current_page = sec_url + str(page_number)
+            current_page = iterable_url + str(page_number)
             new_http_links, unique_dates = scrape_one_page(current_page)
 
             if new_http_links:
@@ -145,32 +128,24 @@ def scrape_single_skill(cutoff_date, base_url, sec_url=None, sleep_min=7, sleep_
             page_number += 1
             # Wait to avoid banning
             sleep(random.uniform(sleep_min, sleep_max))
-    
+
     return http_links
 
-def scrape_all_skills(cutoff_date, base_url, sec_url=None, skill_set)
+def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
     ''' Scrapes urls all skills since last time.
-    Assumes base_url and sec_url can take in skill name with .format()'''
+    Assumes base_url and iterable_url can take in skill name with .format()'''
 
-    # Use base_url if sec_url was not provided
-    sec_url = sec_url or base_url
+    # Use base_url if iterable_url was not provided
+    iterable_url = iterable_url or base_url
 
-    http_links = {}
+    http_links = set()
     for skill in skill_set:
-        base_url, sec_url = create_pages(skill, base_url_front, base_url_end, sec_url_front=None, sec_url_end=None)
-        http_links.union(scrape_single_skill(cutoff_date, base_url, sec_url=None, sleep_min=7, sleep_max=23))
+        new_base_url = base_url.format(skill)
+        new_iterable_url = iterable_url.format(skill)
+        http_links.union(scrape_single_skill(cutoff_date, skill, new_base_url, new_iterable_url))
+    return http_links
 
-
-
-
-
-def save_set_to_file(new_set, file_name):
-    ''' Saves set to file, each element per line'''
-    with open(file_name, 'a', encoding='utf-8') as file:
-        for element in new_set:
-            file.write(str(element) + '\n')
-
-def update_file(new_set, file_name)
+def update_file(new_set, urls_file):
     ''' Adds new records, removes old ones'''
     with open('links_to_listings.txt', 'w+',encoding='UTF-8') as file:
         old_records = set(line.strip() for line in file)
@@ -183,55 +158,41 @@ def update_file(new_set, file_name)
         for url in new_records:
             file.write(url + '\n')
 
+def update_date_log(date_file):
+    ''' Update logging date'''
+    with open(date_file, 'w',encoding='UTF-8') as file:
+        file.write(datetime.date.today())
 
+def save_set_to_file(new_set, file_name):
+    ''' Saves set to file, each element per line'''
+    with open(file_name, 'a', encoding='utf-8') as file:
+        for element in new_set:
+            file.write(str(element) + '\n')
 
-
-
-def url_pipeline(date_file):
+def url_pipeline(date_file, skill_set, urls_file, base_url, iterable_url=None):
     ''' Pipeline scrapes listings for each skill in skill set'''
+    # Use base_url if iterable_url was not provided
+    iterable_url = iterable_url or base_url
+
     pipeline = (get_cutoff_date(date_file)
-        | get_pages
-        | Filter(lambda x: check_for_skill_set(x, skill_set))
-        | clean_listing_string
-        | change_str_to_dict
-        | extract_data(url)
-        | save_to_file(file_name))
+        | scrape_all_skills(skill_set, base_url, iterable_url)
+        | update_file(urls_file))
     return pipeline
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def main(current_page):
+def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     ''' Main method of scrape_urls.py
     Scrape all urls with job offers containing my skill set'''
-    
+
+    url_pipeline(date_file, skill_set, urls_file, base_url, iterable_url)()
+    update_date_log(date_file)
 
 if __name__ == '__main__':
-    skill_set = {'Python', 'SQL', 'R'}
+    _skill_set = {'Python', 'SQL', 'R'}
     # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
-    url_front = 'https://it.pracuj.pl/?tt='
-    url_end = '&jobBoardVersion=2&pn=1'
-    sec_url_front = 'https://it.pracuj.pl/?tt='
-    sec_url_end = '&jobBoardVersion=2&pn='
+    _base_url = 'https://it.pracuj.pl/?tt={}&jobBoardVersion=2&pn=1'
+    _iterable_url = 'https://it.pracuj.pl/?tt={}&jobBoardVersion=2&pn='
 
-    sec_url_front, sec_url_end
+    _date_file = 'last_date.log'
+    _urls_file = 'urls_file.txt'
 
-    date_file = 'last_date.log'
-    file_with_urls = 'file_with_urls.txt'
-    initial_page = 'https://it.pracuj.pl/'
-    next_pages = 'https://it.pracuj.pl/?pn='
-
+    main(_date_file, _skill_set, _urls_file, _base_url, _iterable_url)

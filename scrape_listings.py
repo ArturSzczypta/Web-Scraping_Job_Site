@@ -2,17 +2,16 @@
 Web scraping job listing details on popular polish job site, Pracuj.pl
 '''
 import re
-import requests
 import json
 from time import sleep
 from numpy import random
-import unicodedata
 import traceback
 import datetime
 
 import logging
 from logging import config
 import logging_functions as l
+import requests
 
 def replace_empty(data_string):
     """ Replace empty dictionaries, lists and strings with None """
@@ -26,12 +25,11 @@ def add_missing_commas(data_string):
     pattern = r'null\s*([^,\]\}])'
     return re.sub(pattern, r'null,\g<1>', data_string)
 
-def scrape_single_listing(url):
+def scrape_single_listing(url, timeout=5):
     ''' Scrapes job listing details from the url, return a dictionary'''
     # Make a request to the URL and get the HTML response
-    response = requests.get(url)
+    response = requests.get(url, timeout)
     response.encoding = 'utf-8' # To recognise polish letters
-    html = response.text
 
     # Extract the substring {...} between "window['kansas-offerview'] = "and "<"
     start_string = "window['kansas-offerview'] = "
@@ -41,7 +39,7 @@ def scrape_single_listing(url):
     substring = response.text[start_index:end_index]
     # Replace invalid valiable names with null, so i can create dictionary
     substring = re.sub(r'\bundefined\b', '', substring)
-    
+
     # Remove sequences
     substring = re.sub(r'\\n|\\t|\\r|\\"', ' ', substring)
     substring = substring.strip() # remove any trailing or leading white spaces
@@ -69,12 +67,11 @@ def save_dict(new_dict, file_name):
         file.write(json_str + '\n')
 
 
-def scrape_listing_from_json(url):
+def scrape_listing_from_json(url, timeout=5):
     ''' Scrapes job listing details from JSON to substring'''
     # Make a request to the URL and get the HTML response
-    response = requests.get(url)
+    response = requests.get(url, timeout)
     response.encoding = 'utf-8' # To recognise polish letters
-    html = response.text
 
     # Extract the JSON from 'window' as string
     start_string = "window['kansas-offerview'] = "
@@ -89,8 +86,7 @@ def skill_patterns(skill_set):
     I assume names of languages and technologies names shorter than 3 have to be search as \b%s\b (R, C)
     Longer names can be part of longer string (PostgreSQL, MySQL for sql)
     Each pattern dinds all instances of upper/lower case and capitalised'''
-    
-    
+
     skills_schort = []
     skills_long = []
     for skill in skill_set:
@@ -98,14 +94,14 @@ def skill_patterns(skill_set):
             skills_schort.append(re.escape(skill))
         else:
             skills_long.append(re.escape(skill))
-    
+
     pattern_1 = None
     pattern_2 = None
     if len(skills_schort) > 0:
         pattern_1 = '|'.join(skills_schort)
     if len(skills_long) > 0:
         pattern_2 = '|'.join(skills_long)
-    
+
     if pattern_1 and pattern_2:
         pattern = re.compile(r'\b(%s)\b|(%s)' % (pattern_1, pattern_2), re.IGNORECASE)
     elif pattern_1:
@@ -120,11 +116,9 @@ def skill_patterns(skill_set):
 def check_for_skill_set(substring, skill_set):
     ''' Check for elements of skill set in the substring
     Cancel pipeline if none of skills is mentioned'''
-    return re.search(skill_patterns(skill_set),substring, flags=re.IGNORECASE))
+    return re.search(skill_patterns(skill_set),substring, flags=re.IGNORECASE)
 
-
-
-def clean_listing_string(substring)
+def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
     substring = substring.strip()
 
@@ -140,7 +134,7 @@ def clean_listing_string(substring)
     substring = re.sub(missing_nulls, ':null', substring)
 
     missing_commas = r'null\s*([^,\]\}])'
-    substring =  re.sub(missing_commas, r'null,\g<1>', substring)   
+    substring =  re.sub(missing_commas, r'null,\g<1>', substring)
 
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
@@ -148,7 +142,7 @@ def clean_listing_string(substring)
     substring = re.sub(r' {2,}', ' ', substring)
     return substring
 
-def change_str_to_dict(substring)
+def change_str_to_dict(substring):
     '''  Convert the string to a dictionary using the json module'''
     #print(substring)
     my_dict = json.loads(substring)
@@ -157,18 +151,18 @@ def change_str_to_dict(substring)
 
 def extract_data(my_dict, url):
     ''' Extracts usefull data from the dictionary, creates new dictionary'''
-    
+
     #Basic listing data
     job_title = my_dict['offerReducer']['offer']['jobTitle']
     country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
-    
+
     location = None
     if my_dict['offerReducer']['offer']['workplaces'][0].get('inlandLocation') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation'].get('location') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location'].get('name'):
         location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
-    
+
     contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
 
     # Salary specific
@@ -205,25 +199,31 @@ def extract_data(my_dict, url):
             for item in section['subSections']:
                 if item['sectionType'] == 'requirements-expected':
                     if 'paragraphs' in item['model']:
-                        req_expected += [req for req in item['model']['paragraphs']]
+                        req_expected += list(item['model']['paragraphs'])
+                        #[req for req in item['model']['paragraphs']]
                     elif 'bullets' in item['model']:
-                        req_expected += [req for req in item['model']['bullets']]
-                        
+                        req_expected += list(item['model']['bullets'])
+                        #[req for req in item['model']['bullets']]
                 elif item['sectionType'] == 'requirements-optional':
                     if 'paragraphs' in item['model']:
-                        req_optional += [req for req in item['model']['paragraphs']]
+                        req_optional += list(item['model']['paragraphs'])
+                        #[req for req in item['model']['paragraphs']]
                     elif 'bullets' in item['model']:
-                        req_optional += [req for req in item['model']['bullets']]
-        
+                        req_optional += list(item['model']['bullets'])
+                        #[req for req in item['model']['bullets']]
+
         elif section['sectionType'] == 'development-practices':
-            dev_practices = [resp for resp in section['model']['items']]
+            dev_practices = list(section['model']['items'])
+            #[resp for resp in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
             if 'bullets' in section['model']:
-                responsibilities += [resp for resp in section['model']['bullets']]
+                responsibilities += list(section['model']['bullets'])
+                #[resp for resp in section['model']['bullets']]
             elif 'paragraphs' in section['model']:
-                responsibilities += [resp for resp in section['model']['paragraphs']]
-            
+                responsibilities += list(section['model']['paragraphs'])
+                #[resp for resp in section['model']['paragraphs']]
+
     # Remplace empty list with None
     tech_expected = tech_expected if len(tech_expected) > 0 else None
     tech_optional = tech_optional if len(tech_optional) > 0 else None
@@ -259,7 +259,7 @@ def extract_data(my_dict, url):
     new_dict['dev_practices'] = dev_practices
     # responsibilities
     new_dict['responsibilities'] = responsibilities
-    
+
     #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
@@ -271,21 +271,20 @@ def save_to_file(new_dict, file_name):
 def listing_pipeline(url,file_name):
     ''' Pipeline saves listing details to file'''
     pipeline = (scrape_listing_from_json(url)
-        | Filter(lambda x: check_for_skill_set(x, skill_set))
         | clean_listing_string
         | change_str_to_dict
         | extract_data(url)
         | save_to_file(file_name))
     return pipeline
 
-def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
+def main(file_urls,scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     count_succes = 0
     count_failure = 0
 
     with open(file_urls, 'r', encoding='UTF-8') as file:
-        # Try to extract each listing using pipeline. If failed, record in serepate file  
+        # Try to extract each listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
             sleep(random.uniform(sleep_min, sleep_max))
@@ -300,9 +299,22 @@ def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
                     file_2.write(url + '\n')
 
 if __name__ == '__main__':
-    
+    ''' Performs basic logging set up, if script is runned directly'''
+    #Get this script name
+    log_file_name = __file__.split('\\')
+    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
+
+    get_log_file_name(log_file_name)
+
+    #Configure logging file
+    configure_logging()
+    logger = logging.getLogger('main')
+
+    #Check internet connection, terminate script if no internet
+    check_internet()
+
+    ''' Actual Script'''
     scraped_urls = 'scraped_urls.txt'
-    skill_set = {'Python', 'SQL', 'R'}
     succesfull = 'file_succesfull.txt'
     failed = 'file_failed.txt'
     main(scraped_urls, file_succesfull,file_failed)
