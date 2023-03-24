@@ -14,7 +14,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
-def scrape_one_page(current_page, sleep_min=2, sleep_max=4):
+def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -96,7 +96,6 @@ def get_cutoff_date(date_file):
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
     # 'last_date - one_day' gives overlam in the search
-
     return last_date - datetime.timedelta(days=1)
 
 def scrape_single_skill(cutoff_date, base_url, iterable_url=None, sleep_min=7, sleep_max=23):
@@ -128,7 +127,6 @@ def scrape_single_skill(cutoff_date, base_url, iterable_url=None, sleep_min=7, s
             page_number += 1
             # Wait to avoid banning
             sleep(random.uniform(sleep_min, sleep_max))
-
     return http_links
 
 def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
@@ -142,14 +140,14 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
     for skill in skill_set:
         new_base_url = base_url.format(skill)
         new_iterable_url = iterable_url.format(skill)
-        http_links.union(scrape_single_skill(cutoff_date, skill, new_base_url, new_iterable_url))
+        http_links = http_links.union(scrape_single_skill(cutoff_date, new_base_url, new_iterable_url))
     return http_links
 
-def update_file(new_set, urls_file):
+def update_file(http_links, urls_file):
     ''' Adds new records, removes old ones'''
-    with open('links_to_listings.txt', 'w+',encoding='UTF-8') as file:
+    with open(urls_file, 'w+',encoding='UTF-8') as file:
         old_records = set(line.strip() for line in file)
-        new_records = new_set - old_records
+        new_records = http_links - old_records
         print(f'New: {len(new_records)}')
         # Clear out the content of the file
         file.seek(0)
@@ -161,7 +159,7 @@ def update_file(new_set, urls_file):
 def update_date_log(date_file):
     ''' Update logging date'''
     with open(date_file, 'w',encoding='UTF-8') as file:
-        file.write(datetime.date.today())
+        file.write(str(datetime.date.today()))
 
 def save_set_to_file(new_set, file_name):
     ''' Saves set to file, each element per line'''
@@ -169,21 +167,13 @@ def save_set_to_file(new_set, file_name):
         for element in new_set:
             file.write(str(element) + '\n')
 
-def url_pipeline(date_file, skill_set, urls_file, base_url, iterable_url=None):
-    ''' Pipeline scrapes listings for each skill in skill set'''
-    # Use base_url if iterable_url was not provided
-    iterable_url = iterable_url or base_url
-
-    pipeline = (get_cutoff_date(date_file)
-        | scrape_all_skills(skill_set, base_url, iterable_url)
-        | update_file(urls_file))
-    return pipeline
-
 def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     ''' Main method of scrape_urls.py
-    Scrape all urls with job offers containing my skill set'''
+    Scrape all urls with job offers containing my skill set, then save to file'''
 
-    url_pipeline(date_file, skill_set, urls_file, base_url, iterable_url)()
+    cutoff_date_main = get_cutoff_date(date_file)
+    http_links_main = scrape_all_skills(cutoff_date_main, skill_set, base_url, iterable_url)
+    update_file(http_links_main, urls_file)
     update_date_log(date_file)
 
 if __name__ == '__main__':
