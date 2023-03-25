@@ -15,7 +15,8 @@ import requests
 
 def replace_empty(data_string):
     """ Replace empty dictionaries, lists and strings with None """
-    patterns = [r':\s*""', r':\s*\[\]', r':\s*{}', r':\s*,', r':\s*]', r':\s*\}', r':\s*\{\}']
+    patterns = [r':\s*""', r':\s*\[\]', r':\s*{}', r':\s*,', r':\s*]',
+    r':\s*\}', r':\s*\{\}']
     for pattern in patterns:
         data_string = re.sub(pattern, ':null', data_string)
     return data_string
@@ -31,7 +32,7 @@ def scrape_single_listing(url, timeout=5):
     response = requests.get(url, timeout=timeout)
     response.encoding = 'utf-8' # To recognise polish letters
 
-    # Extract the substring {...} between "window['kansas-offerview'] = "and "<"
+    # Extract the substring {...} between "window['kansas-offerview']="and "<"
     start_string = "window['kansas-offerview'] = "
     end_string = "<"
     start_index = response.text.find(start_string) + len(start_string)
@@ -42,13 +43,14 @@ def scrape_single_listing(url, timeout=5):
 
     # Remove sequences
     substring = re.sub(r'\\n|\\t|\\r|\\"', ' ', substring)
-    substring = substring.strip() # remove any trailing or leading white spaces
-    substring = re.sub(r'\s+', ' ', substring) # replace consecutive white spaces with a single white space
+    substring = substring.strip()
+    substring = re.sub(r'\s+', ' ', substring) # keep single white spaces
     substring = replace_empty(substring)
     substring = add_missing_commas(substring)
 
     # Replace any non-alphanumeric or non-allowed characters with space
-    substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '', substring)
+    substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '',
+        substring)
     substring = substring.replace("u002F", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
@@ -82,7 +84,8 @@ def scrape_listing_from_json(url, timeout=5):
 
 def skill_patterns(skill_set):
     ''' Create regex pattern for given skill set
-    I assume names of languages and technologies names shorter than 3 have to be search as \b%s\b (R, C)
+    I assume names of languages and technologies names shorter than 3
+    have to be search as \b%s\b (R, C)
     Longer names can be part of longer string (PostgreSQL, MySQL for sql)
     Each pattern dinds all instances of upper/lower case and capitalised'''
 
@@ -102,7 +105,8 @@ def skill_patterns(skill_set):
         pattern_2 = '|'.join(skills_long)
 
     if pattern_1 and pattern_2:
-        pattern = re.compile(r'\b(%s)\b|(%s)' % (pattern_1, pattern_2), re.IGNORECASE)
+        pattern = re.compile(r'\b(%s)\b|(%s)' % (pattern_1, pattern_2),
+            re.IGNORECASE)
     elif pattern_1:
         pattern = re.compile(pattern_1, re.IGNORECASE)
     elif pattern_2:
@@ -121,7 +125,7 @@ def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
     substring = substring.strip()
     #print(substring)
-    print('\n\n\n')
+    #print('\n\n\n')
 
     patterns = [
     r'\bundefined\b', # incorrect null value
@@ -244,10 +248,11 @@ def extract_data(my_dict, url):
     new_dict['contract_type'] = contract_type
     # Salary specific
     new_dict['is_salary'] = is_salary
-    new_dict['salary_from'] = salary_from
-    new_dict['salary_to'] = salary_to
-    new_dict['salary_currency'] = salary_currency
-    new_dict['salary_long_form'] = salary_long_form
+    if is_salary:
+        new_dict['salary_from'] = salary_from
+        new_dict['salary_to'] = salary_to
+        new_dict['salary_currency'] = salary_currency
+        new_dict['salary_long_form'] = salary_long_form
     # Dates
     new_dict['publication_date'] = str(publication_date)
     new_dict['expiration_date'] = str(expiration_date)
@@ -270,34 +275,79 @@ def save_to_file(new_dict, file_name):
     with open(file_name, 'a', encoding='utf-8') as file:
         file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
 
-def listing_pipeline(url,file_name):
+def get_url_count(file_name):
+    with open(file_name, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+        return len(lines)
+
+def listing_pipeline_main(url,file_name):
     ''' Pipeline saves listing details to file'''
     substring = scrape_listing_from_json(url)
     substring = clean_listing_string(substring)
     my_dict = change_str_to_dict(substring)
     new_dict = extract_data(my_dict, url)
     save_to_file(new_dict, file_name)
+
+def listing_pipeline_mongodb(url,file_name):
+    ''' Pipeline saves listing details to file'''
+    substring = scrape_listing_from_json(url)
+    substring = clean_listing_string(substring)
+    my_dict = change_str_to_dict(substring)
+    new_dict = extract_data(my_dict, url)
     
 
 def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
-    count_succeses = 0
-    count_failures = 0
+    succeses = 0
+    failures = 0
+    url_count = get_url_count(scraped_urls)
 
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
-        # Try to extract each listing using pipeline. If failed, record in serepate file
+        # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
             try:
-                listing_pipeline(url, succesfull)
-                count_succeses += 1
+                listing_pipeline_main(url, succesfull)
+                succeses += 1
             except:
-                count_failures += 1
+                failures += 1
                 with open(failed, 'a', encoding='UTF-8') as file_2:
                     file_2.write(url + '\n')
             finally:
-                print(f'Success: {count_succeses}  Failures: {count_failures}')
+                progress = round((succeses+failures)/url_count*100, 3)
+                print(f'Successes: {succeses:4}   '
+                    f'Failures: {failures:4}   '
+                    f'Progress: {progress:5}%')
+                sleep(random.uniform(sleep_min, sleep_max))
+
+def save_to_mongodb_atlas(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
+    ''' Main method of scrape_listings.py
+    Runs if script called directly'''
+    succeses = 0
+    failures = 0
+    url_count = get_url_count(scraped_urls)
+
+    with open(scraped_urls, 'r', encoding='UTF-8') as file:
+        # Record Listing using pipeline. If failed, record in serepate file
+        for url in file:
+            url = url.strip()
+            try:
+                new_dict = listing_pipeline_mongodb(url, succesfull)
+                # Save to MongoDB Atlas - Web_Scraping_Job_Site.Job_Listings
+
+
+                succeses += 1
+            except:
+                failures += 1
+                # Save to MongoDB Atlas - Web_Scraping_Job_Site.Failed_Urls
+
+
+            finally:
+                progress = round((succeses+failures)/url_count*100, 3)
+                print(f'Successes: {succeses:4}   '
+                    f'Failures: {failures:4}   '
+                    f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
 
 if __name__ == '__main__':
