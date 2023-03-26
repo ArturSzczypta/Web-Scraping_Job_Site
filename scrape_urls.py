@@ -149,7 +149,7 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
 
 def update_file(http_links, urls_file):
     ''' Adds new records, removes old ones'''
-    with open(urls_file, 'w+',encoding='UTF-8') as file:
+    with open(urls_file, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
         print(f'New: {len(new_records)}')
@@ -162,7 +162,7 @@ def update_file(http_links, urls_file):
 
 def update_date_log(date_file):
     ''' Update logging date'''
-    with open(date_file, 'w',encoding='UTF-8') as file:
+    with open(date_file, 'w',encoding='utf-8') as file:
         file.write(str(datetime.date.today()))
 
 def save_set_to_file(new_set, file_name):

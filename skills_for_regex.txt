@@ -2296,3 +2296,278 @@ xml
 zarządzanie zespołem IT
 zdalna obsługa użytkowników
 światłowód
+.NET
+Android
+Angular
+AWS
+C
+C#
+C++
+Go
+Hibernate
+HTML
+iOS
+Java
+JavaScript
+Node.js
+PHP
+Python
+R
+React.js
+Ruby
+Rust
+SQL
+TypeScript
+.NET Core
+Active Directory
+Adobe Illustrator
+Adobe InDesign
+Adobe Lightroom
+Adobe Photoshop
+Adobe XD
+Affinity Designer
+Affinity Photo
+akka
+Amazon DocumentDB
+Android SDK
+Android Studio
+Angular.js
+Anima App
+Ansible
+Apache ActiveMQ
+Apache Airflow
+Apache Ambari
+Apache Flink
+Apache Hive
+Apache JMeter
+Apache Lucene
+Apache Pig
+Apache Spark
+Apache Storm
+Apache Tomcat
+Appium
+Archimate
+Arduino
+ASP.NET
+ASP.NET Core MVC
+ASP.NET MVC
+ASP.NET Web API
+ASP.NET Web Forms
+Assembly
+Atom
+Atomic
+Avocode
+Axure
+Azure Cosmos DB
+Azure DevOps
+Azure SQL
+Babel
+Bash
+Blender
+Bower
+BPMN
+Cassandra
+CentOS
+Chef
+Cisco
+Clarity Design System
+Clojure
+Cloudflare
+COBOL
+Coda
+Concourse
+Confluence
+Consul
+Cordova
+Couchbase
+CryEngine
+CSS
+Cucumber.js
+Dart
+DB2
+Debian
+Delphi
+Dimensions
+Django
+Docker
+Drupal
+Dynamo
+DynamoDB
+Eclipse
+Elasticsearch
+Elixir
+Emacs
+Enterprise Architect
+Entity Framework
+Erlang
+ESLint
+Express
+F#
+Figma
+Firebase
+Flask
+Flutter
+Frontify
+Gatling
+Git
+GitLab
+Google Analytics
+Google Cloud Platform
+Google Tag Manager
+Gradle
+Grafana
+Gravit
+Gremlin
+Groovy
+Gulp
+Hadoop
+Haiku
+HAProxy
+Haskell
+Heroku
+HP UFT
+IBM Cloud or Watson
+IBM InfoSphere
+IBM Rational Rose
+IBM WebSphere
+Informatica PowerCenter
+Inkscape
+IntelliJ
+InVision
+IPython/Jupyter
+JavaServer Pages
+JBoss Application Ser
+Jenkins
+Jira
+jQuery
+Kafka
+Keras
+Kibana
+Komodo
+Kotlin
+Kubernetes
+Laravel
+Light Table
+Linux
+Logstash
+Looker
+Lua
+Lucidpress
+MacOS
+MariaDB
+Marvel
+MATLAB
+Maven
+Microsoft Azure
+Microsoft Dynamics
+Microsoft Excel
+Microsoft IIS
+Microsoft Power BI
+Microsoft SQL Server
+Microsoft SSIS
+MongoDB
+Moqups
+Mule ESB
+MySQL
+Nagios
+Neo4j
+NetBeans
+NHibernate
+Notepad++
+npm
+Objective-C
+Octopus Deploy
+OpenJDK
+OpenShift
+OpenStack
+OpenUI5
+Oracle
+Oracle Data Integrato
+Oracle Service Bus
+OrientDB
+Overflow.io
+Pandas
+Perl
+PHPStorm
+Pixelmator
+PL/SQL
+Play Framework
+PostgreSQL
+PowerShell
+Prometheus
+Proto.io
+ProtoPie
+Puppet
+PyCharm
+Qlickview
+RabbitMQ
+Raspberry Pi
+React Native
+Red Hat
+Redis
+RStudio
+Ruby on Rails
+RubyMine
+Salesforce
+SAP
+SAP ABAP
+SAP HANA
+SAPUI5
+SAS
+Scala
+scikit-learn
+SCOM
+SCSS
+Selenium
+SharePoint
+Sizzy
+Sketch
+Snowflake Data Cloud
+SoapUI
+Solr
+Splunk
+Spring Boot
+Spring Framework
+SQLite
+Sublime Text
+Svelte
+SVN
+Swift
+Symfony
+Sympli
+T-SQL
+Tableau
+TeamCity
+TensorFlow
+Terraform
+TextMate
+Torch/PyTorch
+Travis CI
+Ubuntu
+UML
+Unity 3D
+Unreal Engine
+Varnish
+VB.NET
+Veeam
+Vim
+Visual Studio
+Visual Studio Code
+VMware
+Vue.js
+WCF
+WebAssembly
+webMethods
+webpack
+WebStorm
+Windows Server
+WordPress
+WPF
+Xamarin
+Xcode
+Xray
+Yarn
+Zabbix
+Zend
+Zeplin
+ZeroMQ

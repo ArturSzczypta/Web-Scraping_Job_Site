@@ -206,29 +206,22 @@ def extract_data(my_dict, url):
                 if item['sectionType'] == 'requirements-expected':
                     if 'paragraphs' in item['model']:
                         req_expected += list(item['model']['paragraphs'])
-                        #[req for req in item['model']['paragraphs']]
                     elif 'bullets' in item['model']:
                         req_expected += list(item['model']['bullets'])
-                        #[req for req in item['model']['bullets']]
                 elif item['sectionType'] == 'requirements-optional':
                     if 'paragraphs' in item['model']:
                         req_optional += list(item['model']['paragraphs'])
-                        #[req for req in item['model']['paragraphs']]
                     elif 'bullets' in item['model']:
                         req_optional += list(item['model']['bullets'])
-                        #[req for req in item['model']['bullets']]
 
         elif section['sectionType'] == 'development-practices':
             dev_practices = list(section['model']['items'])
-            #[resp for resp in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
             if 'bullets' in section['model']:
                 responsibilities += list(section['model']['bullets'])
-                #[resp for resp in section['model']['bullets']]
             elif 'paragraphs' in section['model']:
                 responsibilities += list(section['model']['paragraphs'])
-                #[resp for resp in section['model']['paragraphs']]
 
     # Remplace empty list with None
     tech_expected = tech_expected if len(tech_expected) > 0 else None
@@ -249,14 +242,17 @@ def extract_data(my_dict, url):
     # Salary specific
     new_dict['is_salary'] = is_salary
     if is_salary:
-        new_dict['salary_from'] = salary_from
-        new_dict['salary_to'] = salary_to
-        new_dict['salary_currency'] = salary_currency
-        new_dict['salary_long_form'] = salary_long_form
+        new_dict['salary'] = {
+        'salary_from': salary_from
+        'salary_to': salary_to
+        'salary_currency': salary_currency
+        'salary_long_form': salary_long_form
+        }  
     # Dates
     new_dict['publication_date'] = str(publication_date)
     new_dict['expiration_date'] = str(expiration_date)
     # technologies
+    
     new_dict['tech_expected'] = tech_expected
     new_dict['tech_optional'] = tech_optional
     # requirements
@@ -296,7 +292,7 @@ def listing_pipeline_mongodb(url,file_name):
     new_dict = extract_data(my_dict, url)
     
 
-def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
+def main(scraped_urls, succesfull, failed, sleep_min=4, sleep_max=8):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     succeses = 0
@@ -321,7 +317,7 @@ def main(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
 
-def save_to_mongodb_atlas(scraped_urls, succesfull, failed, sleep_min=7, sleep_max=23):
+def save_to_mongodb_atlas(scraped_urls, succesfull, failed, sleep_min=4, sleep_max=8):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     succeses = 0
