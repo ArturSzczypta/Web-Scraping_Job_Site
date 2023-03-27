@@ -1,6 +1,7 @@
 ''' Extracting already downloaded data to text files'''
 import json
 import ast
+import re
 
 def extracting_to_files():
     keys = ['req_expected', 'req_optional', 'resp_bullets', 'tech_expected', 'tech_optional']
@@ -47,21 +48,23 @@ def extract_tech_without_repetition(file_with_lists,file_with_tech):
         for item in sorted_tech:
             output_file.write(item + '\n')
 
-def update_tech(file_with_tech, new_tech_set):
+def update_tech(file_with_tech, new_tech_set=None):
     ''' Add new technologies/languages and then sort'''
-    tech_set = set()
     # Extract technologies/languages to a set
+    tech_set = set()
     with open(file_with_tech, 'r', encoding='utf-8') as file:
         for line in file:
-            line.strip()
-            tech_set.add(line)
-    tech_set = tech_set.union(new_tech_set)
-    sorted_tech = sorted(tech_set)
+            tech_set.add(line.strip())
+    
+    # Add new technologies/languages if provided
+    if new_tech_set is not None:
+        tech_set.update(new_tech_set)
 
-    # Overwrite with unique adn sorted technologies/languages to
+    # Sort and write unique technologies/languages to file
+    sorted_tech = sorted(tech_set)
     with open(file_with_tech, 'w', encoding='utf-8') as file:
         for item in sorted_tech:
-            file.write(item)
+            file.write(item + '\n')
 
 def removing_salary_nulls(file_with_jsons, new_file_with_jsons):
     ''' Remove salary keys if there is no salary'''
@@ -86,10 +89,7 @@ def removing_salary_nulls(file_with_jsons, new_file_with_jsons):
             # write the modified JSON object to the output file
             output_file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
 
-#extract_tech_without_repetition():
-#sort_tech('unique_tech.txt','tech_for_regex.txt')
-
-def nest_current_listings(file_with_jsons):
+def nest_current_listings(file_with_jsons, new_file_with_jsons):
     ''' Nest salary and technology keys'''
     # open the input file and output file
     with open(file_with_jsons, 'r',encoding='utf-8') as input_file,\
@@ -108,19 +108,35 @@ def nest_current_listings(file_with_jsons):
                 'salary_long_form': json_obj.pop('salary_long_form')
                 }
                 del json_obj['is_salary']
+            if json_obj.get('is_salary') == False:
+                del json_obj['is_salary']
 
-            # Store tech data in nested dictionary
-            json_obj[technologies] = {
-            'expected': json_obj.pop('tech_expected'),
-            'optional': json_obj.pop('tech_optional')
-            }
+            if json_obj.get('tech_expected') == True:
+                # Store tech data in nested dictionary
+                json_obj['technologies'] = {
+                'expected': json_obj.pop('tech_expected'),
+                'optional': json_obj.pop('tech_optional')
+                }
 
             # write the modified JSON object to the output file
             output_file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
 
+def replace_descriptions(file_name_1, file_name_2):
+    lines = None
+    with open(file_name_1, 'r', encoding='utf-8') as file_1:
+        lines = file_1.readlines()
+
+    with open(file_name_2, 'w',encoding='utf-8') as file_2:
+        for line in lines:
+            line = line.replace('salary_from','min')
+            line = line.replace('salary_to','max')
+            line = line.replace('salary_currency','currency')
+            line = line.replace('salary_long_form','pay_period')
+            file_2.write(line)
+
 def extract_all_tech(file_with_jsons):
     ''' Extracts all tech from each JSON, adds it in technologies dictionary'''
-
+    # Nothing yet
 
 def skill_patterns(skill_set):
     ''' Create regex pattern for given skill set
@@ -177,3 +193,32 @@ def update_file(old_urls_file, urls_file):
         # Write new urls
         for url in new_records:
             file.write(url + '\n')
+
+
+def filter_unused_tech(file_with_tech, file_with_listings, file_only_used_tech):
+    ''' Keep only technologies/languages found in the scraped listings'''
+    # Extract technologies/languages to a set
+    tech_set = set()
+    filtered_tech_set = set()
+    with open(file_with_tech, 'r', encoding='utf-8') as file_1:
+        for line in file_1:
+            tech_set.add(line.strip())
+    
+    with open(file_with_listings, 'r', encoding='utf-8') as file_2:
+        count = 0
+        for line in file_2:
+            for tech in tech_set:
+                tech_escaped = re.escape(tech)
+                pattern = re.compile(r'\b(%s)\b' % tech_escaped, re.IGNORECASE)
+                if pattern.search(line):
+                    filtered_tech_set.add(tech)
+            count += 1
+            if count % 10 == 0:
+                print(count)
+
+    # Sort and write unique found technologies/languages to file
+    sorted_tech = sorted(filtered_tech_set)
+    with open(file_only_used_tech, 'w', encoding='utf-8') as file:
+        for item in sorted_tech:
+            file.write(item + '\n')
+

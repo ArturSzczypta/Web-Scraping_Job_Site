@@ -155,7 +155,7 @@ def change_str_to_dict(substring):
     #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
 
-def extract_data(my_dict, url):
+def simplify_dictionary(my_dict, url, tech_found):
     ''' Extracts usefull data from the dictionary, creates new dictionary'''
 
     #Basic listing data
@@ -243,18 +243,20 @@ def extract_data(my_dict, url):
     new_dict['is_salary'] = is_salary
     if is_salary:
         new_dict['salary'] = {
-        'salary_from': salary_from
-        'salary_to': salary_to
-        'salary_currency': salary_currency
-        'salary_long_form': salary_long_form
+        'min': salary_from,
+        'max': salary_to,
+        'currency': salary_currency,
+        'pay_period': salary_long_form
         }  
     # Dates
     new_dict['publication_date'] = str(publication_date)
     new_dict['expiration_date'] = str(expiration_date)
     # technologies
-    
-    new_dict['tech_expected'] = tech_expected
-    new_dict['tech_optional'] = tech_optional
+    new_dict['technologies'] = {
+    'expected' = tech_expected,
+    'optional' = tech_optional,
+    'found' = tech_found
+    }
     # requirements
     new_dict['req_expected'] = req_expected
     new_dict['req_optional'] = req_optional
@@ -266,6 +268,37 @@ def extract_data(my_dict, url):
     #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
+def extract_tech_set(file_with_tech)
+    ''' Extract all technologies in file to a set'''
+    tech_set = set()
+    with open(file_with_tech, 'r', encoding='utf-8') as file:
+        for line in file_1:
+            tech_set.add(line.strip())
+    return tech_set
+
+def extract_all_tech(substring, tech_set):
+    ''' Extract all technologies/languages/annrevations from string
+    Returns found tech list'''
+    
+    # Open each line as string. After extraction convert to dictionary.
+    # Add created 
+    with open(file_with_listings, 'r', encoding='utf-8') as file:
+        count = 0
+        for line in file_2:
+            line = line.strip()
+            tech_found = []
+            for tech in tech_set:
+                tech_escaped = re.escape(tech)
+                pattern = re.compile(r'\b(%s)\b' % tech_escaped,re.IGNORECASE)
+                if pattern.search(line):
+                    tech_found.append(tech)
+
+            tech_found.sort()
+            new_dict = change_str_to_dict(line)
+            new_dict['technologies']['scraped'] = tech_found
+
+
+
 def save_to_file(new_dict, file_name):
     ''' Saves dictionary to file'''
     with open(file_name, 'a', encoding='utf-8') as file:
@@ -276,35 +309,39 @@ def get_url_count(file_name):
         lines = file.readlines()
         return len(lines)
 
-def listing_pipeline_main(url,file_name):
+def listing_pipeline_main(url, tech_set, file_name):
     ''' Pipeline saves listing details to file'''
     substring = scrape_listing_from_json(url)
     substring = clean_listing_string(substring)
+    tech_found = extract_all_tech(substring, tech_set)
     my_dict = change_str_to_dict(substring)
-    new_dict = extract_data(my_dict, url)
+    new_dict = simplify_dictionary(my_dict, url, tech_found)
     save_to_file(new_dict, file_name)
 
-def listing_pipeline_mongodb(url,file_name):
+def listing_pipeline_mongodb(url, tech_set, file_name):
     ''' Pipeline saves listing details to file'''
     substring = scrape_listing_from_json(url)
     substring = clean_listing_string(substring)
+    tech_found = extract_all_tech(substring, tech_set)
     my_dict = change_str_to_dict(substring)
-    new_dict = extract_data(my_dict, url)
+    new_dict = simplify_dictionary(my_dict, url, tech_found)
     
 
-def main(scraped_urls, succesfull, failed, sleep_min=4, sleep_max=8):
+def main(scraped_urls, file_with_tech, succesfull, failed,
+    sleep_min=4, sleep_max=8):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     succeses = 0
     failures = 0
     url_count = get_url_count(scraped_urls)
+    tech_set = extract_tech_set(file_with_tech)
 
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
             try:
-                listing_pipeline_main(url, succesfull)
+                listing_pipeline_main(url, tech_set, succesfull)
                 succeses += 1
             except:
                 failures += 1
@@ -317,41 +354,16 @@ def main(scraped_urls, succesfull, failed, sleep_min=4, sleep_max=8):
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
 
-def save_to_mongodb_atlas(scraped_urls, succesfull, failed, sleep_min=4, sleep_max=8):
-    ''' Main method of scrape_listings.py
-    Runs if script called directly'''
-    succeses = 0
-    failures = 0
-    url_count = get_url_count(scraped_urls)
+#save_to_mongodb_atlas
 
-    with open(scraped_urls, 'r', encoding='UTF-8') as file:
-        # Record Listing using pipeline. If failed, record in serepate file
-        for url in file:
-            url = url.strip()
-            try:
-                new_dict = listing_pipeline_mongodb(url, succesfull)
-                # Save to MongoDB Atlas - Web_Scraping_Job_Site.Job_Listings
-
-
-                succeses += 1
-            except:
-                failures += 1
-                # Save to MongoDB Atlas - Web_Scraping_Job_Site.Failed_Urls
-
-
-            finally:
-                progress = round((succeses+failures)/url_count*100, 3)
-                print(f'Successes: {succeses:4}   '
-                    f'Failures: {failures:4}   '
-                    f'Progress: {progress:5}%')
-                sleep(random.uniform(sleep_min, sleep_max))
 
 if __name__ == '__main__':
     ''' Performs basic logging set up'''
     l.main()
 
     ''' Actual Script'''
-    _scraped_urls = 'scraped_urls_1.txt'
+    _scraped_urls = 'urls_file_today.txt'
+    _file_with_tech = 'technologies_scraped.txt'
     _succesfull = 'file_succesfull.txt'
     _failed = 'file_failed.txt'
-    main(_scraped_urls, _succesfull, _failed)
+    main(_scraped_urls, _file_with_tech, _succesfull, _failed)
