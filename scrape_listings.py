@@ -52,6 +52,7 @@ def scrape_single_listing(url, timeout=5):
     substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '',
         substring)
     substring = substring.replace("u002F", " ")
+    substring = substring.replace("u003E", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     #print(substring)
@@ -144,6 +145,9 @@ def clean_listing_string(substring):
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
     substring = substring.replace('u002F', ' ')
+    substring = substring.replace("u003E", " ")
+    substring = substring.replace("--", " ")
+    substring = substring.replace(", \"\"", " ")
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     return substring
@@ -215,7 +219,7 @@ def simplify_dictionary(my_dict, url, tech_found):
                         req_optional += list(item['model']['bullets'])
 
         elif section['sectionType'] == 'development-practices':
-            dev_practices = list(section['model']['items'])
+            dev_practices = list(section['model']['items']['primaryTargetSiteName'])
 
         elif section['sectionType'] == 'responsibilities':
             if 'bullets' in section['model']:
@@ -258,8 +262,10 @@ def simplify_dictionary(my_dict, url, tech_found):
     'found' = tech_found
     }
     # requirements
-    new_dict['req_expected'] = req_expected
-    new_dict['req_optional'] = req_optional
+    new_dict['requirements'] = {
+    'expected' = req_expected
+    'optional' = req_optional
+    }
     # development-practices
     new_dict['dev_practices'] = dev_practices
     # responsibilities

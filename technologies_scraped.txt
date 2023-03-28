@@ -52,8 +52,8 @@ AUTOSAR
 AV
 AWK
 AWS
-AWS AZURE GCP
-AWS Azure GCP
+AWS
+GCP
 AWS Cloud
 AWS EKS
 AWS EMR
@@ -1766,3 +1766,14 @@ xUnit
 xml
 zarządzanie zespołem IT
 zdalna obsługa użytkowników
+SVN
+Selenium
+Git
+CCNA
+ISTQB
+IFRS4
+IFRS17
+Solvency II
+M365
+Jiry
+Jira

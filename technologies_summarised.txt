@@ -1,0 +1,13 @@
+total:	72372
+
+90%	65133
+80%	57896
+70%	50659
+60%	43422
+50%	36185
+
+50% of skills: 36364  skill names: 64  last skill: SAP
+60% of skills: 43480  skill names: 98  last skill: NoSQL
+70% of skills: 50745  skill names: 157  last skill: Inne
+80% of skills: 57921  skill names: 261  last skill: Kibana
+90% of skills: 65155  skill names: 458  last skill: AML
