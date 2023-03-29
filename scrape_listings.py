@@ -145,9 +145,10 @@ def clean_listing_string(substring):
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
     substring = substring.replace('u002F', ' ')
-    substring = substring.replace("u003E", " ")
-    substring = substring.replace("--", " ")
-    substring = substring.replace(", \"\"", " ")
+    substring = substring.replace('\\u003E', ' ')
+    substring = substring.replace('u003E', ' ')
+    substring = substring.replace('--', ' ')
+    substring = substring.replace(', \"\"', ' ')
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     return substring
@@ -288,20 +289,18 @@ def extract_all_tech(substring, tech_set):
     
     # Open each line as string. After extraction convert to dictionary.
     # Add created 
+    tech_found = []
     with open(file_with_listings, 'r', encoding='utf-8') as file:
         count = 0
-        for line in file_2:
-            line = line.strip()
+        for line in file:
             tech_found = []
             for tech in tech_set:
                 tech_escaped = re.escape(tech)
-                pattern = re.compile(r'\b(%s)\b' % tech_escaped,re.IGNORECASE)
+                pattern = re.compile(r'\b(%s)\b' % tech_escaped, re.IGNORECASE)
                 if pattern.search(line):
                     tech_found.append(tech)
-
-            tech_found.sort()
-            new_dict = change_str_to_dict(line)
-            new_dict['technologies']['scraped'] = tech_found
+    tech_found.sort()
+    return tech_found
 
 
 
@@ -340,14 +339,14 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
     succeses = 0
     failures = 0
     url_count = get_url_count(scraped_urls)
-    tech_set = extract_tech_set(file_with_tech)
+    _tech_set = extract_tech_set(file_with_tech)
 
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
             try:
-                listing_pipeline_main(url, tech_set, succesfull)
+                listing_pipeline_main(url, _tech_set, succesfull)
                 succeses += 1
             except:
                 failures += 1
@@ -369,7 +368,7 @@ if __name__ == '__main__':
 
     ''' Actual Script'''
     _scraped_urls = 'urls_file_today.txt'
-    _file_with_tech = 'technologies_scraped.txt'
+    _file_with_tech = 'technologies_final.txt'
     _succesfull = 'file_succesfull.txt'
-    _failed = 'file_failed.txt'
+    _failed = 'urls_failed.txt'
     main(_scraped_urls, _file_with_tech, _succesfull, _failed)

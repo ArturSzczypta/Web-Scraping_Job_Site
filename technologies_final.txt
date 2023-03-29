@@ -1,0 +1,381 @@
+SQL
+Python
+English
+Java
+Git
+Azure
+REST
+DevOps
+Linux
+C
+Docker
+Scrum
+CI
+Agile
+Oracle
+JavaScript
+API
+Kubernetes
+AWS
+CI CD
+Jira
+Jiry
+BI
+MS SQL
+UML
+Jenkins
+Bash
+NET
+SQL Server
+Google
+Automation
+Kafka
+BPMN
+Excel
+CSS
+ETL
+Power BI
+Spring
+PostgreSQL
+R
+Core
+Confluence
+SOAP
+Databases
+GCP
+PL SQL
+Angielski
+Enterprise Architect
+REST API
+Ansible
+HTML
+Postman
+PowerShell
+Jest
+SAP
+Azure DevOps
+Continuous Deployment
+Scripting
+MySQL
+Selenium
+Google Cloud
+Microsoft Azure
+React
+PHP
+Big Data
+Maven
+Spring Boot
+Spark
+Angular
+Apache
+Windows Server
+XML
+JS
+Machine Learning
+Bazy Danych
+DDD
+UI
+T-SQL
+Google Cloud Platform
+Network
+SOLID
+Microsoft SQL
+Visual Studio
+Tableau
+Terraform
+SoapUI
+Hibernate
+NoSQL
+VMWare
+VBA
+ITIL
+GitLab
+MongoDB
+UX
+.NET
+TDD
+Native
+Data Science
+Active Directory
+MVC
+OpenShift
+ASP.NET
+ElasticSearch
+Storage
+RabbitMQ
+Design Patterns
+Splunk
+Spring Framework
+Data Warehouse
+Web Services
+Statistics
+MSSQL
+AI
+Data Analytics
+JSON
+DataBricks
+Relational databases
+TypeScript
+GitHub
+Embedded
+REST Assured
+Airflow
+TCP IP
+Workflow
+React.js
+JQuery
+Data analysis
+Go
+Google Analytics
+Networking
+Redis
+Apache Spark
+Groovy
+Prometheus
+CASE
+Continuous Delivery
+Cloud Solutions
+Cloud Services
+Data Factory
+Kanban
+CentOS
+SLA
+Shell
+NAS
+Gatling
+Kali Linux
+BitBucket
+Swagger
+Jira Confluence
+Optima
+Perl
+Azure SQL
+Business Analysis
+CSS3
+IntelliJ
+OS
+Networks
+Gradle
+Unit Testing
+Qlik
+ASP.NET MVC
+Node.js
+SIEM
+RPA
+SSIS
+BigQuery
+Azure Cloud
+web applications
+Serverless
+IIS
+Ubuntu
+Puppet
+Power Query
+WebServices
+Version Control System
+DevExpress
+HANA
+Power Point
+Containers
+Containerization
+enova365
+Scripting languages
+Hyper-V
+VPN
+NGINX
+UAT
+ORM
+Adobe
+DNS
+Cisco
+SalesForce
+Microsoft Dynamics
+Cassandra
+Bootstrap
+Apache Airflow
+Agile SCRUM
+Kibana
+AJAX
+Data modeling
+Cypress
+LeSS
+Firewall
+ESB
+ETL ELT
+Debugging
+Reporting Services
+Enterprise Architekt
+Web API
+IDEA
+PySpark
+Hive
+Debian
+PL-SQL
+Data Architecture
+WinForms
+Network Security
+Data Governance
+Java 11
+WPF
+MS-SQL
+Foundation
+Amazon Web Services
+ELK Stack
+OpenStack
+Qlik Sense
+Azure Data Factory
+Django
+TFS
+TeamCity
+Informatica
+Authorization
+Red Hat
+WebLogic
+Microsoft Power BI
+TensorFlow
+HTML CSS
+SAP BW
+Pandas
+WCF
+JPA
+PLSQL
+BPM
+VLAN
+WMS
+DAX
+Magento
+Redux
+.NET Core
+DWH
+HP
+MS Windows
+SOA
+Vue
+Scrum methodology
+SpringBoot
+MariaDB
+PyTorch
+Waterfall
+Combine
+GitFlow
+SCCM
+XSLT
+Synapse
+Graylog
+CMS
+4GL
+NLP
+SAFe
+ADF
+React Native
+KVM
+Atlassian
+SaaS
+Software testing
+TSQL
+Oracle SQL
+IOS
+Data Studio
+UIPath
+XPath
+Celonis
+OWASP
+TOMCAT
+RedHat
+Fortinet
+IaC
+Vault
+Webcon
+PMI
+GCC
+gcc
+IoT
+Selenium WebDriver
+Artifactory
+Forms
+backup
+Postgres
+Shiny
+Power Automate
+Archimate
+Cloud Platforms
+Microservices Architecture
+WebService
+High Availability
+OLAP
+DB2
+Mongo
+CyberSecurity
+Artificial Intelligence
+RESTFUL
+Next
+Zabbix
+APEX
+Apex
+VB
+JMS
+NeoLoad
+Disaster Recovery
+MS Azure
+FIORI
+Fiori
+MES
+Dash
+Gerrit
+Kinesis
+HBase
+REST APIs
+GitHub Actions
+NightWatch
+Exchange
+Internet
+Google Data Studio
+Low-Code
+Shell Scripting
+Teradata
+Infrastructure as Code
+CQRS
+HTTP
+ROBOT
+Bamboo
+Office 365
+IDS
+Automotive
+Qlikview
+Test Driven Development
+DELL
+DHCP
+Firewalls
+SEO
+Oracle DB
+Mockito
+Jasmine
+React Redux
+SSRS
+Apache Flink
+Robot Framework
+Cloudera
+Flask
+PaaS
+Ferryt
+vSphere
+Crystal Reports
+Eclipse
+Scikit-Learn
+Metadata Management
+PyTest
+AWS Cloud
+IPSec
+Linux Server
+Microsoft Windows Server
+Apache Kafka
+SDLC
+Snowflake Data Cloud
+AWS Kinesis
+Elastic Search
+Architecture design
+DynamoDB
+Office 365
+Scikit-Learn
+DataFlow
+Deep Learning
