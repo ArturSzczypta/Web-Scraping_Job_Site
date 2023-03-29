@@ -33,8 +33,8 @@ def scrape_single_listing(url, timeout=5):
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the substring {...} between "window['kansas-offerview']="and "<"
-    start_string = "window['kansas-offerview'] = "
-    end_string = "<"
+    start_string = 'window['kansas-offerview'] = '
+    end_string = '<'
     start_index = response.text.find(start_string) + len(start_string)
     end_index = response.text.find(end_string, start_index)
     substring = response.text[start_index:end_index]
@@ -51,8 +51,8 @@ def scrape_single_listing(url, timeout=5):
     # Replace any non-alphanumeric or non-allowed characters with space
     substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '',
         substring)
-    substring = substring.replace("u002F", " ")
-    substring = substring.replace("u003E", " ")
+    substring = substring.replace('u002F', ' ')
+    substring = substring.replace('u003E', ' ')
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
     #print(substring)
@@ -76,8 +76,8 @@ def scrape_listing_from_json(url, timeout=5):
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the JSON from 'window' as string
-    start_string = "window['kansas-offerview'] = "
-    end_string = "<"
+    start_string = 'window['kansas-offerview'] = '
+    end_string = '<'
     start_index = response.text.find(start_string) + len(start_string)
     end_index = response.text.find(end_string, start_index)
     substring = response.text[start_index:end_index]
@@ -220,7 +220,7 @@ def simplify_dictionary(my_dict, url, tech_found):
                         req_optional += list(item['model']['bullets'])
 
         elif section['sectionType'] == 'development-practices':
-            dev_practices = list(section['model']['items']['primaryTargetSiteName'])
+            dev_practices = [item['primaryTargetSiteName'] for item in section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
             if 'bullets' in section['model']:
@@ -258,14 +258,14 @@ def simplify_dictionary(my_dict, url, tech_found):
     new_dict['expiration_date'] = str(expiration_date)
     # technologies
     new_dict['technologies'] = {
-    'expected' = tech_expected,
-    'optional' = tech_optional,
-    'found' = tech_found
+    'expected': tech_expected,
+    'optional': tech_optional,
+    'found': tech_found
     }
     # requirements
     new_dict['requirements'] = {
-    'expected' = req_expected
-    'optional' = req_optional
+    'expected': req_expected,
+    'optional': req_optional
     }
     # development-practices
     new_dict['dev_practices'] = dev_practices
@@ -275,33 +275,25 @@ def simplify_dictionary(my_dict, url, tech_found):
     #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
-def extract_tech_set(file_with_tech)
+def extract_tech_set(file_with_tech):
     ''' Extract all technologies in file to a set'''
     tech_set = set()
     with open(file_with_tech, 'r', encoding='utf-8') as file:
-        for line in file_1:
+        for line in file:
             tech_set.add(line.strip())
     return tech_set
 
 def extract_all_tech(substring, tech_set):
     ''' Extract all technologies/languages/annrevations from string
     Returns found tech list'''
-    
-    # Open each line as string. After extraction convert to dictionary.
-    # Add created 
     tech_found = []
-    with open(file_with_listings, 'r', encoding='utf-8') as file:
-        count = 0
-        for line in file:
-            tech_found = []
-            for tech in tech_set:
-                tech_escaped = re.escape(tech)
-                pattern = re.compile(r'\b(%s)\b' % tech_escaped, re.IGNORECASE)
-                if pattern.search(line):
-                    tech_found.append(tech)
+    for tech in tech_set:
+        tech_escaped = re.escape(tech)
+        pattern = re.compile(r'\b(%s)\b' % tech_escaped, re.IGNORECASE)
+        if pattern.search(substring):
+            tech_found.append(tech)
     tech_found.sort()
     return tech_found
-
 
 
 def save_to_file(new_dict, file_name):
@@ -360,7 +352,6 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                 sleep(random.uniform(sleep_min, sleep_max))
 
 #save_to_mongodb_atlas
-
 
 if __name__ == '__main__':
     ''' Performs basic logging set up'''

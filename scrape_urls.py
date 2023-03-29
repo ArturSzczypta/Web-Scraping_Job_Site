@@ -185,7 +185,7 @@ if __name__ == '__main__':
     l.main()
     
     '''Actual Script'''
-    _skill_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
+    _searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
     # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
     _base_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
     _iterable_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
@@ -193,4 +193,4 @@ if __name__ == '__main__':
     _date_file = 'last_date.log'
     _urls_file = 'urls_file.txt'
 
-    main(_date_file, _skill_set, _urls_file, _base_url, _iterable_url)
+    main(_date_file, _searched_set, _urls_file, _base_url, _iterable_url)
