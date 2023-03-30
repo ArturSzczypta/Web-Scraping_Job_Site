@@ -33,7 +33,7 @@ def scrape_single_listing(url, timeout=5):
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the substring {...} between "window['kansas-offerview']="and "<"
-    start_string = 'window['kansas-offerview'] = '
+    start_string = 'window[kansas-offerview"] = '
     end_string = '<'
     start_index = response.text.find(start_string) + len(start_string)
     end_index = response.text.find(end_string, start_index)
@@ -76,7 +76,7 @@ def scrape_listing_from_json(url, timeout=5):
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the JSON from 'window' as string
-    start_string = 'window['kansas-offerview'] = '
+    start_string = 'window["kansas-offerview"] = '
     end_string = '<'
     start_index = response.text.find(start_string) + len(start_string)
     end_index = response.text.find(end_string, start_index)
@@ -295,7 +295,6 @@ def extract_all_tech(substring, tech_set):
     tech_found.sort()
     return tech_found
 
-
 def save_to_file(new_dict, file_name):
     ''' Saves dictionary to file'''
     with open(file_name, 'a', encoding='utf-8') as file:
@@ -342,6 +341,7 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                 succeses += 1
             except:
                 failures += 1
+                l.log_exception('scrape_listings - main',f'Scraping failed{url}')
                 with open(failed, 'a', encoding='UTF-8') as file_2:
                     file_2.write(url + '\n')
             finally:
@@ -350,8 +350,6 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                     f'Failures: {failures:4}   '
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
-
-#save_to_mongodb_atlas
 
 if __name__ == '__main__':
     ''' Performs basic logging set up'''

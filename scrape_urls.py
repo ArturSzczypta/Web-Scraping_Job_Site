@@ -46,7 +46,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
                 '//button[@data-test="button-accept-all-in-general"]')))
         accept_button.click()
     except:
-        print(f'{current_page} - Could not find or click accept button')
+        l.log_exception('scrape_one_page','Terms of Service button not found')
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
@@ -77,7 +77,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
             # Wait for the job offer details to load
             sleep(random.uniform(sleep_min, sleep_max))
         except:
-            print(f'{current_page} - Could not click on button')
+            l.log_exception('scrape_one_page','No viewBox objects found')
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 

@@ -9,12 +9,12 @@ from logging import config
 import logging_functions as l
 import scrape_urls
 import scrape_listings
-import db_functions_mongodb as db
+import db_functions_mongodb as mongodb
 
 ''' Performs basic logging set up'''
-    l.main()
+l.main()
 
-''' Scraping Urls'''
+''' #Scraping Urls from job site'''
 # Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
 searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
 
@@ -23,7 +23,6 @@ base_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
 iterable_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 last_date_file = 'last_date.log'
 scraped_urls = 'scraped_urls.txt'
-
 # Calling script
 scrape_urls.main(last_date_file, searched_set, scraped_urls, base_url, iterable_url)
 
@@ -33,27 +32,40 @@ scraped_urls = 'scraped_urls_today.txt'
 tech_in_listing = 'technologies.txt'
 succesfull_extractions = 'succesfull_extractions.txt'
 failed_extractions = 'failed_extractions.txt'
-
 # Calling script
 scrape_listings.main(scraped_urls, tech_in_listing, succesfull_extractions, failed_extractions)
 
-'''
+#Saving extraction results to MongoDB Atlas
 
-''' 
-#Saving succesfull_extractions to MongoDB Atlas
-'''
-client = db.return_db_client()
-collection_succesfull = db.return_db_collection(client, 'Web_Scraping_Job_Site', 'Job_Listings')
-collection_failed = db.return_db_collection(client, 'Web_Scraping_Job_Site', 'Failed_Urls')
+client = mongodb.return_db_client()
 
-db.save_dict_from_file_to_collection(collection_succesfull, succesfull_extractions)
-db.save_str_from_file_to_collection(collection_failed, failed_extractions)
+# Check connection to DB
+try:
+    mongodb.command_ping(client)
+except:
+    l.log_exception('main', 'Unable to connect with database')
 
+db = client['Web_Scraping_Job_Site']
+collection_succesfull = mongodb.db['Job_Listings']
+collection_failed = mongodb.db['Failed_Urls']
 
+# Record if there was a failure
+db_failure = 0
+try:
+    mongodb.save_dict_from_file_to_collection(collection_succesfull, succesfull_extractions)
+except:
+    db_failure = 1
+    l.log_exception('main','saving listing JSON to database')
+try:
+    mongodb.save_str_from_file_to_collection(collection_failed, failed_extractions)
+except:
+    db_failure = 1
+    l.log_exception('main','saving url JSON to database')
 
-''' Clearing files'''
-with open(succesfull_extractions, 'w', encoding='utf-8') as file:
-    file.truncate(0)
-with open(failed_extractions, 'w', encoding='utf-8') as file:
-    file.truncate(0)
-'''
+''' Clearing files, only if saving to database was succesfull'''
+if db_failure == 0:
+    with open(succesfull_extractions, 'w', encoding='utf-8') as file:
+        file.truncate(0)
+    with open(failed_extractions, 'w', encoding='utf-8') as file:
+        file.truncate(0)
+

@@ -21,7 +21,6 @@ def extracting_to_files(file_name):
                 req_expected_file.write(str(obj.get('req_expected', '')) + '\n')
                 req_optional_file.write(str(obj.get('req_optional', '')) + '\n')
 
-
 def extract_tech_without_repetition(file_with_lists,file_with_tech):
     tech_set = set()
     sorted_tech = []
@@ -117,13 +116,6 @@ def nest_current_listings(file_with_jsons, new_file_with_jsons):
             # write the modified JSON object to the output file
             output_file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
 
-
-
-
-
-
-
-
 def replace_descriptions(file_name_1, file_name_2):
     lines = None
     with open(file_name_1, 'r', encoding='utf-8') as file_1:
@@ -136,7 +128,6 @@ def replace_descriptions(file_name_1, file_name_2):
             line = line.replace('salary_currency','currency')
             line = line.replace('salary_long_form','pay_period')
             file_2.write(line)
-
 
 def nest_current_listings(file_with_jsons, new_file_with_jsons):
     ''' Nest salary and technology keys'''
@@ -169,8 +160,6 @@ def nest_current_listings(file_with_jsons, new_file_with_jsons):
 
             # write the modified JSON object to the output file
             output_file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
-#nest_current_listings('new_listings_scraped.txt','new_listings_scraped_1.txt')
-
 
 def skill_patterns(skill_set):
     ''' Create regex pattern for given skill set
@@ -294,7 +283,6 @@ def extract_all_tech(file_with_tech, file_with_listings, new_file_with_listings)
     sorted_values = counter.most_common()
     print(sorted_values)
     '''
-extract_all_tech('technologies_final.txt','new_listings_scraped.txt','new_listings_scraped_2.txt')
 
 def simplify_dev_practices(file_with_listings, new_file_with_listings):
     ''' Replace each dictionary in list with just main value'''
@@ -313,6 +301,37 @@ def simplify_dev_practices(file_with_listings, new_file_with_listings):
                 print(new_dict['url'], new_dict['dev_practices'])
 
             file_3.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
+
+
+
+def save_dict_from_file_to_collection(file_name):
+    ''' Saves documents from file to collection
+    Assumes file has one JSON in each line'''
+    documents = []
+    with open(file_name, 'r', encoding='utf-8') as file:
+        #lines = f.readlines()[:-1]
+        for line in file:
+            # Skip over any lines that are empty or don't contain valid JSON
+            if not line.strip():
+                continue
+            try:
+                # Convert the line to a dictionary and append it to the list of documents
+                document = json.loads(line)
+                documents.append(document)
+            except json.JSONDecodeError:
+                print(str('error'))
+                continue
+
+    print(len(documents))
+
+
+save_dict_from_file_to_collection('succesfull_extractions.txt')
+
+
+
+
+
+
 
 
 
