@@ -27,8 +27,13 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     chromedriver_path = os.path.join(dir_path,
         'chromedriver_win32', 'chromedriver')
 
+    # Set options to run Chrome in headless mode
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+
     # Initialize the Chrome browser using ChromeDriver as Service object
-    browser = webdriver.Chrome(service=Service(chromedriver_path))
+    browser = webdriver.Chrome(service=Service(chromedriver_path), options=chrome_options)
     browser.get(current_page)
 
     # Wait for the page to load

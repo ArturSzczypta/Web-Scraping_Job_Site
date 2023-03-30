@@ -37,7 +37,11 @@ failed_extractions = 'failed_extractions.txt'
 # Calling script
 scrape_listings.main(scraped_urls, tech_in_listing, succesfull_extractions, failed_extractions)
 
-''' Saving succesfull_extractions to MongoDB Atlas'''
+'''
+
+''' 
+#Saving succesfull_extractions to MongoDB Atlas
+'''
 client = db.return_db_client()
 collection_succesfull = db.return_db_collection(client, 'Web_Scraping_Job_Site', 'Job_Listings')
 collection_failed = db.return_db_collection(client, 'Web_Scraping_Job_Site', 'Failed_Urls')
@@ -52,3 +56,4 @@ with open(succesfull_extractions, 'w', encoding='utf-8') as file:
     file.truncate(0)
 with open(failed_extractions, 'w', encoding='utf-8') as file:
     file.truncate(0)
+'''

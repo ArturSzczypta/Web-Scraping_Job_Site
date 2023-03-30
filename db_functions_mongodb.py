@@ -20,13 +20,26 @@ def return_db_collection(client, database_name, collection_name):
     ''' Returs collection'''
     return client[database_name][collection_name]
 
-def save_from_file_to_collection(collection, file_name)
+def save_dict_from_file_to_collection(collection, file_name)
     ''' Saves documents from file to collection
     Assumes file has one JSON in each line'''
+    documents = []
     with open(file_name, 'r', encoding='utf-8') as file:
         contents = file.read()
         # Convert the contents of the file into a list of dictionaries
         documents = [json.loads(line) for line in contents.split('\n')]
+
+    result = collection.insert_many(documents)
+    print(result.inserted_ids)
+
+def save_str_from_file_to_collection(collection, file_name)
+    ''' Saves documents from file to collection
+    Assumes file has one JSON in each line'''
+    documents = []
+    with open(file_name, 'r', encoding='utf-8') as file:
+        contents = file.read()
+        # Convert the contents of the file into a list of dictionaries
+        documents = [line for line in contents.split('\n')]
 
     result = collection.insert_many(documents)
     print(result.inserted_ids)
