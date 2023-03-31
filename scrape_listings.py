@@ -5,13 +5,13 @@ import re
 import json
 from time import sleep
 from numpy import random
-import traceback
 import datetime
+import requests
 
 import logging
 from logging import config
 import logging_functions as l
-import requests
+
 
 def save_dict(new_dict, file_name):
     ''' Saves dictionary to file'''
@@ -265,10 +265,18 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                 sleep(random.uniform(sleep_min, sleep_max))
 
 if __name__ == '__main__':
-    ''' Performs basic logging set up'''
-    l.main()
+    #Performs basic logging set up
+    #Get this script name
+    log_file_name = __file__.split('\\')
+    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
 
-    ''' Actual Script'''
+    l.get_log_file_name(log_file_name)
+
+    #Configure logging file
+    l.configure_logging()
+    logger = logging.getLogger('main')
+
+    # Actual Script
     _scraped_urls = 'urls_file_today.txt'
     _file_with_tech = 'technologies.txt'
     _succesfull = 'succesfull_extractions.txt'

@@ -33,7 +33,8 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     chrome_options.add_argument('--disable-gpu')
 
     # Initialize the Chrome browser using ChromeDriver as Service object
-    browser = webdriver.Chrome(service=Service(chromedriver_path), options=chrome_options)
+    browser = webdriver.Chrome(service=Service(chromedriver_path), \
+        options=chrome_options)
     browser.get(current_page)
 
     # Wait for the page to load
@@ -107,7 +108,8 @@ def get_cutoff_date(date_file):
     # 'last_date - one_day' gives overlam in the search
     return last_date - datetime.timedelta(days=1)
 
-def scrape_single_skill(cutoff_date, base_url, iterable_url=None, sleep_min=7, sleep_max=23):
+def scrape_single_skill(cutoff_date, base_url, iterable_url=None, \
+    sleep_min=7, sleep_max=23):
     ''' Scrapes urls from given skills since last time.
     Assumes skill name is already build into base_url and iterable_url'''
 
@@ -149,7 +151,8 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
     for skill in skill_set:
         new_base_url = base_url.format(skill)
         new_iterable_url = iterable_url.format(skill)
-        http_links = http_links.union(scrape_single_skill(cutoff_date, new_base_url, new_iterable_url))
+        http_links = http_links.union(scrape_single_skill(cutoff_date, \
+            new_base_url, new_iterable_url))
     return http_links
 
 def update_file(http_links, urls_file):
@@ -178,24 +181,33 @@ def save_set_to_file(new_set, file_name):
 
 def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     ''' Main method of scrape_urls.py
-    Scrape all urls with job offers containing my skill set, then save to file'''
+    Scrape all urls with job offers containing skill set, then save to file'''
 
     cutoff_date_main = get_cutoff_date(date_file)
-    http_links_main = scrape_all_skills(cutoff_date_main, skill_set, base_url, iterable_url)
+    http_links_main = scrape_all_skills(cutoff_date_main, skill_set, \
+        base_url, iterable_url)
     update_file(http_links_main, urls_file)
     update_date_log(date_file)
 
 if __name__ == '__main__':
-    ''' Performs basic logging set up'''
-    l.main()
-    
-    '''Actual Script'''
-    _searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
+    #Performs basic logging set up
+    #Get this script name
+    log_file_name = __file__.split('\\')
+    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
+
+    l.get_log_file_name(log_file_name)
+
+    #Configure logging file
+    l.configure_logging()
+    logger = logging.getLogger('main')
+
+    #Actual Script
+    _SEARCHED_SET = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
     # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
-    _base_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
-    _iterable_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
+    _BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
+    _ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 
-    _date_file = 'last_date.log'
-    _urls_file = 'urls_file.txt'
+    _DATE_FILE = 'last_date.log'
+    _URLS_FILE = 'urls_file.txt'
 
-    main(_date_file, _searched_set, _urls_file, _base_url, _iterable_url)
+    main(_DATE_FILE, _SEARCHED_SET, _URLS_FILE, _BASE_URL, _ITERABLE_URL)

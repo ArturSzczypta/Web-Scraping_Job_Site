@@ -1,9 +1,4 @@
 ''' Scrape it.pracuj.pl job listings to database'''
-import chardet
-import json
-import re
-import datetime
-
 import logging
 from logging import config
 import logging_functions as l
@@ -11,29 +6,36 @@ import scrape_urls
 import scrape_listings
 import db_functions_mongodb as mongodb
 
-''' Performs basic logging set up'''
-l.main()
+#Performs basic logging set up
+#Get this script name
+log_file_name = __file__.split('\\')
+log_file_name = f'{log_file_name[-1][:-3]}_log.log'
 
-''' #Scraping Urls from job site'''
+l.get_log_file_name(log_file_name)
+
+#Configure logging file
+l.configure_logging()
+logger = logging.getLogger('main')
+
+#Scraping Urls from job site
 # Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
 searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
 
-# _base_url will be used first, then _iterable_url untill the end
-base_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
-iterable_url = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
-last_date_file = 'last_date.log'
-scraped_urls = 'scraped_urls.txt'
+# _BASE_URL will be used first, then _ITERABLE_URL untill the end
+BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
+ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
+LAST_DATE_LOG = 'last_date.log'
+SCRAPPED_URLS = 'scrapped_urls.txt'
 # Calling script
-scrape_urls.main(last_date_file, searched_set, scraped_urls, base_url, iterable_url)
+scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
-''' Scraping Listings using urls'''
+#Scraping Listings using urls
 # Required files
-scraped_urls = 'scraped_urls_today.txt'
-tech_in_listing = 'technologies.txt'
-succesfull_extractions = 'succesfull_extractions.txt'
-failed_extractions = 'failed_extractions.txt'
+TECH_SEARCHED_FOR = 'technologies.txt'
+SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
+FAILED_EXTRACTIONS = 'failed_extractions.txt'
 # Calling script
-scrape_listings.main(scraped_urls, tech_in_listing, succesfull_extractions, failed_extractions)
+scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
 
 #Saving extraction results to MongoDB Atlas
 
@@ -49,23 +51,14 @@ db = client['Web_Scraping_Job_Site']
 collection_succesfull = mongodb.db['Job_Listings']
 collection_failed = mongodb.db['Failed_Urls']
 
-# Record if there was a failure
-db_failure = 0
+# Record if there was a failure, clear files
 try:
-    mongodb.save_dict_from_file_to_collection(collection_succesfull, succesfull_extractions)
+    mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
+    mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
+    #Clearing files
+    with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
+        file.truncate(0)
+    with open(FAILED_EXTRACTIONS, 'w', encoding='utf-8') as file:
+        file.truncate(0)
 except:
-    db_failure = 1
     l.log_exception('main','saving listing JSON to database')
-try:
-    mongodb.save_str_from_file_to_collection(collection_failed, failed_extractions)
-except:
-    db_failure = 1
-    l.log_exception('main','saving url JSON to database')
-
-''' Clearing files, only if saving to database was succesfull'''
-if db_failure == 0:
-    with open(succesfull_extractions, 'w', encoding='utf-8') as file:
-        file.truncate(0)
-    with open(failed_extractions, 'w', encoding='utf-8') as file:
-        file.truncate(0)
-

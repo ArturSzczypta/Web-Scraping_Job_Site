@@ -1,10 +1,15 @@
 ''' Set of methods for connecting and using MongoDB Atlas database'''
 import os
+import datetime
+import json
+
+import logging
+from logging import config
+import logging_functions as l
+
 from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
-import json
-import datetime
 
 def return_db_client():
     '''Connects to database, returns client'''
@@ -26,8 +31,8 @@ def check_connection(client):
     try:
         client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
-    except Exception as e:
-        print(e)
+    except:
+        l.log_exception('main', 'Unable to connect with database')
 
 def save_dict_from_file_to_collection(collection, file_name):
     ''' Saves documents from file to collection
@@ -42,11 +47,11 @@ def save_dict_from_file_to_collection(collection, file_name):
     date_format = '%Y-%m-%d'
     for doc in documents:
         date_str = doc['publication_date']
-        publication_date = datetime.strptime(date_str, date_format)
+        publication_date = datetime.datetime.strptime(date_str, date_format)
         doc['publication_date'] = publication_date.isoformat()
 
         date_str = doc['expiration']
-        expiration_date = datetime.strptime(date_str, date_format)
+        expiration_date = datetime.datetime.strptime(date_str, date_format)
         doc['expiration_date'] = expiration_date.isoformat()
 
     result = collection.insert_many(documents)
@@ -65,17 +70,33 @@ def save_str_from_file_to_collection(collection, file_name):
     print(result.inserted_ids)
 
 if __name__ == '__main__':
+    #Performs basic logging set up
+    #Get this script name
+    log_file_name = __file__.split('\\')
+    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
 
-    ''' Saving succesfull_extractions to MongoDB Atlas'''
-    succesfull_extractions = 'succesfull_extractions.txt'
-    failed_extractions = 'failed_extractions.txt'
+    l.get_log_file_name(log_file_name)
 
-    client = return_db_client()
-    check_connection(client)
+    #Configure logging file
+    l.configure_logging()
+    logger = logging.getLogger('main')
 
-    db = client['Web_Scraping_Job_Site']
+    #Saving succesfull_extractions to MongoDB Atlas
+    SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
+    FAILED_EXTRACTIONS = 'failed_extractions.txt'
+
+    _client = return_db_client()
+    check_connection(_client)
+
+    # Check connection to DB
+    try:
+        command_ping(_client)
+    except:
+        l.log_exception('main', 'Unable to connect with database')
+
+    db = _client['Web_Scraping_Job_Site']
     collection_succesfull = db['Job_Listings']
     collection_failed = db['Failed_Urls']
 
-    save_dict_from_file_to_collection(collection_succesfull, succesfull_extractions)
-    save_str_from_file_to_collection(collection_failed, failed_extractions)
+    save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
+    save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
