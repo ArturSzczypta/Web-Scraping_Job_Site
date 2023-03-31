@@ -13,55 +13,6 @@ from logging import config
 import logging_functions as l
 import requests
 
-def replace_empty(data_string):
-    """ Replace empty dictionaries, lists and strings with None """
-    patterns = [r':\s*""', r':\s*\[\]', r':\s*{}', r':\s*,', r':\s*]',
-    r':\s*\}', r':\s*\{\}']
-    for pattern in patterns:
-        data_string = re.sub(pattern, ':null', data_string)
-    return data_string
-
-def add_missing_commas(data_string):
-    """ Add missing comas between keys """
-    pattern = r'null\s*([^,\]\}])'
-    return re.sub(pattern, r'null,\g<1>', data_string)
-
-def scrape_single_listing(url, timeout=5):
-    ''' Scrapes job listing details from the url, return a dictionary'''
-    # Make a request to the URL and get the HTML response
-    response = requests.get(url, timeout=timeout)
-    response.encoding = 'utf-8' # To recognise polish letters
-
-    # Extract the substring {...} between "window['kansas-offerview']="and "<"
-    start_string = 'window[kansas-offerview"] = '
-    end_string = '<'
-    start_index = response.text.find(start_string) + len(start_string)
-    end_index = response.text.find(end_string, start_index)
-    substring = response.text[start_index:end_index]
-    # Replace invalid valiable names with null, so i can create dictionary
-    substring = re.sub(r'\bundefined\b', '', substring)
-
-    # Remove sequences
-    substring = re.sub(r'\\n|\\t|\\r|\\"', ' ', substring)
-    substring = substring.strip()
-    substring = re.sub(r'\s+', ' ', substring) # keep single white spaces
-    substring = replace_empty(substring)
-    substring = add_missing_commas(substring)
-
-    # Replace any non-alphanumeric or non-allowed characters with space
-    substring = re.sub(r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+', '',
-        substring)
-    substring = substring.replace('u002F', ' ')
-    substring = substring.replace('u003E', ' ')
-    # Remove excess spaces
-    substring = re.sub(r' {2,}', ' ', substring)
-    #print(substring)
-
-    # Convert the string to a dictionary using the json module
-    my_dict = json.loads(substring)
-    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
-    return my_dict
-
 def save_dict(new_dict, file_name):
     ''' Saves dictionary to file'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
@@ -76,51 +27,12 @@ def scrape_listing_from_json(url, timeout=5):
     response.encoding = 'utf-8' # To recognise polish letters
 
     # Extract the JSON from 'window' as string
-    start_string = 'window["kansas-offerview"] = '
+    start_string = "window['kansas-offerview'] = "
     end_string = '<'
     start_index = response.text.find(start_string) + len(start_string)
     end_index = response.text.find(end_string, start_index)
     substring = response.text[start_index:end_index]
     return substring
-
-def skill_patterns(skill_set):
-    ''' Create regex pattern for given skill set
-    I assume names of languages and technologies names shorter than 3
-    have to be search as \b%s\b (R, C)
-    Longer names can be part of longer string (PostgreSQL, MySQL for sql)
-    Each pattern dinds all instances of upper/lower case and capitalised'''
-
-    skills_schort = []
-    skills_long = []
-    for skill in skill_set:
-        if len(skill) <3:
-            skills_schort.append(re.escape(skill))
-        else:
-            skills_long.append(re.escape(skill))
-
-    pattern_1 = None
-    pattern_2 = None
-    if len(skills_schort) > 0:
-        pattern_1 = '|'.join(skills_schort)
-    if len(skills_long) > 0:
-        pattern_2 = '|'.join(skills_long)
-
-    if pattern_1 and pattern_2:
-        pattern = re.compile(r'\b(%s)\b|(%s)' % (pattern_1, pattern_2),
-            re.IGNORECASE)
-    elif pattern_1:
-        pattern = re.compile(pattern_1, re.IGNORECASE)
-    elif pattern_2:
-        pattern = re.compile(pattern_2, re.IGNORECASE)
-    else:
-        pattern = ''
-
-    return pattern
-
-def check_for_skill_set(substring, skill_set):
-    ''' Check for elements of skill set in the substring
-    Cancel pipeline if none of skills is mentioned'''
-    return re.search(skill_patterns(skill_set),substring, flags=re.IGNORECASE)
 
 def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
@@ -336,12 +248,13 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
         # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
+            listing_pipeline_main(url, _tech_set, succesfull)
             try:
                 listing_pipeline_main(url, _tech_set, succesfull)
                 succeses += 1
             except:
                 failures += 1
-                l.log_exception('scrape_listings - main',f'Scraping failed{url}')
+                l.log_exception('scrape_listings - main',f'Scraping failed {url=}')
                 with open(failed, 'a', encoding='UTF-8') as file_2:
                     file_2.write(url + '\n')
             finally:
@@ -357,7 +270,7 @@ if __name__ == '__main__':
 
     ''' Actual Script'''
     _scraped_urls = 'urls_file_today.txt'
-    _file_with_tech = 'technologies_final.txt'
-    _succesfull = 'file_succesfull.txt'
-    _failed = 'urls_failed.txt'
+    _file_with_tech = 'technologies.txt'
+    _succesfull = 'succesfull_extractions.txt'
+    _failed = 'failed_extractions.txt'
     main(_scraped_urls, _file_with_tech, _succesfull, _failed)

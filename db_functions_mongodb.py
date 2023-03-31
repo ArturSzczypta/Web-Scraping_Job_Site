@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
 import json
+import datetime
 
 def return_db_client():
     '''Connects to database, returns client'''
@@ -36,6 +37,17 @@ def save_dict_from_file_to_collection(collection, file_name):
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
         documents = [json.loads(line) for line in lines]
+
+    #Convert date strings to ISO Dates
+    date_format = '%Y-%m-%d'
+    for doc in documents:
+        date_str = doc['publication_date']
+        publication_date = datetime.strptime(date_str, date_format)
+        doc['publication_date'] = publication_date.isoformat()
+
+        date_str = doc['expiration']
+        expiration_date = datetime.strptime(date_str, date_format)
+        doc['expiration_date'] = expiration_date.isoformat()
 
     result = collection.insert_many(documents)
     print(result.inserted_ids)
