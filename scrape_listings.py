@@ -5,7 +5,6 @@ import re
 import json
 from time import sleep
 from numpy import random
-import datetime
 import requests
 
 import logging
@@ -53,6 +52,8 @@ def clean_listing_string(substring):
 
     missing_commas = r'null\s*([^,\]\}])'
     substring =  re.sub(missing_commas, r'null,\g<1>', substring)
+    missung_commas_2 = r'(\w+)\s+,\s*"'
+    substring =  re.sub(missung_commas_2, r'\1","', substring)
 
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
@@ -100,9 +101,9 @@ def simplify_dictionary(my_dict, url, tech_found):
         salary_currency = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['currency']['code']
         salary_long_form = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
 
-    # Assuming both dates always comply to ISO 8601 format, UTC time zone
-    publication_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['dateOfInitialPublication']).date()
-    expiration_date = datetime.datetime.fromisoformat(my_dict['offerReducer']['offer']['expirationDate']).date()
+    # Assuming both dates always comply to ISO 8601 format, UTC time zone, scraping only YYYY-mm-dd
+    publication_date = my_dict['offerReducer']['offer']['dateOfInitialPublication'][:10]
+    expiration_date = my_dict['offerReducer']['offer']['expirationDate'][:10]
 
     tech_expected = []
     tech_optional = []
@@ -166,8 +167,8 @@ def simplify_dictionary(my_dict, url, tech_found):
         'pay_period': salary_long_form
         }  
     # Dates
-    new_dict['publication_date'] = str(publication_date)
-    new_dict['expiration_date'] = str(expiration_date)
+    new_dict['publication_date'] = publication_date
+    new_dict['expiration_date'] = expiration_date
     # technologies
     new_dict['technologies'] = {
     'expected': tech_expected,
