@@ -249,7 +249,6 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
         # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
-            listing_pipeline_main(url, _tech_set, succesfull)
             try:
                 listing_pipeline_main(url, _tech_set, succesfull)
                 succeses += 1
