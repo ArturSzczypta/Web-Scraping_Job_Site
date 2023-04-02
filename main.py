@@ -27,7 +27,7 @@ ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 LAST_DATE_LOG = 'last_date.log'
 SCRAPPED_URLS = 'scrapped_urls.txt'
 # Calling script
-scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
+#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
 #Scraping Listings using urls
 # Required files
@@ -55,10 +55,8 @@ collection_failed = mongodb.db['Failed_Urls']
 try:
     mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
     mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
-    #Clearing files
+    #Clearing listing file
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
-        file.truncate(0)
-    with open(FAILED_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
 except:
     l.log_exception('main','saving listing JSON to database')

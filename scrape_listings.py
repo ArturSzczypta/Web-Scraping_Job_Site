@@ -52,8 +52,8 @@ def clean_listing_string(substring):
 
     missing_commas = r'null\s*([^,\]\}])'
     substring =  re.sub(missing_commas, r'null,\g<1>', substring)
-    missung_commas_2 = r'(\w+)\s+,\s*"'
-    substring =  re.sub(missung_commas_2, r'\1","', substring)
+    missing_commas_2 = r'(\w+)\s+,\s*"'
+    substring =  re.sub(missing_commas_2, r'\1","', substring)
 
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
@@ -227,14 +227,18 @@ def listing_pipeline_main(url, tech_set, file_name):
     new_dict = simplify_dictionary(my_dict, url, tech_found)
     save_to_file(new_dict, file_name)
 
-def listing_pipeline_mongodb(url, tech_set, file_name):
-    ''' Pipeline saves listing details to file'''
-    substring = scrape_listing_from_json(url)
-    substring = clean_listing_string(substring)
-    tech_found = extract_all_tech(substring, tech_set)
-    my_dict = change_str_to_dict(substring)
-    new_dict = simplify_dictionary(my_dict, url, tech_found)
-    
+def update_file(http_links, urls_file):
+    ''' Adds new records, removes old ones'''
+    with open(urls_file, 'r+',encoding='utf-8') as file:
+        old_records = set(line.strip() for line in file)
+        new_records = http_links - old_records
+        print(f'New: {len(new_records)}')
+        # Clear out the content of the file
+        file.seek(0)
+        file.truncate()
+        # Write new urls
+        for url in new_records:
+            file.write(url + '\n')
 
 def main(scraped_urls, file_with_tech, succesfull, failed,
     sleep_min=4, sleep_max=8):
@@ -244,6 +248,7 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
     failures = 0
     url_count = get_url_count(scraped_urls)
     _tech_set = extract_tech_set(file_with_tech)
+    failed_urls = set()
 
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Record Listing using pipeline. If failed, record in serepate file
@@ -254,15 +259,17 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                 succeses += 1
             except:
                 failures += 1
-                l.log_exception('scrape_listings - main',f'Scraping failed {url=}')
-                with open(failed, 'a', encoding='UTF-8') as file_2:
-                    file_2.write(url + '\n')
+                failed_urls.add(url)
+                l.log_exception('scrape_listings - main',f'Scraping failed {url}')
+                
             finally:
                 progress = round((succeses+failures)/url_count*100, 3)
                 print(f'Successes: {succeses:4}   '
                     f'Failures: {failures:4}   '
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
+    # Update failed urls file
+    update_file(http_links, failed)
 
 if __name__ == '__main__':
     #Performs basic logging set up
