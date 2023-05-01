@@ -269,7 +269,7 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
     # Update failed urls file
-    update_file(http_links, failed)
+    update_file(failed_urls, 'failed_extractions.txt')
 
 if __name__ == '__main__':
     #Performs basic logging set up
