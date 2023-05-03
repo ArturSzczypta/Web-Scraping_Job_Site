@@ -27,7 +27,7 @@ ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 LAST_DATE_LOG = 'last_date.log'
 SCRAPPED_URLS = 'scrapped_urls.txt'
 # Calling script
-#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
+scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
 #Scraping Listings using urls
 # Required files
@@ -38,7 +38,7 @@ FAILED_EXTRACTIONS = 'failed_extractions.txt'
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
 
 #Saving extraction results to MongoDB Atlas
-
+'''
 client = mongodb.return_db_client()
 
 # Check connection to DB
@@ -60,3 +60,4 @@ try:
         file.truncate(0)
 except:
     l.log_exception('main','saving listing JSON to database')
+'''
