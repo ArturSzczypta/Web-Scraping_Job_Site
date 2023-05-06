@@ -28,4 +28,11 @@ urls_to_set('failed_extractions_1.txt', failed_urls_set)
 urls_to_set('mixed_extractions_0.txt', mixed_urls_set)
 urls_to_set('mixed_extractions_1.txt', mixed_urls_set)
 
+with open('succesfull_extractions_combined.txt', 'w', encoding='utf-8') as file:
+    for element in elements_set:
+        file.write(json.dumps(element) + '\n')
+
 failed_urls_set.update(mixed_urls_set.difference(succesfull_urls_set))
+with open('failed_urls_combined.txt', 'w', encoding='utf-8') as file:
+    for url in failed_urls_set:
+        file.write(url + '\n')
