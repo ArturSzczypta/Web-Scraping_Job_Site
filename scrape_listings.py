@@ -217,6 +217,19 @@ def get_url_count(file_name):
     with open(file_name, 'r', encoding='utf-8') as file:
         lines = file.readlines()
         return len(lines)
+    
+def update_file(new_set, urls_file):
+    ''' Adds new records, removes old ones'''
+    with open(urls_file, 'r+',encoding='utf-8') as file:
+        old_records = set(line.strip() for line in file)
+        new_records = new_set - old_records
+        print(f'New: {len(new_records)}')
+        # Clear out the content of the file
+        file.seek(0)
+        file.truncate()
+        # Write new urls
+        for url in new_records:
+            file.write(url + '\n')
 
 def listing_pipeline_main(url, tech_set, file_name):
     ''' Pipeline saves listing details to file'''
@@ -227,20 +240,9 @@ def listing_pipeline_main(url, tech_set, file_name):
     new_dict = simplify_dictionary(my_dict, url, tech_found)
     save_to_file(new_dict, file_name)
 
-def update_file(http_links, urls_file):
-    ''' Adds new records, removes old ones'''
-    with open(urls_file, 'r+',encoding='utf-8') as file:
-        old_records = set(line.strip() for line in file)
-        new_records = http_links - old_records
-        print(f'New: {len(new_records)}')
-        # Clear out the content of the file
-        file.seek(0)
-        file.truncate()
-        # Write new urls
-        for url in new_records:
-            file.write(url + '\n')
 
-def main(scraped_urls, file_with_tech, succesfull, failed,
+
+def main(scraped_urls, file_with_tech, succesfull_temp, succesfull_final,
     sleep_min=4, sleep_max=8):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
@@ -255,7 +257,7 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
         for url in file:
             url = url.strip()
             try:
-                listing_pipeline_main(url, _tech_set, succesfull)
+                listing_pipeline_main(url, _tech_set, succesfull_temp)
                 succeses += 1
             except:
                 failures += 1
@@ -268,7 +270,25 @@ def main(scraped_urls, file_with_tech, succesfull, failed,
                     f'Failures: {failures:4}   '
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
-    # Update failed urls file
+    # Update succesfull urls
+    temp_str_set = set()
+    current_str_set = set()
+    with open(succesfull_temp, 'r', encoding='utf-8') as file:
+        for line in file:
+            json_str = line.strip()
+            temp_str_set.add(json_str)
+    with open(succesfull_final, 'r', encoding='utf-8') as file:
+        for line in file:
+            json_str = line.strip()
+            current_str_set.add(json_str)
+    new_str_set = temp_str_set - current_str_set
+    # Write new records to file
+    with open(succesfull_final, 'w', encoding='utf-8') as file:
+        for json_str in new_str_set:
+            json_obj = json.loads(json_str)
+            file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
+
+    # Update failed urls
     update_file(failed_urls, 'failed_extractions.txt')
 
 if __name__ == '__main__':
@@ -286,6 +306,7 @@ if __name__ == '__main__':
     # Actual Script
     _scraped_urls = 'urls_file_today.txt'
     _file_with_tech = 'technologies.txt'
-    _succesfull = 'succesfull_extractions.txt'
+    _succesfull_temp = 'succesfull_extractions_temp.txt'
+    _succesfull_final = 'succesfull_extractions.txt'
     _failed = 'failed_extractions.txt'
-    main(_scraped_urls, _file_with_tech, _succesfull, _failed)
+    main(_scraped_urls, _file_with_tech, _succesfull_temp, _succesfull_final, _failed)
