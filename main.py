@@ -16,7 +16,7 @@ l.get_log_file_name(log_file_name)
 #Configure logging file
 l.configure_logging()
 logger = logging.getLogger('main')
-'''
+
 #Scraping Urls from job site
 # Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
 searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
@@ -36,10 +36,9 @@ SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
 FAILED_EXTRACTIONS = 'failed_extractions.txt'
 # Calling script
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
-'''
+
 #Saving extraction results to MongoDB Atlas
-SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
-FAILED_EXTRACTIONS = 'failed_extractions.txt'
+# Connect to DB
 client = mongodb.return_db_client()
 
 # Check connection to DB
@@ -57,9 +56,11 @@ try:
     mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
     mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
     #Clearing listing file
-    '''
+    
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
-    '''
+    with open(FAILED_EXTRACTIONS, 'w', encoding='utf-8') as file:
+        file.truncate(0)
+    
 except:
     l.log_exception('main','saving listing JSON to database')

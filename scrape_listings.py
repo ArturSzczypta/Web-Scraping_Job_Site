@@ -208,10 +208,15 @@ def extract_all_tech(substring, tech_set):
     tech_found.sort()
     return tech_found
 
-def save_to_file(new_dict, file_name):
+def save_dict_to_file(new_dict, file_name):
     ''' Saves dictionary to file'''
     with open(file_name, 'a', encoding='utf-8') as file:
         file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
+
+def save_str_to_file(new_dict, file_name):
+    ''' Saves string to file'''
+    with open(file_name, 'a', encoding='utf-8') as file:
+        file.write(new_dict + '\n')
 
 def get_url_count(file_name):
     with open(file_name, 'r', encoding='utf-8') as file:
@@ -238,11 +243,9 @@ def listing_pipeline_main(url, tech_set, file_name):
     tech_found = extract_all_tech(substring, tech_set)
     my_dict = change_str_to_dict(substring)
     new_dict = simplify_dictionary(my_dict, url, tech_found)
-    save_to_file(new_dict, file_name)
+    save_dict_to_file(new_dict, file_name)
 
-
-
-def main(scraped_urls, file_with_tech, succesfull_temp, succesfull_final,
+def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
     sleep_min=4, sleep_max=8):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
@@ -250,46 +253,24 @@ def main(scraped_urls, file_with_tech, succesfull_temp, succesfull_final,
     failures = 0
     url_count = get_url_count(scraped_urls)
     _tech_set = extract_tech_set(file_with_tech)
-    failed_urls = set()
 
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Record Listing using pipeline. If failed, record in serepate file
         for url in file:
             url = url.strip()
             try:
-                listing_pipeline_main(url, _tech_set, succesfull_temp)
+                listing_pipeline_main(url, _tech_set, succesfull_file)
                 succeses += 1
             except:
+                save_str_to_file(url, failed_file)
                 failures += 1
-                failed_urls.add(url)
                 l.log_exception('scrape_listings - main',f'Scraping failed {url}')
-                
             finally:
                 progress = round((succeses+failures)/url_count*100, 3)
                 print(f'Successes: {succeses:4}   '
                     f'Failures: {failures:4}   '
                     f'Progress: {progress:5}%')
                 sleep(random.uniform(sleep_min, sleep_max))
-    # Update succesfull urls
-    temp_str_set = set()
-    current_str_set = set()
-    with open(succesfull_temp, 'r', encoding='utf-8') as file:
-        for line in file:
-            json_str = line.strip()
-            temp_str_set.add(json_str)
-    with open(succesfull_final, 'r', encoding='utf-8') as file:
-        for line in file:
-            json_str = line.strip()
-            current_str_set.add(json_str)
-    new_str_set = temp_str_set - current_str_set
-    # Write new records to file
-    with open(succesfull_final, 'w', encoding='utf-8') as file:
-        for json_str in new_str_set:
-            json_obj = json.loads(json_str)
-            file.write(json.dumps(json_obj, ensure_ascii=False) + '\n')
-
-    # Update failed urls
-    update_file(failed_urls, 'failed_extractions.txt')
 
 if __name__ == '__main__':
     #Performs basic logging set up

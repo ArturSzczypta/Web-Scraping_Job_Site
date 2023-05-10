@@ -51,7 +51,6 @@ Ansible
 HTML
 Postman
 PowerShell
-Jest
 SAP
 Azure DevOps
 Continuous Deployment
