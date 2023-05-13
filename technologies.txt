@@ -140,7 +140,6 @@ Kanban
 CentOS
 SLA
 Shell
-NAS
 Gatling
 Kali Linux
 BitBucket

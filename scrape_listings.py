@@ -73,6 +73,57 @@ def change_str_to_dict(substring):
     #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
 
+def clean_region(region_name):
+    ''' Keap only proper voivodeships names'''
+    voivodeships_pl = ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie', 'lubuskie', 
+                    'łódzkie', 'małopolskie', 'mazowieckie', 'opolskie', 'podkarpackie', 
+                    'podlaskie', 'pomorskie', 'śląskie', 'świętokrzyskie', 'warmińsko-mazurskie', 
+                    'wielkopolskie', 'zachodniopomorskie']
+    voivodeships_en_1 = ['lower silesia', 'kuyavian-pomerania', 'lublin', 'lubusz', 'łódź', 
+                       'lesser poland', 'masovia', 'opole', 'subcarpathia', 
+                       'podlaskie', 'pomerania', 'silesia', 'holy cross', 'warmian-masuria',
+                       'greater poland', 'west pomerania']
+    voivodeships_en_2 = ['lower silesian', 'kuyavian-pomeranian', 'lublin', 'lubusz', 'łódź', 
+                       'lesser poland', 'masovian', 'opole', 'subcarpathian', 
+                       'podlaskie', 'pomeranian', 'silesian', 'holy cross', 'warmian-masurian',
+                       'greater poland', 'west pomeranian']
+    if region_name is None or region_name == '' or region_name == ' ':
+        return None
+    
+    temp_name = region_name.lower()
+    # If name is in polish, return it in lower case
+    if temp_name in voivodeships_pl:
+        return temp_name
+    # If name is in english, return polish name
+    if temp_name in voivodeships_en_1:
+        return voivodeships_pl[voivodeships_en_1.index(temp_name)]
+    if temp_name in voivodeships_en_2:
+        return voivodeships_pl[voivodeships_en_2.index(temp_name)]
+    if temp_name in ['warmia-mazuria', 'warmia-mazurian']:
+        return 'warmińsko-mazurskie'
+    if temp_name in ['kuyavia-pomerania', 'kuyavia-pomeranian']:
+        return 'kujawsko-pomorskie'
+    # If abroad, return None
+    if region_name in ['abroad', 'zagranica']:
+        return None
+    return region_name
+
+def clean_contract_type(contract_type):
+    '''Clean the contract_type field'''
+    contract_pl = ['umowa o pracę', 'umowa zlecenie', 'umowa o dzieło', 
+                   'umowa na zastępstwo', 'umowa o pracę tymczasową', 'kontrakt B2B', 
+                   'umowa o staż praktyki', 'umowa agencyjna']
+    contract_en = ['contract of employment', 'contract of mandate', 'contract for specific work', 
+                   'replacement contract', 'temporary employment contract', 'B2B contract', 
+                   'internship apprenticeship contract', 'agency agreement']
+    if contract_type is None or contract_type == '' or contract_type == ' ':
+        return None
+    if contract_type in contract_pl:
+        return contract_type
+    if contract_type in contract_en:
+        return contract_pl[contract_en.index(contract_type)]
+    return contract_type
+
 def simplify_dictionary(my_dict, url, tech_found):
     ''' Extracts usefull data from the dictionary, creates new dictionary'''
 
@@ -80,14 +131,20 @@ def simplify_dictionary(my_dict, url, tech_found):
     job_title = my_dict['offerReducer']['offer']['jobTitle']
     country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
     region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
+    # Clean region name
+    region = clean_region(region)
 
     location = None
     if my_dict['offerReducer']['offer']['workplaces'][0].get('inlandLocation') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation'].get('location') and \
     my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location'].get('name'):
         location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
+    
+    
 
     contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
+    # Clean contract type
+    contract_type = clean_contract_type(contract_type)
 
     # Salary specific
     is_salary = True
