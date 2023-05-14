@@ -50,6 +50,10 @@ def save_dict_from_file_to_collection(collection, file_name):
         publication_date = datetime.datetime.strptime(date_str, date_format)
         doc['publication_date'] = publication_date.isoformat()
 
+        date_str = doc['publication_month']
+        publication_date = datetime.datetime.strptime(date_str, date_format)
+        doc['publication_month'] = publication_date.isoformat()
+
         date_str = doc['expiration_date']
         expiration_date = datetime.datetime.strptime(date_str, date_format)
         doc['expiration_date'] = expiration_date.isoformat()

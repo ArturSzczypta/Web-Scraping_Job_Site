@@ -160,6 +160,7 @@ def simplify_dictionary(my_dict, url, tech_found):
 
     # Assuming both dates always comply to ISO 8601 format, UTC time zone, scraping only YYYY-mm-dd
     publication_date = my_dict['offerReducer']['offer']['dateOfInitialPublication'][:10]
+    publication_month = publication_date[:7] + '-01'
     expiration_date = my_dict['offerReducer']['offer']['expirationDate'][:10]
 
     tech_expected = []
@@ -225,6 +226,7 @@ def simplify_dictionary(my_dict, url, tech_found):
         }  
     # Dates
     new_dict['publication_date'] = publication_date
+    new_dict['publication_month'] = publication_month
     new_dict['expiration_date'] = expiration_date
     # technologies
     new_dict['technologies'] = {

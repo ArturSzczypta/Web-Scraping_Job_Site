@@ -5,6 +5,7 @@ import logging_functions as l
 import pymongo
 import db_functions_mongodb as mongodb
 import re
+from datetime import datetime
 
 #Performs basic logging set up
 #Get this script name
@@ -213,8 +214,28 @@ def replace_contract_type(collection):
         new_contract_type = clean_contract_type(doc['contract_type'])
         collection.update_one({'_id': doc['_id']}, {'$set': {'contract_type': new_contract_type}})
 
-'''
-contracts = collection_job_listings.distinct('contract_type')
-for contract in contracts:
-    print(contract)
-'''
+def find_duplicates(collection):
+    '''Get the duplicate documents'''
+    pipeline = [{"$group": {"_id": "$url", "count": {"$sum": 1}}},
+                {"$match": {"count": {"$gt": 1}}},
+                {"$project": {"_id": 0, "url": "$_id", "count": 1}}]
+
+    # get the duplicates
+    duplicates = list(collection.aggregate(pipeline))
+    print(len(duplicates))
+    # get the number of duplicates
+    return duplicates
+
+def add_pub_month_field(collection):
+    '''Add publication month field'''
+
+    # assuming your collection is named "my_collection"
+    docs = collection.find({})
+
+    for doc in docs:
+        pub_str = str(doc["publication_date"])
+        pub_dt = datetime.fromisoformat(pub_str)
+        # Use 1 day of the month as default
+        month_year = datetime(pub_dt.year, pub_dt.month, 1).isoformat()
+        collection.update_one({'_id': doc['_id']}, {'$set': {'publication_month': month_year}})
+    print('publication month added')
