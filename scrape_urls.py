@@ -20,6 +20,7 @@ import logging_functions as l
 
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
+    #print(f'Scraping {current_page}')
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -41,13 +42,20 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     sleep(random.uniform(sleep_min, sleep_max))
 
     # Accept terms of service, if they appear
+    
     try:
         accept_button = WebDriverWait(browser, 10).until(
-            EC.presence_of_element_located((By.XPATH,
-                '//button[@data-test="button-accept-all-in-general"]')))
+            # Worked until 2022-05-18
+            #EC.presence_of_element_located((By.XPATH,
+            #    '//button[@data-test="button-accept-all-in-general"]')))
+            # Since 2022-05-18
+            EC.presence_of_element_located((By.XPATH, \
+                '//button[@data-test="button-submitCookie"]')))
         accept_button.click()
     except:
         l.log_exception('scrape_one_page','Terms of Service button not found')
+
+
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
@@ -97,6 +105,11 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
         unique_dates.add(date_obj)
 
     browser.quit()
+    '''
+    print('------------------')
+    for link in http_links:
+        print(link)
+    '''
     return http_links, unique_dates
 
 def get_cutoff_date(date_file):
