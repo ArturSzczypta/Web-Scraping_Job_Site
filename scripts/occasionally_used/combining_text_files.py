@@ -1,5 +1,13 @@
 '''Combine all text files in a directory into a single file.'''
+import os
+import sys
 import json
+
+# Change the current working directory to 'scripts'
+os.chdir('../')
+# Add 'scripts' directory to the sys.path
+sys.path.append('.')
+
 
 elements_set = set()
 succesfull_urls_set = set()

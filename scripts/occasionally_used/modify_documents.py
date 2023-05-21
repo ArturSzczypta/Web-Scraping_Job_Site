@@ -1,11 +1,19 @@
 ''' Modify documents in the database'''
+import os
+import sys
 import logging
 from logging import config
-import logging_functions as l
-import pymongo
-import db_functions_mongodb as mongodb
 import re
 from datetime import datetime
+
+# Change the current working directory to 'scripts'
+os.chdir('../')
+# Add 'scripts' directory to the sys.path
+sys.path.append('.')
+
+# Import custom modules
+import logging_functions as l
+import db_functions_mongodb as mongodb
 
 #Performs basic logging set up
 #Get this script name
