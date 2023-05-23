@@ -113,9 +113,12 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     return http_links, unique_dates
 
 def get_cutoff_date(date_file):
-    '''Get last logging date'''
+    '''Get last logging date
+    Assumes file is in folder "text_and_json"'''
     last_date = None
-    with open(date_file, 'r',encoding='UTF-8') as file:
+    date_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'../text_and_json/{date_file}')
+    with open(date_file_path, 'r',encoding='UTF-8') as file:
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
     # 'last_date - one_day' gives overlam in the search
@@ -169,8 +172,11 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
     return http_links
 
 def update_file(http_links, urls_file):
-    ''' Adds new records, removes old ones'''
-    with open(urls_file, 'r+',encoding='utf-8') as file:
+    ''' Adds new records, removes old ones
+    Assumes file is in folder "text_and_json"'''
+    urls_file_path = os.path.join(os.path.dirname(__file__), \
+                                    f'../text_and_json/{urls_file}')
+    with open(urls_file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
         print(f'New: {len(new_records)}')
@@ -182,13 +188,19 @@ def update_file(http_links, urls_file):
             file.write(url + '\n')
 
 def update_date_log(date_file):
-    ''' Update logging date'''
-    with open(date_file, 'w',encoding='utf-8') as file:
+    ''' Update logging date
+    Assumes file is in folder "text_and_json"'''
+    date_file_path = os.path.join(os.path.dirname(__file__), \
+                                    f'../text_and_json/{date_file}')
+    with open(date_file_path, 'w',encoding='utf-8') as file:
         file.write(str(datetime.date.today()))
 
 def save_set_to_file(new_set, file_name):
-    ''' Saves set to file, each element per line'''
-    with open(file_name, 'a', encoding='utf-8') as file:
+    ''' Saves set to file, each element per line
+    Assumes file is in folder "text_and_json"'''
+    file_path = os.path.join(os.path.dirname(__file__), \
+                                    f'../text_and_json/{file_name}')
+    with open(file_path, 'a', encoding='utf-8') as file:
         for element in new_set:
             file.write(str(element) + '\n')
 

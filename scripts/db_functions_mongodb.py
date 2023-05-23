@@ -63,9 +63,12 @@ def save_dict_from_file_to_collection(collection, file_name):
 
 def save_str_from_file_to_collection(collection, file_name):
     ''' Saves urls from file to collection
-    Assumes file has one url in each line'''
+    Assumes file is in "text_and_json" folder and
+    has one url in each line'''
     documents = []
-    with open(file_name, 'r', encoding='utf-8') as file:
+    data_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'../text_and_json/{file_name}')
+    with open(data_file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
         documents = [{'url': line} for line in lines]

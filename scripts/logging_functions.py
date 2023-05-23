@@ -24,8 +24,12 @@ def get_log_file_name(new_log_file_name):
 def configure_logging():
     '''
     Configure logging to using JSON file
+    Assumes file is in folder "text_and_json"
     '''
-    with open('logging_configuration.json', 'r', encoding='utf-8') as f:
+    relative_path = '../text_and_json/logging_configuration.json'
+    conf_path = os.path.join(os.path.dirname(__file__), \
+                             relative_path)
+    with open(conf_path, 'r', encoding='utf-8') as f:
         log_conf = json.load(f)
 
     for handler in log_conf.get('handlers', {}).values():

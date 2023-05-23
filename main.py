@@ -1,10 +1,10 @@
 ''' Scrape it.pracuj.pl job listings to database'''
 import logging
 from logging import config
-import scripts.logging_functions as l
-import scripts.scrape_urls as scrape_urls
-import scripts.scrape_listings as scrape_listings
-import scripts.db_functions_mongodb as mongodb
+from scripts import logging_functions as l
+from scripts import scrape_urls as scrape_urls
+from scripts import scrape_listings as scrape_listings
+from scripts import db_functions_mongodb as mongodb
 
 #Performs basic logging set up
 #Get this script name
