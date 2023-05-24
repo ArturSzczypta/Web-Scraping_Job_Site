@@ -63,6 +63,27 @@ def log_exception(hierarchy_str, written_string = ' '):
     logger.error(written_string + ' - ' + exc_message)
     logger.debug('')
 
+# Save exception as single line in logger
+def get_exception():
+    '''Change traceback into single string'''
+    exc_message = traceback.format_exc()
+    # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    exc_message = re.sub(r'\^+', '', exc_message)
+    # Remove ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    exc_message = re.sub(r'\~+', '', exc_message)
+
+    # Split into list, replace new line with - 
+    exc_list = exc_message.split('\n')[:-1]
+    exc_list = [x.strip(' ') for x in exc_list]
+    exc_message = ' - '.join(exc_list)
+    # replace -  - with - 
+    exc_message = re.sub(r'\-  \-', '-', exc_message)
+    # Remove excess spaces
+    exc_message = re.sub(r' {2,}', ' ', exc_message)
+    return exc_message
+
+
+
 #Check internet connection, terminate script if no internet and record error
 def check_internet():
     '''
