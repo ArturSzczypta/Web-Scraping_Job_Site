@@ -224,7 +224,7 @@ if __name__ == '__main__':
 
     #Configure logging file
     l.configure_logging()
-    logger = logging.getLogger('main')
+    logger = logging.getLogger(__name__)
 
     #Actual Script
     _SEARCHED_SET = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}

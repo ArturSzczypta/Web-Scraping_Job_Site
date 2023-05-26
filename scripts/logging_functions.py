@@ -106,7 +106,7 @@ def main():
 
     #Configure logging file 
     configure_logging()
-    logger = logging.getLogger('main')
+    logger = logging.getLogger(__name__)
 
     #Check internet connection, terminate script if no internet
     check_internet()

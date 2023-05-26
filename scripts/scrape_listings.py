@@ -359,7 +359,7 @@ if __name__ == '__main__':
 
     #Configure logging file
     l.configure_logging()
-    logger = logging.getLogger('main')
+    logger = logging.getLogger(__name__)
 
     # Actual Script
     _scraped_urls = 'urls_file_today.txt'
