@@ -1,6 +1,7 @@
 '''
 Methods ffor setting logging
 '''
+import os
 import logging
 from logging import config
 import json
@@ -13,11 +14,6 @@ import requests
 LOG_FILE_NAME = 'placeholder.log'
 LOG_CONF_JSON = 'logging_configuration.json'
 logger = None
-if __name__ != '__main__':
-    #Performs basic logging set up
-    #Get logging_file_name from main script
-    logging.config.dictConfig(LOG_CONF_JSON)
-    logger = logging.getLogger(__name__)
 
 def get_log_file_name(new_log_file_name):
     '''
@@ -113,10 +109,16 @@ def check_internet():
     Loggs error if cannot connect to Google
     '''
     try:
-        requests.head("http://www.google.com/", timeout=2)
-        #logger.debug('Internet connection active')
+        requests.head("http://www.google.com/", timeout=5)
+        logger.debug('Internet connection active')
     except:
-        log_exception(' - Cannot connect to internet')
+        logger.critical('Cannot connect to internet')
+
+if __name__ != '__main__':
+    #Performs basic logging set up
+    #Get logging_file_name from main script
+    configure_logging()
+    logger = logging.getLogger(__name__)
 
 def main():
     ''' Performs basic logging set up, if script is runned directly'''
