@@ -4,12 +4,21 @@ Methods ffor setting logging
 import logging
 from logging import config
 import json
+from syslog import LOG_CONS
 import traceback
 import re
 import requests
 
 #Get logging_file_name from main script
 LOG_FILE_NAME = 'placeholder.log'
+LOG_CONF_JSON = 'logging_configuration.json'
+logger = None
+if __name__ != '__main__':
+    #Performs basic logging set up
+    #Get logging_file_name from main script
+    logging.config.dictConfig(LOG_CONF_JSON)
+    logger = logging.getLogger(__name__)
+
 def get_log_file_name(new_log_file_name):
     '''
     Get logging_file_name from main script
@@ -20,23 +29,37 @@ def get_log_file_name(new_log_file_name):
     global LOG_FILE_NAME
     LOG_FILE_NAME = new_log_file_name
 
-# Configure logging to using JSON file
+
 def configure_logging():
     '''
-    Configure logging to using JSON file
+    Configure logging by using JSON file
     Assumes file is in folder "text_and_json"
     '''
-    relative_path = '../text_and_json/logging_configuration.json'
-    conf_path = os.path.join(os.path.dirname(__file__), \
-                             relative_path)
-    with open(conf_path, 'r', encoding='utf-8') as f:
-        log_conf = json.load(f)
+    # Get the path of executing script
+    script_path = os.path.dirname(__file__)
 
-    for handler in log_conf.get('handlers', {}).values():
+    # Get the path of logging_configuration.json
+    json_path = os.path.join(script_path, \
+                             'text_and_json', 'logging_configuration.json')
+    if not os.path.exists(json_path):
+        json_path = os.path.join(script_path, '..', \
+                                 'text_and_json', 'logging_configuration.json')
+    
+    # Load logging configuration from JSON file                           
+    with open(json_path, 'r', encoding='utf-8') as f:
+        global LOG_CONF_JSON
+        LOG_CONF_JSON = json.load(f)
+    
+    # Change log file name
+    for handler in LOG_CONF_JSON.get('handlers', {}).values():
         if handler.get('class') == 'logging.FileHandler':
             handler['filename'] = LOG_FILE_NAME
 
-    logging.config.dictConfig(log_conf)
+    logging.config.dictConfig(LOG_CONF_JSON)
+
+def get_logging_json():
+    '''Get logging configuration from JSON file'''
+    return LOG_CONF_JSON
 
 # Save exception as single line in logger
 def log_exception(hierarchy_str, written_string = ' '):
@@ -65,7 +88,7 @@ def log_exception(hierarchy_str, written_string = ' '):
 
 # Save exception as single line in logger
 def get_exception():
-    '''Change traceback into single string'''
+    '''Change traceback into single line string'''
     exc_message = traceback.format_exc()
     # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     exc_message = re.sub(r'\^+', '', exc_message)

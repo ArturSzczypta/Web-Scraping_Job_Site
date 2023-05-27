@@ -18,6 +18,14 @@ import logging
 from logging import config
 import logging_functions as l
 
+logger = None
+if __name__ != '__main__':
+    #Performs basic logging set up
+    #Get logging_file_name from main script
+    logging.config.dictConfig(l.get_logging_json())
+    logger = logging.getLogger(__name__)
+
+
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
     #print(f'Scraping {current_page}')
@@ -53,7 +61,8 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
                 '//button[@data-test="button-submitCookie"]')))
         accept_button.click()
     except:
-        l.log_exception('scrape_one_page','Terms of Service button not found')
+        logger.error('scrape_one_page - Terms of Service button not found'
+                         ' - {l.get_exception()}')
 
 
 
@@ -64,7 +73,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     location_buttons = browser.find_elements(By.CSS_SELECTOR,
         'div[data-test="offer-locations-button"]')
     if not location_buttons:
-        print(f'{current_page} - No location buttons found')
+        logger.info(f'No location buttons found in {current_page}')
 
     # Click on each viewBox object
     for loc_button in location_buttons:
@@ -86,7 +95,8 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
             # Wait for the job offer details to load
             sleep(random.uniform(sleep_min, sleep_max))
         except:
-            l.log_exception('scrape_one_page','No viewBox objects found')
+            logger.error('scrape_one_page - No viewBox objects found'
+                         ' - {l.get_exception()}')
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -105,11 +115,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
         unique_dates.add(date_obj)
 
     browser.quit()
-    '''
-    print('------------------')
-    for link in http_links:
-        print(link)
-    '''
+    
     return http_links, unique_dates
 
 def get_cutoff_date(date_file):
@@ -179,7 +185,7 @@ def update_file(http_links, urls_file):
     with open(urls_file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
-        print(f'New: {len(new_records)}')
+        logger.info(f'New urls: {len(new_records)}')
         # Clear out the content of the file
         file.seek(0)
         file.truncate()
