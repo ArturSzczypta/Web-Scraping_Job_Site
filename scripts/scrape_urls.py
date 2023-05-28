@@ -25,10 +25,9 @@ if __name__ != '__main__':
     logging.config.dictConfig(l.get_logging_json())
     logger = logging.getLogger(__name__)
 
-
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
-    #print(f'Scraping {current_page}')
+    logger.debug(f'Scraping {current_page}')
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
 

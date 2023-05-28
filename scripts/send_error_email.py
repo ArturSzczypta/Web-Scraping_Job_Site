@@ -1,33 +1,62 @@
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+''' Send email with critical error messages and execution details'''
+import os
+from dotenv import load_dotenv
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+from sendgrid import Email, To, Content
 
-# Email account information
-email = "suchinio0987@gmail.com" # Your email address
-password = "suchinio7890" # Your email password
+# Load environment variables from .env file
+load_dotenv('.env.txt')
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+MY_EMAIL = os.getenv('MY_EMAIL')
+EMAIL_TO = os.getenv('EMAIL_TO')
 
-# Email information
-to = "arturszczypta@gmail.com" # Reciever's address
-subject = "Test Email" # Subjest
-body = "This is a test email sent from Python" # Body
+sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
+from_email = Email('arturszczypta@gmail.com')  # Change to your verified sender
+to_email = To('arturszczypta@gmail.com')  # Change to your recipient
+subject = "Sending with SendGrid is Fun"
+content = Content("text/plain", "and easy to do anywhere, even with Python")
+mail = Mail(from_email, to_email, subject, content)
 
-# Create a multipart message
-msg = MIMEMultipart()
-msg['From'] = email
-msg['To'] = to
-msg['Subject'] = subject
+# Get a JSON-ready representation of the Mail object
+mail_json = mail.get()
 
-# Add body to email
-msg.attach(MIMEText(body, 'plain'))
+# Send an HTTP POST request to /mail/send
+response = sg.client.mail.send.post(request_body=mail_json)
+print(response.status_code)
+print(response.headers)
 
-# Create SMTP session
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-server.login(email, password)
+def send_email(subject, message, recipient):
+    ''' Send email'''
+    sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
+    from_email = Email(MY_EMAIL)  # Change to your verified sender
+    to_email = To(recipient)  # Change to your recipient
+    content = Content(message)
+    mail = Mail(from_email, to_email, subject, content)
 
-# Send email
-text = msg.as_string()
-server.sendmail(email, to, text)
-server.quit()
+    # Get a JSON-ready representation of the Mail object
+    mail_json = mail.get()
 
-print('Email sent')
+    # Send an HTTP POST request to /mail/send
+    response = sg.client.mail.send.post(request_body=mail_json)
+    print(response.status_code)
+    print(response.headers)
+
+def error_email(subject, eror_message):
+    ''' Send email with critical error messages and execution details'''
+
+    # Get the path of main folder
+    # if main.py is executed, bellow is true
+    parent_path = os.path.dirname(__file__) 
+
+    # If test is not true, go one folder up
+    test_path = os.path.join(parent_path, 'text_and_json')
+    if not os.path.exists(test_path):
+        parent_path = os.path.join(parent_path, '..')
+
+    subject = f'{subject} - {parent_path}'
+    message = f'''Error Notification \n
+    Error ocurred during execution of {parent_path}.\n
+    Error message:\n{eror_message}'''
+    # Send email
+    send_email(subject, message, EMAIL_TO)

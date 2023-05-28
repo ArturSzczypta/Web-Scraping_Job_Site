@@ -4,7 +4,7 @@ from logging import config
 from scripts import logging_functions as l
 from scripts import scrape_urls as scrape_urls
 from scripts import scrape_listings as scrape_listings
-from scripts import db_functions_mongodb as mongodb
+from scripts import mongodb_functions as mongodb
 
 #Performs basic logging set up
 #Get this script name
@@ -15,7 +15,7 @@ l.get_log_file_name(log_file_name)
 
 #Configure logging file
 l.configure_logging()
-logger = logging.getLogger('main')
+logger = logging.getLogger(__name__)
 
 #Scraping Urls from job site
 # Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
@@ -45,7 +45,7 @@ client = mongodb.return_db_client()
 try:
     mongodb.command_ping(client)
 except:
-    l.log_exception('main', 'Unable to connect with database')
+    logger.critical('MongoDB - Unable to connect with database')
 
 db = client['Web_Scraping_Job_Site']
 collection_succesfull = db['Job_Listings']
@@ -63,4 +63,4 @@ try:
         file.truncate(0)
     
 except:
-    l.log_exception('main','saving listing JSON to database')
+    logger.critical('MongoDB - Cannot save documents to database')

@@ -11,6 +11,13 @@ from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
 
+logger = None
+if __name__ != '__main__':
+    #Performs basic logging set up
+    #Get logging_file_name from main script
+    logging.config.dictConfig(l.get_logging_json())
+    logger = logging.getLogger(__name__)
+
 def return_db_client():
     '''Connects to database, returns client'''
     # Load environment variables from .env file
@@ -32,7 +39,7 @@ def check_connection(client):
         client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except:
-        l.log_exception('main', 'Unable to connect with database')
+        logger.critical('check_connection - Unable to connect with database')
 
 def save_dict_from_file_to_collection(collection, file_name):
     ''' Saves documents from file to collection
@@ -86,7 +93,7 @@ if __name__ == '__main__':
 
     #Configure logging file
     l.configure_logging()
-    logger = logging.getLogger('main')
+    logger = logging.getLogger(__name__)
 
     #Saving succesfull_extractions to MongoDB Atlas
     SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
@@ -99,7 +106,7 @@ if __name__ == '__main__':
     try:
         command_ping(_client)
     except:
-        l.log_exception('main', 'Unable to connect with database')
+        logger.critical('check_connection - Unable to connect with database')
 
     db = _client['Web_Scraping_Job_Site']
     collection_succesfull = db['Job_Listings']

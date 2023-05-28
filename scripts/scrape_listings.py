@@ -6,6 +6,7 @@ import json
 from time import sleep
 from numpy import random
 import requests
+import copy
 
 import logging
 from logging import config
@@ -38,8 +39,8 @@ def scrape_listing_from_json(url, timeout=5):
 def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
     substring = substring.strip()
-    #print(substring)
-    #print('\n\n\n')
+    logger.debug(substring)
+    logger.debug('\n\n\n')
 
     patterns = [
     r'\bundefined\b', # incorrect null value
@@ -70,9 +71,9 @@ def clean_listing_string(substring):
 
 def change_str_to_dict(substring):
     '''  Convert the string to a dictionary using the json module'''
-    #print(substring)
+    logger.debug(substring)
     my_dict = json.loads(substring)
-    #print(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    logger.debug(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
 
 def clean_region(region_name):
@@ -246,7 +247,7 @@ def simplify_dictionary(my_dict, url, tech_found):
     # responsibilities
     new_dict['responsibilities'] = responsibilities
 
-    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
+    logger.debug(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def extract_tech_set(file_with_tech):
@@ -305,7 +306,7 @@ def update_file(new_set, urls_file):
     with open(file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = new_set - old_records
-        print(f'New: {len(new_records)}')
+        logger.info(f'New listings: {len(new_records)}')
         # Clear out the content of the file
         file.seek(0)
         file.truncate()
@@ -331,23 +332,47 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
     url_count = get_url_count(scraped_urls)
     _tech_set = extract_tech_set(file_with_tech)
 
+    # Get the level of the console handler
+    console_handler = logging.StreamHandler()
+    console_level = console_handler.level
+
     with open(scraped_urls, 'r', encoding='UTF-8') as file:
-        # Record Listing using pipeline. If failed, record in serepate file
+        # Record Listing using pipeline. If failed, record in serepate file   
+        last_progress = int(0)
+
         for url in file:
-            url = url.strip()
+            url = url.strip()      
             try:
                 listing_pipeline_main(url, _tech_set, succesfull_file)
                 succeses += 1
             except:
                 save_str_to_file(url, failed_file)
                 failures += 1
-                l.log_exception('scrape_listings - main',f'Scraping failed {url}')
+                logger.error('Scraping failed: {url}')
             finally:
-                progress = round((succeses+failures)/url_count*100, 3)
-                print(f'Successes: {succeses:4}   '
-                    f'Failures: {failures:4}   '
-                    f'Progress: {progress:5}%')
+                if console_level in [logging.DEBUG, logging.INFO]:
+                    progress = round((succeses+failures)/url_count*100, 3)
+                    seconds_left = int((url_count-succeses-failures)*5)
+                    min, sec = divmod(seconds_left, 60)
+                    hour, min = divmod(min, 60)
+                    time_left = '{:02d}:{:02d}:{:02d}'.format(hour, min, sec)
+
+                    if console_level == logging.DEBUG:
+                        print(f'Successes: {succeses:3}   '
+                            f'Failures: {failures:3}   '
+                            f'Progress: {progress:3}%   '
+                            f'Time left: {time_left}')
+
+                    if console_level == logging.INFO and \
+                        int(progress) > last_progress:
+                        last_progress = copy.deepcopy(progress)
+                        print(f'Successes: {succeses:3}   '
+                            f'Failures: {failures:3}   '
+                            f'Progress: {progress:3}%   '
+                            f'Time left: {time_left}')
+                
                 sleep(random.uniform(sleep_min, sleep_max))
+                
 
 if __name__ == '__main__':
     #Performs basic logging set up

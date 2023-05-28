@@ -13,7 +13,7 @@ sys.path.append('.')
 
 # Import custom modules
 import logging_functions as l
-import db_functions_mongodb as mongodb
+import mongodb_functions as mongodb
 
 #Performs basic logging set up
 #Get this script name
