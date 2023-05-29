@@ -6,6 +6,7 @@ import json
 import logging
 from logging import config
 import logging_functions as l
+import email_functions as e
 
 from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
@@ -21,17 +22,16 @@ if __name__ != '__main__':
 def return_db_client():
     '''Connects to database, returns client'''
     # Load environment variables from .env file
-    load_dotenv('.env.txt')
+    if __name__ == '__main__':
+        load_dotenv('../.env.txt')
+    else:
+        load_dotenv('.env.txt')
     # Get MongoDB URI from environment variables
     MONGODB_URI = os.getenv('MONGODB_URI')
 
     # Connect to MongoDB
     client = MongoClient(MONGODB_URI, server_api=ServerApi('1'))
     return client
-
-def command_ping(client):
-    ''' Returns command used in checking connection'''
-    return client.admin.command('ping')
 
 def check_connection(client):
     ''' Check connection to database'''
@@ -40,11 +40,18 @@ def check_connection(client):
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except:
         logger.critical('check_connection - Unable to connect with database')
+        e.error_email('Check_connection - Unable to connect with database')
 
 def save_dict_from_file_to_collection(collection, file_name):
     ''' Saves documents from file to collection
     Assumes file has one JSON in each line'''
     documents = []
+    if __name__ == '__main__':
+        data_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'../text_and_json/{file_name}')
+    else:
+        data_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'text_and_json/{file_name}')
     with open(file_name, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
@@ -73,8 +80,12 @@ def save_str_from_file_to_collection(collection, file_name):
     Assumes file is in "text_and_json" folder and
     has one url in each line'''
     documents = []
-    data_file_path = os.path.join(os.path.dirname(__file__), \
+    if __name__ == '__main__':
+        data_file_path = os.path.join(os.path.dirname(__file__), \
                                   f'../text_and_json/{file_name}')
+    else:
+        data_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'text_and_json/{file_name}')
     with open(data_file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
@@ -101,12 +112,6 @@ if __name__ == '__main__':
 
     _client = return_db_client()
     check_connection(_client)
-
-    # Check connection to DB
-    try:
-        command_ping(_client)
-    except:
-        logger.critical('check_connection - Unable to connect with database')
 
     db = _client['Web_Scraping_Job_Site']
     collection_succesfull = db['Job_Listings']

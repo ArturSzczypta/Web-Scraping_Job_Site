@@ -1,5 +1,6 @@
 ''' Send email with critical error messages and execution details'''
 import os
+import traceback
 from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
@@ -42,21 +43,25 @@ def send_email(subject, message, recipient):
     print(response.status_code)
     print(response.headers)
 
-def error_email(subject, eror_message):
+def error_email(subject):
     ''' Send email with critical error messages and execution details'''
 
     # Get the path of main folder
     # if main.py is executed, bellow is true
     parent_path = os.path.dirname(__file__) 
 
-    # If test is not true, go one folder up
+    # Test if above is true. If not, go one folder up
     test_path = os.path.join(parent_path, 'text_and_json')
     if not os.path.exists(test_path):
         parent_path = os.path.join(parent_path, '..')
+    
+    parent_directory = os.path.basename(parent_path)
 
-    subject = f'{subject} - {parent_path}'
+    error_message = traceback.format_exc()
+
+    subject = f'Error {parent_directory} - {subject}'
     message = f'''Error Notification \n
-    Error ocurred during execution of {parent_path}.\n
-    Error message:\n{eror_message}'''
+    Error ocurred during execution of {parent_directory}.\n
+    Error message:\n{error_message}'''
     # Send email
     send_email(subject, message, EMAIL_TO)

@@ -17,6 +17,7 @@ from bs4 import BeautifulSoup
 import logging
 from logging import config
 import logging_functions as l
+import email_functions as e
 
 logger = None
 if __name__ != '__main__':
@@ -62,6 +63,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     except:
         logger.error('scrape_one_page - Terms of Service button not found'
                          ' - {l.get_exception()}')
+        e.error_email('scrape_one_page - Terms of Service button not found')
 
 
 
@@ -123,6 +125,14 @@ def get_cutoff_date(date_file):
     last_date = None
     date_file_path = os.path.join(os.path.dirname(__file__), \
                                   f'../text_and_json/{date_file}')
+    
+    if __name__ == '__main__':
+        date_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'../text_and_json/{date_file}')
+    else:
+        date_file_path = os.path.join(os.path.dirname(__file__), \
+                                  f'../text_and_json/{date_file}')
+
     with open(date_file_path, 'r',encoding='UTF-8') as file:
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
@@ -179,8 +189,13 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
 def update_file(http_links, urls_file):
     ''' Adds new records, removes old ones
     Assumes file is in folder "text_and_json"'''
-    urls_file_path = os.path.join(os.path.dirname(__file__), \
+    if __name__ == '__main__':
+        urls_file_path = os.path.join(os.path.dirname(__file__), \
                                     f'../text_and_json/{urls_file}')
+    else:
+        urls_file_path = os.path.join(os.path.dirname(__file__), \
+                                    f'text_and_json/{urls_file}')
+        
     with open(urls_file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
@@ -195,8 +210,13 @@ def update_file(http_links, urls_file):
 def update_date_log(date_file):
     ''' Update logging date
     Assumes file is in folder "text_and_json"'''
-    date_file_path = os.path.join(os.path.dirname(__file__), \
+    if __name__ == '__main__':
+        date_file_path = os.path.join(os.path.dirname(__file__), \
                                     f'../text_and_json/{date_file}')
+    else:
+        date_file_path = os.path.join(os.path.dirname(__file__), \
+                                    f'text_and_json/{date_file}')
+        
     with open(date_file_path, 'w',encoding='utf-8') as file:
         file.write(str(datetime.date.today()))
 

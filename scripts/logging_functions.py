@@ -67,39 +67,39 @@ def log_exception(hierarchy_str, written_string = ' '):
     '''
 
     #Change traceback into single string
-    exc_message = traceback.format_exc()
+    error_message = traceback.format_exc()
     # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    exc_message = re.sub(r'\^+', '', exc_message)
+    error_message = re.sub(r'\^+', '', error_message)
     # Remove ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    exc_message = re.sub(r'\~+', '', exc_message)
+    error_message = re.sub(r'\~+', '', error_message)
 
-    exc_list = exc_message.split('\n')[:-1]
+    exc_list = error_message.split('\n')[:-1]
     exc_list = [x.strip(' ') for x in exc_list]
-    exc_message = ' - '.join(exc_list)
+    error_message = ' - '.join(exc_list)
 
     configure_logging()
     logger = logging.getLogger(f'main.{hierarchy_str}')
-    logger.error(written_string + ' - ' + exc_message)
+    logger.error(written_string + ' - ' + error_message)
     logger.debug('')
 
 # Save exception as single line in logger
 def get_exception():
     '''Change traceback into single line string'''
-    exc_message = traceback.format_exc()
+    error_message = traceback.format_exc()
     # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    exc_message = re.sub(r'\^+', '', exc_message)
+    error_message = re.sub(r'\^+', '', error_message)
     # Remove ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    exc_message = re.sub(r'\~+', '', exc_message)
+    error_message = re.sub(r'\~+', '', error_message)
 
     # Split into list, replace new line with - 
-    exc_list = exc_message.split('\n')[:-1]
+    exc_list = error_message.split('\n')[:-1]
     exc_list = [x.strip(' ') for x in exc_list]
-    exc_message = ' - '.join(exc_list)
+    error_message = ' - '.join(exc_list)
     # replace -  - with - 
-    exc_message = re.sub(r'\-  \-', '-', exc_message)
+    error_message = re.sub(r'\-  \-', '-', error_message)
     # Remove excess spaces
-    exc_message = re.sub(r' {2,}', ' ', exc_message)
-    return exc_message
+    error_message = re.sub(r' {2,}', ' ', error_message)
+    return error_message
 
 
 
