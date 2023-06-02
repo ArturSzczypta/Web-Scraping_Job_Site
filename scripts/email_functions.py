@@ -27,7 +27,7 @@ response = sg.client.mail.send.post(request_body=mail_json)
 print(response.status_code)
 print(response.headers)
 
-def send_email(subject, message, recipient):
+def send_email(subject, message, recipient=EMAIL_TO):
     ''' Send email'''
     sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
     from_email = Email(MY_EMAIL)  # Change to your verified sender
@@ -64,4 +64,4 @@ def error_email(subject):
     Error ocurred during execution of {parent_directory}.\n
     Error message:\n{error_message}'''
     # Send email
-    send_email(subject, message, EMAIL_TO)
+    send_email(subject, message)
