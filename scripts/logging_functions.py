@@ -5,7 +5,6 @@ import os
 import logging
 from logging import config
 import json
-from syslog import LOG_CONS
 import traceback
 import re
 import requests
@@ -35,17 +34,22 @@ def configure_logging():
     script_path = os.path.dirname(__file__)
 
     # Get the path of logging_configuration.json
-    json_path = os.path.join(script_path, \
-                             'text_and_json', 'logging_configuration.json')
-    if not os.path.exists(json_path):
-        json_path = os.path.join(script_path, '..', \
-                                 'text_and_json', 'logging_configuration.json')
-    
+    json_path = None
+  
+    if __name__ == '__main__':
+        script_path = os.path.dirname(__file__)
+        parent_path = os.path.dirname(script_path)
+        json_path = os.path.join(parent_path, 'text_and_json', \
+                                 'logging_configuration.json')
+    else:
+        parent_path = os.path.dirname(script_path)
+        json_path = os.path.join(parent_path, 'text_and_json', \
+                                 'logging_configuration.json')
+
     # Load logging configuration from JSON file                           
     with open(json_path, 'r', encoding='utf-8') as f:
         global LOG_CONF_JSON
         LOG_CONF_JSON = json.load(f)
-    
     # Change log file name
     for handler in LOG_CONF_JSON.get('handlers', {}).values():
         if handler.get('class') == 'logging.FileHandler':

@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 #Scraping Urls from job site
 # Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
-searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
+searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', 'tt=Tableau'}
 
 # _BASE_URL will be used first, then _ITERABLE_URL untill the end
 BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'

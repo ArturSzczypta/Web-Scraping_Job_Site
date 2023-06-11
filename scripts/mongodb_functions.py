@@ -5,8 +5,8 @@ import json
 
 import logging
 from logging import config
-import logging_functions as l
-import email_functions as e
+from . import logging_functions as l
+from . import email_functions as e
 
 from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
