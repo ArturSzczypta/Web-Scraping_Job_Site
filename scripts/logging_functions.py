@@ -24,7 +24,6 @@ def get_log_file_name(new_log_file_name):
     global LOG_FILE_NAME
     LOG_FILE_NAME = new_log_file_name
 
-
 def configure_logging():
     '''
     Configure logging by using JSON file
@@ -62,31 +61,6 @@ def get_logging_json():
     return LOG_CONF_JSON
 
 # Save exception as single line in logger
-def log_exception(hierarchy_str, written_string = ' '):
-    '''
-    Save exception as single line in logger
-
-    :hierarchy_str: name of function
-    :written_string: Additional info
-    '''
-
-    #Change traceback into single string
-    error_message = traceback.format_exc()
-    # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    error_message = re.sub(r'\^+', '', error_message)
-    # Remove ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    error_message = re.sub(r'\~+', '', error_message)
-
-    exc_list = error_message.split('\n')[:-1]
-    exc_list = [x.strip(' ') for x in exc_list]
-    error_message = ' - '.join(exc_list)
-
-    configure_logging()
-    logger = logging.getLogger(f'main.{hierarchy_str}')
-    logger.error(written_string + ' - ' + error_message)
-    logger.debug('')
-
-# Save exception as single line in logger
 def get_exception():
     '''Change traceback into single line string'''
     error_message = traceback.format_exc()
@@ -104,8 +78,6 @@ def get_exception():
     # Remove excess spaces
     error_message = re.sub(r' {2,}', ' ', error_message)
     return error_message
-
-
 
 #Check internet connection, terminate script if no internet and record error
 def check_internet():
@@ -135,6 +107,7 @@ def main():
 
     #Configure logging file 
     configure_logging()
+    global logger
     logger = logging.getLogger(__name__)
 
     #Check internet connection, terminate script if no internet
