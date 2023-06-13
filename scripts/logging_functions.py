@@ -34,16 +34,19 @@ def configure_logging():
 
     # Get the path of logging_configuration.json
     json_path = None
+    log_path = None
   
     if __name__ == '__main__':
         script_path = os.path.dirname(__file__)
         parent_path = os.path.dirname(script_path)
         json_path = os.path.join(parent_path, 'text_and_json', \
                                  'logging_configuration.json')
+        log_path = os.path.join(parent_path, 'logging_files', LOG_FILE_NAME)
     else:
         parent_path = os.path.dirname(script_path)
         json_path = os.path.join(parent_path, 'text_and_json', \
                                  'logging_configuration.json')
+        log_path = os.path.join(parent_path, 'logging_files', LOG_FILE_NAME)
 
     # Load logging configuration from JSON file                           
     with open(json_path, 'r', encoding='utf-8') as f:
@@ -52,7 +55,7 @@ def configure_logging():
     # Change log file name
     for handler in LOG_CONF_JSON.get('handlers', {}).values():
         if handler.get('class') == 'logging.FileHandler':
-            handler['filename'] = LOG_FILE_NAME
+            handler['filename'] = log_path
 
     logging.config.dictConfig(LOG_CONF_JSON)
 
