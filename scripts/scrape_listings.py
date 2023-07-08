@@ -354,9 +354,8 @@ def update_file(new_set, urls_file):
         for url in new_records:
             file.write(url + '\n')
 
-def listing_pipeline_main(url, tech_set, file_name):
+def listing_pipeline_main(substring, tech_set, file_name):
     ''' Pipeline saves listing details to file'''
-    substring = scrape_listing_from_json(url)
     substring = clean_listing_string(substring)
     tech_found = extract_all_tech(substring, tech_set)
     my_dict = change_str_to_dict(substring)
@@ -389,12 +388,13 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
         last_progress = int(0)
 
         for url in file:
-            url = url.strip()      
+            url = url.strip()
+            substring = scrape_listing_from_json(url)     
             try:
-                listing_pipeline_main(url, _tech_set, succesfull_file)
+                listing_pipeline_main(substring, _tech_set, succesfull_file)
                 succeses += 1
             except:
-                save_str_to_file(url, failed_file)
+                save_str_to_file(substring, failed_file)
                 failures += 1
                 logger.error('Scraping failed: {url}')
             finally:

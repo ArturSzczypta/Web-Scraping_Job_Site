@@ -57,7 +57,7 @@ collection_failed = db['Failed_Urls']
 # Record if there was a failure, clear files
 try:
     mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
-    mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
+    #mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
     
     # Preparing email
     with open(SUCCESFULL_EXTRACTIONS, 'r') as file:
@@ -76,8 +76,6 @@ try:
 
     #Clearing listing file
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
-        file.truncate(0)
-    with open(FAILED_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
     
 except:
