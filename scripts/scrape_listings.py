@@ -4,7 +4,7 @@ Web scraping job listing details on popular polish job site, Pracuj.pl
 import os
 import re
 import json
-from time import sleep
+from time import sleep, gmtime, strftime
 from numpy import random
 import requests
 import copy
@@ -47,8 +47,8 @@ def scrape_listing_from_json(url, timeout=5):
 def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
     substring = substring.strip()
-    logger.debug(substring)
-    logger.debug('\n\n\n')
+    #print(substring)
+    #print('\n\n\n')
 
     patterns = [
     r'\bundefined\b', # incorrect null value
@@ -61,10 +61,15 @@ def clean_listing_string(substring):
     missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})'
     substring = re.sub(missing_nulls, ':null', substring)
 
-    missing_commas = r'null\s*([^,\]\}])'
-    substring =  re.sub(missing_commas, r'null,\g<1>', substring)
+    missing_commas_1 = r'null\s*([^,\]\}])'
+    substring =  re.sub(missing_commas_1, r'null,\g<1>', substring)
     missing_commas_2 = r'(\w+)\s+,\s*"'
     substring =  re.sub(missing_commas_2, r'\1","', substring)
+
+    extra_char_1 = r'(?<=",)\s*",(?=")'
+    substring = re.sub(extra_char_1, '',substring)
+    #extra_char_2 = r'(?<=,")\s*"(?=,")'
+    #substring = re.sub(extra_char_2, '',substring)
 
     # Replace unicode for '/' with space
     substring = substring.replace('\\u002F', ' ')
@@ -73,8 +78,16 @@ def clean_listing_string(substring):
     substring = substring.replace('u003E', ' ')
     substring = substring.replace('--', ' ')
     substring = substring.replace(', \"\"', ' ')
+    
     # Remove excess spaces
     substring = re.sub(r' {2,}', ' ', substring)
+    substring = re.sub(r'\s*"\s*', '"', substring)
+
+    #Add missing curly Brackets
+    opening_braces = len(re.findall(r'{', substring))
+    closing_braces = len(re.findall(r'}', substring))
+    if opening_braces > closing_braces:
+        substring += '}'*(opening_braces-closing_braces)
     return substring
 
 def change_str_to_dict(substring):
@@ -135,44 +148,46 @@ def clean_contract_type(contract_type):
         return contract_pl[contract_en.index(contract_type)]
     return contract_type
 
-def simplify_dictionary(my_dict, url, tech_found):
+def simplify_dictionary(my_dict, tech_found):
     ''' Extracts usefull data from the dictionary, creates new dictionary'''
-
+    
+    my_dict = my_dict['userReducer']['offerReducer']['offer']
     #Basic listing data
-    job_title = my_dict['offerReducer']['offer']['jobTitle']
-    country = my_dict['offerReducer']['offer']['workplaces'][0]['country']['name']
-    region = my_dict['offerReducer']['offer']['workplaces'][0]['region']['name']
+    job_title = my_dict['jobTitle']
+    country = my_dict['workplaces'][0]['country']['name']
+    region = my_dict['workplaces'][0]['region']['name']
     # Clean region name
-    region = clean_region(region)
+    if region == '' or region == ' ' or region in ['abroad', 'zagranica']:
+        return None
 
     location = None
-    if my_dict['offerReducer']['offer']['workplaces'][0].get('inlandLocation') and \
-    my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation'].get('location') and \
-    my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location'].get('name'):
-        location = my_dict['offerReducer']['offer']['workplaces'][0]['inlandLocation']['location']['name']
+    if my_dict['workplaces'][0].get('inlandLocation') and \
+    my_dict['workplaces'][0]['inlandLocation'].get('location') and \
+    my_dict['workplaces'][0]['inlandLocation']['location'].get('name'):
+        location = my_dict['workplaces'][0]['inlandLocation']['location']['name']
     
     
 
-    contract_type = my_dict['offerReducer']['offer']['typesOfContracts'][0]['name']
+    contract_type = my_dict['typesOfContracts'][0]['name']
     # Clean contract type
     contract_type = clean_contract_type(contract_type)
 
     # Salary specific
     is_salary = True
-    if my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary'] is None:
+    if my_dict['typesOfContracts'][0]['salary'] is None:
         is_salary = False
         salary_from, salary_to, salary_currency, salary_long_form = (None, None, None, None)
     else:
         is_salary = True
-        salary_from = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['from']
-        salary_to = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['to']
-        salary_currency = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['currency']['code']
-        salary_long_form = my_dict['offerReducer']['offer']['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
+        salary_from = my_dict['typesOfContracts'][0]['salary']['from']
+        salary_to = my_dict['typesOfContracts'][0]['salary']['to']
+        salary_currency = my_dict['typesOfContracts'][0]['salary']['currency']['code']
+        salary_long_form = my_dict['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
 
     # Assuming both dates always comply to ISO 8601 format, UTC time zone, scraping only YYYY-mm-dd
-    publication_date = my_dict['offerReducer']['offer']['dateOfInitialPublication'][:10]
+    publication_date = my_dict['dateOfInitialPublication'][:10]
     publication_month = publication_date[:7] + '-01'
-    expiration_date = my_dict['offerReducer']['offer']['expirationDate'][:10]
+    expiration_date = my_dict['expirationDate'][:10]
 
     tech_expected = []
     tech_optional = []
@@ -181,7 +196,7 @@ def simplify_dictionary(my_dict, url, tech_found):
     dev_practices = None
     responsibilities = []
 
-    for section in my_dict['offerReducer']['offer']['sections']:
+    for section in my_dict['sections']:
         if section['sectionType'] == 'technologies':
             for item in section['subSections']:
                 if item['sectionType'] == 'technologies-expected':
@@ -220,7 +235,6 @@ def simplify_dictionary(my_dict, url, tech_found):
     #Loading data to simplified dictionary
     new_dict = {}
     #Basic listing data
-    new_dict['url'] = url
     new_dict['job_title'] = job_title
     new_dict['country'] = country
     new_dict['region'] = region
@@ -255,7 +269,7 @@ def simplify_dictionary(my_dict, url, tech_found):
     # responsibilities
     new_dict['responsibilities'] = responsibilities
 
-    logger.debug(json.dumps(new_dict, ensure_ascii=False, indent=2))
+    #print(json.dumps(new_dict, ensure_ascii=False, indent=2))
     return new_dict
 
 def extract_tech_set(file_with_tech):
@@ -370,6 +384,7 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
     failures = 0
     url_count = get_url_count(scraped_urls)
     _tech_set = extract_tech_set(file_with_tech)
+    aver_sleep = (sleep_min + sleep_max) / 2
 
     # Get the level of the console handler
     console_handler = logging.StreamHandler()
@@ -400,16 +415,14 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
             finally:
                 if console_level in [logging.DEBUG, logging.INFO]:
                     progress = round((succeses+failures)/url_count*100, 3)
-                    seconds_left = int((url_count-succeses-failures)*5)
-                    min, sec = divmod(seconds_left, 60)
-                    hour, min = divmod(min, 60)
-                    time_left = '{:02d}:{:02d}:{:02d}'.format(hour, min, sec)
+                    seconds_left = (url_count - succeses - failures) * aver_sleep
+                    time_left = strftime("%H:%M:%S", gmtime(seconds_left))
 
                     if console_level == logging.DEBUG:
                         print(f'Successes: {succeses:3}   '
                             f'Failures: {failures:3}   '
                             f'Progress: {progress:3}%   '
-                            f'Time left: {time_left}')
+                            f'Time left: {time_left:8}')
 
                     if console_level == logging.INFO and \
                         int(progress) > last_progress:
@@ -417,8 +430,8 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
                         print(f'Successes: {succeses:3}   '
                             f'Failures: {failures:3}   '
                             f'Progress: {progress:3}%   '
-                            f'Time left: {time_left}')
-                sleep(random.uniform(sleep_min, sleep_max))           
+                            f'Time left: {time_left:8}')
+                sleep(random.uniform(sleep_min, sleep_max))        
 
 if __name__ == '__main__':
     #Performs basic logging set up
