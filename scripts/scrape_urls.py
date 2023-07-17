@@ -25,16 +25,15 @@ if __name__ != '__main__':
     #Get logging_file_name from main script
     logging.config.dictConfig(l.get_logging_json())
     logger = logging.getLogger(__name__)
+    print(logger.name)
 
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
-    logger.debug(f'Scraping {current_page}')
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
 
     # Construct the file path to the ChromeDriver executable
-    chromedriver_path = os.path.join(dir_path,
-        'chromedriver_win32', 'chromedriver')
+    chromedriver_path = os.path.join(dir_path,'..','chromedriver_win32', 'chromedriver')
 
     # Set options to run Chrome in headless mode
     chrome_options = webdriver.ChromeOptions()
@@ -116,28 +115,24 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
         unique_dates.add(date_obj)
 
     browser.quit()
-    
+    logger.info(f'Found {len(http_links)} links on page {current_page}')
     return http_links, unique_dates
 
 def get_cutoff_date(date_file):
     '''Get last logging date
     Assumes file is in folder "text_and_json"'''
     last_date = None
-    date_file_path = None
-    
-    if __name__ == '__main__':
-        date_file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..','text_and_json', date_file)
-    else:
-        date_file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', date_file)
+    date_file_path = os.path.join(os.path.dirname(__file__), \
+                                  '..','text_and_json', date_file)
+    logger.debug(f'get date path: {date_file_path}')
 
     with open(date_file_path, 'r',encoding='UTF-8') as file:
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
     # 'last_date - one_day' gives overlam in the search
-    print(last_date - datetime.timedelta(days=1))
-    return last_date - datetime.timedelta(days=1)
+    cut_off_date = last_date - datetime.timedelta(days=1)
+    logger.info(f'Cut-off date: {cut_off_date}')
+    return cut_off_date
 
 def scrape_single_skill(cutoff_date, base_url, iterable_url=None, \
     sleep_min=7, sleep_max=23):
@@ -189,14 +184,8 @@ def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
 def update_file(http_links, urls_file):
     ''' Adds new records, removes old ones
     Assumes file is in folder "text_and_json"'''
-    urls_file_path = None
-    
-    if __name__ == '__main__':
-        urls_file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..', 'text_and_json', urls_file)
-    else:
-        urls_file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', urls_file)
+    urls_file_path = os.path.join(os.path.dirname(__file__), \
+                                  '..', 'text_and_json', urls_file)
   
     with open(urls_file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
@@ -212,13 +201,8 @@ def update_file(http_links, urls_file):
 def update_date_log(date_file):
     ''' Update logging date
     Assumes file is in folder "text_and_json"'''
-    date_file_path = None
-    if __name__ == '__main__':
-        date_file_path = os.path.join(os.path.dirname(__file__), \
-                                    '..', 'text_and_json', date_file)
-    else:
-        date_file_path = os.path.join(os.path.dirname(__file__), \
-                                    'text_and_json', date_file)
+    date_file_path = os.path.join(os.path.dirname(__file__), \
+                                  '..', 'text_and_json', date_file)
         
     with open(date_file_path, 'w',encoding='utf-8') as file:
         file.write(str(datetime.date.today()))
@@ -226,13 +210,8 @@ def update_date_log(date_file):
 def save_set_to_file(new_set, file_name):
     ''' Saves set to file, each element per line
     Assumes file is in folder "text_and_json"'''
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                    '..','text_and_json', file_name)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                    'text_and_json', file_name)
+    file_path = os.path.join(os.path.dirname(__file__), \
+                                '..', 'text_and_json', file_name)
 
     with open(file_path, 'a', encoding='utf-8') as file:
         for element in new_set:

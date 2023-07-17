@@ -73,11 +73,11 @@ try:
     Database updated.'''
     # Send email
     e.send_email(subject, message)
-
+    '''
     #Clearing listing file
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
-    
+    '''
 except:
     logger.critical('MongoDB - Cannot save documents to database')
     e.send_error_email('MongoDB - Cannot save documents to database')

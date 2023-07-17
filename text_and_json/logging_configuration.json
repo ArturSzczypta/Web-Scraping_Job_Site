@@ -4,11 +4,11 @@
     "loggers": {
         "root": {
             "handlers": ["console"],
-            "level": "DEBUG"
+            "level": "INFO"
         },
         "main": {
             "handlers": ["console", "file"],
-            "level": "DEBUG",
+            "level": "INFO",
             "qualname": "main",
             "propagate": 0
         }
@@ -16,7 +16,7 @@
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "level": "INFO",
+            "level": "DEBUG",
             "formatter": "console"
         },
         "file": {

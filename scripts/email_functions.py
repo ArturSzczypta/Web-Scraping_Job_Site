@@ -10,7 +10,7 @@ from sendgrid import Email, To, Content
 if __name__ == '__main__':
     load_dotenv('../.env.txt')
 else:
-    load_dotenv('.env.txt')
+    load_dotenv('../.env.txt')
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 MY_EMAIL = os.getenv('MY_EMAIL')

@@ -48,10 +48,10 @@ def save_dict_from_file_to_collection(collection, file_name):
     documents = []
     if __name__ == '__main__':
         data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'../text_and_json/{file_name}')
+                                  f'text_and_json/{file_name}')
     else:
         data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'text_and_json/{file_name}')
+                                  f'../text_and_json/{file_name}')
     with open(file_name, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
@@ -82,10 +82,10 @@ def save_str_from_file_to_collection(collection, file_name):
     documents = []
     if __name__ == '__main__':
         data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'../text_and_json/{file_name}')
+                                  f'text_and_json/{file_name}')
     else:
         data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'text_and_json/{file_name}')
+                                  f'../text_and_json/{file_name}')
     with open(data_file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries

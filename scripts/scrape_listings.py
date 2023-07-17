@@ -14,18 +14,20 @@ from logging import config
 from . import logging_functions as l
 from . import email_functions as e
 
+logger = None
+if __name__ != '__main__':
+    #Performs basic logging set up
+    #Get logging_file_name from main script
+    logging.config.dictConfig(l.get_logging_json())
+    logger = logging.getLogger(__name__)
+    print(logger.name)
 
 def save_dict(new_dict, file_name):
     ''' Saves dictionary to file
     Assumes file is in folder "text_and_json"'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..', 'text_and_json', file_name)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', file_name)
+    file_path = os.path.join(os.path.dirname(__file__), \
+                             '..', 'text_and_json', file_name)
     
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json_str + '\n')
@@ -276,14 +278,8 @@ def extract_tech_set(file_with_tech):
     ''' Extract all technologies in file to a set
     Assumes file is in folder "text_and_json"'''
     tech_set = set()
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..', 'text_and_json', \
-                                        file_with_tech)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', file_with_tech)
+    file_path = os.path.join(os.path.dirname(__file__), \
+                             '..', 'text_and_json', file_with_tech)
  
     with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
@@ -305,14 +301,8 @@ def extract_all_tech(substring, tech_set):
 def save_dict_to_file(new_dict, file_name):
     ''' Saves dictionary to file
     Assumes file is in folder "text_and_json"'''
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..', 'text_and_json', \
-                                        file_name)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', file_name)
+    file_path = os.path.join(os.path.dirname(__file__), \
+                             '..', 'text_and_json', file_name)
       
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
@@ -320,14 +310,8 @@ def save_dict_to_file(new_dict, file_name):
 def save_str_to_file(new_dict, file_name):
     ''' Saves string to file
     Assumes file is in folder "text_and_json"'''
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                      '..', 'text_and_json', \
-                                        file_name)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                  'text_and_json', file_name)
+    file_path = os.path.join(os.path.dirname(__file__), \
+                                 '..', 'text_and_json', file_name)
     
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(new_dict + '\n')
@@ -335,13 +319,8 @@ def save_str_to_file(new_dict, file_name):
 def get_url_count(file_name):
     ''' Returns number of lines in file
     Assumes file is in folder "text_and_json"'''
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
+    file_path = os.path.join(os.path.dirname(__file__), \
                                     '..', 'text_and_json', file_name)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                    'text_and_json', file_name)
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
         return len(lines)
@@ -349,13 +328,8 @@ def get_url_count(file_name):
 def update_file(new_set, urls_file):
     ''' Adds new records, removes old ones
     Assumes file is in folder "text_and_json"'''
-    file_path = None
-    if __name__ == '__main__':
-        file_path = os.path.join(os.path.dirname(__file__), \
+    file_path = os.path.join(os.path.dirname(__file__), \
                                     '..', 'text_and_json', urls_file)
-    else:
-        file_path = os.path.join(os.path.dirname(__file__), \
-                                    'text_and_json', urls_file)
 
     with open(file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
@@ -373,7 +347,7 @@ def listing_pipeline_main(substring, tech_set, file_name):
     substring = clean_listing_string(substring)
     tech_found = extract_all_tech(substring, tech_set)
     my_dict = change_str_to_dict(substring)
-    new_dict = simplify_dictionary(my_dict, url, tech_found)
+    new_dict = simplify_dictionary(my_dict, tech_found)
     save_dict_to_file(new_dict, file_name)
 
 def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
@@ -389,13 +363,8 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
     # Get the level of the console handler
     console_handler = logging.StreamHandler()
     console_level = console_handler.level
-    scraped_urls_path = None
-    if __name__ == '__main__':
-        scraped_urls_path = os.path.join(os.path.dirname(__file__), \
+    scraped_urls_path = os.path.join(os.path.dirname(__file__), \
                                     '..', 'text_and_json', scraped_urls)
-    else:
-        scraped_urls_path = os.path.join(os.path.dirname(__file__), \
-                                    'text_and_json', scraped_urls)
         
 
     with open(scraped_urls_path, 'r', encoding='UTF-8') as file:
