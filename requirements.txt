@@ -1,0 +1,8 @@
+bs4
+dotenv
+numpy
+pymongo
+requests
+selenium
+sendgrid
+
