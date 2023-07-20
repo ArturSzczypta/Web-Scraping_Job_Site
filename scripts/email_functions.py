@@ -1,4 +1,4 @@
-''' Send email with critical error messages and execution details'''
+''' Send email with error messages and execution details'''
 import os
 import traceback
 from dotenv import load_dotenv
@@ -32,30 +32,29 @@ def send_email(subject, message, recipient=EMAIL_TO):
     print(response.status_code)
     print(response.headers)
 
-def error_email(subject):
+def error_email():
     ''' Send email with critical error messages and execution details'''
 
-    # Get the path of parent folder
-    parent_path = os.path.dirname(__file__) 
-    # if main.py is executed, bellow is true. If not, go one folder up
-    test_path = os.path.join(parent_path, 'text_and_json')
-    if not os.path.exists(test_path):
-        parent_path = os.path.join(parent_path, '..')
-    
-    parent_directory = os.path.basename(parent_path)
+    # Get current working directory
+    cwd = os.path.basename(os.getcwd())
+    script_name = os.path.basename(__file__)
 
     error_message = traceback.format_exc()
 
-    subject = f'Error {parent_directory} - {subject}'
+    subject = f'Error {cwd} - {script_name}'
     message = f'''Error Notification \n
-    Error ocurred during execution of {parent_directory}.\n
+    Error ocurred during execution of {script_name} in {cwd}.\n
     Error message:\n{error_message}'''
     # Send email
     send_email(subject, message)
 
 if __name__ == '__main__':
-    # Send test email
+    #Performs basic logging set up
+    #Get this script name
+    log_file_name = os.path.basename(__file__).split('.')
+    log_file_name = f'{log_file_name[0]}_log.log'
 
+    # Send test email
     sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
     from_email = Email('arturszczypta@gmail.com')  # Change to your verified sender
     to_email = To('arturszczypta@gmail.com')  # Change to your recipient

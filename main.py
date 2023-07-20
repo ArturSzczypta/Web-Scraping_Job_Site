@@ -10,8 +10,8 @@ from scripts import email_functions as e
 
 #Performs basic logging set up
 #Get this script name
-log_file_name = __file__.split('\\')
-log_file_name = f'{log_file_name[-1][:-3]}_log.log'
+log_file_name = os.path.basename(__file__).split('.')
+log_file_name = f'{log_file_name[0]}_log.log'
 
 l.get_log_file_name(log_file_name)
 
@@ -26,14 +26,14 @@ searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', '
 # _BASE_URL will be used first, then _ITERABLE_URL untill the end
 BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
 ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
-LAST_DATE_LOG = 'last_date.log'
-SCRAPPED_URLS = os.path.join(os.getcwd(), 'text_and_json/scrapped_urls.txt')
+LAST_DATE_LOG = os.path.join(os.getcwd(),'last_date.log')
+SCRAPPED_URLS = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
 # Calling script
-scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
+#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
 #Scraping Listings using urls
 # Required files
-TECH_SEARCHED_FOR = 'technologies.txt'
+TECH_SEARCHED_FOR = os.path.join(os.getcwd(),'text_and_json/technologies.txt')
 SUCCESFULL_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/succesfull_extractions.txt')
 FAILED_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/failed_extractions.txt')
 # Calling script

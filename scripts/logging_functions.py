@@ -103,8 +103,8 @@ def main():
     ''' Performs basic logging set up, if script is runned directly'''
 
     #Get this script name
-    log_file_name = __file__.split('\\')
-    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
+    log_file_name = os.path.basename(__file__).split('.')
+    log_file_name = f'{log_file_name[0]}_log.log'
 
     get_log_file_name(log_file_name)
 

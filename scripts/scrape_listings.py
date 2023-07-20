@@ -11,16 +11,20 @@ import copy
 
 import logging
 from logging import config
-from . import logging_functions as l
-from . import email_functions as e
+
 
 logger = None
 if __name__ != '__main__':
     #Performs basic logging set up
     #Get logging_file_name from main script
+    from . import logging_functions as l
+    from . import email_functions as e
     logging.config.dictConfig(l.get_logging_json())
     logger = logging.getLogger(__name__)
-    print(logger.name)
+    logging.debug(logger.name)
+else:
+    import logging_functions as l
+    import email_functions as e
 
 def save_dict(new_dict, file_name):
     ''' Saves dictionary to file
@@ -117,10 +121,9 @@ def clean_region(region_name):
         return None
     
     temp_name = region_name.lower()
-    # If name is in polish, return it in lower case
     if temp_name in voivodeships_pl:
         return temp_name
-    # If name is in english, return polish name
+    # If name is in english, return the polish name
     if temp_name in voivodeships_en_1:
         return voivodeships_pl[voivodeships_en_1.index(temp_name)]
     if temp_name in voivodeships_en_2:
@@ -129,8 +132,8 @@ def clean_region(region_name):
         return 'warmińsko-mazurskie'
     if temp_name in ['kuyavia-pomerania', 'kuyavia-pomeranian']:
         return 'kujawsko-pomorskie'
-    # If abroad, return None
-    if region_name in ['abroad', 'zagranica']:
+    # Clean region name
+    if region_name in ['', ' ', 'abroad', 'zagranica']:
         return None
     return region_name
 
@@ -158,9 +161,6 @@ def simplify_dictionary(my_dict, tech_found):
     job_title = my_dict['jobTitle']
     country = my_dict['workplaces'][0]['country']['name']
     region = my_dict['workplaces'][0]['region']['name']
-    # Clean region name
-    if region == '' or region == ' ' or region in ['abroad', 'zagranica']:
-        return None
 
     location = None
     if my_dict['workplaces'][0].get('inlandLocation') and \
@@ -275,13 +275,9 @@ def simplify_dictionary(my_dict, tech_found):
     return new_dict
 
 def extract_tech_set(file_with_tech):
-    ''' Extract all technologies in file to a set
-    Assumes file is in folder "text_and_json"'''
+    ''' Extract all technologies in file to a set'''
     tech_set = set()
-    file_path = os.path.join(os.path.dirname(__file__), \
-                             '..', 'text_and_json', file_with_tech)
- 
-    with open(file_path, 'r', encoding='utf-8') as file:
+    with open(file_with_tech, 'r', encoding='utf-8') as file:
         for line in file:
             tech_set.add(line.strip())
     return tech_set
@@ -298,39 +294,24 @@ def extract_all_tech(substring, tech_set):
     tech_found.sort()
     return tech_found
 
-def save_dict_to_file(new_dict, file_name):
-    ''' Saves dictionary to file
-    Assumes file is in folder "text_and_json"'''
-    file_path = os.path.join(os.path.dirname(__file__), \
-                             '..', 'text_and_json', file_name)
-      
+def save_dict_to_file(new_dict, file_path):
+    ''' Saves dictionary to file'''
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
 
-def save_str_to_file(new_dict, file_name):
-    ''' Saves string to file
-    Assumes file is in folder "text_and_json"'''
-    file_path = os.path.join(os.path.dirname(__file__), \
-                                 '..', 'text_and_json', file_name)
-    
+def save_str_to_file(new_dict, file_path):
+    ''' Saves string to file'''
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(new_dict + '\n')
 
-def get_url_count(file_name):
-    ''' Returns number of lines in file
-    Assumes file is in folder "text_and_json"'''
-    file_path = os.path.join(os.path.dirname(__file__), \
-                                    '..', 'text_and_json', file_name)
+def get_url_count(file_path):
+    ''' Returns number of lines in file'''
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
         return len(lines)
     
-def update_file(new_set, urls_file):
-    ''' Adds new records, removes old ones
-    Assumes file is in folder "text_and_json"'''
-    file_path = os.path.join(os.path.dirname(__file__), \
-                                    '..', 'text_and_json', urls_file)
-
+def update_file(new_set, file_path):
+    ''' Removes old records from file and saves new ones'''
     with open(file_path, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = new_set - old_records
@@ -363,37 +344,35 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
     # Get the level of the console handler
     console_handler = logging.StreamHandler()
     console_level = console_handler.level
-    scraped_urls_path = os.path.join(os.path.dirname(__file__), \
-                                    '..', 'text_and_json', scraped_urls)
-        
+    print(f'Concole level: {console_level}')
 
-    with open(scraped_urls_path, 'r', encoding='UTF-8') as file:
+    with open(scraped_urls, 'r', encoding='UTF-8') as file:
         # Record Listing using pipeline. If failed, record in serepate file   
         last_progress = int(0)
 
         for url in file:
             url = url.strip()
-            substring = scrape_listing_from_json(url)     
+            #substring = scrape_listing_from_json(url)     
             try:
-                listing_pipeline_main(substring, _tech_set, succesfull_file)
+                #listing_pipeline_main(substring, _tech_set, succesfull_file)
                 succeses += 1
             except:
-                save_str_to_file(substring, failed_file)
+                #save_str_to_file(substring, failed_file)
                 failures += 1
                 logger.error('Scraping failed: {url}')
             finally:
-                if console_level in [logging.DEBUG, logging.INFO]:
+                if console_level <:
                     progress = round((succeses+failures)/url_count*100, 3)
                     seconds_left = (url_count - succeses - failures) * aver_sleep
                     time_left = strftime("%H:%M:%S", gmtime(seconds_left))
 
-                    if console_level == logging.DEBUG:
+                    if console_level == 10:
                         print(f'Successes: {succeses:3}   '
                             f'Failures: {failures:3}   '
                             f'Progress: {progress:3}%   '
                             f'Time left: {time_left:8}')
 
-                    if console_level == logging.INFO and \
+                    if console_level == 20 and \
                         int(progress) > last_progress:
                         last_progress = copy.deepcopy(progress)
                         print(f'Successes: {succeses:3}   '
@@ -405,8 +384,8 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
 if __name__ == '__main__':
     #Performs basic logging set up
     #Get this script name
-    log_file_name = __file__.split('\\')
-    log_file_name = f'{log_file_name[-1][:-3]}_log.log'
+    log_file_name = os.path.basename(__file__).split('.')
+    log_file_name = f'{log_file_name[0]}_log.log'
 
     l.get_log_file_name(log_file_name)
 
@@ -414,10 +393,14 @@ if __name__ == '__main__':
     l.configure_logging()
     logger = logging.getLogger(__name__)
 
+    logging.config.dictConfig(l.get_logging_json())
+    logger = logging.getLogger(__name__)
+    logging.debug(logger.name)
+
     # Actual Script
-    _scraped_urls = 'urls_file_today.txt'
-    _file_with_tech = 'technologies.txt'
-    _succesfull_temp = 'succesfull_extractions_temp.txt'
-    _succesfull_final = 'succesfull_extractions.txt'
-    _failed = 'failed_extractions.txt'
-    main(_scraped_urls, _file_with_tech, _succesfull_temp, _succesfull_final, _failed)
+    
+    _scraped_urls = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
+    _file_with_tech = os.path.join(os.getcwd(),'text_and_json/technologies.txt')
+    _succesfull = os.path.join(os.getcwd(),'text_and_json/succesfull_extractions.txt')
+    _failed = os.path.join(os.getcwd(),'text_and_json/failed_extractions.txt')
+    main(_scraped_urls, _file_with_tech, _succesfull, _failed)
