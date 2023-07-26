@@ -2,6 +2,7 @@
 Methods ffor setting logging
 '''
 import os
+from datetime import datetime
 import logging
 from logging import config
 import json
@@ -10,7 +11,7 @@ import re
 import requests
 
 #Get logging_file_name from main script
-LOG_FILE_NAME = 'placeholder.log'
+LOG_FILE = 'placeholder.log'
 LOG_CONF_JSON = 'logging_configuration.json'
 logger = None
 
@@ -21,42 +22,41 @@ def get_log_file_name(new_log_file_name):
     :new_log_file_name: main script name with ending '_log.log'
     '''
     #Makes file name global for all other functions
-    global LOG_FILE_NAME
-    LOG_FILE_NAME = new_log_file_name
+    global LOG_FILE
+    LOG_FILE = os.path.join(os.path.dirname(__file__), \
+                                 '..','logging_files', new_log_file_name)
 
 def configure_logging():
     '''
     Configure logging by using JSON file
-    Assumes file is in folder "text_and_json"
     '''
     # Get the path of executing script
     script_path = os.path.dirname(__file__)
 
     # Get the path of logging_configuration.json
-    json_path = None
     log_path = None
-  
-    if __name__ == '__main__':
-        script_path = os.path.dirname(__file__)
-        parent_path = os.path.dirname(script_path)
-        json_path = os.path.join(parent_path, 'text_and_json', \
-                                 'logging_configuration.json')
-        log_path = os.path.join(parent_path, 'logging_files', LOG_FILE_NAME)
-    else:
-        parent_path = os.path.dirname(script_path)
-        json_path = os.path.join(parent_path, 'text_and_json', \
-                                 'logging_configuration.json')
-        log_path = os.path.join(parent_path, 'logging_files', LOG_FILE_NAME)
+    global LOG_CONF_JSON
+    json_file = os.path.join(os.path.dirname(__file__), \
+                                 '..','text_and_json', LOG_CONF_JSON)
 
     # Load logging configuration from JSON file                           
-    with open(json_path, 'r', encoding='utf-8') as f:
-        global LOG_CONF_JSON
-        LOG_CONF_JSON = json.load(f)
-    # Change log file name
-    for handler in LOG_CONF_JSON.get('handlers', {}).values():
-        if handler.get('class') == 'logging.FileHandler':
-            handler['filename'] = log_path
+    try:
+        with open(json_file, 'r', encoding='utf-8') as f:
+            LOG_CONF_JSON = json.load(f)
+        # Change log file name
+        for handler in LOG_CONF_JSON.get('handlers', {}).values():
+            if handler.get('class') == 'logging.FileHandler':
+                handler['filename'] = LOG_FILE
+                print(handler['filename'])
+        # Clear any existing handlers
+        root_logger = logging.getLogger()
+        root_logger.handlers = []
+    except Exception as e:
+        print(e)
+        logger.error(f"Error loading logging configuration: {e}")
+        return
 
+    # Configure logging
     logging.config.dictConfig(LOG_CONF_JSON)
 
 def get_logging_json():
@@ -82,6 +82,30 @@ def get_exception():
     error_message = re.sub(r' {2,}', ' ', error_message)
     return error_message
 
+def save_to_log_file(name, file, message):
+    '''
+    Save message to log file
+    :name: __name__
+    :file: __file__
+    :message: message to be saved
+    '''
+    # Get log file name
+    file_name = LOG_FILE
+    
+    time = datetime.now()
+    file  = os.path.basename(file)
+    error_message = get_exception()
+    
+    # Create string for log file
+    log_message = f'{time} - {name} - {file} - {message}'
+    if error_message:
+        log_message += f' - {error_message}'
+    
+    # Save message to log file
+    with open(file_name, 'a', encoding='utf-8') as f:
+        f.write(f'{log_message}\n')
+
+
 #Check internet connection, terminate script if no internet and record error
 def check_internet():
     '''
@@ -93,16 +117,10 @@ def check_internet():
     except:
         logger.critical('Cannot connect to internet')
 
-if __name__ != '__main__':
-    #Performs basic logging set up
-    #Get logging_file_name from main script
-    configure_logging()
-    logger = logging.getLogger(__name__)
-
 def main():
     ''' Performs basic logging set up, if script is runned directly'''
 
-    #Get this script name
+    #Create log file name based on script name
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
@@ -110,7 +128,6 @@ def main():
 
     #Configure logging file 
     configure_logging()
-    global logger
     logger = logging.getLogger(__name__)
 
     #Check internet connection, terminate script if no internet

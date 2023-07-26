@@ -16,16 +16,13 @@ from bs4 import BeautifulSoup
 
 import logging
 from logging import config
-from . import logging_functions as l
-from . import email_functions as e
 
-logger = None
 if __name__ != '__main__':
-    #Performs basic logging set up
-    #Get logging_file_name from main script
-    logging.config.dictConfig(l.get_logging_json())
-    logger = logging.getLogger(__name__)
-    logging.debug(logger.name)
+    from . import logging_functions as l
+    from . import email_functions as e
+else:
+    import logging_functions as l
+    import email_functions as e
 
 def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     ''' Scrapes urls and dates from single page'''
@@ -64,8 +61,6 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
                          ' - {l.get_exception()}')
         e.error_email('scrape_one_page - Terms of Service button not found')
 
-
-
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
 
@@ -97,6 +92,7 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
         except:
             logger.error('scrape_one_page - No viewBox objects found'
                          ' - {l.get_exception()}')
+            l.save_to_log_file(__name__, __file__, 'No viewBox objects found')
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -229,7 +225,7 @@ def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
 
 if __name__ == '__main__':
     #Performs basic logging set up
-    #Get this script name
+    #Create log file name based on script name
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 

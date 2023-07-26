@@ -5,19 +5,17 @@ import json
 
 import logging
 from logging import config
-from . import logging_functions as l
-from . import email_functions as e
 
 from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
 
-logger = None
 if __name__ != '__main__':
-    #Performs basic logging set up
-    #Get logging_file_name from main script
-    logging.config.dictConfig(l.get_logging_json())
-    logger = logging.getLogger(__name__)
+    from . import logging_functions as l
+    from . import email_functions as e
+else:
+    import logging_functions as l
+    import email_functions as e
 
 def return_db_client():
     '''Connects to database, returns client'''
@@ -41,6 +39,7 @@ def check_connection(client):
     except:
         logger.critical('check_connection - Unable to connect with database')
         e.error_email('Check_connection - Unable to connect with database')
+        l.save_to_log_file(__name__, __file__, 'Unable to connect with database')
 
 def save_dict_from_file_to_collection(collection, file_name):
     ''' Saves documents from file to collection

@@ -12,23 +12,15 @@ import copy
 import logging
 from logging import config
 
-
-logger = None
 if __name__ != '__main__':
-    #Performs basic logging set up
-    #Get logging_file_name from main script
     from . import logging_functions as l
     from . import email_functions as e
-    logging.config.dictConfig(l.get_logging_json())
-    logger = logging.getLogger(__name__)
-    logging.debug(logger.name)
 else:
     import logging_functions as l
     import email_functions as e
 
 def save_dict(new_dict, file_name):
-    ''' Saves dictionary to file
-    Assumes file is in folder "text_and_json"'''
+    ''' Saves dictionary to file'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
     file_path = os.path.join(os.path.dirname(__file__), \
                              '..', 'text_and_json', file_name)
@@ -352,16 +344,17 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
 
         for url in file:
             url = url.strip()
-            #substring = scrape_listing_from_json(url)     
+            substring = scrape_listing_from_json(url)     
             try:
-                #listing_pipeline_main(substring, _tech_set, succesfull_file)
+                listing_pipeline_main(substring, _tech_set, succesfull_file)
                 succeses += 1
             except:
-                #save_str_to_file(substring, failed_file)
+                save_str_to_file(substring, failed_file)
                 failures += 1
                 logger.error('Scraping failed: {url}')
+                l.save_to_log_file(__name__, __file__, f'Scraping failed: {url}')
             finally:
-                if console_level <:
+                if console_level < 30:
                     progress = round((succeses+failures)/url_count*100, 3)
                     seconds_left = (url_count - succeses - failures) * aver_sleep
                     time_left = strftime("%H:%M:%S", gmtime(seconds_left))
@@ -383,7 +376,7 @@ def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
 
 if __name__ == '__main__':
     #Performs basic logging set up
-    #Get this script name
+    #Create log file name based on script name
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 

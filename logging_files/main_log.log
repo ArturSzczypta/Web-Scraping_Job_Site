@@ -1,0 +1,2 @@
+This is a test message
+2023-07-26 19:25:21.839206 - __main__ - c:\Users\Artur\Documents\GitHub\Web-Scraping_Job_Site\main.py - This is a test message - Traceback (most recent call last): - File "c:\Users\Artur\Documents\GitHub\Web-Scraping_Job_Site\main.py", line 29, in test - print('a' + 1) # This will raise a TypeError and fail the try block - TypeError: can only concatenate str (not "int") to str

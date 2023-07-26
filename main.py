@@ -1,5 +1,6 @@
 ''' Scrape it.pracuj.pl job listings to database'''
 import os
+
 import logging
 from logging import config
 from scripts import logging_functions as l
@@ -9,7 +10,7 @@ from scripts import mongodb_functions as mongodb
 from scripts import email_functions as e
 
 #Performs basic logging set up
-#Get this script name
+#Create log file name based on script name
 log_file_name = os.path.basename(__file__).split('.')
 log_file_name = f'{log_file_name[0]}_log.log'
 
@@ -48,6 +49,7 @@ try:
     mongodb.command_ping(client)
 except:
     logger.critical('MongoDB - Unable to connect with database')
+    l.save_to_log_file(__name__, __file__, 'MongoDB - Unable to connect with database')
     e.send_error_email('MongoDB - Unable to connect with database')
 
 db = client['Web_Scraping_Job_Site']
@@ -73,11 +75,12 @@ try:
     Database updated.'''
     # Send email
     e.send_email(subject, message)
-    '''
+    
     #Clearing listing file
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
-    '''
+    
 except:
     logger.critical('MongoDB - Cannot save documents to database')
+    l.save_to_log_file(__name__, __file__, 'MongoDB - Cannot save documents to database')
     e.send_error_email('MongoDB - Cannot save documents to database')
