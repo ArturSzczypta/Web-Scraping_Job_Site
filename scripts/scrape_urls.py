@@ -236,12 +236,12 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     #Actual Script
-    _SEARCHED_SET = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R'}
+    _searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', 'tt=Tableau'}
     # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
     _BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
     _ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
 
-    _DATE_FILE = 'last_date.log'
-    _URLS_FILE = 'urls_file.txt'
+    _DATE_FILE = os.path.join(os.getcwd(),'text_and_json/last_date.log')
+    _URLS_FILE = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
 
-    main(_DATE_FILE, _SEARCHED_SET, _URLS_FILE, _BASE_URL, _ITERABLE_URL)
+    main(_DATE_FILE, _searched_set, _URLS_FILE, _BASE_URL, _ITERABLE_URL)

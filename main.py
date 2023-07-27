@@ -27,7 +27,7 @@ searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', '
 # _BASE_URL will be used first, then _ITERABLE_URL untill the end
 BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
 ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
-LAST_DATE_LOG = os.path.join(os.getcwd(),'last_date.log')
+LAST_DATE_LOG = os.path.join(os.getcwd(),'text_and_json/last_date.log')
 SCRAPPED_URLS = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
 # Calling script
 #scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
