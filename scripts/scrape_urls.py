@@ -24,7 +24,7 @@ else:
     import logging_functions as l
     import email_functions as e
 
-def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
+def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
     ''' Scrapes urls and dates from single page'''
     # Get the directory path of the current script
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -46,7 +46,6 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
     sleep(random.uniform(sleep_min, sleep_max))
 
     # Accept terms of service, if they appear
-    
     try:
         accept_button = WebDriverWait(browser, 10).until(
             # Worked until 2022-05-18
@@ -63,37 +62,51 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min, sleep_max))
+    
+    # pattern to match number of "lokalizacje" or "lokalizacji"
+    pattern = r'(\d+\s*(lokalizacje|lokalizacji))'
 
-    # Find all the location buttons
-    location_buttons = browser.find_elements(By.CSS_SELECTOR,
-        'div[data-test="offer-locations-button"]')
-    if not location_buttons:
-        logger.info(f'No location buttons found in {current_page}')
+    # Find all elements with multiple localisations
+    all_elements = browser.find_elements(By.XPATH, '//*[contains(@data-test, "text-region")]')
+    elements_to_click = []
+    for element in all_elements:
+        if re.search(pattern, element.text):
+            parent_element = element.find_element(By.XPATH,'..')
+            grandparent_element = parent_element .find_element(By.XPATH,'..')
+            grand_grandparent_element = grandparent_element .find_element(By.XPATH,'..')
+            elements_to_click.append(grand_grandparent_element)
 
-    # Click on each viewBox object
-    for loc_button in location_buttons:
+            # Wait for the page to load
+            sleep(random.uniform(sleep_min, sleep_max))
+    
+    if elements_to_click != []:
+        logger.info(f'Found {len(elements_to_click)} "lokalizacje" elements in {current_page}')
+    else:
+        logger.info(f'No "lokalizacje" elements found in {current_page}')
+
+    # Click on each element
+    for element in elements_to_click:
         try:
-            # Scroll to the button to bring it into view
-            browser.execute_script('arguments[0].scrollIntoView();',
-                loc_button)
+            # Scroll to the element to bring it into view
+            browser.execute_script('arguments[0].scrollIntoView();', element)
 
-            # Wait for the button to become clickable
-            WebDriverWait(browser, 10).until(EC.element_to_be_clickable(
-                (By.CSS_SELECTOR, 'div[data-test="offer-locations-button"]')))
+            # Wait for scrolling to finish
+            sleep(random.uniform(sleep_min, sleep_max))
 
-            # Click on the button
-            loc_button.click()
+            # Click on the element using JavaScript
+            browser.execute_script('arguments[0].click();', element)
+            logger.debug(f'        Clicked on element {element.text}')
 
             # Scroll the page down to bring the details into view
             browser.execute_script('window.scrollBy(0, 300);')
 
             # Wait for the job offer details to load
             sleep(random.uniform(sleep_min, sleep_max))
-        except:
-            logger.error('scrape_one_page - No viewBox objects found'
-                         ' - {l.get_exception()}')
-            l.save_to_log_file(__name__, __file__, 'No viewBox objects found')
 
+        except:
+            logger.error('        Unable to click on localisation element')
+            l.save_to_log_file(__name__, __file__, 'Unable to click on localisation element')
+    
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
     # Find all the links starting with 'http'
@@ -109,51 +122,48 @@ def scrape_one_page(current_page, sleep_min=5, sleep_max=7):
         date_str = element.text.strip().split(': ')[-1]
         date_obj = datetime.datetime.strptime(date_str, '%d %B %Y').date()
         unique_dates.add(date_obj)
-
     browser.quit()
     logger.info(f'Found {len(http_links)} links on page {current_page}')
+
+    for link in http_links:
+        print(link)
     return http_links, unique_dates
 
-def get_cutoff_date(date_file):
-    '''Get last logging date
-    Assumes file is in folder "text_and_json"'''
+def get_cut_off_date(date_file):
+    '''Get last logging date from file'''
     last_date = None
-    date_file_path = os.path.join(os.path.dirname(__file__), \
-                                  '..','text_and_json', date_file)
     logger.debug(f'get date path: {date_file_path}')
 
-    with open(date_file_path, 'r',encoding='UTF-8') as file:
+    with open(date_file, 'r',encoding='UTF-8') as file:
         line = file.readline()
         last_date = datetime.datetime.strptime(line, '%Y-%m-%d').date()
-    # 'last_date - one_day' gives overlam in the search
+    
+    # To prevent gaps, set cut-off date to day before 'last_date'
     cut_off_date = last_date - datetime.timedelta(days=1)
     logger.info(f'Cut-off date: {cut_off_date}')
     return cut_off_date
 
-def scrape_single_skill(cutoff_date, base_url, iterable_url=None, \
+def scrape_single_skill(cut_off_date, base_url, iterable_url, searched_id, \
     sleep_min=7, sleep_max=23):
-    ''' Scrapes urls from given skills since last time.
-    Assumes skill name is already build into base_url and iterable_url'''
-
-    # Use base_url if iterable_url was not provided
-    iterable_url = iterable_url or base_url
+    ''' Scrapes urls from given skills since last time.'''
 
     # Extract urls from base_url
-    http_links, unique_dates = scrape_one_page(base_url)
+    new_base_url = base_url.format(searched_id)
+    http_links, unique_dates = scrape_one_page(new_base_url)
     # Wait to avoid banning
     sleep(random.uniform(sleep_min, sleep_max))
 
     # Check if all listings are recent, if so start looping using iterable_url
-    if all(date > cutoff_date for date in unique_dates):
+    if all(date > cut_off_date for date in unique_dates):
         page_number = 2
         while True:
-            current_page = iterable_url + str(page_number)
+            current_page = iterable_url.format(page_number, searched_id)
             new_http_links, unique_dates = scrape_one_page(current_page)
 
             if new_http_links:
                 http_links = http_links.union(new_http_links)
 
-                if any(date == cutoff_date for date in unique_dates):
+                if any(date == cut_off_date for date in unique_dates):
                     break
             else:
                 break
@@ -162,28 +172,18 @@ def scrape_single_skill(cutoff_date, base_url, iterable_url=None, \
             sleep(random.uniform(sleep_min, sleep_max))
     return http_links
 
-def scrape_all_skills(cutoff_date, skill_set, base_url, iterable_url=None):
-    ''' Scrapes urls all skills since last time.
-    Assumes base_url and iterable_url can take in skill name with .format()'''
-
-    # Use base_url if iterable_url was not provided
-    iterable_url = iterable_url or base_url
+def scrape_all_skills(cut_off_date, skill_set, base_url, iterable_url=None):
+    ''' Scrapes urls all skills since last time.'''
 
     http_links = set()
-    for skill in skill_set:
-        new_base_url = base_url.format(skill)
-        new_iterable_url = iterable_url.format(skill)
-        http_links = http_links.union(scrape_single_skill(cutoff_date, \
-            new_base_url, new_iterable_url))
+    for searched_id in skill_set:
+        http_links = http_links.union(scrape_single_skill(cut_off_date, \
+            base_url, iterable_url, searched_id))
     return http_links
 
 def update_file(http_links, urls_file):
-    ''' Adds new records, removes old ones
-    Assumes file is in folder "text_and_json"'''
-    urls_file_path = os.path.join(os.path.dirname(__file__), \
-                                  '..', 'text_and_json', urls_file)
-  
-    with open(urls_file_path, 'r+',encoding='utf-8') as file:
+    ''' Adds new records, removes old ones'''
+    with open(urls_file, 'r+',encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
         logger.info(f'New urls: {len(new_records)}')
@@ -195,20 +195,12 @@ def update_file(http_links, urls_file):
             file.write(url + '\n')
 
 def update_date_log(date_file):
-    ''' Update logging date
-    Assumes file is in folder "text_and_json"'''
-    date_file_path = os.path.join(os.path.dirname(__file__), \
-                                  '..', 'text_and_json', date_file)
-        
-    with open(date_file_path, 'w',encoding='utf-8') as file:
+    ''' Update logging date file'''
+    with open(date_file, 'w',encoding='utf-8') as file:
         file.write(str(datetime.date.today()))
 
-def save_set_to_file(new_set, file_name):
-    ''' Saves set to file, each element per line
-    Assumes file is in folder "text_and_json"'''
-    file_path = os.path.join(os.path.dirname(__file__), \
-                                '..', 'text_and_json', file_name)
-
+def save_set_to_file(new_set, file_path):
+    ''' Saves set to file, each element per line'''
     with open(file_path, 'a', encoding='utf-8') as file:
         for element in new_set:
             file.write(str(element) + '\n')
@@ -217,8 +209,8 @@ def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     ''' Main method of scrape_urls.py
     Scrape all urls with job offers containing skill set, then save to file'''
 
-    cutoff_date_main = get_cutoff_date(date_file)
-    http_links_main = scrape_all_skills(cutoff_date_main, skill_set, \
+    cut_off_date_main = get_cut_off_date(date_file)
+    http_links_main = scrape_all_skills(cut_off_date_main, skill_set, \
         base_url, iterable_url)
     update_file(http_links_main, urls_file)
     update_date_log(date_file)
@@ -235,13 +227,26 @@ if __name__ == '__main__':
     l.configure_logging()
     logger = logging.getLogger(__name__)
 
-    #Actual Script
-    _searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', 'tt=Tableau'}
-    # Example: https://it.pracuj.pl/?tt=Python&jobBoardVersion=2&pn=1
-    _BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
-    _ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
+    # Just SQL and Python as an example
+    searched_set = {'itth=36', 'itth=37'}
 
-    _DATE_FILE = os.path.join(os.getcwd(),'text_and_json/last_date.log')
-    _URLS_FILE = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
+    # Required files
+    CWD = os.getcwd()
+    FOR_SEARCH = os.path.join(CWD,'text_and_json/for_search.csv')
+    LAST_DATE_LOG = os.path.join(CWD,'text_and_json/last_date.log')
+    SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls.txt')
 
-    main(_DATE_FILE, _searched_set, _URLS_FILE, _BASE_URL, _ITERABLE_URL)
+    # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
+    BASE_URL = 'https://it.pracuj.pl/praca?{}'
+    ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
+
+    # Get search parameters from csv file
+    searched_set = set()
+    with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file, delimiter=',')
+        for row in reader:
+            if 'Search' in row:
+                searched_set.update({row['Search']:row['Search']})
+
+    #Scraping Urls from job site
+    main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)

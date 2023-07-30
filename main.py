@@ -1,5 +1,6 @@
 ''' Scrape it.pracuj.pl job listings to database'''
 import os
+import csv
 
 import logging
 from logging import config
@@ -20,24 +21,32 @@ l.get_log_file_name(log_file_name)
 l.configure_logging()
 logger = logging.getLogger(__name__)
 
-#Scraping Urls from job site
-# Specialisations start with 's=', technologies with 'tt=', spaces replaced by '+'
-searched_set = {'s=data+science', 's=big+data', 'tt=Python', 'tt=SQL', 'tt=R', 'tt=Tableau'}
+# Required files
+CWD = os.getcwd()
+FOR_SEARCH = os.path.join(CWD,'text_and_json/for_search.csv')
+LAST_DATE_LOG = os.path.join(CWD,'text_and_json/last_date.log')
+SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls.txt')
+TECH_SEARCHED_FOR = os.path.join(CWD,'text_and_json/technologies.txt')
+SUCCESFULL_EXTRACTIONS = os.path.join(CWD, 'text_and_json/succesfull_extractions.txt')
+FAILED_EXTRACTIONS = os.path.join(CWD, 'text_and_json/failed_extractions.txt')
 
-# _BASE_URL will be used first, then _ITERABLE_URL untill the end
-BASE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn=1'
-ITERABLE_URL = 'https://it.pracuj.pl/?{}&jobBoardVersion=2&pn='
-LAST_DATE_LOG = os.path.join(os.getcwd(),'text_and_json/last_date.log')
-SCRAPPED_URLS = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
-# Calling script
+# For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
+BASE_URL = 'https://it.pracuj.pl/praca?{}'
+ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
+
+# Get search parameters from csv file
+searched_set = set()
+with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
+    reader = csv.DictReader(file, delimiter=',')
+    for row in reader:
+        if 'Search' in row:
+            searched_set.update({row['Search']:row['Search']})
+
+#Scraping Urls from job site
 #scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
-#Scraping Listings using urls
-# Required files
-TECH_SEARCHED_FOR = os.path.join(os.getcwd(),'text_and_json/technologies.txt')
-SUCCESFULL_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/succesfull_extractions.txt')
-FAILED_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/failed_extractions.txt')
 # Calling script
+'''
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
 
 #Saving extraction results to MongoDB Atlas
@@ -69,10 +78,10 @@ try:
     parent_path = os.path.dirname(__file__)
     parent_directory = os.path.basename(parent_path)
     subject = f'Summary of executing {parent_directory}'
-    message = f'''Scraping Succesfull \n
+    message = fScraping Succesfull \n
     Succesfull Extractions: {succesfull}\n
     Failed Extractions:     {failed}\n
-    Database updated.'''
+    Database updated.
     # Send email
     e.send_email(subject, message)
     
@@ -84,3 +93,4 @@ except:
     logger.critical('MongoDB - Cannot save documents to database')
     l.save_to_log_file(__name__, __file__, 'MongoDB - Cannot save documents to database')
     e.send_error_email('MongoDB - Cannot save documents to database')
+'''
