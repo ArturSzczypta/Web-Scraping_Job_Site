@@ -19,11 +19,14 @@ else:
     import logging_functions as l
     import email_functions as e
 
-def save_dict(new_dict, file_name):
+#Configure logging file
+l.configure_logging()
+logger = logging.getLogger(__name__)
+
+def save_dict(new_dict, file_path):
     ''' Saves dictionary to file'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
-    file_path = os.path.join(os.path.dirname(__file__), \
-                             '..', 'text_and_json', file_name)
+    #file_path = os.path.join(os.path.dirname(__file__), '..', 'text_and_json', file_name)
     
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json_str + '\n')
@@ -386,14 +389,13 @@ if __name__ == '__main__':
     l.configure_logging()
     logger = logging.getLogger(__name__)
 
-    logging.config.dictConfig(l.get_logging_json())
-    logger = logging.getLogger(__name__)
-    logging.debug(logger.name)
+    # Required files
+    CWD = os.getcwd()
+    SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls.txt')
+    TECH_SEARCHED_FOR = os.path.join(CWD,'text_and_json/technologies.txt')
+    SUCCESFULL_EXTRACTIONS = os.path.join(CWD, 'text_and_json/succesfull_extractions.txt')
+    FAILED_EXTRACTIONS = os.path.join(CWD, 'text_and_json/failed_extractions.txt')
 
-    # Actual Script
-    
-    _scraped_urls = os.path.join(os.getcwd(),'text_and_json/scrapped_urls.txt')
-    _file_with_tech = os.path.join(os.getcwd(),'text_and_json/technologies.txt')
-    _succesfull = os.path.join(os.getcwd(),'text_and_json/succesfull_extractions.txt')
-    _failed = os.path.join(os.getcwd(),'text_and_json/failed_extractions.txt')
-    main(_scraped_urls, _file_with_tech, _succesfull, _failed)
+    # Scraping job listings from job site
+    main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
+

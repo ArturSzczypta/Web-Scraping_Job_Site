@@ -2,6 +2,7 @@
 Web scraping popular polish job site, Pracuj.pl
 '''
 import os
+import csv
 from time import sleep
 import datetime
 import re
@@ -24,26 +25,29 @@ else:
     import logging_functions as l
     import email_functions as e
 
+#Configure logging file
+l.configure_logging()
+logger = logging.getLogger(__name__)
+
 def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
     ''' Scrapes urls and dates from single page'''
-    # Get the directory path of the current script
-    dir_path = os.path.dirname(os.path.realpath(__file__))
 
     # Construct the file path to the ChromeDriver executable
-    chromedriver_path = os.path.join(dir_path,'..','chromedriver_win32', 'chromedriver')
+    chromedriver_path = os.path.join(os.getcwd(),'chromedriver_win32', 'chromedriver')
 
     # Set options to run Chrome in headless mode
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
+    #chrome_options.add_argument('--headless')
+    #chrome_options.add_argument('--disable-gpu')
 
     # Initialize the Chrome browser using ChromeDriver as Service object
     browser = webdriver.Chrome(service=Service(chromedriver_path), \
         options=chrome_options)
+
     browser.get(current_page)
 
     # Wait for the page to load
-    sleep(random.uniform(sleep_min, sleep_max))
+    sleep(random.uniform(sleep_min*2, sleep_max*2))
 
     # Accept terms of service, if they appear
     try:
@@ -61,7 +65,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
         e.error_email('scrape_one_page - Terms of Service button not found')
 
     # Wait for the page to load
-    sleep(random.uniform(sleep_min, sleep_max))
+    sleep(random.uniform(sleep_min*2, sleep_max*2))
     
     # pattern to match number of "lokalizacje" or "lokalizacji"
     pattern = r'(\d+\s*(lokalizacje|lokalizacji))'
@@ -77,7 +81,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
             elements_to_click.append(grand_grandparent_element)
 
             # Wait for the page to load
-            sleep(random.uniform(sleep_min, sleep_max))
+            sleep(random.uniform(sleep_min*2, sleep_max*2))
     
     if elements_to_click != []:
         logger.info(f'Found {len(elements_to_click)} "lokalizacje" elements in {current_page}')
@@ -125,14 +129,35 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
     browser.quit()
     logger.info(f'Found {len(http_links)} links on page {current_page}')
 
-    for link in http_links:
-        print(link)
     return http_links, unique_dates
+
+def scrape_from_file(manual_file_path):
+    '''Scrapes urls and dates from file'''
+
+    http_links = set()
+    
+    http_pattern = r'href="https://www\.pracuj\.pl/praca/[^"]*"'
+    date_pattern = r'"expirationDate":"[^"]*"'
+
+    # Extract links and dates from file
+    with open(manual_file_path, 'r', encoding='UTF-8') as file:
+        for line in file:
+            http_match = re.search(http_pattern, line)
+            if http_match:
+                http_links.add(http_match.group(0).split('"')[1])
+            date_match = re.search(date_pattern, line)
+    
+    for link in http_links:
+        logger.debug(f'Found link: {link}')
+        print(f'Found link: {link}')
+    
+    return http_links
+
 
 def get_cut_off_date(date_file):
     '''Get last logging date from file'''
     last_date = None
-    logger.debug(f'get date path: {date_file_path}')
+    logger.debug(f'get date path: {date_file}')
 
     with open(date_file, 'r',encoding='UTF-8') as file:
         line = file.readline()
@@ -150,6 +175,7 @@ def scrape_single_skill(cut_off_date, base_url, iterable_url, searched_id, \
     # Extract urls from base_url
     new_base_url = base_url.format(searched_id)
     http_links, unique_dates = scrape_one_page(new_base_url)
+
     # Wait to avoid banning
     sleep(random.uniform(sleep_min, sleep_max))
 
@@ -215,6 +241,13 @@ def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
     update_file(http_links_main, urls_file)
     update_date_log(date_file)
 
+def main_manual(manual_file_path, urls_file):
+    ''' Secondary main method of scrape_urls.py
+    Scrape all urls with job offers containing skill set, then save to file'''
+
+    http_links = scrape_from_file(manual_file_path)
+    update_file(http_links, urls_file)
+
 if __name__ == '__main__':
     #Performs basic logging set up
     #Create log file name based on script name
@@ -227,26 +260,18 @@ if __name__ == '__main__':
     l.configure_logging()
     logger = logging.getLogger(__name__)
 
-    # Just SQL and Python as an example
+    # Scrape just SQL and Python as an example
     searched_set = {'itth=36', 'itth=37'}
 
     # Required files
     CWD = os.getcwd()
     FOR_SEARCH = os.path.join(CWD,'text_and_json/for_search.csv')
     LAST_DATE_LOG = os.path.join(CWD,'text_and_json/last_date.log')
-    SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls.txt')
+    SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls_test.txt')
 
     # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
     BASE_URL = 'https://it.pracuj.pl/praca?{}'
     ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
-
-    # Get search parameters from csv file
-    searched_set = set()
-    with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
-        reader = csv.DictReader(file, delimiter=',')
-        for row in reader:
-            if 'Search' in row:
-                searched_set.update({row['Search']:row['Search']})
 
     #Scraping Urls from job site
     main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)

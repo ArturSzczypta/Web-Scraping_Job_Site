@@ -11,9 +11,10 @@ import re
 import requests
 
 #Get logging_file_name from main script
-LOG_FILE = 'placeholder.log'
-LOG_CONF_JSON = 'logging_configuration.json'
-logger = None
+log_file = 'placeholder.log'
+JSON_FILE = os.path.join(os.getcwd(), 'text_and_json/logging_configuration.json')
+LOG_CONF_JSON = None
+logger = logging.getLogger(__name__)
 
 def get_log_file_name(new_log_file_name):
     '''
@@ -22,9 +23,8 @@ def get_log_file_name(new_log_file_name):
     :new_log_file_name: main script name with ending '_log.log'
     '''
     #Makes file name global for all other functions
-    global LOG_FILE
-    LOG_FILE = os.path.join(os.path.dirname(__file__), \
-                                 '..','logging_files', new_log_file_name)
+    global log_file
+    log_file = os.path.join(os.getcwd(), 'logging_files', new_log_file_name)
 
 def configure_logging():
     '''
@@ -34,19 +34,16 @@ def configure_logging():
     script_path = os.path.dirname(__file__)
 
     # Get the path of logging_configuration.json
-    log_path = None
     global LOG_CONF_JSON
-    json_file = os.path.join(os.path.dirname(__file__), \
-                                 '..','text_and_json', LOG_CONF_JSON)
 
     # Load logging configuration from JSON file                           
     try:
-        with open(json_file, 'r', encoding='utf-8') as f:
+        with open(JSON_FILE, 'r', encoding='utf-8') as f:
             LOG_CONF_JSON = json.load(f)
         # Change log file name
         for handler in LOG_CONF_JSON.get('handlers', {}).values():
             if handler.get('class') == 'logging.FileHandler':
-                handler['filename'] = LOG_FILE
+                handler['filename'] = log_file
                 print(handler['filename'])
         # Clear any existing handlers
         root_logger = logging.getLogger()
@@ -90,7 +87,7 @@ def save_to_log_file(name, file, message):
     :message: message to be saved
     '''
     # Get log file name
-    file_name = LOG_FILE
+    file_name = log_file
     
     time = datetime.now()
     file  = os.path.basename(file)

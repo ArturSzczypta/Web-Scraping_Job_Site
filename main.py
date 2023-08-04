@@ -30,6 +30,9 @@ TECH_SEARCHED_FOR = os.path.join(CWD,'text_and_json/technologies.txt')
 SUCCESFULL_EXTRACTIONS = os.path.join(CWD, 'text_and_json/succesfull_extractions.txt')
 FAILED_EXTRACTIONS = os.path.join(CWD, 'text_and_json/failed_extractions.txt')
 
+# Manual files
+MANUAL_SCRAPING = os.path.join(CWD,'manual_url_scraping.txt')
+
 # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
 BASE_URL = 'https://it.pracuj.pl/praca?{}'
 ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
@@ -42,13 +45,15 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
         if 'Search' in row:
             searched_set.update({row['Search']:row['Search']})
 
-#Scraping Urls from job site
-#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
+# Scraping Urls from job site
+scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
 
-# Calling script
-'''
+# Scraping urls from file
+scrape_urls.main_manual(MANUAL_SCRAPING, SCRAPPED_URLS)
+
+# Scraping job listings from job site
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
-
+'''
 #Saving extraction results to MongoDB Atlas
 # Connect to DB
 client = mongodb.return_db_client()

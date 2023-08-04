@@ -41,17 +41,11 @@ def check_connection(client):
         e.error_email('Check_connection - Unable to connect with database')
         l.save_to_log_file(__name__, __file__, 'Unable to connect with database')
 
-def save_dict_from_file_to_collection(collection, file_name):
+def save_dict_from_file_to_collection(collection, file_path):
     ''' Saves documents from file to collection
     Assumes file has one JSON in each line'''
     documents = []
-    if __name__ == '__main__':
-        data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'text_and_json/{file_name}')
-    else:
-        data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'../text_and_json/{file_name}')
-    with open(file_name, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
         documents = [json.loads(line) for line in lines]
@@ -74,18 +68,10 @@ def save_dict_from_file_to_collection(collection, file_name):
     result = collection.insert_many(documents)
     print(result.inserted_ids)
 
-def save_str_from_file_to_collection(collection, file_name):
-    ''' Saves urls from file to collection
-    Assumes file is in "text_and_json" folder and
-    has one url in each line'''
+def save_str_from_file_to_collection(collection, file_path):
+    ''' Saves urls from file to collection'''
     documents = []
-    if __name__ == '__main__':
-        data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'text_and_json/{file_name}')
-    else:
-        data_file_path = os.path.join(os.path.dirname(__file__), \
-                                  f'../text_and_json/{file_name}')
-    with open(data_file_path, 'r', encoding='utf-8') as file:
+    with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
         documents = [{'url': line} for line in lines]
@@ -95,7 +81,7 @@ def save_str_from_file_to_collection(collection, file_name):
 
 if __name__ == '__main__':
     #Performs basic logging set up
-    #Get this script name
+    #Create log file name based on script name
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
@@ -106,15 +92,12 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     #Saving succesfull_extractions to MongoDB Atlas
-    SUCCESFULL_EXTRACTIONS = 'succesfull_extractions.txt'
-    FAILED_EXTRACTIONS = 'failed_extractions.txt'
+    SUCCESFULL_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/succesfull_extractions.txt')
 
     _client = return_db_client()
     check_connection(_client)
 
     db = _client['Web_Scraping_Job_Site']
     collection_succesfull = db['Job_Listings']
-    collection_failed = db['Failed_Urls']
 
     save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
-    save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
