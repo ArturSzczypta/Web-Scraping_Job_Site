@@ -12,7 +12,9 @@ import requests
 
 #Get logging_file_name from main script
 log_file = 'placeholder.log'
-JSON_FILE = os.path.join(os.getcwd(), 'text_and_json/logging_configuration.json')
+LOG_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'..','logging_files')
+JSON_FILE = os.path.join(LOG_DIR, 'logging_configuration.json')
+
 LOG_CONF_JSON = None
 logger = logging.getLogger(__name__)
 
@@ -24,14 +26,11 @@ def get_log_file_name(new_log_file_name):
     '''
     #Makes file name global for all other functions
     global log_file
-    log_file = os.path.join(os.getcwd(), 'logging_files', new_log_file_name)
+    global LOG_DIR
+    log_file = os.path.join(LOG_DIR, new_log_file_name)
 
 def configure_logging():
-    '''
-    Configure logging by using JSON file
-    '''
-    # Get the path of executing script
-    script_path = os.path.dirname(__file__)
+    '''Configure logging by using JSON file'''
 
     # Get the path of logging_configuration.json
     global LOG_CONF_JSON
@@ -90,7 +89,7 @@ def save_to_log_file(name, file, message):
     file_name = log_file
     
     time = datetime.now()
-    file  = os.path.basename(file)
+    file = os.path.basename(file)
     error_message = get_exception()
     
     # Create string for log file

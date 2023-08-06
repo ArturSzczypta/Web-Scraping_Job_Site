@@ -264,10 +264,10 @@ if __name__ == '__main__':
     searched_set = {'itth=36', 'itth=37'}
 
     # Required files
-    CWD = os.getcwd()
-    FOR_SEARCH = os.path.join(CWD,'text_and_json/for_search.csv')
-    LAST_DATE_LOG = os.path.join(CWD,'text_and_json/last_date.log')
-    SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls_test.txt')
+    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
+    FOR_SEARCH = os.path.join(TXT_DIR,'for_search.csv')
+    LAST_DATE_LOG = os.path.join(TXT_DIR,'last_date.log')
+    SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
 
     # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
     BASE_URL = 'https://it.pracuj.pl/praca?{}'

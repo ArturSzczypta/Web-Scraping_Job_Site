@@ -22,16 +22,16 @@ l.configure_logging()
 logger = logging.getLogger(__name__)
 
 # Required files
-CWD = os.getcwd()
-FOR_SEARCH = os.path.join(CWD,'text_and_json/for_search.csv')
-LAST_DATE_LOG = os.path.join(CWD,'text_and_json/last_date.log')
-SCRAPPED_URLS = os.path.join(CWD,'text_and_json/scrapped_urls.txt')
-TECH_SEARCHED_FOR = os.path.join(CWD,'text_and_json/technologies.txt')
-SUCCESFULL_EXTRACTIONS = os.path.join(CWD, 'text_and_json/succesfull_extractions.txt')
-FAILED_EXTRACTIONS = os.path.join(CWD, 'text_and_json/failed_extractions.txt')
+TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
+FOR_SEARCH = os.path.join(TXT_DIR,'for_search.csv')
+LAST_DATE_LOG = os.path.join(TXT_DIR,'last_date.log')
+SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
+TECH_SEARCHED_FOR = os.path.join(TXT_DIR,'technologies.txt')
+SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
+FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
 
 # Manual files
-MANUAL_SCRAPING = os.path.join(CWD,'manual_url_scraping.txt')
+MANUAL_SCRAPING = os.path.join(TXT_DIR,'manual_url_scraping.txt')
 
 # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
 BASE_URL = 'https://it.pracuj.pl/praca?{}'

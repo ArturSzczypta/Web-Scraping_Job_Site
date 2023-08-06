@@ -92,7 +92,10 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     #Saving succesfull_extractions to MongoDB Atlas
-    SUCCESFULL_EXTRACTIONS = os.path.join(os.getcwd(), 'text_and_json/succesfull_extractions.txt')
+    # Required files
+    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
+    SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
+
 
     _client = return_db_client()
     check_connection(_client)
