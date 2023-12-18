@@ -5,6 +5,7 @@ import os
 import re
 import json
 from time import sleep, gmtime, strftime
+from datetime import datetime, timedelta
 from numpy import random
 import requests
 import copy
@@ -47,9 +48,8 @@ def scrape_listing_from_json(url, timeout=5):
 
 def clean_listing_string(substring):
     ''' Cleans substring from problematic symbols, patterns, sequences'''
+    
     substring = substring.strip()
-    #print(substring)
-    #print('\n\n\n')
 
     patterns = [
     r'\bundefined\b', # incorrect null value
@@ -112,6 +112,8 @@ def clean_region(region_name):
                        'lesser poland', 'masovian', 'opole', 'subcarpathian', 
                        'podlaskie', 'pomeranian', 'silesian', 'holy cross', 'warmian-masurian',
                        'greater poland', 'west pomeranian']
+
+
     if region_name is None or region_name == '' or region_name == ' ':
         return None
     
@@ -127,6 +129,8 @@ def clean_region(region_name):
         return 'warmińsko-mazurskie'
     if temp_name in ['kuyavia-pomerania', 'kuyavia-pomeranian']:
         return 'kujawsko-pomorskie'
+    if temp_name in ['Łódź']:
+        return 'łódzkie'
     # Clean region name
     if region_name in ['', ' ', 'abroad', 'zagranica']:
         return None
@@ -156,6 +160,7 @@ def simplify_dictionary(my_dict, tech_found):
     job_title = my_dict['jobTitle']
     country = my_dict['workplaces'][0]['country']['name']
     region = my_dict['workplaces'][0]['region']['name']
+    region = clean_region(region)
 
     location = None
     if my_dict['workplaces'][0].get('inlandLocation') and \
@@ -294,10 +299,10 @@ def save_dict_to_file(new_dict, file_path):
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json.dumps(new_dict, ensure_ascii=False) + '\n')
 
-def save_str_to_file(new_dict, file_path):
+def save_str_to_file(str, file_path):
     ''' Saves string to file'''
     with open(file_path, 'a', encoding='utf-8') as file:
-        file.write(new_dict + '\n')
+        file.write(str + '\n')
 
 def get_url_count(file_path):
     ''' Returns number of lines in file'''
@@ -326,55 +331,79 @@ def listing_pipeline_main(substring, tech_set, file_name):
     new_dict = simplify_dictionary(my_dict, tech_found)
     save_dict_to_file(new_dict, file_name)
 
-def main(scraped_urls, file_with_tech, succesfull_file, failed_file,
-    sleep_min=4, sleep_max=8):
+def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls, succesfull_file, failed_file,
+    sleep_min=4, sleep_max=7):
     ''' Main method of scrape_listings.py
     Runs if script called directly'''
     succeses = 0
     failures = 0
+    progress = 0
+    last_progress = 0
     url_count = get_url_count(scraped_urls)
-    _tech_set = extract_tech_set(file_with_tech)
+    progress_per_url = 1 / url_count * 100
+
+    # Calculate estimated time
     aver_sleep = (sleep_min + sleep_max) / 2
+    seconds_left = url_count * aver_sleep
+    days_left = seconds_left // 86400
+    time_left = strftime("%H:%M:%S", gmtime(int(seconds_left)))
+    print(f'Listing Scraping - Estimated time: {days_left:2} days and {time_left:8}')
+    
+    # Extract all technologies in file to a set
+    _tech_set = extract_tech_set(file_with_tech)
 
     # Get the level of the console handler
     console_handler = logging.StreamHandler()
+    console_handler.setLevel(logging.INFO)
     console_level = console_handler.level
-    print(f'Concole level: {console_level}')
+    print(f'Console level: {console_level}')
 
-    with open(scraped_urls, 'r', encoding='UTF-8') as file:
-        # Record Listing using pipeline. If failed, record in serepate file   
-        last_progress = int(0)
+    with open(scraped_urls, 'r', encoding='utf-8') as file:
+        # Attempts scraping all urls from file. Record succeses and failures
 
         for url in file:
             url = url.strip()
-            substring = scrape_listing_from_json(url)     
+            progress += progress_per_url
+            seconds_left -= aver_sleep
+
+            try:
+                substring = scrape_listing_from_json(url)
+                save_str_to_file(url, succesfull_urls)
+            except:
+                save_str_to_file(url, failed_urls)
+                failures += 1
+                logger.error(f'Opening url failed: {url}')
+                l.save_to_log_file(__name__, __file__, f'Opening url failed: {url}')
+                sleep(random.uniform(sleep_min, sleep_max))
+                continue
+
             try:
                 listing_pipeline_main(substring, _tech_set, succesfull_file)
                 succeses += 1
             except:
                 save_str_to_file(substring, failed_file)
                 failures += 1
-                logger.error('Scraping failed: {url}')
-                l.save_to_log_file(__name__, __file__, f'Scraping failed: {url}')
+                logger.error('Cleaning listing failed: {url}')
+                l.save_to_log_file(__name__, __file__, f'Cleaning listing failed: {url}')
             finally:
+                # Print progress if console is set to INFO or DEBUG
                 if console_level < 30:
-                    progress = round((succeses+failures)/url_count*100, 3)
-                    seconds_left = (url_count - succeses - failures) * aver_sleep
-                    time_left = strftime("%H:%M:%S", gmtime(seconds_left))
+                    days_left = seconds_left // 86400
+                    time_left = strftime("%H:%M:%S", gmtime(int(seconds_left)))
 
                     if console_level == 10:
-                        print(f'Successes: {succeses:3}   '
-                            f'Failures: {failures:3}   '
-                            f'Progress: {progress:3}%   '
-                            f'Time left: {time_left:8}')
+                        print(f'Successes: {succeses:5}     '
+                            f'Failures: {failures:5}     '
+                            f'Progress: {progress:6}%     '
+                            f'Time left: {days_left:2} days and {time_left:8}')
 
                     if console_level == 20 and \
                         int(progress) > last_progress:
-                        last_progress = copy.deepcopy(progress)
-                        print(f'Successes: {succeses:3}   '
-                            f'Failures: {failures:3}   '
-                            f'Progress: {progress:3}%   '
-                            f'Time left: {time_left:8}')
+                        last_progress = copy.deepcopy(int(progress))
+                        print(f'Successes: {succeses:5}     '
+                            f'Failures: {failures:5}     '
+                            f'Progress: {progress:5.1f}%     '
+                            f'Time left: {days_left:2} days and {time_left:8}')
                 sleep(random.uniform(sleep_min, sleep_max))        
 
 if __name__ == '__main__':
@@ -393,9 +422,11 @@ if __name__ == '__main__':
     TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'/../txt_files')
     SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
     TECH_SEARCHED_FOR = os.path.join(TXT_DIR,'technologies.txt')
+    SUCCESFULL_URLS = os.path.join(TXT_DIR, 'succesfull_urls.txt')
+    FAILED_URLS = os.path.join(TXT_DIR, 'failed_urls.txt')
     SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
     FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
 
     # Scraping job listings from job site
-    main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
+    main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_URLS, FAILED_URLS, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
 

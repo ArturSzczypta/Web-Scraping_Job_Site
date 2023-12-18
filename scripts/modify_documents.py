@@ -6,56 +6,16 @@ from logging import config
 import re
 from datetime import datetime
 
-# Change the current working directory to 'scripts'
-os.chdir('../')
-# Add 'scripts' directory to the sys.path
-sys.path.append('.')
 
-# Import custom modules
-import logging_functions as l
-import mongodb_functions as mongodb
-
-#Performs basic logging set up
-#Get this script name
-log_file_name = __file__.split('\\')
-log_file_name = f'{log_file_name[-1][:-3]}_log.log'
-
-l.get_log_file_name(log_file_name)
-
-#Configure logging file
-l.configure_logging()
-logger = logging.getLogger('main')
-
-# Connect to DB
-client = mongodb.return_db_client()
-
-# Check connection to DB
-try:
-    mongodb.command_ping(client)
-except:
-    l.log_exception('main', 'Unable to connect with database')
-
-db = client['Web_Scraping_Job_Site']
-collection_job_listings = db['Job_Listings']
-
-def removing_jest(collection):
-    ''' Remove Jest from the database'''
-
-
+def remove_single_tech(collection, tech_name):
+    ''' Remove a single technology from the database'''
     result = collection.update_many({'$or': [
-        {'technologies.expected': 'Jest'},
-        {'technologies.optional': 'Jest'},
-        {'technologies.found': 'Jest'}]},
-        {'$pull': {'technologies.expected': 'Jest',
-                'technologies.optional': 'Jest',
-                'technologies.found': 'Jest'}})
-    result = collection.update_many({'technologies.found': 'Jest'},{'$pull': {'technologies.found': 'Jest'}})
-
-    print(result.modified_count, "documents updated.")
-
-def removing_nas(collection):
-    ''' Remove NAS from the database'''
-    result = collection.update_many({'technologies.found': 'NAS'},{'$pull': {'technologies.found': 'NAS'}})
+        {'technologies.expected': tech_name},
+        {'technologies.optional': tech_name},
+        {'technologies.found': tech_name}]},
+        {'$pull': {'technologies.expected': tech_name,
+                'technologies.optional': tech_name,
+                'technologies.found': tech_name}})
     print(result.modified_count, "documents updated.")
 
 def get_all_regions(collection):
@@ -247,3 +207,5 @@ def add_pub_month_field(collection):
         month_year = datetime(pub_dt.year, pub_dt.month, 1).isoformat()
         collection.update_one({'_id': doc['_id']}, {'$set': {'publication_month': month_year}})
     print('publication month added')
+
+get_all_locations(collection_job_listings)

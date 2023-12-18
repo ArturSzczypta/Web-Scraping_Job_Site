@@ -131,27 +131,47 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10):
 
     return http_links, unique_dates
 
-def scrape_from_file(manual_file_path):
-    '''Scrapes urls and dates from file'''
+def combine_files(manual_files_path):
+    '''Combines files created manually into one file'''
+
+    combined_file = os.path.join(manual_files_path, 'combined_files.txt')
+
+    # Get a list of all file paths in the directory that are text files
+    files = os.listdir(manual_files_path)
+    files = [item for item in files if item.endswith('.txt')]
+    files = [os.path.join(manual_files_path, item) for item in files]
+
+    # Combine the contents of all text files into one file
+    with open(combined_file, 'w', encoding='utf-8') as outfile:
+        for file in files:
+            with open(file, encoding='utf-8') as infile:
+                for line in infile:
+                    outfile.write(line)
+    logger.debug(f'Combined text files into {combined_file}')
+    return combined_file
+
+
+def scrape_from_file(combined_file):
+    '''Scrapes urls and dates from files created manually'''
 
     http_links = set()
-    
-    http_pattern = r'href="https://www\.pracuj\.pl/praca/[^"]*"'
-    date_pattern = r'"expirationDate":"[^"]*"'
 
-    # Extract links and dates from file
-    with open(manual_file_path, 'r', encoding='UTF-8') as file:
-        for line in file:
-            http_match = re.search(http_pattern, line)
-            if http_match:
-                http_links.add(http_match.group(0).split('"')[1])
-            date_match = re.search(date_pattern, line)
-    
+    with open(combined_file, 'r', encoding='utf-8') as file:
+        text = file.read()
+
+    # Define the regular expression pattern to match URLs
+    http_pattern = r'https://www\.pracuj\.pl/praca/[^"]*'
+
+    # Find all URLs in the text
+    http_matches = re.findall(http_pattern, text)
+
+    # Add the URLs to the set
+    http_links.update(http_matches)
+
     for link in http_links:
-        logger.debug(f'Found link: {link}')
         print(f'Found link: {link}')
-    
     return http_links
+    
 
 
 def get_cut_off_date(date_file):
@@ -231,22 +251,21 @@ def save_set_to_file(new_set, file_path):
         for element in new_set:
             file.write(str(element) + '\n')
 
-def main(date_file, skill_set, urls_file, base_url, iterable_url=None):
+def main(date_file, skill_set, urls_file, base_url, manual_ulrs_path, iterable_url=None, manual_files_exist=False):
     ''' Main method of scrape_urls.py
     Scrape all urls with job offers containing skill set, then save to file'''
 
-    cut_off_date_main = get_cut_off_date(date_file)
-    http_links_main = scrape_all_skills(cut_off_date_main, skill_set, \
-        base_url, iterable_url)
+    # Scrape urls from manual files
+    if manual_files_exist:
+        combined_file = combine_files(manual_ulrs_path)
+        http_links_main = scrape_from_file(combined_file)
+
+    else:  
+        cut_off_date_main = get_cut_off_date(date_file)
+        http_links_main = scrape_all_skills(cut_off_date_main, skill_set, \
+                                            base_url, iterable_url)
+        update_date_log(date_file)
     update_file(http_links_main, urls_file)
-    update_date_log(date_file)
-
-def main_manual(manual_file_path, urls_file):
-    ''' Secondary main method of scrape_urls.py
-    Scrape all urls with job offers containing skill set, then save to file'''
-
-    http_links = scrape_from_file(manual_file_path)
-    update_file(http_links, urls_file)
 
 if __name__ == '__main__':
     #Performs basic logging set up
@@ -264,14 +283,21 @@ if __name__ == '__main__':
     searched_set = {'itth=36', 'itth=37'}
 
     # Required files
-    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
+    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'../txt_files')
     FOR_SEARCH = os.path.join(TXT_DIR,'for_search.csv')
     LAST_DATE_LOG = os.path.join(TXT_DIR,'last_date.log')
     SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
+    
+    # Scrapped website search resutls
+    MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping')
+    # Check if there are any files in the directory
+    files = os.scandir(MANUAL_URLS)
+    manual_files_exist = any(file.is_file() for file in files)
+
 
     # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
     BASE_URL = 'https://it.pracuj.pl/praca?{}'
     ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
 
     #Scraping Urls from job site
-    main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL)
+    main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, MANUAL_URLS, ITERABLE_URL, manual_files_exist)
