@@ -283,7 +283,9 @@ if __name__ == '__main__':
     searched_set = {'itth=36', 'itth=37'}
 
     # Required files
-    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'../txt_files')
+    CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
+    PARENT_DIR = os.path.dirname(CURRENT_DIR)
+    TXT_DIR = os.path.join(PARENT_DIR,'txt_files')
     FOR_SEARCH = os.path.join(TXT_DIR,'for_search.csv')
     LAST_DATE_LOG = os.path.join(TXT_DIR,'last_date.log')
     SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')

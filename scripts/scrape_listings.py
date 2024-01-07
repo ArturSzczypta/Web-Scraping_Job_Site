@@ -383,12 +383,12 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls, succesfull_
             except:
                 save_str_to_file(substring, failed_file)
                 failures += 1
-                logger.error('Cleaning listing failed: {url}')
+                logger.error(f'Cleaning listing failed: {url}')
                 l.save_to_log_file(__name__, __file__, f'Cleaning listing failed: {url}')
             finally:
                 # Print progress if console is set to INFO or DEBUG
                 if console_level < 30:
-                    days_left = seconds_left // 86400
+                    days_left = int(seconds_left // 86400)
                     time_left = strftime("%H:%M:%S", gmtime(int(seconds_left)))
 
                     if console_level == 10:
@@ -419,7 +419,10 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
 
     # Required files
-    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'/../txt_files')
+
+    CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
+    PARENT_DIR = os.path.dirname(CURRENT_DIR)
+    TXT_DIR = os.path.join(PARENT_DIR,'txt_files')
     SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
     TECH_SEARCHED_FOR = os.path.join(TXT_DIR,'technologies.txt')
     SUCCESFULL_URLS = os.path.join(TXT_DIR, 'succesfull_urls.txt')

@@ -31,7 +31,7 @@ SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
 FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
 
 # Scrapped website search resutls
-MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping.txt')
+MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping')
 # Check if there are any files in the directory
 files = os.scandir(MANUAL_URLS)
 manual_files_exist = any(file.is_file() for file in files)
@@ -50,7 +50,7 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
             searched_set.update({row['Search']:row['Search']})
 
 # Scraping Urls from job site
-scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
+#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
 
 # Scraping job listings from job site
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
