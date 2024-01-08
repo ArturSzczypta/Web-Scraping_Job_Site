@@ -2,6 +2,8 @@
 import os
 import datetime
 import json
+import re
+import string
 
 import logging
 from logging import config
@@ -41,14 +43,45 @@ def check_connection(client):
         e.error_email('Check_connection - Unable to connect with database')
         l.save_to_log_file(__name__, __file__, 'Unable to connect with database')
 
-def save_dict_from_file_to_collection(collection, file_path):
+def clean_line(line):
+    ''' Removes non-ASCII characters from line'''''
+    line = line.replace('\n', '').replace('\r', '')
+    return re.sub(r'[^\x20-\x7EĄąĆćĘęŁłŃńÓóŚśŹźŻż\r\n]', '', line)
+
+def save_str_to_file(str, file_path):
+    ''' Saves string to file'''
+    with open(file_path, 'a', encoding='utf-8') as file:
+        file.write(str + '\n')
+
+def save_dict_from_file_to_collection(collection, extractions, invalid_json):
     ''' Saves documents from file to collection
     Assumes file has one JSON in each line'''
     documents = []
-    with open(file_path, 'r', encoding='utf-8') as file:
-        lines = file.readlines()[:-1]
-        # Convert the contents of the file into a list of dictionaries
-        documents = [json.loads(line) for line in lines]
+    with open(extractions, 'r', encoding='utf-8') as file:
+        lines = [line.strip() for line in file.readlines()]
+        '''
+        for line in lines:
+            line = line.encode('ascii', errors='ignore').decode()
+            line = ''.join(filter(lambda x: x in string.printable, line))
+            line = re.sub(r'[\r\n]+', ' ', line)
+            line = line.replace('\u000D', '').replace('\u000A', '')
+        data = '\n'.join(lines)
+        with open('output.txt', 'w', encoding='utf-8') as file:
+            file.write(data)
+        '''    
+        #lines = [line.replace('\n', '') for line in file.readlines()]
+        #lines = [clean_line(line) for line in file.readlines()]
+        #lines = [re.sub(r'^[\x00-\x1F\s]+|[\x00-\x1F\s]+$', '', line.strip()) for line in file.readlines()]
+        #lines = [line.rstrip('\n') for line in file.readlines()]
+        # Print the first line for inspection
+        # Convert the contents of the file into a list of dictionaries, save invalid json
+        documents = list()
+        for line in lines:
+            try:
+                new_json = json.loads(line)
+                documents.append(new_json)
+            except:
+                save_str_to_file(line, invalid_json)
 
     #Convert date strings to ISO Dates
     date_format = '%Y-%m-%d'
@@ -66,7 +99,7 @@ def save_dict_from_file_to_collection(collection, file_path):
         doc['expiration_date'] = expiration_date.isoformat()
 
     result = collection.insert_many(documents)
-    print(result.inserted_ids)
+    print(f'Uploaded to database {result.inserted_ids}')
 
 def save_str_from_file_to_collection(collection, file_path):
     ''' Saves urls from file to collection'''
@@ -93,9 +126,11 @@ if __name__ == '__main__':
 
     #Saving succesfull_extractions to MongoDB Atlas
     # Required files
-    TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
+    CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
+    PARENT_DIR = os.path.dirname(CURRENT_DIR)
+    TXT_DIR = os.path.join(PARENT_DIR,'txt_files')
     SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
-
+    INVALID_JSON = os.path.join(TXT_DIR, 'invalid_json.txt')
 
     _client = return_db_client()
     check_connection(_client)
@@ -103,4 +138,4 @@ if __name__ == '__main__':
     db = _client['Web_Scraping_Job_Site']
     collection_succesfull = db['Job_Listings']
 
-    save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
+    save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS, INVALID_JSON)
