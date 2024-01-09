@@ -29,6 +29,7 @@ SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
 TECH_SEARCHED_FOR = os.path.join(TXT_DIR,'technologies.txt')
 SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
 FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
+INVALID_JSON = os.path.join(TXT_DIR, 'invalid_json.txt')
 
 # Scrapped website search resutls
 MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping')
@@ -73,8 +74,7 @@ collection_failed = db['Failed_Urls']
 
 # Record if there was a failure, clear files
 try:
-    mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS)
-    #mongodb.save_str_from_file_to_collection(collection_failed, FAILED_EXTRACTIONS)
+    mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS, INVALID_JSON)
     
     # Preparing email
     with open(SUCCESFULL_EXTRACTIONS, 'r') as file:

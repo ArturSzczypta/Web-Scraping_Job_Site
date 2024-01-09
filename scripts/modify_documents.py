@@ -1,10 +1,13 @@
 ''' Modify documents in the database'''
-import os
-import sys
-import logging
-from logging import config
+
 import re
 from datetime import datetime
+import mongodb_functions as mongo
+
+if __name__ != '__main__':
+    from . import logging_functions as l
+else:
+    import logging_functions as l
 
 
 def remove_single_tech(collection, tech_name):
@@ -14,19 +17,22 @@ def remove_single_tech(collection, tech_name):
         {'technologies.optional': tech_name},
         {'technologies.found': tech_name}]},
         {'$pull': {'technologies.expected': tech_name,
-                'technologies.optional': tech_name,
-                'technologies.found': tech_name}})
+                   'technologies.optional': tech_name,
+                   'technologies.found': tech_name}})
     print(result.modified_count, "documents updated.")
+
 
 def get_all_regions(collection):
     ''' Returns all regions in the database'''
     regions = collection.distinct('region')
     print(regions)
 
+
 def get_all_locations(collection):
     ''' Returns all locations in the database'''
     locations = collection.distinct('location')
     print(locations)
+
 
 def modify_locations_test():
     ''' Modify locations in the database'''
@@ -83,6 +89,7 @@ def modify_locations_test():
         print("{:20} {}".format(old, new))
         print()
 
+
 def modify_location(collection):
     '''Modify the location field by removing the county or shire name inside the parentheses'''
     # Define the regular expression pattern
@@ -90,16 +97,18 @@ def modify_location(collection):
 
     # Update the documents in the collection
     result = collection.update_many({'location': {'$regex': pattern}},
-                            {'$set': {'location': {'$regexReplace': {'input': '$location',
-                                                                    'find': pattern,
-                                                                    'replacement': '$1'}}}})
+                                        {'$set': {'location': {'$regexReplace':
+                                                   {'input': '$location',
+                                                    'find': pattern,
+                                                    'replacement': '$1'}}}})
     print(result.modified_count, 'documents updated')
+
 
 def remove_invalid_locations(collection):
     '''Remove the documents that have invalid location'''
     # During querries, some variables were replaced with querry itself. Change them to None
     result = collection.update_many({'location': {'$type': 'object'}},
-                          {'$unset': {'location': ''}})
+                                    {'$unset': {'location': ''}})
 
     query = {"location": {"$type": "object"}}
     result = collection.find(query)
@@ -108,23 +117,27 @@ def remove_invalid_locations(collection):
     for document in result:
         print(document['location'])
 
+
 def clean_region(region_name):
     ''' Keap only proper voivodeships names'''
-    voivodeships_pl = ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie', 'lubuskie', 
-                    'łódzkie', 'małopolskie', 'mazowieckie', 'opolskie', 'podkarpackie', 
-                    'podlaskie', 'pomorskie', 'śląskie', 'świętokrzyskie', 'warmińsko-mazurskie', 
-                    'wielkopolskie', 'zachodniopomorskie']
-    voivodeships_en_1 = ['lower silesia', 'kuyavian-pomerania', 'lublin', 'lubusz', 'łódź', 
-                       'lesser poland', 'masovia', 'opole', 'subcarpathia', 
-                       'podlaskie', 'pomerania', 'silesia', 'holy cross', 'warmian-masuria',
-                       'greater poland', 'west pomerania']
-    voivodeships_en_2 = ['lower silesian', 'kuyavian-pomeranian', 'lublin', 'lubusz', 'łódź', 
-                       'lesser poland', 'masovian', 'opole', 'subcarpathian', 
-                       'podlaskie', 'pomeranian', 'silesian', 'holy cross', 'warmian-masurian',
-                       'greater poland', 'west pomeranian']
+    voivodeships_pl = ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie',
+                       'lubuskie', 'łódzkie', 'małopolskie', 'mazowieckie',
+                       'opolskie', 'podkarpackie', 'podlaskie', 'pomorskie',
+                       'śląskie', 'świętokrzyskie', 'warmińsko-mazurskie',
+                       'wielkopolskie', 'zachodniopomorskie']
+    voivodeships_en_1 = ['lower silesia', 'kuyavian-pomerania', 'lublin',
+                         'lubusz', 'łódź', 'lesser poland', 'masovia', 'opole',
+                         'subcarpathia', 'podlaskie', 'pomerania', 'silesia',
+                         'holy cross', 'warmian-masuria', 'greater poland',
+                         'west pomerania']
+    voivodeships_en_2 = ['lower silesian', 'kuyavian-pomeranian', 'lublin',
+                         'lubusz', 'łódź', 'lesser poland', 'masovian',
+                         'opole', 'subcarpathian', 'podlaskie', 'pomeranian',
+                         'silesian', 'holy cross', 'warmian-masurian',
+                         'greater poland', 'west pomeranian']
     if region_name is None or region_name == '' or region_name == ' ':
         return None
-    
+
     temp_name = region_name.lower()
     # If name is in polish, return it in lower case
     if temp_name in voivodeships_pl:
@@ -143,13 +156,16 @@ def clean_region(region_name):
         return None
     return region_name
 
+
 def replace_regions(collection):
     '''Replace the region field with proper voivodeship name'''
     for doc in collection.find({'region': {'$ne': ''}}):
         # call the clean_region function
         new_region = clean_region(doc['region'])
-        collection.update_one({'_id': doc['_id']}, {'$set': {'region': new_region}})
+        collection.update_one({'_id': doc['_id']},
+                              {'$set': {'region': new_region}})
         print('regions replaced')
+
 
 def correct_last_region(collection):
     '''Correct the last region name'''
@@ -159,13 +175,16 @@ def correct_last_region(collection):
     result = collection.update_many(filter, update)
     print(result.modified_count, "documents updated.")
 
+
 def clean_contract_type(contract_type):
     '''Clean the contract_type field'''
-    contract_pl = ['umowa o pracę', 'umowa zlecenie', 'umowa o dzieło', 
-                   'umowa na zastępstwo', 'umowa o pracę tymczasową', 'kontrakt B2B', 
-                   'umowa o staż praktyki', 'umowa agencyjna']
-    contract_en = ['contract of employment', 'contract of mandate', 'contract for specific work', 
-                   'replacement contract', 'temporary employment contract', 'B2B contract', 
+    contract_pl = ['umowa o pracę', 'umowa zlecenie', 'umowa o dzieło',
+                   'umowa na zastępstwo', 'umowa o pracę tymczasową',
+                   'kontrakt B2B', 'umowa o staż praktyki',
+                   'umowa agencyjna']
+    contract_en = ['contract of employment', 'contract of mandate',
+                   'contract for specific work', 'replacement contract',
+                   'temporary employment contract', 'B2B contract',
                    'internship apprenticeship contract', 'agency agreement']
     if contract_type is None or contract_type == '' or contract_type == ' ':
         return None
@@ -175,12 +194,15 @@ def clean_contract_type(contract_type):
         return contract_pl[contract_en.index(contract_type)]
     return contract_type
 
+
 def replace_contract_type(collection):
     '''Replace the contract_type field with polish name'''
     for doc in collection.find({'contract_type': {'$ne': ''}}):
         # call the clean_region function
         new_contract_type = clean_contract_type(doc['contract_type'])
-        collection.update_one({'_id': doc['_id']}, {'$set': {'contract_type': new_contract_type}})
+        collection.update_one({'_id': doc['_id']},
+                              {'$set': {'contract_type': new_contract_type}})
+
 
 def find_duplicates(collection):
     '''Get the duplicate documents'''
@@ -194,6 +216,7 @@ def find_duplicates(collection):
     # get the number of duplicates
     return duplicates
 
+
 def add_pub_month_field(collection):
     '''Add publication month field'''
 
@@ -205,7 +228,16 @@ def add_pub_month_field(collection):
         pub_dt = datetime.fromisoformat(pub_str)
         # Use 1 day of the month as default
         month_year = datetime(pub_dt.year, pub_dt.month, 1).isoformat()
-        collection.update_one({'_id': doc['_id']}, {'$set': {'publication_month': month_year}})
+        collection.update_one({'_id': doc['_id']},
+                              {'$set': {'publication_month': month_year}})
     print('publication month added')
 
-get_all_locations(collection_job_listings)
+
+if __name__ == 'main':
+    '''Performs basic database operations'''
+
+    _client = mongo.return_db_client()
+    mongo.check_connection(_client)
+
+    db = _client['Web_Scraping_Job_Site']
+    collection_succesfull = db['Job_Listings']

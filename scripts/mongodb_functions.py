@@ -43,10 +43,6 @@ def check_connection(client):
         e.error_email('Check_connection - Unable to connect with database')
         l.save_to_log_file(__name__, __file__, 'Unable to connect with database')
 
-def clean_line(line):
-    ''' Removes non-ASCII characters from line'''''
-    line = line.replace('\n', '').replace('\r', '')
-    return re.sub(r'[^\x20-\x7EĄąĆćĘęŁłŃńÓóŚśŹźŻż\r\n]', '', line)
 
 def save_str_to_file(str, file_path):
     ''' Saves string to file'''
@@ -59,20 +55,7 @@ def save_dict_from_file_to_collection(collection, extractions, invalid_json):
     documents = []
     with open(extractions, 'r', encoding='utf-8') as file:
         lines = [line.strip() for line in file.readlines()]
-        '''
-        for line in lines:
-            line = line.encode('ascii', errors='ignore').decode()
-            line = ''.join(filter(lambda x: x in string.printable, line))
-            line = re.sub(r'[\r\n]+', ' ', line)
-            line = line.replace('\u000D', '').replace('\u000A', '')
-        data = '\n'.join(lines)
-        with open('output.txt', 'w', encoding='utf-8') as file:
-            file.write(data)
-        '''    
-        #lines = [line.replace('\n', '') for line in file.readlines()]
-        #lines = [clean_line(line) for line in file.readlines()]
-        #lines = [re.sub(r'^[\x00-\x1F\s]+|[\x00-\x1F\s]+$', '', line.strip()) for line in file.readlines()]
-        #lines = [line.rstrip('\n') for line in file.readlines()]
+        
         # Print the first line for inspection
         # Convert the contents of the file into a list of dictionaries, save invalid json
         documents = list()
