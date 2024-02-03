@@ -5,7 +5,6 @@ import os
 import re
 import json
 from time import sleep, gmtime, strftime
-from datetime import datetime, timedelta
 from numpy import random
 import requests
 import copy
@@ -56,7 +55,7 @@ def clean_listing_string(substring) -> str:
 
     patterns = [r'\bundefined\b',  # incorrect null value
                 r'\\n|\\t|\\r|\\b|\\f|\\"',  # sequences
-                r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+'  # not allowed char
+                r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+'  # not polish
                 ]
     for pattern in patterns:
         substring = re.sub(pattern, ' ', substring)
@@ -115,10 +114,10 @@ def clean_region(region_name) -> str:
                          'holy cross', 'warmian-masuria', 'greater poland',
                          'west pomerania']
     voivodeships_en_2 = ['lower silesian', 'kuyavian-pomeranian', 'lublin',
-                         'lubusz', 'łódź', 'lesser poland', 'masovian', 'opole',
-                         'subcarpathian', 'podlaskie', 'pomeranian', 'silesian',
-                         'holy cross', 'warmian-masurian', 'greater poland',
-                         'west pomeranian']
+                         'lubusz', 'łódź', 'lesser poland', 'masovian',
+                         'opole', 'subcarpathian', 'podlaskie', 'pomeranian',
+                         'silesian', 'holy cross', 'warmian-masurian',
+                         'greater poland', 'west pomeranian']
 
     if region_name is None or region_name == '' or region_name == ' ':
         return None
@@ -171,6 +170,11 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
     region = my_dict['workplaces'][0]['region']['name']
     region = clean_region(region)
 
+    # Work Schedule
+    work_schedule = my_dict['workSchedules']
+    position_level = my_dict['positionLevelsName']
+    work_modes = [item['code'] for item in my_dict['workModes']]
+
     location = None
     if my_dict['workplaces'][0].get('inlandLocation') and \
             my_dict['workplaces'][0]['inlandLocation'].get('location') and \
@@ -194,7 +198,8 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
         salary_currency = my_dict['typesOfContracts'][0]['salary']['currency']['code']
         salary_long_form = my_dict['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
 
-    # Assuming both dates always comply to ISO 8601 format, UTC time zone, scraping only YYYY-mm-dd
+    # Assuming both dates always comply to ISO 8601 format, UTC time zone,
+    # scraping only YYYY-mm-dd
     publication_date = my_dict['dateOfInitialPublication'][:10]
     publication_month = publication_date[:7] + '-01'
     expiration_date = my_dict['expirationDate'][:10]
@@ -250,6 +255,9 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
     new_dict['region'] = region
     new_dict['location'] = location
     new_dict['contract_type'] = contract_type
+    new_dict['work_schedule'] = work_schedule
+    new_dict['position_level'] = position_level
+    new_dict['work_modes'] = work_modes
     # Salary specific
     new_dict['is_salary'] = is_salary
     if is_salary:
@@ -363,7 +371,8 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
     seconds_left = url_count * aver_sleep
     days_left = seconds_left // 86400
     time_left = strftime("%H:%M:%S", gmtime(int(seconds_left)))
-    print(f'Listing Scraping - Estimated time: {days_left:2} days and {time_left:8}')
+    print(f'Listing Scraping - Estimated time: {days_left:2} '
+          f'days and {time_left:8}')
 
     # Extract all technologies in file to a set
     _tech_set = extract_tech_set(file_with_tech)
