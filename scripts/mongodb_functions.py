@@ -12,12 +12,9 @@ from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
 
-if __name__ != '__main__':
-    from . import logging_functions as l
-    from . import email_functions as e
-else:
-    import logging_functions as l
-    import email_functions as e
+
+import logging_functions as l
+import email_functions as e
 
 
 def return_db_client():
@@ -90,7 +87,7 @@ def save_dict_from_file_to_collection(collection, extractions, invalid_json):
     print(f'Uploaded to database {result.inserted_ids}')
 
 
-def save_str_from_file_to_collection(collection, file_path):
+def save_str_from_file_to_collection(collection, file_path: str):
     ''' Saves urls from file to collection'''
     documents = []
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -126,7 +123,8 @@ if __name__ == '__main__':
     check_connection(_client)
 
     db = _client['Web_Scraping_Job_Site']
-    collection_succesfull = db['Job_Listings']
+    collection = db['Job_Listings']
 
-    save_dict_from_file_to_collection(collection_succesfull,
-                                      SUCCESFULL_EXTRACTIONS, INVALID_JSON)
+    save_dict_from_file_to_collection(collection, SUCCESFULL_EXTRACTIONS,
+                                      INVALID_JSON)
+

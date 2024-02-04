@@ -24,7 +24,7 @@ l.configure_logging()
 logger = logging.getLogger(__name__)
 
 
-def save_dict(new_dict, file_path) -> None:
+def save_dict(new_dict: dict, file_path: str) -> None:
     ''' Saves dictionary to file'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
     # file_path = os.path.join(os.path.dirname(__file__), '..', 'text_and_json', file_name)
@@ -33,7 +33,7 @@ def save_dict(new_dict, file_path) -> None:
         file.write(json_str + '\n')
 
 
-def scrape_listing_from_json(url, timeout=5) -> str:
+def scrape_listing_from_json(url: str, timeout=5) -> str:
     ''' Scrapes job listing details from JSON to substring'''
     # Make a request to the URL and get the HTML response
     response = requests.get(url, timeout=timeout)
@@ -48,7 +48,7 @@ def scrape_listing_from_json(url, timeout=5) -> str:
     return substring
 
 
-def clean_listing_string(substring) -> str:
+def clean_listing_string(substring: str) -> str:
     ''' Cleans substring from problematic symbols, patterns, sequences'''
 
     substring = substring.strip()
@@ -93,7 +93,7 @@ def clean_listing_string(substring) -> str:
     return substring
 
 
-def change_str_to_dict(substring) -> dict:
+def change_str_to_dict(substring: str) -> dict:
     '''  Convert the string to a dictionary using the json module'''
     logger.debug(substring)
     my_dict = json.loads(substring)
@@ -101,7 +101,7 @@ def change_str_to_dict(substring) -> dict:
     return my_dict
 
 
-def clean_region(region_name) -> str:
+def clean_region(region_name: str) -> str:
     ''' Keap only proper voivodeships names'''
     voivodeships_pl = ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie',
                        'lubuskie', 'łódzkie', 'małopolskie', 'mazowieckie',
@@ -130,7 +130,7 @@ def clean_region(region_name) -> str:
         return voivodeships_pl[voivodeships_en_1.index(temp_name)]
     if temp_name in voivodeships_en_2:
         return voivodeships_pl[voivodeships_en_2.index(temp_name)]
-    if temp_name in ['warmia-mazuria', 'warmia-mazurian']:
+    if temp_name in ['warmia-mazuria', 'warmia-mazurian', 'warmian-mazurian']:
         return 'warmińsko-mazurskie'
     if temp_name in ['kuyavia-pomerania', 'kuyavia-pomeranian']:
         return 'kujawsko-pomorskie'
@@ -140,6 +140,18 @@ def clean_region(region_name) -> str:
     if region_name in ['', ' ', 'abroad', 'zagranica']:
         return None
     return region_name
+
+
+def clean_location(location_name: str) -> str:
+    ''' Clean the location field by addind None or by removing the county
+    or shire name inside the parentheses'''
+    if location_name == '' or location_name == ' ':
+        return None
+    pattern = r'^(.*?)\s+\('
+    match = re.search(pattern, location_name)
+    if match:
+        location_name = match.group(1)
+    return location_name
 
 
 def clean_contract_type(contract_type) -> str:
@@ -180,6 +192,7 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
             my_dict['workplaces'][0]['inlandLocation'].get('location') and \
             my_dict['workplaces'][0]['inlandLocation']['location'].get('name'):
         location = my_dict['workplaces'][0]['inlandLocation']['location']['name']
+        location = clean_location(location)
 
     contract_type = my_dict['typesOfContracts'][0]['name']
     # Clean contract type
@@ -203,6 +216,7 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
     publication_date = my_dict['dateOfInitialPublication'][:10]
     publication_month = publication_date[:7] + '-01'
     expiration_date = my_dict['expirationDate'][:10]
+    expiration_month = expiration_date[:7] + '-01'
 
     tech_expected = []
     tech_optional = []
@@ -271,6 +285,7 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
     new_dict['publication_date'] = publication_date
     new_dict['publication_month'] = publication_month
     new_dict['expiration_date'] = expiration_date
+    new_dict['expiration month'] = expiration_month
     # technologies
     new_dict['technologies'] = {
              'expected': tech_expected,
@@ -432,7 +447,7 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
                               f'Progress: {progress:5.1f}%     '
                               f'Time left: {days_left:2} days and {time_left:8}')
                 sleep(random.uniform(sleep_min, sleep_max))
-
+        
 
 if __name__ == '__main__':
     # Performs basic logging set up
