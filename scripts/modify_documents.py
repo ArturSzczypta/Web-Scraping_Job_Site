@@ -1,13 +1,7 @@
 ''' Modify documents in the database'''
-
 import re
 from datetime import datetime
 import mongodb_functions as mongo
-
-if __name__ != '__main__':
-    from . import logging_functions as l
-else:
-    import logging_functions as l
 
 
 def remove_single_tech(collection, tech_name):
@@ -22,76 +16,15 @@ def remove_single_tech(collection, tech_name):
     print(result.modified_count, "documents updated.")
 
 
-def get_all_regions(collection):
-    ''' Returns all regions in the database'''
-    regions = collection.distinct('region')
-    print(regions)
-
-
 def get_all_locations(collection):
     ''' Returns all locations in the database'''
     locations = collection.distinct('location')
     print(locations)
 
 
-def modify_locations_test():
-    ''' Modify locations in the database'''
-    pattern = r'^(.*?)\s+\('
-    city_names = []
-
-    locations = ['Aleksandrów Łódzki', 'Andrychów', 'Balice (pow. krakowski)', 'Bażanowice (pow. cieszyński)', 'Bełchatów', 'Biała Podlaska', 'Białystok', 
-            'Bielany Wrocławskie (pow. wrocławski)', 'Bielawa', 'Bielsko-Biała', 'Biskupice Podgórne (pow. wrocławski)', 'Biłgoraj', 'Bochnia', 'Bolesławiec', 
-            'Bolszewo (pow. wejherowski)', 'Bożejowice (pow. bolesławiecki)', 'Brzeg Dolny', 'Buk', 'Bydgoszcz', 'Bytom', 'Bytów', 'Błonie', 'Chełm', 
-            'Cholerzyn (pow. krakowski)', 'Chorkówka (pow. krośnieński)', 'Chorula (pow. krapkowicki)', 'Chorzów', 'Chrzanów', 'Ciechanów', 'Cieszyn', 
-            'Czaple (pow. kartuski)', 'Czechowice-Dziedzice', 'Czeladź', 'Czernin (pow. sztumski)', 'Czerwieńsk', 'Częstochowa', 'Dobczyce', 
-            'Domasław (pow. wrocławski)', 'Duchnice (pow. warszawski zachodni)', 'Dzierżoniów', 'Dąbrowa (pow. poznański)', 'Dąbrowa Górnicza', 
-            'Dębica', 'Dęblin', 'Dębowica (pow. łukowski)', 'Elbląg', 'Ełk', 'Frydrychowo (pow. golubsko-dobrzyński)', 'Galew (pow. turecki)', 
-            'Gdańsk', 'Gdynia', 'Gliwice', 'Gniezno', 'Godzikowice (pow. oławski)', 'Gorzów Wielkopolski', 'Grabki Duże (pow. staszowski)', 
-            'Grodzisk Mazowiecki', 'Grudziądz', 'Grójec', 'Głogów', 'Głogów Małopolski', 'Głuchowo (pow. poznański)', 'Głuchołazy', 'Hrubieszów', 
-            'Inowrocław', 'Jankowice (pow. poznański)', 'Jankowo Gdańskie (pow. gdański)', 'Jarocin (pow. jarociński)', 'Jarosław', 'Jasionka (pow. rzeszowski)', 
-            'Jastrzębie-Zdrój', 'Jasło', 'Jaworzno', 'Jelcz-Laskowice', 'Jelenia Góra', 'Jędrzejów', 'Kalisz', 'Kanie (pow. pruszkowski)', 
-            'Karpicko (pow. wolsztyński)', 'Katowice', 'Kielce', 'Kobierzyce (pow. wrocławski)', 'Kobylarnia (pow. bydgoski)', 'Kolbuszowa', 
-            'Komorniki (gm. Komorniki)', 'Komorów (pow. pruszkowski)', 'Koniecpol', 'Konin', 'Kornice (pow. raciborski)', 'Koszalin', 
-            'Kowale (pow. gdański)', 'Kozienice', 'Kraków', 'Krasnystaw', 'Kraśnik', 'Krosno', 'Krotoszyn', 'Krzeszowice', 'Krępice (pow. średzki)', 
-            'Ksawerów (pow. pabianicki)', 'Kuranów (pow. żyrardowski)', 'Kwidzyn', 'Kędzierzyn-Koźle', 'Kęty', 'Legionowo', 'Legnica', 'Leszno', 
-            'Leżajsk', 'Lubartów', 'Lublin', 'Luboń', 'Magnice (pow. wrocławski)', 'Malbork', 'Marki', 'Małkowo (pow. kartuski)', 'Mielec', 
-            'Mieścisko (pow. wągrowiecki)', 'Mirków (pow. wrocławski)', 'Międzyrzecz', 'Mińsk Mazowiecki', 'Morawica (pow. krakowski)', 'Morąg', 
-            'Mszczonów', 'Musuły (pow. grodziski)', 'Mysłowice', 'Myślenice', 'Niepołomice', 'Niepruszewo (pow. poznański)', 'Nowa Ruda', 
-            'Nowy Dwór Mazowiecki', 'Nowy Sącz', 'Nowy Tomyśl', 'Nysa', 'Olewin (pow. olkuski)', 'Olkusz', 'Olsztyn', 'Opoczno', 'Opole', 
-            'Ostaszewo (pow. toruński)', 'Ostrołęka', 'Ostrów Wielkopolski', 'Osła (pow. bolesławiecki)', 'Otwock', 'Oława', 'Ołtarzew (pow. warszawski zachodni)', 
-            'Oświęcim', 'Ożarów Mazowiecki', 'Pabianice', 'Paczkowo (pow. poznański)', 'Pass (pow. warszawski zachodni gm. Błonie)', 'Paterek (pow. nakielski)', 
-            'Piaseczno', 'Piekary Śląskie', 'Piekoszów (pow. kielecki)', 'Pieńków (pow. nowodworski)', 'Piotrków Trybunalski', 'Piła', 'Pleszew', 'Plewiska (pow. poznański)',
-            'Podgrodzie (pow. dębicki)', 'Pogórska Wola (pow. tarnowski)', 'Polanka (pow. myślenicki)', 'Police', 'Polkowice', 'Porosły-Kolonia (pow. białostocki)',
-            'Poznań', 'Połaniec', 'Prandocin-Iły (pow. krakowski)', 'Pruszcz Gdański', 'Pruszków', 'Przemyśl', 'Przęsocin (pow. policki)', 'Pszczyna', 'Puławy', 
-            'Pęcice (pow. pruszkowski)', 'Płock', 'Płońsk', 'Racibórz', 'Radom', 'Radomsko', 'Radonice (pow. warszawski zachodni)', 'Radzionków', 'Rawa Mazowiecka', 
-            'Rawicz', 'Robakowo (pow. poznański)', 'Rojów (pow. ostrzeszowski)', 'Ropczyce', 'Ruda Śląska', 'Rybie (pow. pruszkowski)', 'Rybnik', 'Rzeszów', 'Rzgów', 
-            'Sanok', 'Siedlce', 'Sieradz', 'Skawina', 'Skierniewice', 'Sochaczew', 'Sokołów (pow. pruszkowski)', 'Solec Kujawski', 'Sopot', 'Sosnowiec', 'Stalowa Wola', 
-            'Stara Iwiczna (pow. piaseczyński)', 'Starachowice', 'Stargard', 'Starogard Gdański', 'Stryków', 'Strzelce Opolskie', 'Suchy Las (pow. poznański)', 'Sulechów', 
-            'Sulejówek', 'Suwałki', 'Swadzim (pow. poznański)', 'Swarzędz', 'Szczecin', 'Szczekociny', 'Szprotawa', 'Sępólno Krajeńskie', 'Słubice', 'Słupsk', 
-            'Tajęcina (pow. rzeszowski)', 'Tarnobrzeg', 'Tarnowo Podgórne (pow. poznański)', 'Tarnowskie Góry', 'Tarnów', 'Tczew', 'Teolin (pow. łódzki wschodni)', 
-            'Tomaszów Mazowiecki', 'Toruń', 'Trzebnica', 'Tuchów', 'Tychy', 'Warszawa', 'Wałbrzych', 'Wejherowo', 'Wieliczka', 'Wielogłowy (pow. nowosądecki)', 
-            'Wiskitki (pow. żyrardowski)', 'Wiązowna (pow. otwocki)', 'Wolbórz', 'Wolsztyn', 'Wołomin', 'Wrocław', 'Wronki', 'Września', 'Wsola (pow. radomski)', 'Wyszków', 
-            'Włocławek', 'Włoszczowa', 'Zabierzów (pow. krakowski)', 'Zabrze', 'Zabłudów', 'Zaczernie (pow. rzeszowski)', 'Zakroczym', 'Zakrzewo (pow. poznański)', 'Zambrów', 
-            'Zamienie (pow. piaseczyński gm. Lesznowola)', 'Zamość', 'Zawiercie', 'Zbąszynek', 'Zduńska Wola', 'Zgierz', 'Zielona Góra', 'Zielonka', 'Zimna Wódka (pow. strzelecki)', 
-            'Ząbki', 'Złotniki (pow. poznański)', 'Złotów', 'Łagiewniki (pow. dzierżoniowski)', 'Łaziska Górne', 'Łańcut', 'Łomna-Las (pow. nowodworski)', 'Łomża', 
-            'Łozienica (pow. goleniowski)', 'Łyski (pow. białostocki)', 'Łódź', 'Łódź (pow. poznański)', 'Łęczna', 'Środa Śląska', 'Świebodzin', 
-            'Świerklany (pow. rybnicki)', 'Świerże Górne (pow. kozienicki)', 'Świnoujście', 'Żołędowo (pow. bydgoski)', 'Żuławki (pow. nowodworski)', 'Żyrardów', 'Żywiec']
-
-    for location in locations:
-        match = re.search(pattern, location)
-        if match:
-            city_name = match.group(1)
-            city_names.append(city_name)
-        else:
-            city_names.append(location)
-
-    for old, new in zip(city_names, locations):
-        print("{:20} {}".format(old, new))
-        print()
-
-
 def modify_location(collection):
-    '''Modify the location field by removing the county or shire name inside the parentheses'''
+    '''Modify the location field by removing the county
+    or shire name inside the parentheses'''
     # Define the regular expression pattern
     pattern = r'^(.*?)\s+\('
 
@@ -104,60 +37,31 @@ def modify_location(collection):
     print(result.modified_count, 'documents updated')
 
 
-def remove_invalid_locations(collection):
-    '''Remove the documents that have invalid location'''
-    # During querries, some variables were replaced with querry itself. Change them to None
-    result = collection.update_many({'location': {'$type': 'object'}},
-                                    {'$unset': {'location': ''}})
+def modify_regions(collection, approved_values):
+    for document in collection.find():
+        current_region = document.get('region')
+        
+        if current_region not in approved_values:
+            cleaned_region = clean_region(current_region)
+            collection.update_one({'_id': document['_id']}, {'$set': {'region': cleaned_region}})
+            print(f"Document {document['_id']} updated with region {cleaned_region}.")
 
-    query = {"location": {"$type": "object"}}
+
+def remove_invalid_field(collection, field):
+    '''Remove invelid fields'''
+    # During querries, some variables were replaced with querry itself.
+    result = collection.update_many({field: {'$type': 'object'}},
+                                    {'$unset': {field: ''}})
+
+    query = {field: {"$type": "object"}}
     result = collection.find(query)
     print('objects removed')
     # Print the documents
     for document in result:
-        print(document['location'])
+        print(document[field])
 
 
-def clean_region(region_name):
-    ''' Keap only proper voivodeships names'''
-    voivodeships_pl = ['dolnośląskie', 'kujawsko-pomorskie', 'lubelskie',
-                       'lubuskie', 'łódzkie', 'małopolskie', 'mazowieckie',
-                       'opolskie', 'podkarpackie', 'podlaskie', 'pomorskie',
-                       'śląskie', 'świętokrzyskie', 'warmińsko-mazurskie',
-                       'wielkopolskie', 'zachodniopomorskie']
-    voivodeships_en_1 = ['lower silesia', 'kuyavian-pomerania', 'lublin',
-                         'lubusz', 'łódź', 'lesser poland', 'masovia', 'opole',
-                         'subcarpathia', 'podlaskie', 'pomerania', 'silesia',
-                         'holy cross', 'warmian-masuria', 'greater poland',
-                         'west pomerania']
-    voivodeships_en_2 = ['lower silesian', 'kuyavian-pomeranian', 'lublin',
-                         'lubusz', 'łódź', 'lesser poland', 'masovian',
-                         'opole', 'subcarpathian', 'podlaskie', 'pomeranian',
-                         'silesian', 'holy cross', 'warmian-masurian',
-                         'greater poland', 'west pomeranian']
-    if region_name is None or region_name == '' or region_name == ' ':
-        return None
-
-    temp_name = region_name.lower()
-    # If name is in polish, return it in lower case
-    if temp_name in voivodeships_pl:
-        return temp_name
-    # If name is in english, return polish name
-    if temp_name in voivodeships_en_1:
-        return voivodeships_pl[voivodeships_en_1.index(temp_name)]
-    if temp_name in voivodeships_en_2:
-        return voivodeships_pl[voivodeships_en_2.index(temp_name)]
-    if temp_name in ['warmia-mazuria', 'warmia-mazurian']:
-        return 'warmińsko-mazurskie'
-    if temp_name in ['kuyavia-pomerania', 'kuyavia-pomeranian']:
-        return 'kujawsko-pomorskie'
-    # If abroad, return None
-    if region_name in ['abroad', 'zagranica']:
-        return None
-    return region_name
-
-
-def replace_regions(collection):
+def clean_regions(collection):
     '''Replace the region field with proper voivodeship name'''
     for doc in collection.find({'region': {'$ne': ''}}):
         # call the clean_region function
@@ -167,41 +71,13 @@ def replace_regions(collection):
         print('regions replaced')
 
 
-def correct_last_region(collection):
+def correct_one_region(collection):
     '''Correct the last region name'''
     filter = {"region": "Kuyavia-Pomerania"}
     update = {"$set": {"region": "kujawsko-pomorskie"}}
 
     result = collection.update_many(filter, update)
     print(result.modified_count, "documents updated.")
-
-
-def clean_contract_type(contract_type):
-    '''Clean the contract_type field'''
-    contract_pl = ['umowa o pracę', 'umowa zlecenie', 'umowa o dzieło',
-                   'umowa na zastępstwo', 'umowa o pracę tymczasową',
-                   'kontrakt B2B', 'umowa o staż praktyki',
-                   'umowa agencyjna']
-    contract_en = ['contract of employment', 'contract of mandate',
-                   'contract for specific work', 'replacement contract',
-                   'temporary employment contract', 'B2B contract',
-                   'internship apprenticeship contract', 'agency agreement']
-    if contract_type is None or contract_type == '' or contract_type == ' ':
-        return None
-    if contract_type in contract_pl:
-        return contract_type
-    if contract_type in contract_en:
-        return contract_pl[contract_en.index(contract_type)]
-    return contract_type
-
-
-def replace_contract_type(collection):
-    '''Replace the contract_type field with polish name'''
-    for doc in collection.find({'contract_type': {'$ne': ''}}):
-        # call the clean_region function
-        new_contract_type = clean_contract_type(doc['contract_type'])
-        collection.update_one({'_id': doc['_id']},
-                              {'$set': {'contract_type': new_contract_type}})
 
 
 def find_duplicates(collection):
@@ -233,11 +109,162 @@ def add_pub_month_field(collection):
     print('publication month added')
 
 
-if __name__ == 'main':
+def check_types_in_field(collection, field):
+    '''Check data types in given field'''
+    pipeline = [{'$group': {'_id': {'$type': f'${field}'},
+                            'count': {'$sum': 1}}}, {'$sort': {'_id': 1}}]
+
+    result = collection.aggregate(pipeline)
+
+    for doc in result:
+        data_type = doc['_id']
+        count = doc['count']
+        print(f'Data Type: {data_type}, Count: {count}')
+
+
+def add_field(collection, field, value):
+    '''Add a field to the collection'''
+    query = {field: {'$exists': False}}
+
+    # Update documents by adding the 'location' field
+    result = collection.update_many(query, {'$set': {field: value}})
+    print(f'''{result.modified_count} documents updated
+          with {field} set to {value}.''')
+
+
+def update_non_string_locations(collection):
+    # Find documents where 'location' is not a string and not None
+    query = {
+        'location': {
+            '$not': {'$type': 'string'},
+            '$ne': None
+        }
+    }
+
+    # Update documents by setting 'location' to None
+    update_query = {'$set': {'location': None}}
+    result = collection.update_many(query, update_query)
+
+    print(f"{result.modified_count} documents updated with 'location' set to None.")
+
+
+def count_region_values(collection):
+    pipeline = [
+        {
+            '$group': {
+                '_id': {'$type': '$region'},
+                'count': {'$sum': 1}
+            }
+        },
+        {
+            '$project': {
+                '_id': 0,
+                'type': {
+                    '$cond': {
+                        'if': {'$eq': ['$_id', 'missing']},
+                        'then': 'missing',
+                        'else': {
+                            '$cond': {
+                                'if': {'$eq': ['$_id', 'null']},
+                                'then': 'None',
+                                'else': {'$toString': '$_id'}
+                            }
+                        }
+                    }
+                },
+                'count': 1
+            }
+        }
+    ]
+
+    result = collection.aggregate(pipeline)
+
+    for doc in result:
+        print(f"Data Type: {doc['type']}, Count: {doc['count']}")
+
+
+def count_unique_region_strings(collection):
+    pipeline = [
+        {
+            '$match': {'region': {'$type': 'string'}}
+        },
+        {
+            '$group': {
+                '_id': '$region',
+                'count': {'$sum': 1}
+            }
+        }
+    ]
+
+    result = collection.aggregate(pipeline)
+
+    for doc in result:
+        print(f"String: {doc['_id']}, Count: {doc['count']}")
+
+
+def clean_listing_string(substring: str) -> str:
+    ''' Cleans substring from problematic symbols, patterns, sequences'''
+
+    substring = substring.strip()
+
+    sequences = r'\\n|\\t|\\r|\\b|\\f|\\"'
+    substring = re.sub(sequences, ' ', substring)
+
+    not_polish = r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+'
+    substring = re.sub(not_polish, ' ', substring)
+
+    incorrect_null = r'\bundefined\b'
+    substring = re.sub(incorrect_null, 'null', substring)
+
+    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})' # missing nulls
+    substring = re.sub(missing_nulls, ':null', substring)
+
+    missing_commas_1 = r'null\s*([^,\]\}])'
+    substring = re.sub(missing_commas_1, r'null,\g<1>', substring)
+    missing_commas_2 = r'(\w+)\s+,\s*"'
+    substring = re.sub(missing_commas_2, r'\1","', substring)
+
+    extra_char_1 = r'(?<=",)\s*",(?=")'
+    substring = re.sub(extra_char_1, '', substring)
+
+    # Remove special whitespace characters
+    substring = re.sub(r'\s', ' ', substring)
+
+    substring = substring.replace('u002F', ' ')
+    substring = substring.replace('u003E', ' ')
+    substring = substring.replace('--', ' ')
+    substring = substring.replace(', \"\"', ' ')
+
+    # Remove excess spaces
+    substring = re.sub(r' {2,}', ' ', substring)
+    substring = re.sub(r'\s*"\s*', '"', substring)
+
+    # Add missing curly Brackets
+    opening_braces = len(re.findall(r'{', substring))
+    closing_braces = len(re.findall(r'}', substring))
+    if opening_braces > closing_braces:
+        substring += '}'*(opening_braces-closing_braces)
+
+    return substring
+
+
+def modify_listing_string(file_in, file_out):
+    '''Modify the listing string in the database'''
+    with open(file_in, 'r', encoding='utf8') as file_1:
+        lines = file_1.readlines()
+        data_cleaned = list()
+        for line in lines:
+            line = clean_listing_string(line)
+            data_cleaned.append(line)
+            print(line)
+
+    with open(file_out, 'a', encoding='utf8') as file_2:
+        for line in data_cleaned:
+            file_2.write(line + '\n')
+
+
+if __name__ == '__main__':
     '''Performs basic database operations'''
-
-    _client = mongo.return_db_client()
-    mongo.check_connection(_client)
-
-    db = _client['Web_Scraping_Job_Site']
-    collection_succesfull = db['Job_Listings']
+    file_1 = 'failed_extractions.txt'
+    file_2 = 'cleaned.txt'
+    modify_listing_string(file_1, file_2)

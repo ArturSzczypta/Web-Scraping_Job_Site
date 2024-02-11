@@ -88,12 +88,12 @@ def save_dict_from_file_to_collection(collection, extractions, invalid_json):
 
 
 def save_str_from_file_to_collection(collection, file_path: str):
-    ''' Saves urls from file to collection'''
+    ''' Saves string from file to collection'''
     documents = []
     with open(file_path, 'r', encoding='utf-8') as file:
         lines = file.readlines()[:-1]
         # Convert the contents of the file into a list of dictionaries
-        documents = [{'url': line} for line in lines]
+        documents = [{'Item': line} for line in lines]
 
     result = collection.insert_many(documents)
     print(result.inserted_ids)
@@ -127,4 +127,3 @@ if __name__ == '__main__':
 
     save_dict_from_file_to_collection(collection, SUCCESFULL_EXTRACTIONS,
                                       INVALID_JSON)
-

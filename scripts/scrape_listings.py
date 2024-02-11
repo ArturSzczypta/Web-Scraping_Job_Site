@@ -27,7 +27,8 @@ logger = logging.getLogger(__name__)
 def save_dict(new_dict: dict, file_path: str) -> None:
     ''' Saves dictionary to file'''
     json_str = json.dumps(new_dict, ensure_ascii=False)
-    # file_path = os.path.join(os.path.dirname(__file__), '..', 'text_and_json', file_name)
+    # file_path = os.path.join(os.path.dirname(__file__),\
+    # '..', 'text_and_json', file_name)
 
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(json_str + '\n')
@@ -53,14 +54,16 @@ def clean_listing_string(substring: str) -> str:
 
     substring = substring.strip()
 
-    patterns = [r'\bundefined\b',  # incorrect null value
-                r'\\n|\\t|\\r|\\b|\\f|\\"',  # sequences
-                r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+'  # not polish
-                ]
-    for pattern in patterns:
-        substring = re.sub(pattern, ' ', substring)
+    sequences = r'\\n|\\t|\\r|\\b|\\f|\\"'
+    substring = re.sub(sequences, ' ', substring)
 
-    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})'
+    not_polish = r'[^\w,:\.\'"\-(){}\[\]\sąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+'
+    substring = re.sub(not_polish, ' ', substring)
+
+    incorrect_null = r'\bundefined\b'
+    substring = re.sub(incorrect_null, 'null', substring)
+
+    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})' # missing nulls
     substring = re.sub(missing_nulls, ':null', substring)
 
     missing_commas_1 = r'null\s*([^,\]\}])'
@@ -70,13 +73,11 @@ def clean_listing_string(substring: str) -> str:
 
     extra_char_1 = r'(?<=",)\s*",(?=")'
     substring = re.sub(extra_char_1, '', substring)
-    # extra_char_2 = r'(?<=,")\s*"(?=,")'
-    # substring = re.sub(extra_char_2, '',substring)
 
-    # Replace unicode for '/' with space
-    substring = substring.replace('\\u002F', ' ')
+    # Remove special whitespace characters
+    substring = re.sub(r'\s', ' ', substring)
+
     substring = substring.replace('u002F', ' ')
-    substring = substring.replace('\\u003E', ' ')
     substring = substring.replace('u003E', ' ')
     substring = substring.replace('--', ' ')
     substring = substring.replace(', \"\"', ' ')
@@ -90,6 +91,7 @@ def clean_listing_string(substring: str) -> str:
     closing_braces = len(re.findall(r'}', substring))
     if opening_braces > closing_braces:
         substring += '}'*(opening_braces-closing_braces)
+
     return substring
 
 
@@ -447,7 +449,7 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
                               f'Progress: {progress:5.1f}%     '
                               f'Time left: {days_left:2} days and {time_left:8}')
                 sleep(random.uniform(sleep_min, sleep_max))
-        
+
 
 if __name__ == '__main__':
     # Performs basic logging set up
