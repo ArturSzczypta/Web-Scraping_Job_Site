@@ -1,4 +1,4 @@
-''' Scrape it.pracuj.pl job listings to database'''
+''' Scrape job listings in it.pracuj.pl and save to database'''
 import os
 import csv
 
