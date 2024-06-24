@@ -275,7 +275,6 @@ def main(date_file, skill_set, urls_file, base_url, manual_ulrs_path,
 
 
 if __name__ == '__main__':
-    # Performs basic logging set up
     # Create log file name based on script name
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'

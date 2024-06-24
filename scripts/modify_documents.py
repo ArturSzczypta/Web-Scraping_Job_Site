@@ -89,7 +89,6 @@ def find_duplicates(collection):
     # get the duplicates
     duplicates = list(collection.aggregate(pipeline))
     print(len(duplicates))
-    # get the number of duplicates
     return duplicates
 
 
@@ -102,7 +101,7 @@ def add_pub_month_field(collection):
     for doc in docs:
         pub_str = str(doc["publication_date"])
         pub_dt = datetime.fromisoformat(pub_str)
-        # Use 1 day of the month as default
+        # Use first day of the month as default
         month_year = datetime(pub_dt.year, pub_dt.month, 1).isoformat()
         collection.update_one({'_id': doc['_id']},
                               {'$set': {'publication_month': month_year}})
@@ -216,7 +215,7 @@ def clean_listing_string(substring: str) -> str:
     incorrect_null = r'\bundefined\b'
     substring = re.sub(incorrect_null, 'null', substring)
 
-    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})' # missing nulls
+    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})'
     substring = re.sub(missing_nulls, ':null', substring)
 
     missing_commas_1 = r'null\s*([^,\]\}])'

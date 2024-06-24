@@ -6,9 +6,7 @@ from datetime import datetime
 import logging
 from logging import config
 import json
-import traceback
 import re
-import requests
 
 #Get logging_file_name from main script
 log_file = 'placeholder.log'
@@ -59,26 +57,17 @@ def get_logging_json():
     '''Get logging configuration from JSON file'''
     return LOG_CONF_JSON
 
-# Save exception as single line in logger
-def get_exception():
-    '''Change traceback into single line string'''
-    error_message = traceback.format_exc()
-    # Remove ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    error_message = re.sub(r'\^+', '', error_message)
-    # Remove ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    error_message = re.sub(r'\~+', '', error_message)
+def format_exception(exc_info):
+    '''Format to single line without special characters'''
+    # Remove multiple ^ and ~
+    exc_info = re.sub(r'(\^+|\~+)', '', exc_info)
+    # Remove multiple spaces
+    exc_info = re.sub(r'\s+', ' ', exc_info)
+    #replace new lines with |
+    exc_info = re.sub(r'\n', ' | ', exc_info)
+    return exc_info
 
-    # Split into list, replace new line with - 
-    exc_list = error_message.split('\n')[:-1]
-    exc_list = [x.strip(' ') for x in exc_list]
-    error_message = ' - '.join(exc_list)
-    # replace -  - with - 
-    error_message = re.sub(r'\-  \-', '-', error_message)
-    # Remove excess spaces
-    error_message = re.sub(r' {2,}', ' ', error_message)
-    return error_message
-
-def save_to_log_file(name, file, message):
+def save_to_log_file(name, file, error_message, message):
     '''
     Save message to log file
     :name: __name__
@@ -90,7 +79,6 @@ def save_to_log_file(name, file, message):
     
     time = datetime.now()
     file = os.path.basename(file)
-    error_message = get_exception()
     
     # Create string for log file
     log_message = f'{time} - {name} - {file} - {message}'
@@ -100,18 +88,6 @@ def save_to_log_file(name, file, message):
     # Save message to log file
     with open(file_name, 'a', encoding='utf-8') as f:
         f.write(f'{log_message}\n')
-
-
-#Check internet connection, terminate script if no internet and record error
-def check_internet():
-    '''
-    Loggs error if cannot connect to Google
-    '''
-    try:
-        requests.head("http://www.google.com/", timeout=5)
-        logger.debug('Internet connection active')
-    except:
-        logger.critical('Cannot connect to internet')
 
 def main():
     ''' Performs basic logging set up, if script is runned directly'''
@@ -125,9 +101,6 @@ def main():
     #Configure logging file 
     configure_logging()
     logger = logging.getLogger(__name__)
-
-    #Check internet connection, terminate script if no internet
-    check_internet()
 
 if __name__ == '__main__':
     main()

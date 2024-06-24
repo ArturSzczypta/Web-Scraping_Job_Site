@@ -10,7 +10,6 @@ from scripts import scrape_listings as scrape_listings
 from scripts import mongodb_functions as mongodb
 from scripts import email_functions as e
 
-#Performs basic logging set up
 #Create log file name based on script name
 log_file_name = os.path.basename(__file__).split('.')
 log_file_name = f'{log_file_name[0]}_log.log'
@@ -31,7 +30,7 @@ SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
 FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
 INVALID_JSON = os.path.join(TXT_DIR, 'invalid_json.txt')
 
-# Scrapped website search resutls
+# Manually scrapped website search resutls
 MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping')
 # Check if there are any files in the directory
 files = os.scandir(MANUAL_URLS)
