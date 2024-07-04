@@ -6,7 +6,7 @@ This project scrapes job listings from polish job site "Pracuj.pl". Listings are
 
 1. Inspect what technologies are mainly used in Poland with Python and SQL
 2. Deeper dive into logging and error handling
-3. Hand on experience with web scrapping
+3. Hands on experience with web scrapping
 4. Hands on experience with No-SQL database
 
 ## Compatablitity
