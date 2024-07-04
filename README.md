@@ -47,12 +47,11 @@ Originally the file scraped the url's automatically. Unfortunately, since July 2
 The way the technologies and specializations are searched also changed.
 I added a option for using manually scrapped website data. Script will extract the url's for scraping.
 
-Scraping job offers every 2 weeks was sufficient. I advise to scrape once a week, preferably during the weekend.
-
 Depending on the ammout of offers, scraping may take few hours. This is caused by build in time delays. Without these delays, the website will block your access for few days.
 
 ## Consecutive uses
 Run 'main.py' using Python3. The project saves last used job offer links to prevent repeats ~~and saves last usage date to continue from where it stopped.~~
+Scraping job offers every 2 weeks was sufficient. I advise to scrape once a week, preferably during the weekend.
 
 ## Known issues
 1. Manually scrapping url's is very inconvinient.
