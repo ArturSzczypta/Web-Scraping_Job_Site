@@ -11,9 +11,9 @@ This project scrapes job listings from polish job site "Pracuj.pl". Listings are
 
 ## Compatablitity
 
-Python 3.11 on Windows 10
-Chrome webbrowser version 114.0.5735.199.
-Sendgrid for sending emails
+- Python 3.11
+- Chrome webbrowser version 114.0.5735.199.
+- Sendgrid for sending emails
 
 ## Installation
 
