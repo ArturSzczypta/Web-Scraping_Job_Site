@@ -54,7 +54,7 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
 
 # Scraping job listings from job site
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
-'''
+
 #Saving extraction results to MongoDB Atlas
 # Connect to DB
 client = mongodb.return_db_client()
@@ -62,9 +62,8 @@ client = mongodb.return_db_client()
 # Check connection to DB
 try:
     mongodb.command_ping(client)
-except:
-    logger.critical('MongoDB - Unable to connect with database')
-    l.save_to_log_file(__name__, __file__, 'MongoDB - Unable to connect with database')
+except Exception as e:
+    logger.critical(f'MongoDB - Unable to connect with database - {repr(e)}')
     e.send_error_email('MongoDB - Unable to connect with database')
 
 db = client['Web_Scraping_Job_Site']
@@ -83,10 +82,10 @@ try:
     parent_path = os.path.dirname(__file__)
     parent_directory = os.path.basename(parent_path)
     subject = f'Summary of executing {parent_directory}'
-    message = fScraping Succesfull \n
+    message = f'''Scraping Succesfull \n
     Succesfull Extractions: {succesfull}\n
     Failed Extractions:     {failed}\n
-    Database updated.
+    Database updated.'''
     # Send email
     e.send_email(subject, message)
     
@@ -94,8 +93,6 @@ try:
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
     
-except:
-    logger.critical('MongoDB - Cannot save documents to database')
-    l.save_to_log_file(__name__, __file__, 'MongoDB - Cannot save documents to database')
+except Exception as e:
+    logger.critical(f'MongoDB - Cannot save documents to database - {repr(e)}')
     e.send_error_email('MongoDB - Cannot save documents to database')
-'''

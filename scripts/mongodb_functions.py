@@ -2,8 +2,6 @@
 import os
 import datetime
 import json
-import re
-import string
 
 import logging
 from logging import config
@@ -12,9 +10,6 @@ from dotenv import load_dotenv
 from pymongo.mongo_client  import MongoClient
 from pymongo.server_api import ServerApi
 
-
-import logging_functions as l
-import email_functions as e
 
 
 def return_db_client():
@@ -37,11 +32,8 @@ def check_connection(client):
     try:
         client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
-    except:
-        logger.critical('check_connection - Unable to connect with database')
-        e.error_email('Check_connection - Unable to connect with database')
-        l.save_to_log_file(__name__, __file__,
-                           'Unable to connect with database')
+    except Exception as e:
+        logger.critical(f'check_connection - Unable to connect with database - {repr(e)}')
 
 
 def save_str_to_file(str, file_path):
@@ -105,10 +97,8 @@ if __name__ == '__main__':
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
-    l.get_log_file_name(log_file_name)
 
     # Configure logging file
-    l.configure_logging()
     logger = logging.getLogger(__name__)
 
     # Saving succesfull_extractions to MongoDB Atlas

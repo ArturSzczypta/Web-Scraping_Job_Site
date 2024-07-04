@@ -15,15 +15,8 @@ from bs4 import BeautifulSoup
 import logging
 from logging import config
 
-if __name__ != '__main__':
-    from . import logging_functions as l
-    from . import email_functions as e
-else:
-    import logging_functions as l
-    import email_functions as e
 
 # Configure logging file
-l.configure_logging()
 logger = logging.getLogger(__name__)
 
 
@@ -57,10 +50,8 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
             # Since 2022-05-18
             EC.presence_of_element_located((By.XPATH, '//button[@data-test="button-submitCookie"]')))
         accept_button.click()
-    except:
-        logger.error('scrape_one_page - Terms of Service button not found'
-                     ' - {l.get_exception()}')
-        e.error_email('scrape_one_page - Terms of Service button not found')
+    except Exception as e:
+        logger.error(f'Terms of Service button not found - {repr(e)}')
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min*2, sleep_max*2))
@@ -106,10 +97,8 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
             # Wait for the job offer details to load
             sleep(random.uniform(sleep_min, sleep_max))
 
-        except:
-            logger.error('Unable to click on localisation element')
-            l.save_to_log_file(__name__, __file__,
-                               'Unable to click on localisation element')
+        except Exception as e:
+            logger.error(f'Unable to click on localisation element - {repr(e)}')
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -279,10 +268,8 @@ if __name__ == '__main__':
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
-    l.get_log_file_name(log_file_name)
 
     # Configure logging file
-    l.configure_logging()
     logger = logging.getLogger(__name__)
 
     # Scrape just SQL and Python as an example

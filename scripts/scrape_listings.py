@@ -12,15 +12,8 @@ import copy
 import logging
 from logging import config
 
-if __name__ != '__main__':
-    from . import logging_functions as l
-    from . import email_functions as e
-else:
-    import logging_functions as l
-    import email_functions as e
 
 # Configure logging file
-l.configure_logging()
 logger = logging.getLogger(__name__)
 
 
@@ -415,20 +408,16 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
                 save_str_to_file(url, failed_urls)
                 failures += 1
                 logger.error(f'Opening url failed: {url}')
-                l.save_to_log_file(__name__, __file__,
-                                   f'Opening url failed: {url}')
                 sleep(random.uniform(sleep_min, sleep_max))
                 continue
 
             try:
                 listing_pipeline_main(substring, _tech_set, succesfull_file)
                 succeses += 1
-            except:
+            except Exception as e:
                 save_str_to_file(substring, failed_file)
                 failures += 1
-                logger.error(f'Cleaning listing failed: {url}')
-                l.save_to_log_file(__name__, __file__,
-                                   f'Cleaning listing failed: {url}')
+                logger.error(f'Cleaning listing failed: {url} - {repr(e)}')
             finally:
                 # Print progress if console is set to INFO or DEBUG
                 if console_level < 30:
@@ -457,10 +446,8 @@ if __name__ == '__main__':
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
-    l.get_log_file_name(log_file_name)
 
     # Configure logging file
-    l.configure_logging()
     logger = logging.getLogger(__name__)
 
     # Required files
