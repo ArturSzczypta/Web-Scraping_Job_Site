@@ -10,13 +10,13 @@ from scripts import scrape_listings as scrape_listings
 from scripts import mongodb_functions as mongodb
 from scripts import email_functions as e
 
-#Create log file name based on script name
+
 log_file_name = os.path.basename(__file__).split('.')
 log_file_name = f'{log_file_name[0]}_log.log'
 
 l.get_log_file_name(log_file_name)
 
-#Configure logging file
+# Configure logging file
 l.configure_logging()
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
             searched_set.update({row['Search']:row['Search']})
 
 # Scraping Urls from job site
-#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
+# scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
 
 # Scraping job listings from job site
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
