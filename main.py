@@ -10,14 +10,14 @@ from scripts import scrape_listings as scrape_listings
 from scripts import mongodb_functions as mongodb
 from scripts import email_functions as e
 
-#Performs basic logging set up
-#Create log file name based on script name
+# Performs basic logging set up
+# Create log file name based on script name
 log_file_name = os.path.basename(__file__).split('.')
 log_file_name = f'{log_file_name[0]}_log.log'
 
 l.get_log_file_name(log_file_name)
 
-#Configure logging file
+# Configure logging file
 l.configure_logging()
 logger = logging.getLogger(__name__)
 
@@ -51,11 +51,11 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
             searched_set.update({row['Search']:row['Search']})
 
 # Scraping Urls from job site
-#scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
+# scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
 
 # Scraping job listings from job site
 scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
-'''
+
 #Saving extraction results to MongoDB Atlas
 # Connect to DB
 client = mongodb.return_db_client()
@@ -84,10 +84,10 @@ try:
     parent_path = os.path.dirname(__file__)
     parent_directory = os.path.basename(parent_path)
     subject = f'Summary of executing {parent_directory}'
-    message = fScraping Succesfull \n
+    message = f'''Scraping Succesfull \n
     Succesfull Extractions: {succesfull}\n
     Failed Extractions:     {failed}\n
-    Database updated.
+    Database updated.'''
     # Send email
     e.send_email(subject, message)
     
@@ -99,4 +99,3 @@ except:
     logger.critical('MongoDB - Cannot save documents to database')
     l.save_to_log_file(__name__, __file__, 'MongoDB - Cannot save documents to database')
     e.send_error_email('MongoDB - Cannot save documents to database')
-'''
