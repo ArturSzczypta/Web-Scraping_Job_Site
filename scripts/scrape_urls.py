@@ -1,5 +1,6 @@
 '''Web scraping popular polish job site, Pracuj.pl'''
 import os
+from pathlib import Path
 from time import sleep
 import datetime
 import re
@@ -13,11 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 
 import logging
-from logging import config
-
-
-# Configure logging file
-logger = logging.getLogger(__name__)
+import logging_functions as lf
 
 
 def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
@@ -33,7 +30,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
     # chrome_options.add_argument('--disable-gpu')
 
     # Initialize the Chrome browser using ChromeDriver as Service object
-    browser = webdriver.Chrome(service=Service(chromedriver_path), 
+    browser = webdriver.Chrome(service=Service(chromedriver_path),
                                options=chrome_options)
 
     browser.get(current_page)
@@ -51,7 +48,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
             EC.presence_of_element_located((By.XPATH, '//button[@data-test="button-submitCookie"]')))
         accept_button.click()
     except Exception as e:
-        logger.error(f'Terms of Service button not found - {repr(e)}')
+        logging.error(f'Terms of Service button not found - {repr(e)}')
 
     # Wait for the page to load
     sleep(random.uniform(sleep_min*2, sleep_max*2))
@@ -74,9 +71,10 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
             sleep(random.uniform(sleep_min*2, sleep_max*2))
 
     if elements_to_click != []:
-        logger.info(f'Found {len(elements_to_click)} "lokalizacje" elements in {current_page}')
+        logging.info(f'Found {len(elements_to_click)}'
+                     '"lokalizacje" elements in {current_page}')
     else:
-        logger.info(f'No "lokalizacje" elements found in {current_page}')
+        logging.info(f'No "lokalizacje" elements found in {current_page}')
 
     # Click on each element
     for element in elements_to_click:
@@ -89,7 +87,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
 
             # Click on the element using JavaScript
             browser.execute_script('arguments[0].click();', element)
-            logger.debug(f'Clicked on element {element.text}')
+            logging.debug(f'Clicked on element {element.text}')
 
             # Scroll the page down to bring the details into view
             browser.execute_script('window.scrollBy(0, 300);')
@@ -98,7 +96,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
             sleep(random.uniform(sleep_min, sleep_max))
 
         except Exception as e:
-            logger.error(f'Unable to click on localisation element - {repr(e)}')
+            logging.error(f'Unable to click localisation element - {repr(e)}')
 
     soup = BeautifulSoup(browser.page_source, 'html.parser')
 
@@ -114,7 +112,7 @@ def scrape_one_page(current_page, sleep_min=6, sleep_max=10) -> tuple:
         date_obj = datetime.datetime.strptime(date_str, '%d %B %Y').date()
         unique_dates.add(date_obj)
     browser.quit()
-    logger.info(f'Found {len(http_links)} links on page {current_page}')
+    logging.info(f'Found {len(http_links)} links on page {current_page}')
 
     return http_links, unique_dates
 
@@ -135,7 +133,7 @@ def combine_files(manual_files_path) -> str:
             with open(file, encoding='utf-8') as infile:
                 for line in infile:
                     outfile.write(line)
-    logger.debug(f'Combined text files into {combined_file}')
+    logging.debug(f'Combined text files into {combined_file}')
     return combined_file
 
 
@@ -164,7 +162,7 @@ def scrape_from_file(combined_file) -> set:
 def get_cut_off_date(date_file) -> datetime.date:
     '''Get last logging date from file'''
     last_date = None
-    logger.debug(f'get date path: {date_file}')
+    logging.debug(f'get date path: {date_file}')
 
     with open(date_file, 'r', encoding='UTF-8') as file:
         line = file.readline()
@@ -172,7 +170,7 @@ def get_cut_off_date(date_file) -> datetime.date:
 
     # To prevent gaps, set cut-off date to day before 'last_date'
     cut_off_date = last_date - datetime.timedelta(days=1)
-    logger.info(f'Cut-off date: {cut_off_date}')
+    logging.info(f'Cut-off date: {cut_off_date}')
     return cut_off_date
 
 
@@ -223,7 +221,7 @@ def update_file(http_links, urls_file) -> None:
     with open(urls_file, 'r+', encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = http_links - old_records
-        logger.info(f'New urls: {len(new_records)}')
+        logging.info(f'New urls: {len(new_records)}')
         # Clear out the content of the file
         file.seek(0)
         file.truncate()
@@ -247,10 +245,8 @@ def save_set_to_file(new_set, file_path) -> None:
 
 def main(date_file, skill_set, urls_file, base_url, manual_ulrs_path,
          iterable_url=None, manual_files_exist=False):
-    ''' Main method of scrape_urls.py
-    Scrape all urls with job offers containing skill set, then save to file'''
+    '''Scrape all urls with job offers and save them to file'''
 
-    # Scrape urls from manual files
     if manual_files_exist:
         combined_file = combine_files(manual_ulrs_path)
         http_links_main = scrape_from_file(combined_file)
@@ -264,35 +260,31 @@ def main(date_file, skill_set, urls_file, base_url, manual_ulrs_path,
 
 
 if __name__ == '__main__':
-    # Create log file name based on script name
-    log_file_name = os.path.basename(__file__).split('.')
-    log_file_name = f'{log_file_name[0]}_log.log'
+    current_file_name = Path(__file__).stem
+    log_file_name = f'{current_file_name}_log.log'
 
+    BASE_DIR = Path(__file__).parent.parent
+    LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+    LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
 
-    # Configure logging file
-    logger = logging.getLogger(__name__)
+    lf.configure_logging(LOGGING_JSON, LOGGING_FILE)
+    logging.error('Testing saving logs to file.')
 
     # Scrape just SQL and Python as an example
     searched_set = {'itth=36', 'itth=37'}
 
-    # Required files
-    CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
-    PARENT_DIR = os.path.dirname(CURRENT_DIR)
-    TXT_DIR = os.path.join(PARENT_DIR, 'txt_files')
-    FOR_SEARCH = os.path.join(TXT_DIR, 'for_search.csv')
-    LAST_DATE_LOG = os.path.join(TXT_DIR, 'last_date.log')
-    SCRAPPED_URLS = os.path.join(TXT_DIR, 'scrapped_urls.txt')
+    TXT_DIR = BASE_DIR / 'txt_files'
+    FOR_SEARCH = TXT_DIR / 'for_search.csv'
+    LAST_DATE_LOG = TXT_DIR / 'last_date.log'
+    SCRAPPED_URLS = TXT_DIR / 'scrapped_urls.txt'
+    MANUAL_URLS = TXT_DIR / 'manual_url_scraping'
 
-    # Scrapped website search resutls
-    MANUAL_URLS = os.path.join(TXT_DIR, 'manual_url_scraping')
-    # Check if there are any files in the directory
-    files = os.scandir(MANUAL_URLS)
-    manual_files_exist = any(file.is_file() for file in files)
+    manual_files = Path(MANUAL_URLS).iterdir()
+    manual_files_exist = any(file.is_file() for file in manual_files)
 
     # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill end
     BASE_URL = 'https://it.pracuj.pl/praca?{}'
     ITERABLE_URL = 'https://it.pracuj.pl/praca?pn={}&{}'
 
-    # Scraping Urls from job site
     main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, MANUAL_URLS,
          ITERABLE_URL, manual_files_exist)

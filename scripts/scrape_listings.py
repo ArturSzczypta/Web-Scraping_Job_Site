@@ -2,6 +2,7 @@
 Web scraping job listing details on popular polish job site, Pracuj.pl
 '''
 import os
+from pathlib import Path
 import re
 import json
 from time import sleep, gmtime, strftime
@@ -10,11 +11,7 @@ import requests
 import copy
 
 import logging
-from logging import config
-
-
-# Configure logging file
-logger = logging.getLogger(__name__)
+import logging_functions as lf
 
 
 def save_dict(new_dict: dict, file_path: str) -> None:
@@ -56,7 +53,7 @@ def clean_listing_string(substring: str) -> str:
     incorrect_null = r'\bundefined\b'
     substring = re.sub(incorrect_null, 'null', substring)
 
-    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})' # missing nulls
+    missing_nulls = r':\s*(,|"\s*"|\]|\[\s*\]|\}|\{\s*\})'
     substring = re.sub(missing_nulls, ':null', substring)
 
     missing_commas_1 = r'null\s*([^,\]\}])'
@@ -90,9 +87,9 @@ def clean_listing_string(substring: str) -> str:
 
 def change_str_to_dict(substring: str) -> dict:
     '''  Convert the string to a dictionary using the json module'''
-    logger.debug(substring)
+    logging.debug(substring)
     my_dict = json.loads(substring)
-    logger.debug(json.dumps(my_dict, ensure_ascii=False, indent=2))
+    logging.debug(json.dumps(my_dict, ensure_ascii=False, indent=2))
     return my_dict
 
 
@@ -186,7 +183,8 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
     if my_dict['workplaces'][0].get('inlandLocation') and \
             my_dict['workplaces'][0]['inlandLocation'].get('location') and \
             my_dict['workplaces'][0]['inlandLocation']['location'].get('name'):
-        location = my_dict['workplaces'][0]['inlandLocation']['location']['name']
+        location = my_dict['workplaces'][0]['inlandLocation']['location']
+        ['name']
         location = clean_location(location)
 
     contract_type = my_dict['typesOfContracts'][0]['name']
@@ -203,8 +201,10 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
         is_salary = True
         salary_from = my_dict['typesOfContracts'][0]['salary']['from']
         salary_to = my_dict['typesOfContracts'][0]['salary']['to']
-        salary_currency = my_dict['typesOfContracts'][0]['salary']['currency']['code']
-        salary_long_form = my_dict['typesOfContracts'][0]['salary']['timeUnit']['longForm']['name']
+        salary_currency = my_dict['typesOfContracts'][0]['salary']
+        ['currency']['code']
+        salary_long_form = my_dict['typesOfContracts'][0]['salary']['timeUnit']
+        ['longForm']['name']
 
     # Assuming both dates always comply to ISO 8601 format, UTC time zone,
     # scraping only YYYY-mm-dd
@@ -224,9 +224,11 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
         if section['sectionType'] == 'technologies':
             for item in section['subSections']:
                 if item['sectionType'] == 'technologies-expected':
-                    tech_expected += [tech['name'] for tech in item['model']['customItems']]
+                    tech_expected += [tech['name'] for tech in item['model']
+                                      ['customItems']]
                 elif item['sectionType'] == 'technologies-optional':
-                    tech_optional += [tech['name'] for tech in item['model']['customItems']]
+                    tech_optional += [tech['name'] for tech in item['model']
+                                      ['customItems']]
         if section['sectionType'] == 'requirements':
             for item in section['subSections']:
                 if item['sectionType'] == 'requirements-expected':
@@ -241,7 +243,8 @@ def simplify_dictionary(my_dict, tech_found) -> dict:
                         req_optional += list(item['model']['bullets'])
 
         elif section['sectionType'] == 'development-practices':
-            dev_practices = [item['primaryTargetSiteName'] for item in section['model']['items']]
+            dev_practices = [item['primaryTargetSiteName'] for item in
+                             section['model']['items']]
 
         elif section['sectionType'] == 'responsibilities':
             if 'bullets' in section['model']:
@@ -347,7 +350,7 @@ def update_file(new_set, file_path) -> None:
     with open(file_path, 'r+', encoding='utf-8') as file:
         old_records = set(line.strip() for line in file)
         new_records = new_set - old_records
-        logger.info(f'New listings: {len(new_records)}')
+        logging.info(f'New listings: {len(new_records)}')
         # Clear out the content of the file
         file.seek(0)
         file.truncate()
@@ -367,8 +370,7 @@ def listing_pipeline_main(substring, tech_set, file_name) -> None:
 
 def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
          succesfull_file, failed_file, sleep_min=4, sleep_max=7) -> None:
-    ''' Main method of scrape_listings.py
-    Runs if script called directly'''
+    ''' Main method of scrape_listings.py runs if script called directly'''
     succeses = 0
     failures = 0
     progress = 0
@@ -404,10 +406,10 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
             try:
                 substring = scrape_listing_from_json(url)
                 save_str_to_file(url, succesfull_urls)
-            except:
+            except Exception as e:
                 save_str_to_file(url, failed_urls)
                 failures += 1
-                logger.error(f'Opening url failed: {url}')
+                logging.error(f'Opening url failed: {url} - {repr(e)}')
                 sleep(random.uniform(sleep_min, sleep_max))
                 continue
 
@@ -417,7 +419,7 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
             except Exception as e:
                 save_str_to_file(substring, failed_file)
                 failures += 1
-                logger.error(f'Cleaning listing failed: {url} - {repr(e)}')
+                logging.error(f'Cleaning listing failed: {url} - {repr(e)}')
             finally:
                 # Print progress if console is set to INFO or DEBUG
                 if console_level < 30:
@@ -428,7 +430,7 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
                         print(f'Successes: {succeses:5}     '
                               f'Failures: {failures:5}     '
                               f'Progress: {progress:6}%     '
-                              f'Time left: {days_left:2} days and {time_left:8}')
+                              f'Time left: {days_left:2} days {time_left:8}')
 
                     if console_level == 20 and \
                             int(progress) > last_progress:
@@ -436,31 +438,28 @@ def main(scraped_urls, file_with_tech, succesfull_urls, failed_urls,
                         print(f'Successes: {succeses:5}     '
                               f'Failures: {failures:5}     '
                               f'Progress: {progress:5.1f}%     '
-                              f'Time left: {days_left:2} days and {time_left:8}')
+                              f'Time left: {days_left:2} days {time_left:8}')
                 sleep(random.uniform(sleep_min, sleep_max))
 
 
 if __name__ == '__main__':
-    # Performs basic logging set up
-    # Create log file name based on script name
+
     log_file_name = os.path.basename(__file__).split('.')
     log_file_name = f'{log_file_name[0]}_log.log'
 
+    BASE_DIR = Path(__file__).parent
+    LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+    LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
 
-    # Configure logging file
-    logger = logging.getLogger(__name__)
+    lf.configure_logging(LOGGING_JSON, LOGGING_FILE)
 
-    # Required files
-
-    CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
-    PARENT_DIR = os.path.dirname(CURRENT_DIR)
-    TXT_DIR = os.path.join(PARENT_DIR, 'txt_files')
-    SCRAPPED_URLS = os.path.join(TXT_DIR, 'scrapped_urls.txt')
-    TECH_SEARCHED_FOR = os.path.join(TXT_DIR, 'technologies.txt')
-    SUCCESFULL_URLS = os.path.join(TXT_DIR, 'succesfull_urls.txt')
-    FAILED_URLS = os.path.join(TXT_DIR, 'failed_urls.txt')
-    SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
-    FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
+    TXT_DIR = BASE_DIR / 'txt_files'
+    SCRAPPED_URLS = TXT_DIR / 'scrapped_urls.txt'
+    TECH_SEARCHED_FOR = TXT_DIR / 'technologies.txt'
+    SUCCESFULL_URLS = TXT_DIR / 'succesfull_urls.txt'
+    FAILED_URLS = TXT_DIR / 'failed_urls.txt'
+    SUCCESFULL_EXTRACTIONS = TXT_DIR / 'succesfull_extractions.txt'
+    FAILED_EXTRACTIONS = TXT_DIR / 'failed_extractions.txt'
 
     # Scraping job listings from job site
     main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_URLS, FAILED_URLS,

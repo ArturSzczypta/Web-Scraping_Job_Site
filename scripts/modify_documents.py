@@ -2,6 +2,7 @@
 import re
 from datetime import datetime
 import mongodb_functions as mongo
+import scrape_listings as s_l
 
 
 def remove_single_tech(collection, tech_name):
@@ -30,21 +31,24 @@ def modify_location(collection):
 
     # Update the documents in the collection
     result = collection.update_many({'location': {'$regex': pattern}},
-                                        {'$set': {'location': {'$regexReplace':
-                                                   {'input': '$location',
-                                                    'find': pattern,
-                                                    'replacement': '$1'}}}})
+                                    {'$set': {'location': {'$regexReplace': {
+                                        'input': '$location',
+                                        'find': pattern,
+                                        'replacement': '$1'
+                                    }}}})
     print(result.modified_count, 'documents updated')
 
 
 def modify_regions(collection, approved_values):
     for document in collection.find():
         current_region = document.get('region')
-        
+
         if current_region not in approved_values:
-            cleaned_region = clean_region(current_region)
-            collection.update_one({'_id': document['_id']}, {'$set': {'region': cleaned_region}})
-            print(f"Document {document['_id']} updated with region {cleaned_region}.")
+            cleaned_region = s_l.clean_region(current_region)
+            collection.update_one({'_id': document['_id']},
+                                  {'$set': {'region': cleaned_region}})
+            print(f'''Document {document['_id']}
+                   updated with region {cleaned_region}.''')
 
 
 def remove_invalid_field(collection, field):
@@ -65,7 +69,7 @@ def clean_regions(collection):
     '''Replace the region field with proper voivodeship name'''
     for doc in collection.find({'region': {'$ne': ''}}):
         # call the clean_region function
-        new_region = clean_region(doc['region'])
+        new_region = s_l.clean_region(doc['region'])
         collection.update_one({'_id': doc['_id']},
                               {'$set': {'region': new_region}})
         print('regions replaced')
@@ -144,7 +148,7 @@ def update_non_string_locations(collection):
     update_query = {'$set': {'location': None}}
     result = collection.update_many(query, update_query)
 
-    print(f"{result.modified_count} documents updated with 'location' set to None.")
+    print(f"{result.modified_count} documents 'location' set to None.")
 
 
 def count_region_values(collection):
@@ -175,7 +179,6 @@ def count_region_values(collection):
             }
         }
     ]
-
     result = collection.aggregate(pipeline)
 
     for doc in result:
@@ -194,7 +197,6 @@ def count_unique_region_strings(collection):
             }
         }
     ]
-
     result = collection.aggregate(pipeline)
 
     for doc in result:
@@ -264,6 +266,10 @@ def modify_listing_string(file_in, file_out):
 
 if __name__ == '__main__':
     '''Performs basic database operations'''
-    file_1 = 'failed_extractions.txt'
-    file_2 = 'cleaned.txt'
-    modify_listing_string(file_1, file_2)
+    _client = mongo.return_db_client()
+    mongo.check_connection(_client)
+
+    db = _client['Web_Scraping_Job_Site']
+    collection = db['Job_Listings']
+
+    # Add functions you want to run

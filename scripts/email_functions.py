@@ -1,16 +1,21 @@
 ''' Send email with error messages and execution details'''
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from sendgrid import Email, To, Content
 
-load_dotenv(os.path.join(os.path.dirname(__file__), \
-                             '..','.env.txt'))
+import logging
+import logging_functions as lf
+
+ENV_DIR = Path(__file__).parent.parent.parent / '.env.txt'
+load_dotenv(str(ENV_DIR))
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 MY_EMAIL = os.getenv('MY_EMAIL')
 EMAIL_TO = os.getenv('EMAIL_TO')
+
 
 def send_email(subject, message, recipient=EMAIL_TO):
     ''' Send email'''
@@ -23,15 +28,19 @@ def send_email(subject, message, recipient=EMAIL_TO):
     mail_json = mail.get()
 
     # Send an HTTP POST request to /mail/send
-    response = sg.client.mail.send.post(request_body=mail_json)
-    print(response.status_code)
-    print(response.headers)
+    try:
+        response = sg.client.mail.send.post(request_body=mail_json)
+        print(response.status_code)
+        print(response.headers)
+    except Exception as e:
+        logging.error(f'Unable to send email: {repr(e)}')
+
 
 def error_email(error_message):
     ''' Send email with critical error messages and execution details'''
 
-    cwd = os.path.basename(os.getcwd())
-    script_name = os.path.basename(__file__)
+    cwd = str(Path.cwd().name)
+    script_name = str(Path(__file__).name)
 
     subject = f'Error {cwd} - {script_name}'
     message = f'''Error Notification \n
@@ -39,20 +48,26 @@ def error_email(error_message):
     Error message:\n{error_message}'''
     send_email(subject, message)
 
+
 if __name__ == '__main__':
-    #Performs basic logging set up
-    #Get this script name
-    log_file_name = os.path.basename(__file__).split('.')
-    log_file_name = f'{log_file_name[0]}_log.log'
+    current_file_name = Path(__file__).stem
+    log_file_name = f'{current_file_name}_log.log'
+
+    BASE_DIR = Path(__file__).parent.parent
+    LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+    LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
+
+    lf.configure_logging(LOGGING_JSON, LOGGING_FILE)
+    logging.error('Testing saving logs to file.')
 
     # Send test email
     sg = SendGridAPIClient(api_key=SENDGRID_API_KEY)
     sender_email = Email('arturszczypta@gmail.com')
     receiver_email = To('arturszczypta@gmail.com')
 
-    subject = "Sending with SendGrid is Fun"
-    content = Content("text/plain", "and easy to do anywhere, even with Python")
-    mail = Mail(sender_email,receiver_email, subject, content)
+    subject = "Test Email"
+    content = Content("Sended using SendGrid", "and Python")
+    mail = Mail(sender_email, receiver_email, subject, content)
 
     mail_json = mail.get()
 

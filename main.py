@@ -1,40 +1,38 @@
 ''' Scrape job listings in it.pracuj.pl and save to database'''
-import os
-import csv
 
+from pathlib import Path
+
+import csv
 import logging
-from logging import config
-from scripts import logging_functions as l
+from scripts import logging_functions as lf
 from scripts import scrape_urls as scrape_urls
 from scripts import scrape_listings as scrape_listings
 from scripts import mongodb_functions as mongodb
-from scripts import email_functions as e
+from scripts import email_functions as ef
 
 
-log_file_name = os.path.basename(__file__).split('.')
-log_file_name = f'{log_file_name[0]}_log.log'
+current_file_name = Path(__file__).stem
+log_file_name = f'{current_file_name}_log.log'
 
-l.get_log_file_name(log_file_name)
+BASE_DIR = Path(__file__).parent
+LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
 
-# Configure logging file
-l.configure_logging()
-logger = logging.getLogger(__name__)
+lf.configure_logging(LOGGING_JSON, LOGGING_FILE)
 
-# Required files
-TXT_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'txt_files')
-FOR_SEARCH = os.path.join(TXT_DIR,'for_search.csv')
-LAST_DATE_LOG = os.path.join(TXT_DIR,'last_date.log')
-SCRAPPED_URLS = os.path.join(TXT_DIR,'scrapped_urls.txt')
-TECH_SEARCHED_FOR = os.path.join(TXT_DIR,'technologies.txt')
-SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
-FAILED_EXTRACTIONS = os.path.join(TXT_DIR, 'failed_extractions.txt')
-INVALID_JSON = os.path.join(TXT_DIR, 'invalid_json.txt')
+TXT_DIR = BASE_DIR / 'txt_files'
+FOR_SEARCH = TXT_DIR / 'for_search.csv'
+LAST_DATE_LOG = TXT_DIR / 'last_date.log'
+SCRAPPED_URLS = TXT_DIR / 'scrapped_urls.txt'
+TECH_SEARCHED_FOR = TXT_DIR / 'technologies.txt'
+SUCCESFULL_EXTRACTIONS = TXT_DIR / 'succesfull_extractions.txt'
+FAILED_EXTRACTIONS = TXT_DIR / 'failed_extractions.txt'
+INVALID_JSON = TXT_DIR / 'invalid_json.txt'
+MANUAL_URLS = TXT_DIR / 'manual_url_scraping'
 
-# Manually scrapped website search resutls
-MANUAL_URLS = os.path.join(TXT_DIR,'manual_url_scraping')
 # Check if there are any files in the directory
-files = os.scandir(MANUAL_URLS)
-manual_files_exist = any(file.is_file() for file in files)
+manual_files = Path(MANUAL_URLS).iterdir()
+manual_files_exist = any(file.is_file() for file in manual_files)
 
 
 # For Search, _BASE_URL will be used first, then _ITERABLE_URL untill the end
@@ -47,24 +45,23 @@ with open(FOR_SEARCH, 'r', encoding='utf-8') as file:
     reader = csv.DictReader(file, delimiter=',')
     for row in reader:
         if 'Search' in row:
-            searched_set.update({row['Search']:row['Search']})
+            searched_set.update({row['Search']: row['Search']})
 
-# Scraping Urls from job site
-# scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL, ITERABLE_URL, MANUAL_URLS, manual_files_exist)
+
+scrape_urls.main(LAST_DATE_LOG, searched_set, SCRAPPED_URLS, BASE_URL,
+                 ITERABLE_URL, MANUAL_URLS, manual_files_exist)
 
 # Scraping job listings from job site
-scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR, SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
+scrape_listings.main(SCRAPPED_URLS, TECH_SEARCHED_FOR,
+                     SUCCESFULL_EXTRACTIONS, FAILED_EXTRACTIONS)
 
-#Saving extraction results to MongoDB Atlas
-# Connect to DB
+
 client = mongodb.return_db_client()
-
-# Check connection to DB
 try:
     mongodb.command_ping(client)
 except Exception as e:
-    logger.critical(f'MongoDB - Unable to connect with database - {repr(e)}')
-    e.send_error_email('MongoDB - Unable to connect with database')
+    logging.critical(f'MongoDB - Unable to connect with database - {repr(e)}')
+    ef.send_error_email('MongoDB - Unable to connect with database')
 
 db = client['Web_Scraping_Job_Site']
 collection_succesfull = db['Job_Listings']
@@ -72,27 +69,28 @@ collection_failed = db['Failed_Urls']
 
 # Record if there was a failure, clear files
 try:
-    mongodb.save_dict_from_file_to_collection(collection_succesfull, SUCCESFULL_EXTRACTIONS, INVALID_JSON)
-    
+    mongodb.save_dict_from_file_to_collection(collection_succesfull,
+                                              SUCCESFULL_EXTRACTIONS,
+                                              INVALID_JSON)
+
     # Preparing email
     with open(SUCCESFULL_EXTRACTIONS, 'r') as file:
         succesfull = sum(1 for _ in file)
     with open(FAILED_EXTRACTIONS, 'r') as file:
         failed = sum(1 for _ in file)
-    parent_path = os.path.dirname(__file__)
-    parent_directory = os.path.basename(parent_path)
-    subject = f'Summary of executing {parent_directory}'
+    project_folder = BASE_DIR.name
+    subject = f'Summary of executing {project_folder}'
     message = f'''Scraping Succesfull \n
     Succesfull Extractions: {succesfull}\n
     Failed Extractions:     {failed}\n
     Database updated.'''
-    # Send email
-    e.send_email(subject, message)
-    
-    #Clearing listing file
+
+    ef.send_email(subject, message)
+
     with open(SUCCESFULL_EXTRACTIONS, 'w', encoding='utf-8') as file:
         file.truncate(0)
-    
+
 except Exception as e:
-    logger.critical(f'MongoDB - Cannot save documents to database - {repr(e)}')
-    e.send_error_email('MongoDB - Cannot save documents to database')
+    logging.critical(f'MongoDB - Cannot save documents to database'
+                     f' - {repr(e)}')
+    ef.send_error_email('MongoDB - Cannot save documents to database')

@@ -1,15 +1,15 @@
 ''' Set of methods for connecting and using MongoDB Atlas database'''
 import os
+from pathlib import Path
 import datetime
 import json
 
 import logging
-from logging import config
+import logging_functions as lf
 
 from dotenv import load_dotenv
-from pymongo.mongo_client  import MongoClient
+from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
 
 
 def return_db_client():
@@ -33,7 +33,8 @@ def check_connection(client):
         client.admin.command('ping')
         print("Pinged your deployment. You successfully connected to MongoDB!")
     except Exception as e:
-        logger.critical(f'check_connection - Unable to connect with database - {repr(e)}')
+        logging.critical(f'check_connection - Unable to connect with database'
+                         f' - {repr(e)}')
 
 
 def save_str_to_file(str, file_path):
@@ -48,7 +49,7 @@ def save_dict_from_file_to_collection(collection, extractions, invalid_json):
     documents = []
     with open(extractions, 'r', encoding='utf-8') as file:
         lines = [line.strip() for line in file.readlines()]
-        
+
         # Print the first line for inspection
         # Convert the contents of the file into a list of dictionaries,
         # save invalid json
@@ -57,8 +58,9 @@ def save_dict_from_file_to_collection(collection, extractions, invalid_json):
             try:
                 new_json = json.loads(line)
                 documents.append(new_json)
-            except:
+            except json.JSONDecodeError as e:
                 save_str_to_file(line, invalid_json)
+                logging.error(f'Invalid JSON: {line} - {repr(e)}')
 
     # Convert date strings to ISO Dates
     date_format = '%Y-%m-%d'
@@ -92,21 +94,23 @@ def save_str_from_file_to_collection(collection, file_path: str):
 
 
 if __name__ == '__main__':
-    # Performs basic logging set up
-    # Create log file name based on script name
-    log_file_name = os.path.basename(__file__).split('.')
-    log_file_name = f'{log_file_name[0]}_log.log'
+    current_file_name = Path(__file__).stem
+    log_file_name = f'{current_file_name}_log.log'
 
+    BASE_DIR = Path(__file__).parent.parent
+    LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+    LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
 
-    # Configure logging file
-    logger = logging.getLogger(__name__)
+    lf.configure_logging(LOGGING_JSON, LOGGING_FILE)
+    logging.error('Testing saving logs to file.')
 
     # Saving succesfull_extractions to MongoDB Atlas
     # Required files
     CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
     PARENT_DIR = os.path.dirname(CURRENT_DIR)
     TXT_DIR = os.path.join(PARENT_DIR, 'txt_files')
-    SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR, 'succesfull_extractions.txt')
+    SUCCESFULL_EXTRACTIONS = os.path.join(TXT_DIR,
+                                          'succesfull_extractions.txt')
     INVALID_JSON = os.path.join(TXT_DIR, 'invalid_json.txt')
 
     _client = return_db_client()

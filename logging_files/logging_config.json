@@ -3,14 +3,9 @@
     "disable_existing_loggers": false,
     "loggers": {
         "root": {
-            "handlers": ["console"],
-            "level": "INFO"
-        },
-        "main": {
             "handlers": ["console", "file"],
             "level": "INFO",
-            "qualname": "main",
-            "propagate": 0
+            "propagate": true
         }
     },
     "handlers": {
@@ -24,15 +19,16 @@
             "level": "WARNING",
             "formatter": "file",
             "filename": "log_file_name",
-            "mode": "a"
+            "mode": "a",
+            "encoding": "utf-8"
         }
     },
     "formatters": {
         "console": {
-            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+            "format": "%(asctime)s - %(filename)s - %(levelname)s - %(funcName)s - %(message)s"
         },
         "file": {
-            "format": "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(message)s"
+            "format": "%(asctime)s - %(name)s - %(filename)s - %(levelname)s - %(funcName)s - %(message)s"
         }
     }
 }

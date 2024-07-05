@@ -1,72 +1,46 @@
-'''
-Methods for setting logging
-'''
-import os
-from datetime import datetime
+''' Configure logging with JSON file and custom logging file'''
+
 import logging
 from logging import config
 import json
+from pathlib import Path
 
-#Get logging_file_name from main script
-log_file = 'placeholder.log'
-LOG_DIR = os.path.join(os.path.dirname(os.path.realpath(__file__)),'..','logging_files')
-JSON_FILE = os.path.join(LOG_DIR, 'logging_configuration.json')
 
-LOG_CONF_JSON = None
-logger = logging.getLogger(__name__)
-
-def get_log_file_name(new_log_file_name):
-    '''
-    Get logging_file_name from main script
-    :new_log_file_name: main script name with ending '_log.log'
-    '''
-    #Makes file name global for all other functions
-    global log_file
-    global LOG_DIR
-    log_file = os.path.join(LOG_DIR, new_log_file_name)
-
-def configure_logging():
-    '''Configure logging by using JSON file'''
-
-    # Get the path of logging_configuration.json
-    global LOG_CONF_JSON
-
-    # Load logging configuration from JSON file                           
+def configure_logging(json_file: Path, log_file: Path) -> None:
+    ''' Configure logging with JSON and logging file'''
     try:
-        with open(JSON_FILE, 'r', encoding='utf-8') as f:
-            LOG_CONF_JSON = json.load(f)
-        # Change log file name
-        for handler in LOG_CONF_JSON.get('handlers', {}).values():
-            if handler.get('class') == 'logging.FileHandler':
-                handler['filename'] = log_file
-                print(handler['filename'])
-        # Clear any existing handlers
-        root_logger = logging.getLogger()
-        root_logger.handlers = []
-    except Exception as e:
-        print(e)
-        logger.error(f"Error loading logging configuration - {repr(e)}")
+        with open(json_file, 'r', encoding='utf-8') as f:
+            log_conf_json = json.load(f)
+    except FileNotFoundError:
+        print(f'Error: {json_file} does not exist.')
+        return
+    except json.JSONDecodeError:
+        print('Error: Failed to decode JSON file.')
         return
 
-    # Configure logging
-    logging.config.dictConfig(LOG_CONF_JSON)
+    handlers = log_conf_json.get('handlers', {})
+    for handler in handlers.values():
+        if handler.get('class') == 'logging.FileHandler':
+            handler['filename'] = str(log_file)
+            print(f"Log file set to: {handler['filename']}")
 
-def get_logging_json():
-    '''Get logging configuration from JSON file'''
-    return LOG_CONF_JSON
+    logging.config.dictConfig(log_conf_json)
+    logging.info(f'Logging configuration loaded from {json_file}')
 
-def main():
-    ''' Performs basic logging set up, if script is runned directly'''
-
-    #Create log file name based on script name
-    log_file_name = os.path.basename(__file__).split('.')
-    log_file_name = f'{log_file_name[0]}_log.log'
-
-    get_log_file_name(log_file_name)
-
-    #Configure logging file 
-    configure_logging()
-    logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
-    main()
+    # Performs basic logging set up and test
+    current_file_name = Path(__file__).stem
+    log_file_name = f'{current_file_name}_log.log'
+
+    BASE_DIR = Path(__file__).parent.parent
+    LOGGING_FILE = BASE_DIR / 'logging_files' / log_file_name
+    LOGGING_JSON = BASE_DIR / 'logging_files' / 'logging_config.json'
+
+    configure_logging(LOGGING_JSON, LOGGING_FILE)
+    logging.error('Testing saving logs to file.')
+
+    root_logger = logging.getLogger()
+    print("\nRoot logger handlers after configuration:")
+    for handler in root_logger.handlers:
+        print(f"\tHandler: {handler} Level: {handler.level}")
