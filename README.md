@@ -4,6 +4,7 @@ This project scrapes job listings from polish job site "Pracuj.pl". Listings are
 
 ## Dashboards
 Desktop
+- [Job Market - Offers with Big 3 Cloud Providers](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/13862b6a-3f43-4ff7-a389-ec577d8923dd)
 - [Job Market - Python](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460b236-6cd4-4f31-8d34-d817f473e301)
 - [Job Market - SQL](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460c486-6cd4-49ac-8e64-d817f47cbdde)
 
