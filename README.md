@@ -2,6 +2,15 @@
 
 This project scrapes job listings from polish job site "Pracuj.pl". Listings are saved as documents into MongoDB NoSQL database.
 
+## Dashboards
+Desktop
+- [Job Market - Python](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460b236-6cd4-4f31-8d34-d817f473e301)
+- [Job Market - SQL](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460c486-6cd4-49ac-8e64-d817f47cbdde)
+
+Mobile
+- [Job Market - Python](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460cddc-c8d5-45c1-8b50-98fcf1f44b43)
+- [Job Market - SQL](https://charts.mongodb.com/charts-project-0-awjea/public/dashboards/6460cafe-c8d5-4cd4-8e40-98fcf1f2b60c)
+
 ## Project goals
 
 1. Inspect what technologies are mainly used in Poland with Python and SQL
