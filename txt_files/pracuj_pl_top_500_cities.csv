@@ -1,0 +1,501 @@
+Miasta,Województwo,Powiaty i miasta na prawach powiatu,Area in km²,Population,Search
+Warszawa,mazowieckie,Warszawa,517,1861599,warszawa
+Kraków,małopolskie,Kraków,327,806201,krakow
+Wrocław,dolnośląskie,Wrocław,293,673743,wroclaw
+Łódź,łódzkie,Łódź,293,652015,lodz
+Poznań,wielkopolskie,Poznań,262,538439,poznan
+Gdańsk,pomorskie,Gdańsk,683,487371,gdansk
+Szczecin,zachodniopomorskie,Szczecin,301,389066,szczecin
+Lublin,lubelskie,Lublin,147,329565,lublin
+Bydgoszcz,kujawsko-pomorskie,Bydgoszcz,176,326434,bydgoszcz
+Białystok,podlaskie,Białystok,102,291688,bialystok
+Katowice,śląskie,Katowice,165,279190,katowice
+Gdynia,pomorskie,Gdynia,391,241189,gdynia
+Częstochowa,śląskie,Częstochowa,160,205969,czestochowa
+Rzeszów,podkarpackie,Rzeszów,129,197268,rzeszow
+Radom,mazowieckie,Radom,112,196005,radom
+Toruń,kujawsko-pomorskie,Toruń,116,194771,torun
+Sosnowiec,śląskie,Sosnowiec,91,187115,sosnowiec
+Kielce,świętokrzyskie,Kielce,110,182295,kielce
+Gliwice,śląskie,Gliwice,134,169915,gliwice
+Olsztyn,warmińsko-mazurskie,Olsztyn,88,167311,olsztyn
+Bielsko-Biała,śląskie,Bielsko-Biała,124,165766,bielsko-biala
+Zabrze,śląskie,Zabrze,80,153838,zabrze
+Bytom,śląskie,Bytom,69,147759,bytom
+Zielona Góra,lubuskie,Zielona Góra,275,138932,zielona%20gora
+Rybnik,śląskie,Rybnik,148,130887,rybnik
+Ruda Śląska,śląskie,Ruda Śląska,78,130302,ruda%20slaska
+Opole,opolskie,Opole,149,126077,opole
+Tychy,śląskie,Tychy,82,122045,tychy
+Gorzów Wielkopolski,lubuskie,Gorzów Wielkopolski,86,115247,gorzow%20wielkopolski
+Dąbrowa Górnicza,śląskie,Dąbrowa Górnicza,189,113460,dabrowa%20gornicza
+Elbląg,warmińsko-mazurskie,Elbląg,80,112923,elblag
+Płock,mazowieckie,Płock,88,111190,plock
+Koszalin,zachodniopomorskie,Koszalin,106,105540,koszalin
+Tarnów,małopolskie,Tarnów,72,103129,tarnow
+Włocławek,kujawsko-pomorskie,Włocławek,85,100807,wloclawek
+Chorzów,śląskie,Chorzów,33,100593,chorzow
+Wałbrzych,dolnośląskie,Wałbrzych,85,100294,walbrzych
+Kalisz,wielkopolskie,Kalisz,69,93137,kalisz
+Legnica,dolnośląskie,Legnica,56,91948,legnica
+Grudziądz,kujawsko-pomorskie,Grudziądz,58,88658,grudziadz
+Jaworzno,śląskie,Jaworzno,152,86812,jaworzno
+Słupsk,pomorskie,Słupsk,53,85504,slupsk
+Jastrzębie-Zdrój,śląskie,Jastrzębie-Zdrój,85,82301,jastrzebie-zdroj
+Nowy Sącz,małopolskie,Nowy Sącz,58,80358,nowy%20sacz
+Siedlce,mazowieckie,Siedlce,32,75297,siedlce
+Jelenia Góra,dolnośląskie,Jelenia Góra,109,75124,jelenia%20gora
+Mysłowice,śląskie,Mysłowice,66,71280,myslowice
+Piła,wielkopolskie,Pilski,103,70054,pila
+Ostrów Wielkopolski,wielkopolskie,Ostrowski,42,69260,ostrow%20wielkopolski
+Suwałki,podlaskie,Suwałki,66,68231,suwalki
+Lubin,dolnośląskie,Lubiński,41,67620,lubin
+Inowrocław,kujawsko-pomorskie,Inowrocławski,30,67378,inowroclaw
+Konin,wielkopolskie,Konin,82,67066,konin
+Stargard,zachodniopomorskie,Stargardzki,48,66604,stargard
+Piotrków Trybunalski,łódzkie,Piotrków Trybunalski,67,66519,piotrkow%20trybunalski
+Pruszków,mazowieckie,Pruszkowski,19,65461,pruszkow
+Gniezno,wielkopolskie,Gnieźnieński,41,63549,gniezno
+Siemianowice Śląskie,śląskie,Siemianowice Śląskie,26,63401,siemianowice%20slaskie
+Ostrowiec Świętokrzyski,świętokrzyskie,Ostrowiecki,46,62093,ostrowiec%20swietokrzyski
+Głogów,dolnośląskie,Głogowski,35,62049,glogow
+Żory,śląskie,Żory,65,61774,zory
+Tarnowskie Góry,śląskie,Tarnogórski,84,61321,tarnowskie%20gory
+Pabianice,łódzkie,Pabianicki,33,60598,pabianice
+Leszno,wielkopolskie,Leszno,32,60051,leszno
+Ełk,warmińsko-mazurskie,Ełcki,21,59759,elk
+Łomża,podlaskie,Łomża,33,59711,lomza
+Zamość,lubelskie,Zamość,30,58231,zamosc
+Tomaszów Mazowiecki,łódzkie,Tomaszowski,41,57438,tomaszow%20mazowiecki
+Chełm,lubelskie,Chełm,40,57214,chelm
+Mielec,podkarpackie,Mielecki,47,56972,mielec
+Tczew,pomorskie,Tczewski,22,56936,tczew
+Przemyśl,podkarpackie,Przemyśl,46,56050,przemysl
+Stalowa Wola,podkarpackie,Stalowowolski,83,55127,stalowa%20wola
+Biała Podlaska,lubelskie,Biała Podlaska,49,54453,biala%20podlaska
+Kędzierzyn-Koźle,opolskie,Kędzierzyńsko-kozielski,124,54387,kedzierzyn-kozle
+Będzin,śląskie,Będziński,37,53848,bedzin
+Zgierz,łódzkie,Zgierski,42,53543,zgierz
+Rumia,pomorskie,Wejherowski,30,53316,rumia
+Świdnica,dolnośląskie,Świdnicki,22,52874,swidnica
+Legionowo,mazowieckie,Legionowski,14,52630,legionowo
+Bełchatów,łódzkie,Bełchatowski,35,52331,belchatow
+Piaseczno,mazowieckie,Piaseczyński,16,51971,piaseczno
+Piekary Śląskie,śląskie,Piekary Śląskie,40,51707,piekary%20slaskie
+Racibórz,śląskie,Raciborski,75,49650,raciborz
+Ostrołęka,mazowieckie,Ostrołęka,33,48229,ostroleka
+Zawiercie,śląskie,Zawierciański,85,46106,zawiercie
+Wejherowo,pomorskie,Wejherowski,27,46097,wejherowo
+Świętochłowice,śląskie,Świętochłowice,13,45434,swietochlowice
+Marki,mazowieckie,Wołomiński,26,45365,marki
+Ząbki,mazowieckie,Wołomiński,11,45347,zabki
+Starogard Gdański,pomorskie,Starogardzki,25,45295,starogard%20gdanski
+Skierniewice,łódzkie,Skierniewice,35,45184,skierniewice
+Wodzisław Śląski,śląskie,Wodzisławski,49,44833,wodzislaw%20slaski
+Starachowice,świętokrzyskie,Starachowicki,32,44416,starachowice
+Krosno,podkarpackie,Krosno,45,44060,krosno
+Otwock,mazowieckie,Otwocki,47,43895,otwock
+Puławy,lubelskie,Puławski,51,43860,pulawy
+Tarnobrzeg,podkarpackie,Tarnobrzeg,85,43712,tarnobrzeg
+Kołobrzeg,zachodniopomorskie,Kołobrzeski,27,43426,kolobrzeg
+Dębica,podkarpackie,Dębicki,34,42986,debica
+Radomsko,łódzkie,Radomszczański,51,42973,radomsko
+Ciechanów,mazowieckie,Ciechanowski,33,41740,ciechanow
+Mikołów,śląskie,Mikołowski,79,41618,mikolow
+Skarżysko-Kamienna,świętokrzyskie,Skarżyski,64,41224,skarzysko-kamienna
+Kutno,łódzkie,Kutnowski,34,40723,kutno
+Nysa,opolskie,Nyski,28,40685,nysa
+Mińsk Mazowiecki,mazowieckie,Miński,13,39837,minsk%20mazowiecki
+Świnoujście,zachodniopomorskie,Świnoujście,202,38904,swinoujscie
+Sieradz,łódzkie,Sieradzki,51,38729,sieradz
+Chojnice,pomorskie,Chojnicki,21,38729,chojnice
+Żyrardów,mazowieckie,Żyrardowski,14,38594,zyrardow
+Zduńska Wola,łódzkie,Zduńskowolski,25,38402,zdunska%20wola
+Szczecinek,zachodniopomorskie,Szczecinecki,48,37557,szczecinek
+Bolesławiec,dolnośląskie,Bolesławiecki,23,37055,boleslawiec
+Kwidzyn,pomorskie,Kwidzyński,22,36854,kwidzyn
+Malbork,pomorskie,Malborski,17,36709,malbork
+Świdnik,lubelskie,Świdnicki,20,36680,swidnik
+Nowa Sól,lubuskie,Nowosolski,22,36040,nowa%20sol
+Wołomin,mazowieckie,Wołomiński,17,35620,wolomin
+Knurów,śląskie,Gliwicki,34,35619,knurow
+Oświęcim,małopolskie,Oświęcimski,30,35577,oswiecim
+Jarosław,podkarpackie,Jarosławski,35,35298,jaroslaw
+Oleśnica,dolnośląskie,Oleśnicki,21,35132,olesnica
+Żary,lubuskie,Żarski,33,34837,zary
+Czechowice-Dziedzice,śląskie,Bielski,33,34783,czechowice-dziedzice
+Grodzisk Mazowiecki,mazowieckie,Grodziski,13,34718,grodzisk%20mazowiecki
+Sanok,podkarpackie,Sanocki,39,34345,sanok
+Lębork,pomorskie,Lęborski,18,34000,lebork
+Chrzanów,małopolskie,Chrzanowski,38,33928,chrzanow
+Sochaczew,mazowieckie,Sochaczewski,26,33456,sochaczew
+Brzeg,opolskie,Brzeski,15,33403,brzeg
+Oława,dolnośląskie,Oławski,27,33166,olawa
+Nowy Targ,małopolskie,Nowotarski,51,33065,nowy%20targ
+Cieszyn,śląskie,Cieszyński,29,32947,cieszyn
+Luboń,wielkopolskie,Poznański,14,32835,lubon
+Jasło,podkarpackie,Jasielski,37,32727,jaslo
+Olkusz,małopolskie,Olkuski,26,32261,olkusz
+Iława,warmińsko-mazurskie,Iławski,22,32188,ilawa
+Pruszcz Gdański,pomorskie,Gdański,16,32171,pruszcz%20gdanski
+Sopot,pomorskie,Sopot,28,31903,sopot
+Września,wielkopolskie,Wrzesiński,13,31759,wrzesnia
+Ostróda,warmińsko-mazurskie,Ostródzki,14,31336,ostroda
+Kraśnik,lubelskie,Kraśnicki,26,31296,krasnik
+Mława,mazowieckie,Mławski,35,30802,mlawa
+Dzierżoniów,dolnośląskie,Dzierżoniowski,20,30614,dzierzoniow
+Czeladź,śląskie,Będziński,16,29876,czeladz
+Żywiec,śląskie,Żywiecki,50,29732,zywiec
+Police,zachodniopomorskie,Policki,37,29627,police
+Myszków,śląskie,Myszkowski,73,29379,myszkow
+Augustów,podlaskie,Augustowski,81,28995,augustow
+Zgorzelec,dolnośląskie,Zgorzelecki,16,28931,zgorzelec
+Reda,pomorskie,Wejherowski,34,28704,reda
+Nowy Dwór Mazowiecki,mazowieckie,Nowodworski,28,28548,nowy%20dwor%20mazowiecki
+Bochnia,małopolskie,Bocheński,30,28441,bochnia
+Kobyłka,mazowieckie,Wołomiński,20,28339,kobylka
+Swarzędz,wielkopolskie,Poznański,8,28254,swarzedz
+Brodnica,kujawsko-pomorskie,Brodnicki,23,28190,brodnica
+Krotoszyn,wielkopolskie,Krotoszyński,23,28126,krotoszyn
+Bielawa,dolnośląskie,Dzierżoniowski,36,28027,bielawa
+Wieliczka,małopolskie,Wielicki,14,27845,wieliczka
+Śrem,wielkopolskie,Śremski,12,27817,srem
+Giżycko,warmińsko-mazurskie,Giżycki,14,27310,gizycko
+Łuków,lubelskie,Łukowski,36,27159,lukow
+Czerwionka-Leszczyny,śląskie,Rybnicki,38,26522,czerwionka-leszczyny
+Jarocin,wielkopolskie,Jarociński,22,26286,jarocin%20(pow.%20jarocinski)
+Wyszków,mazowieckie,Wyszkowski,21,26019,wyszkow
+Łowicz,łódzkie,Łowicki,23,25972,lowicz
+Gorlice,małopolskie,Gorlicki,24,25523,gorlice
+Wągrowiec,wielkopolskie,Wągrowiecki,18,25398,wagrowiec
+Zakopane,małopolskie,Tatrzański,84,25204,zakopane
+Kętrzyn,warmińsko-mazurskie,Kętrzyński,10,25113,ketrzyn
+Pszczyna,śląskie,Pszczyński,22,25031,pszczyna
+Świecie,kujawsko-pomorskie,Świecki,17,24841,swiecie
+Kłodzko,dolnośląskie,Kłodzki,25,24810,klodzko
+Biłgoraj,lubelskie,Biłgorajski,21,24769,bilgoraj
+Turek,wielkopolskie,Turecki,16,24463,turek
+Środa Wielkopolska,wielkopolskie,Średzki,22,24324,sroda%20wielkopolska
+Skawina,małopolskie,Krakowski,21,23967,skawina
+Bielsk Podlaski,podlaskie,Bielski,27,23823,bielsk%20podlaski
+Wałcz,zachodniopomorskie,Wałecki,38,23578,walcz
+Żagań,lubuskie,Żagański,40,23462,zagan
+Kościan,wielkopolskie,Kościański,9,23398,koscian
+Lubliniec,śląskie,Lubliniecki,89,23347,lubliniec
+Kościerzyna,pomorskie,Kościerski,16,23296,koscierzyna
+Piastów,mazowieckie,Pruszkowski,6,22932,piastow
+Białogard,zachodniopomorskie,Białogardzki,26,22418,bialogard
+Kluczbork,opolskie,Kluczborski,12,22033,kluczbork
+Aleksandrów Łódzki,łódzkie,Zgierski,14,22002,aleksandrow%20lodzki
+Orzesze,śląskie,Mikołowski,84,21986,orzesze
+Szczytno,warmińsko-mazurskie,Szczycieński,10,21878,szczytno
+Świebodzice,dolnośląskie,Świdnicki,30,21805,swiebodzice
+Ostrów Mazowiecka,mazowieckie,Ostrowski,22,21530,ostrow%20mazowiecka
+Płońsk,mazowieckie,Płoński,12,21530,plonsk
+Goleniów,zachodniopomorskie,Goleniowski,12,21462,goleniow
+Sulejówek,mazowieckie,Miński,19,21428,sulejowek
+Polkowice,dolnośląskie,Polkowicki,24,21350,polkowice
+Bartoszyce,warmińsko-mazurskie,Bartoszycki,12,21314,bartoszyce
+Sandomierz,świętokrzyskie,Sandomierski,29,21273,sandomierz
+Józefów,mazowieckie,Otwocki,24,21217,jozefow%20(pow.%20otwocki)
+Łaziska Górne,śląskie,Mikołowski,20,21116,laziska%20gorne
+Grajewo,podlaskie,Grajewski,19,20899,grajewo
+Zambrów,podlaskie,Zambrowski,19,20848,zambrow
+Świebodzin,lubuskie,Świebodziński,17,20778,swiebodzin
+Mrągowo,warmińsko-mazurskie,Mrągowski,15,20533,mragowo
+Jawor,dolnośląskie,Jaworski,19,20503,jawor
+Wieluń,łódzkie,Wieluński,17,20448,wielun
+Nowa Ruda,dolnośląskie,Kłodzki,37,20421,nowa%20ruda
+Rydułtowy,śląskie,Wodzisławski,15,20168,rydultowy
+Działdowo,warmińsko-mazurskie,Działdowski,12,20125,dzialdowo
+Gostyń,wielkopolskie,Gostyński,11,19814,gostyn
+Lubartów,lubelskie,Lubartowski,14,19734,lubartow
+Gryfino,zachodniopomorskie,Gryfiński,12,19691,gryfino
+Rawicz,wielkopolskie,Rawicki,9,19655,rawicz
+Lubań,dolnośląskie,Lubański,16,19545,luban
+Koło,wielkopolskie,Kolski,14,19417,kolo
+Konstantynów Łódzki,łódzkie,Pabianicki,27,19231,konstantynow%20lodzki
+Pułtusk,mazowieckie,Pułtuski,23,19064,pultusk
+Hajnówka,podlaskie,Hajnowski,21,18976,hajnowka
+Prudnik,opolskie,Prudnicki,20,18974,prudnik
+Opoczno,łódzkie,Opoczyński,27,18913,opoczno
+Bieruń,śląskie,Bieruńsko-lędziński,40,18835,bierun
+Trzebinia,małopolskie,Chrzanowski,32,18502,trzebinia
+Sokołów Podlaski,mazowieckie,Sokołowski,17,18361,sokolow%20podlaski
+Andrychów,małopolskie,Wadowicki,10,18311,andrychow
+Łomianki,mazowieckie,Warszawski zachodni,8,18226,lomianki
+Szamotuły,wielkopolskie,Szamotulski,11,18219,szamotuly
+Zielonka,mazowieckie,Wołomiński,79,18143,zielonka
+Złotów,wielkopolskie,Złotowski,12,18138,zlotow
+Ozorków,łódzkie,Zgierski,15,18064,ozorkow
+Chełmno,kujawsko-pomorskie,Chełmiński,14,18052,chelmno
+Tomaszów Lubelski,lubelskie,Tomaszowski,13,17848,tomaszow%20lubelski
+Myślenice,małopolskie,Myślenicki,30,17745,myslenice
+Łańcut,podkarpackie,Łańcucki,19,17703,lancut
+Pisz,warmińsko-mazurskie,Piski,10,17672,pisz
+Kęty,małopolskie,Oświęcimski,23,17669,kety
+Łęczna,lubelskie,Łęczyński,19,17665,leczna
+Kostrzyn nad Odrą,lubuskie,Gorzowski,46,17591,kostrzyn%20nad%20odra
+Końskie,świętokrzyskie,Konecki,18,17384,konskie
+Krasnystaw,lubelskie,Krasnostawski,42,17366,krasnystaw
+Chodzież,wielkopolskie,Chodzieski,13,17321,chodziez
+Garwolin,mazowieckie,Garwoliński,22,17268,garwolin
+Oborniki,wielkopolskie,Obornicki,14,17238,oborniki
+Pyskowice,śląskie,Gliwicki,31,17236,pyskowice
+Wadowice,małopolskie,Wadowicki,11,17196,wadowice
+Kamienna Góra,dolnośląskie,Kamiennogórski,18,17110,kamienna%20gora
+Sokółka,podlaskie,Sokólski,19,17087,sokolka
+Nakło nad Notecią,kujawsko-pomorskie,Nakielski,11,17002,naklo%20nad%20notecia
+Gostynin,mazowieckie,Gostyniński,32,16986,gostynin
+Strzelce Opolskie,opolskie,Strzelecki,30,16975,strzelce%20opolskie
+Sierpc,mazowieckie,Sierpecki,18,16941,sierpc
+Konstancin-Jeziorna,mazowieckie,Piaseczyński,18,16894,konstancin-jeziorna
+Międzyrzecz,lubuskie,Międzyrzecki,14,16832,miedzyrzecz
+Radlin,śląskie,Wodzisławski,13,16829,radlin
+Namysłów,opolskie,Namysłowski,23,16818,namyslow
+Grójec,mazowieckie,Grójecki,8,16807,grojec
+Niepołomice,małopolskie,Wielicki,27,16805,niepolomice
+Pleszew,wielkopolskie,Pleszewski,13,16610,pleszew
+Milanówek,mazowieckie,Grodziski,13,16424,milanowek
+Trzcianka,wielkopolskie,Czarnkowsko-trzcianecki,18,16422,trzcianka
+Przasnysz,mazowieckie,Przasnyski,25,16357,przasnysz
+Bytów,pomorskie,Bytowski,9,16339,bytow
+Lędziny,śląskie,Bieruńsko-lędziński,32,16333,ledziny
+Słubice,lubuskie,Słubicki,19,16255,slubice
+Pionki,mazowieckie,Radomski,18,16089,pionki
+Łask,łódzkie,Łaski,15,16058,lask
+Radzionków,śląskie,Tarnogórski,13,16034,radzionkow
+Bogatynia,dolnośląskie,Zgorzelecki,60,16020,bogatynia
+Braniewo,warmińsko-mazurskie,Braniewski,12,16015,braniewo
+Rawa Mazowiecka,łódzkie,Rawski,14,15941,rawa%20mazowiecka
+Hrubieszów,lubelskie,Hrubieszowski,33,15935,hrubieszow
+Brzesko,małopolskie,Brzeski,12,15928,brzesko
+Libiąż,małopolskie,Chrzanowski,36,15912,libiaz
+Ustroń,śląskie,Cieszyński,59,15853,ustron
+Ropczyce,podkarpackie,Ropczycko-sędziszowski,47,15794,ropczyce
+Olecko,warmińsko-mazurskie,Olecki,12,15721,olecko
+Nowogard,zachodniopomorskie,Goleniowski,13,15695,nowogard
+Ożarów Mazowiecki,mazowieckie,Warszawski zachodni,8,15623,ozarow%20mazowiecki
+Gubin,lubuskie,Krośnieński,21,15606,gubin
+Kozienice,mazowieckie,Kozienicki,10,15530,kozienice
+Sulechów,lubuskie,Zielonogórski,7,15467,sulechow
+Międzyrzec Podlaski,lubelskie,Bialski,20,15389,miedzyrzec%20podlaski
+Rypin,kujawsko-pomorskie,Rypiński,11,15379,rypin
+Gryfice,zachodniopomorskie,Gryficki,12,15343,gryfice
+Krapkowice,opolskie,Krapkowicki,21,15282,krapkowice
+Solec Kujawski,kujawsko-pomorskie,Bydgoski,19,15249,solec%20kujawski
+Grodzisk Wielkopolski,wielkopolskie,Grodziski,18,15124,grodzisk%20wielkopolski
+Jelcz-Laskowice,dolnośląskie,Oławski,17,15004,jelcz-laskowice
+Radzymin,mazowieckie,Wołomiński,23,14962,radzymin
+Strzegom,dolnośląskie,Świdnicki,21,14940,strzegom
+Brwinów,mazowieckie,Pruszkowski,15,14568,brwinow
+Świdwin,zachodniopomorskie,Świdwiński,22,14547,swidwin
+Przeworsk,podkarpackie,Przeworski,22,14523,przeworsk
+Mosina,wielkopolskie,Poznański,14,14501,mosina
+Nisko,podkarpackie,Niżański,61,14477,nisko
+Lidzbark Warmiński,warmińsko-mazurskie,Lidzbarski,14,14459,lidzbark%20warminski
+Łapy,podlaskie,Białostocki,12,14436,lapy
+Limanowa,małopolskie,Limanowski,19,14430,limanowa
+Busko-Zdrój,świętokrzyskie,Buski,12,14365,busko-zdroj
+Radzyń Podlaski,lubelskie,Radzyński,19,14293,radzyn%20podlaski
+Ząbkowice Śląskie,dolnośląskie,Ząbkowicki,14,14240,zabkowice%20slaskie
+Złotoryja,dolnośląskie,Złotoryjski,12,14168,zlotoryja
+Boguszów-Gorce,dolnośląskie,Wałbrzyski,27,14166,boguszow-gorce
+Dęblin,lubelskie,Rycki,38,14132,deblin
+Jędrzejów,świętokrzyskie,Jędrzejowski,11,14029,jedrzejow
+Choszczno,zachodniopomorskie,Choszczeński,10,13895,choszczno
+Kartuzy,pomorskie,Kartuski,7,13796,kartuzy
+Ustka,pomorskie,Słupski,11,13722,ustka
+Chełmża,kujawsko-pomorskie,Toruński,8,13691,chelmza
+Trzebnica,dolnośląskie,Trzebnicki,11,13655,trzebnica
+Staszów,świętokrzyskie,Staszowski,27,13596,staszow
+Ostrzeszów,wielkopolskie,Ostrzeszowski,12,13593,ostrzeszow
+Nowy Tomyśl,wielkopolskie,Nowotomyski,5,13591,nowy%20tomysl
+Kępno,wielkopolskie,Kępiński,8,13530,kepno
+Skoczów,śląskie,Cieszyński,10,13423,skoczow
+Siemiatycze,podlaskie,Siemiatycki,36,13391,siemiatycze
+Lipno,kujawsko-pomorskie,Lipnowski,11,13380,lipno
+Gołdap,warmińsko-mazurskie,Gołdapski,17,13184,goldap
+Głowno,łódzkie,Zgierski,20,13116,glowno
+Łęczyca,łódzkie,Łęczycki,9,13065,leczyca
+Żnin,kujawsko-pomorskie,Żniński,8,13040,znin
+Człuchów,pomorskie,Człuchowski,13,13031,czluchow
+Pszów,śląskie,Wodzisławski,20,13007,pszow
+Wschowa,lubuskie,Wschowski,9,12991,wschowa
+Tuchola,kujawsko-pomorskie,Tucholski,18,12969,tuchola
+Słupca,wielkopolskie,Słupecki,10,12952,slupca
+Barlinek,zachodniopomorskie,Myśliborski,18,12935,barlinek
+Wąbrzeźno,kujawsko-pomorskie,Wąbrzeski,9,12892,wabrzezno
+Dębno,zachodniopomorskie,Myśliborski,19,12885,debno
+Lubsko,lubuskie,Żarski,13,12858,lubsko
+Wasilków,podlaskie,Białostocki,28,12768,wasilkow
+Morąg,warmińsko-mazurskie,Ostródzki,6,12757,morag
+Leżajsk,podkarpackie,Leżajski,20,12697,lezajsk
+Nidzica,warmińsko-mazurskie,Nidzicki,7,12629,nidzica
+Głuchołazy,opolskie,Nyski,7,12621,glucholazy
+Brzeg Dolny,dolnośląskie,Wołowski,18,12536,brzeg%20dolny
+Darłowo,zachodniopomorskie,Sławieński,20,12512,darlowo
+Sędziszów Małopolski,podkarpackie,Ropczycko-sędziszowski,37,12368,sedziszow%20malopolski
+Chojnów,dolnośląskie,Legnicki,5,12361,chojnow
+Rabka-Zdrój,małopolskie,Nowotarski,37,12233,rabka-zdroj
+Kłobuck,śląskie,Kłobucki,47,12220,klobuck
+Błonie,mazowieckie,Warszawski zachodni,9,12172,blonie
+Góra Kalwaria,mazowieckie,Piaseczyński,15,12129,gora%20kalwaria
+Włodawa,lubelskie,Włodawski,18,12123,wlodawa
+Koluszki,łódzkie,Łódzki wschodni,10,12046,koluszki
+Złocieniec,zachodniopomorskie,Drawski,32,12046,zlocieniec
+Wołów,dolnośląskie,Wołowski,19,12010,wolow
+Brzeziny,łódzkie,Brzeziński,22,11949,brzeziny
+Strzelin,dolnośląskie,Strzeliński,13,11936,strzelin
+Wolsztyn,wielkopolskie,Wolsztyński,5,11935,wolsztyn
+Warka,mazowieckie,Grójecki,26,11889,warka
+Węgrów,mazowieckie,Węgrowski,36,11844,wegrow
+Pyrzyce,zachodniopomorskie,Pyrzycki,39,11824,pyrzyce
+Sławno,zachodniopomorskie,Sławieński,16,11777,slawno
+Pasłęk,warmińsko-mazurskie,Elbląski,11,11728,paslek
+Głubczyce,opolskie,Głubczycki,12,11651,glubczyce
+Aleksandrów Kujawski,kujawsko-pomorskie,Aleksandrowski,7,11474,aleksandrow%20kujawski
+Dąbrowa Tarnowska,małopolskie,Dąbrowski,23,11458,dabrowa%20tarnowska
+Lubaczów,podkarpackie,Lubaczowski,26,11313,lubaczow
+Golub-Dobrzyń,kujawsko-pomorskie,Golubsko-dobrzyński,8,11261,golub-dobrzyn
+Drawsko Pomorskie,zachodniopomorskie,Drawski,22,11224,drawsko%20pomorskie
+Siechnice,dolnośląskie,Wrocławski,16,10991,siechnice
+Mogilno,kujawsko-pomorskie,Mogileński,8,10972,mogilno
+Miechów,małopolskie,Miechowski,15,10918,miechow
+Janów Lubelski,lubelskie,Janowski,15,10894,janow%20lubelski
+Milicz,dolnośląskie,Milicki,14,10771,milicz
+Rogoźno,wielkopolskie,Obornicki,11,10771,rogozno
+Koronowo,kujawsko-pomorskie,Bydgoski,28,10743,koronowo
+Góra,dolnośląskie,Górowski,14,10700,gora
+Brzeszcze,małopolskie,Oświęcimski,19,10657,brzeszcze
+Wisła,śląskie,Cieszyński,110,10637,wisla
+Lubawa,warmińsko-mazurskie,Iławski,17,10633,lubawa
+Głogów Małopolski,podkarpackie,Rzeszowski,38,10583,glogow%20malopolski
+Węgorzewo,warmińsko-mazurskie,Węgorzewski,11,10563,wegorzewo
+Szydłowiec,mazowieckie,Szydłowiecki,22,10556,szydlowiec
+Szprotawa,lubuskie,Żagański,11,10554,szprotawa
+Krosno Odrzańskie,lubuskie,Krośnieński,8,10533,krosno%20odrzanskie
+Wronki,wielkopolskie,Szamotulski,6,10505,wronki
+Puck,pomorskie,Pucki,17,10463,puck
+Nowa Dęba,podkarpackie,Tarnobrzeski,17,10381,nowa%20deba
+Myślibórz,zachodniopomorskie,Myśliborski,15,10353,mysliborz
+Murowana Goślina,wielkopolskie,Poznański,9,10287,murowana%20goslina
+Parczew,lubelskie,Parczewski,8,10185,parczew
+Zdzieszowice,opolskie,Krapkowicki,12,10157,zdzieszowice
+Ciechocinek,kujawsko-pomorskie,Aleksandrowski,15,10153,ciechocinek
+Nowe Miasto Lubawskie,warmińsko-mazurskie,Nowomiejski,11,10089,nowe%20miasto%20lubawskie
+Międzychód,wielkopolskie,Międzychodzki,7,9956,miedzychod
+Syców,dolnośląskie,Oleśnicki,17,9938,sycow
+Biskupiec,warmińsko-mazurskie,Olsztyński,5,9924,biskupiec
+Czarnków,wielkopolskie,Czarnkowsko-trzcianecki,10,9916,czarnkow
+Pobiedziska,wielkopolskie,Poznański,10,9891,pobiedziska
+Kostrzyn,wielkopolskie,Poznański,8,9855,kostrzyn
+Czersk,pomorskie,Chojnicki,10,9852,czersk
+Kolno,podlaskie,Kolneński,25,9839,kolno
+Kowary,dolnośląskie,Karkonoski,37,9745,kowary
+Krzeszowice,małopolskie,Krakowski,17,9743,krzeszowice
+Sulęcin,lubuskie,Sulęciński,9,9738,sulecin
+Pińczów,świętokrzyskie,Pińczowski,14,9721,pinczow
+Strzelce Krajeńskie,lubuskie,Strzelecko-drezdenecki,6,9705,strzelce%20krajenskie
+Krynica-Zdrój,małopolskie,Nowosądecki,40,9597,krynica-zdroj
+Środa Śląska,dolnośląskie,Średzki,15,9540,sroda%20slaska
+Włoszczowa,świętokrzyskie,Włoszczowski,30,9520,wloszczowa
+Łobez,zachodniopomorskie,Łobeski,13,9516,lobez
+Nowy Dwór Gdański,pomorskie,Nowodworski,5,9471,nowy%20dwor%20gdanski
+Bukowno,małopolskie,Olkuski,64,9467,bukowno
+Drezdenko,lubuskie,Strzelecko-drezdenecki,11,9455,drezdenko
+Mońki,podlaskie,Moniecki,8,9449,monki
+Szubin,kujawsko-pomorskie,Nakielski,8,9402,szubin
+Imielin,śląskie,Bieruńsko-lędziński,28,9398,imielin
+Miastko,pomorskie,Bytowski,6,9395,miastko
+Trzebiatów,zachodniopomorskie,Gryficki,10,9314,trzebiatow
+Opalenica,wielkopolskie,Nowotomyski,6,9303,opalenica
+Puszczykowo,wielkopolskie,Poznański,16,9292,puszczykowo
+Kudowa-Zdrój,dolnośląskie,Kłodzki,34,9280,kudowa-zdroj
+Dobre Miasto,warmińsko-mazurskie,Olsztyński,5,9255,dobre%20miasto
+Karczew,mazowieckie,Otwocki,28,9245,karczew%20(pow.%20otwocki)
+Władysławowo,pomorskie,Pucki,33,9235,wladyslawowo
+Sztum,pomorskie,Sztumski,5,9104,sztum
+Skwierzyna,lubuskie,Międzyrzecki,36,9078,skwierzyna
+Kruszwica,kujawsko-pomorskie,Inowrocławski,10,9070,kruszwica
+Olesno,opolskie,Oleski,15,9047,olesno
+Blachownia,śląskie,Częstochowski,37,9041,blachownia
+Wysokie Mazowieckie,podlaskie,Wysokomazowiecki,15,9017,wysokie%20mazowieckie
+Oborniki Śląskie,dolnośląskie,Trzebnicki,14,8990,oborniki%20slaskie
+Ryki,lubelskie,Rycki,27,8985,ryki
+Bystrzyca Kłodzka,dolnośląskie,Kłodzki,11,8939,bystrzyca%20klodzka
+Maków Mazowiecki,mazowieckie,Makowski,10,8939,makow%20mazowiecki
+Kożuchów,lubuskie,Nowosolski,6,8892,kozuchow
+Sucha Beskidzka,małopolskie,Suski,28,8868,sucha%20beskidzka
+Sępólno Krajeńskie,kujawsko-pomorskie,Sępoleński,7,8720,sepolno%20krajenskie
+Stary Sącz,małopolskie,Nowosądecki,15,8701,stary%20sacz
+Czarna Białostocka,podlaskie,Białostocki,14,8579,czarna%20bialostocka
+Kolbuszowa,podkarpackie,Kolbuszowski,8,8495,kolbuszowa
+Wojkowice,śląskie,Będziński,13,8477,wojkowice
+Żuromin,mazowieckie,Żuromiński,11,8437,zuromin
+Chełmek,małopolskie,Oświęcimski,8,8413,chelmek
+Ustrzyki Dolne,podkarpackie,Bieszczadzki,17,8410,ustrzyki%20dolne
+Strzyżów,podkarpackie,Strzyżowski,14,8402,strzyzow
+Wieruszów,łódzkie,Wieruszowski,6,8332,wieruszow
+Kamień Pomorski,zachodniopomorskie,Kamieński,11,8291,kamien%20pomorski
+Jastrowie,wielkopolskie,Złotowski,72,8258,jastrowie
+Poniatowa,lubelskie,Opolski,15,8246,poniatowa%20(pow.%20opolski)
+Kalety,śląskie,Tarnogórski,76,8170,kalety
+Kórnik,wielkopolskie,Poznański,6,8141,kornik
+Janikowo,kujawsko-pomorskie,Inowrocławski,10,8136,janikowo
+Lwówek Śląski,dolnośląskie,Lwówecki,17,8132,lwowek%20slaski
+Poręba,śląskie,Zawierciański,40,8104,poreba
+Prabuty,pomorskie,Kwidzyński,7,8091,prabuty
+Pniewy,wielkopolskie,Szamotulski,9,8080,pniewy
+Wolbrom,małopolskie,Olkuski,10,8045,wolbrom
+Tłuszcz,mazowieckie,Wołomiński,8,8032,tluszcz
+Orneta,warmińsko-mazurskie,Lidzbarski,10,8007,orneta
+Ziębice,dolnośląskie,Ząbkowicki,15,7981,ziebice
+Ozimek,opolskie,Opolski,3,7962,ozimek
+Grodków,opolskie,Brzeski,10,7902,grodkow
+Opole Lubelskie,lubelskie,Opolski,15,7864,opole%20lubelskie
+Mszana Dolna,małopolskie,Limanowski,27,7826,mszana%20dolna
+Żychlin,łódzkie,Kutnowski,9,7494,zychlin
+Połaniec,świętokrzyskie,Staszowski,17,7453,polaniec
+Suchedniów,świętokrzyskie,Skarżyski,59,7452,suchedniow
+Witkowo,wielkopolskie,Gnieźnieński,8,7427,witkowo
+Barczewo,warmińsko-mazurskie,Olsztyński,5,7377,barczewo
+Chocianów,dolnośląskie,Polkowicki,9,7356,chocianow
+Chojna,zachodniopomorskie,Gryfiński,13,7316,chojna
+Nasielsk,mazowieckie,Nowodworski,13,7315,nasielsk
+Trzemeszno,wielkopolskie,Gnieźnieński,5,7272,trzemeszno
+Połczyn-Zdrój,zachodniopomorskie,Świdwiński,7,7243,polczyn-zdroj
+Lidzbark,warmińsko-mazurskie,Działdowski,6,7182,lidzbark
+Tuszyn,łódzkie,Łódzki wschodni,23,7171,tuszyn
+Kąty Wrocławskie,dolnośląskie,Wrocławski,9,7168,katy%20wroclawskie
+Olsztynek,warmińsko-mazurskie,Olsztyński,8,7165,olsztynek
+Zwoleń,mazowieckie,Zwoleński,16,7162,zwolen
+Brzozów,podkarpackie,Brzozowski,11,7158,brzozow
+Pelplin,pomorskie,Tczewski,4,7124,pelplin
+Praszka,opolskie,Oleski,9,7110,praszka
+Zelów,łódzkie,Bełchatowski,11,7059,zelow
+Sobótka,dolnośląskie,Wrocławski,32,7022,sobotka
+Zbąszyń,wielkopolskie,Nowotomyski,5,7016,zbaszyn
+Miasteczko Śląskie,śląskie,Tarnogórski,68,6961,miasteczko%20slaskie
+Barcin,kujawsko-pomorskie,Żniński,4,6926,barcin
+Sławków,śląskie,Będziński,37,6842,slawkow
+Łosice,mazowieckie,Łosicki,24,6808,losice
+Pieszyce,dolnośląskie,Dzierżoniowski,18,6765,pieszyce
+Poddębice,łódzkie,Poddębicki,6,6756,poddebice
+Żukowo,pomorskie,Kartuski,5,6709,zukowo
+Gniewkowo,kujawsko-pomorskie,Inowrocławski,9,6677,gniewkowo
+Czaplinek,zachodniopomorskie,Drawski,14,6663,czaplinek
+Paczków,opolskie,Nyski,7,6607,paczkow
+Skarszewy,pomorskie,Starogardzki,11,6598,skarszewy
+Sianów,zachodniopomorskie,Koszaliński,16,6564,sianow
+Łochów,mazowieckie,Węgrowski,13,6545,lochow
+Sułkowice,małopolskie,Myślenicki,16,6464,sulkowice
+Witnica,lubuskie,Gorzowski,8,6434,witnica
+Żarów,dolnośląskie,Świdnicki,8,6424,zarow
+Gogolin,opolskie,Krapkowicki,21,6418,gogolin
+Białobrzegi,mazowieckie,Białobrzeski,8,6407,bialobrzegi
+Rzepin,lubuskie,Słubicki,11,6404,rzepin
+Łazy,śląskie,Zawierciański,9,6378,lazy
+Rudnik nad Sanem,podkarpackie,Niżański,37,6375,rudnik%20nad%20sanem
+Pajęczno,łódzkie,Pajęczański,20,6370,pajeczno
+Zawadzkie,opolskie,Strzelecki,16,6358,zawadzkie

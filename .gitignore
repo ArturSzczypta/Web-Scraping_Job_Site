@@ -1,0 +1,5 @@
+scrapped_urls_copy.txt
+scrapped_dates_copy.txt
+txt_files/failed_urls.txt
+scripts/__pycache__/logging_functions.cpython-312.pyc
+logging_files/scrape_listings_log.log
